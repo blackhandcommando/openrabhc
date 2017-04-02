@@ -59,7 +59,7 @@
 	Faction@random:
 		Name: Any
 		InternalName: Random
-		RandomFactionMembers: RandomAllies, RandomSoviet
+		RandomFactionMembers: sallies, ssoviet
 		Side: Random
 		Description: A random country.
 	Faction@randomallies:
