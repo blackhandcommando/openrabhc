@@ -18,6 +18,7 @@ MINP:
 CRATE:
 	Inherits: ^Crate
     SupportPowerCrateAction@armordrop:
+		SelectionShares: 5
 		Proxy: powerproxy.armordrop
 	GiveCashCrateAction:
 		Amount: 1000
