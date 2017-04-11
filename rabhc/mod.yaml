@@ -1,11 +1,11 @@
 Metadata:
 	Title: Red Alert (BlackHandCommando Edition)
 	Description: In a world where Hitler was assassinated and the Third Reich never\nexisted, the Soviet Union seeks power over all of Europe.  Allied\nagainst this Evil Empire, the free world faces a Cold War turned hot.\n\nRed Alert fuses the quick and fun gameplay of the original\nC&C: Red Alert, with balance improvements and new gameplay\nfeatures inspired by modern RTS games.
-	Version: playtest-20170304_bhc3
+	Version: playtest-20170408_bhc3
 	Author: the OpenRA Developers and modified by BlackHandCommando
 
 RequiresMods:
-	modchooser: playtest-20170304
+	modchooser: playtest-20170408
 
 Packages:
 	~^Content/ra/v2/
@@ -37,7 +37,7 @@ Packages:
 
 MapFolders:
 	rabhc|maps: System
-	~^maps/rabhc/playtest-20170304: User
+	~^maps/rabhc/playtest-20170408: User
 
 Rules:
 	rabhc|rules/misc.yaml
