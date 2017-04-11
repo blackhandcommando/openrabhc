@@ -1,7 +1,7 @@
 Metadata:
 	Title: Red Alert (BlackHandCommando Edition)
 	Description: In a world where Hitler was assassinated and the Third Reich never\nexisted, the Soviet Union seeks power over all of Europe.  Allied\nagainst this Evil Empire, the free world faces a Cold War turned hot.\n\nRed Alert fuses the quick and fun gameplay of the original\nC&C: Red Alert, with balance improvements and new gameplay\nfeatures inspired by modern RTS games.
-	Version: playtest-20170304_bhc1
+	Version: playtest-20170304_bhc3
 	Author: the OpenRA Developers and modified by BlackHandCommando
 
 RequiresMods:
@@ -13,7 +13,7 @@ Packages:
 	~^Content/ra/v2/cnc
 	~^Content/ra/v2/movies
 	.
-	$ra: ra
+	$rabhc: rabhc
 	./mods/common: common
 	~main.mix
 	~conquer.mix
@@ -31,51 +31,51 @@ Packages:
 	~expand2.mix
 	~hires1.mix
 	~desert.mix
-	ra|bits
-	ra|bits/desert
-	ra|uibits
+	rabhc|bits
+	rabhc|bits/desert
+	rabhc|uibits
 
 MapFolders:
-	ra|maps: System
-	~^maps/ra/playtest-20170304: User
+	rabhc|maps: System
+	~^maps/rabhc/playtest-20170304: User
 
 Rules:
-	ra|rules/misc.yaml
-	ra|rules/ai.yaml
-	ra|rules/player.yaml
-	ra|rules/palettes.yaml
-	ra|rules/world.yaml
-	ra|rules/defaults.yaml
-	ra|rules/vehicles.yaml
-	ra|rules/husks.yaml
-	ra|rules/structures.yaml
-	ra|rules/infantry.yaml
-	ra|rules/civilian.yaml
-	ra|rules/decoration.yaml
-	ra|rules/aircraft.yaml
-	ra|rules/ships.yaml
-	ra|rules/fakes.yaml
+	rabhc|rules/misc.yaml
+	rabhc|rules/ai.yaml
+	rabhc|rules/player.yaml
+	rabhc|rules/palettes.yaml
+	rabhc|rules/world.yaml
+	rabhc|rules/defaults.yaml
+	rabhc|rules/vehicles.yaml
+	rabhc|rules/husks.yaml
+	rabhc|rules/structures.yaml
+	rabhc|rules/infantry.yaml
+	rabhc|rules/civilian.yaml
+	rabhc|rules/decoration.yaml
+	rabhc|rules/aircraft.yaml
+	rabhc|rules/ships.yaml
+	rabhc|rules/fakes.yaml
 
 Sequences:
-	ra|sequences/ships.yaml
-	ra|sequences/vehicles.yaml
-	ra|sequences/structures.yaml
-	ra|sequences/infantry.yaml
-	ra|sequences/aircraft.yaml
-	ra|sequences/misc.yaml
-	ra|sequences/decorations.yaml
+	rabhc|sequences/ships.yaml
+	rabhc|sequences/vehicles.yaml
+	rabhc|sequences/structures.yaml
+	rabhc|sequences/infantry.yaml
+	rabhc|sequences/aircraft.yaml
+	rabhc|sequences/misc.yaml
+	rabhc|sequences/decorations.yaml
 
 TileSets:
-	ra|tilesets/snow.yaml
-	ra|tilesets/interior.yaml
-	ra|tilesets/temperat.yaml
-	ra|tilesets/desert.yaml
+	rabhc|tilesets/snow.yaml
+	rabhc|tilesets/interior.yaml
+	rabhc|tilesets/temperat.yaml
+	rabhc|tilesets/desert.yaml
 
 Cursors:
-	ra|cursors.yaml
+	rabhc|cursors.yaml
 
 Chrome:
-	ra|chrome.yaml
+	rabhc|chrome.yaml
 
 Assemblies:
 	common|OpenRA.Mods.Common.dll
@@ -91,7 +91,7 @@ ChromeLayout:
 	common|chrome/ingame-infoobjectives.yaml
 	common|chrome/ingame-infostats.yaml
 	common|chrome/ingame-menu.yaml
-	ra|chrome/ingame-observer.yaml
+	rabhc|chrome/ingame-observer.yaml
 	common|chrome/ingame-observerstats.yaml
 	common|chrome/ingame-player.yaml
 	common|chrome/ingame-perf.yaml
@@ -124,27 +124,27 @@ ChromeLayout:
 	common|chrome/editor.yaml
 
 Weapons:
-	ra|weapons/explosions.yaml
-	ra|weapons/ballistics.yaml
-	ra|weapons/missiles.yaml
-	ra|weapons/other.yaml
-	ra|weapons/smallcaliber.yaml
-	ra|weapons/superweapons.yaml
+	rabhc|weapons/explosions.yaml
+	rabhc|weapons/ballistics.yaml
+	rabhc|weapons/missiles.yaml
+	rabhc|weapons/other.yaml
+	rabhc|weapons/smallcaliber.yaml
+	rabhc|weapons/superweapons.yaml
 	
 Voices:
-	ra|audio/voices.yaml
+	rabhc|audio/voices.yaml
 
 Notifications:
-	ra|audio/notifications.yaml
+	rabhc|audio/notifications.yaml
 
 Music:
-	ra|audio/music.yaml
+	rabhc|audio/music.yaml
 
 Translations:
-	ra|languages/english.yaml
+	rabhc|languages/english.yaml
 
 LoadScreen: LogoStripeLoadScreen
-	Image: ra|uibits/loadscreen.png
+	Image: rabhc|uibits/loadscreen.png
 	Text: Filling Crates..., Charging Capacitors..., Reticulating Splines..., Planting Trees..., Building Bridges..., Aging Empires..., Compiling EVA..., Constructing Pylons..., Activating Skynet..., Splitting Atoms...
 
 ServerTraits:
@@ -155,7 +155,7 @@ ServerTraits:
 
 ChromeMetrics:
 	common|metrics.yaml
-	ra|metrics.yaml
+	rabhc|metrics.yaml
 
 Fonts:
 	Regular:
@@ -165,7 +165,7 @@ Fonts:
 		Font: common|FreeSansBold.ttf
 		Size:14
 	Title:
-		Font: ra|ZoodRangmah.ttf
+		Font: rabhc|ZoodRangmah.ttf
 		Size:48
 	MediumBold:
 		Font: common|FreeSansBold.ttf
@@ -184,13 +184,13 @@ Fonts:
 		Size:10
 
 Missions:
-	ra|missions.yaml
+	rabhc|missions.yaml
 
 MapGrid:
 	TileSize: 24,24
 	Type: Rectangular
 
-SupportsMapsFrom: ra
+SupportsMapsFrom: ra, rabhc
 
 SoundFormats: Aud, Wav
 
@@ -260,12 +260,12 @@ ModContent:
 			TestFiles: ^Content/ra/v2/expand/await.aud, ^Content/ra/v2/expand/bog.aud, ^Content/ra/v2/expand/float_v2.aud, ^Content/ra/v2/expand/gloom.aud, ^Content/ra/v2/expand/grndwire.aud, ^Content/ra/v2/expand/rpt.aud, ^Content/ra/v2/expand/search.aud, ^Content/ra/v2/expand/traction.aud, ^Content/ra/v2/expand/wastelnd.aud
 			Sources: aftermath, aftermath-linux, ra-origin
 	Downloads:
-		ra|installer/downloads.yaml
+		rabhc|installer/downloads.yaml
 	Sources:
-		ra|installer/aftermath.yaml
-		ra|installer/allies95.yaml
-		ra|installer/cnc95.yaml
-		ra|installer/counterstrike.yaml
-		ra|installer/firstdecade.yaml
-		ra|installer/origin.yaml
-		ra|installer/soviet95.yaml
+		rabhc|installer/aftermath.yaml
+		rabhc|installer/allies95.yaml
+		rabhc|installer/cnc95.yaml
+		rabhc|installer/counterstrike.yaml
+		rabhc|installer/firstdecade.yaml
+		rabhc|installer/origin.yaml
+		rabhc|installer/soviet95.yaml

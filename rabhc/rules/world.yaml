@@ -54,12 +54,12 @@
     Faction@8:								
 		Name: Super Allies							
 		InternalName: sallies							
-		Side: Soviet							
+		Side: Allies							
 		Description: sallies: Espionage\nSpecial Unit: British Spy\nSpecial Unit: Phase TransportDeception\nSpecial Ability: Can build fake structures\nSpecial Unit: Mobile Gap GeneratorTechnology\nSpecial Unit: Chrono Tank	        
 	Faction@random:
 		Name: Any
 		InternalName: Random
-		RandomFactionMembers: RandomAllies, RandomSoviet
+		RandomFactionMembers: sallies, ssoviet
 		Side: Random
 		Description: A random country.
 	Faction@randomallies:

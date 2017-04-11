@@ -17,6 +17,9 @@ MINP:
 
 CRATE:
 	Inherits: ^Crate
+    SupportPowerCrateAction@armordrop:
+		SelectionShares: 5
+		Proxy: powerproxy.armordrop
 	GiveCashCrateAction:
 		Amount: 1000
 		SelectionShares: 50
@@ -103,6 +106,7 @@ CRATE:
 		Notification: ironcur9.aud
 		Condition: invulnerability
 		Duration: 600
+
 
 MONEYCRATE:
 	Inherits: ^Crate
@@ -276,6 +280,26 @@ LAR2:
 	Tooltip:
 		Name: Ant Larvae
 
+         
+powerproxy.armordrop:
+	AlwaysVisible:
+	ParatroopersPower:
+		Icon: paratroopers
+		Description: ArmorDrop (Single Use)
+		LongDesc: A Badger drops a load of parachuted\nrandom Units on your target.
+		DropItems: jeep,1tnk,2tnk,jeep
+        OneShot: true
+        AllowMultiple: true
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles       
+        
 powerproxy.parabombs:
 	AlwaysVisible:
 	AirstrikePower:
@@ -293,6 +317,7 @@ powerproxy.parabombs:
 		ArrowSequence: arrow
 		ClockSequence: clock
 		CircleSequence: circles
+
 
 powerproxy.sonarpulse:
 	AlwaysVisible:
