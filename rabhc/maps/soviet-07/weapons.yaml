@@ -15,16 +15,12 @@ M1CarbineInterior:
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@2Eff: CreateEffect
 		Explosions: piffs
-		InvalidImpactTypes: Water
-	Warhead@3EffWater: CreateEffect
-		Explosions: water_piffs
-		ValidImpactTypes: Water
 
 FireballLauncherInterior:
 	ReloadDelay: 65
 	Range: 3c0
 	Burst: 2
-	BurstDelay: 20
+	BurstDelays: 20
 	Projectile: Bullet
 		Speed: 204
 		TrailImage: fb2

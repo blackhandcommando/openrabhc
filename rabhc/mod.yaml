@@ -1,11 +1,8 @@
 Metadata:
-	Title: Red Alert (BlackHandCommando Edition)
-	Description: In a world where Hitler was assassinated and the Third Reich never\nexisted, the Soviet Union seeks power over all of Europe.  Allied\nagainst this Evil Empire, the free world faces a Cold War turned hot.\n\nRed Alert fuses the quick and fun gameplay of the original\nC&C: Red Alert, with balance improvements and new gameplay\nfeatures inspired by modern RTS games.
-	Version: playtest-20170408_bhc3
-	Author: the OpenRA Developers and modified by BlackHandCommando
+	Title: Red Alert
+	Version: {DEV_VERSION}
 
-RequiresMods:
-	modchooser: playtest-20170408
+PackageFormats: Mix
 
 Packages:
 	~^Content/ra/v2/
@@ -13,7 +10,7 @@ Packages:
 	~^Content/ra/v2/cnc
 	~^Content/ra/v2/movies
 	.
-	$rabhc: rabhc
+	$ra: ra
 	./mods/common: common
 	~main.mix
 	~conquer.mix
@@ -31,51 +28,51 @@ Packages:
 	~expand2.mix
 	~hires1.mix
 	~desert.mix
-	rabhc|bits
-	rabhc|bits/desert
-	rabhc|uibits
+	ra|bits
+	ra|bits/desert
+	ra|uibits
 
 MapFolders:
-	rabhc|maps: System
-	~^maps/rabhc/playtest-20170408: User
+	ra|maps: System
+	~^maps/ra/{DEV_VERSION}: User
 
 Rules:
-	rabhc|rules/misc.yaml
-	rabhc|rules/ai.yaml
-	rabhc|rules/player.yaml
-	rabhc|rules/palettes.yaml
-	rabhc|rules/world.yaml
-	rabhc|rules/defaults.yaml
-	rabhc|rules/vehicles.yaml
-	rabhc|rules/husks.yaml
-	rabhc|rules/structures.yaml
-	rabhc|rules/infantry.yaml
-	rabhc|rules/civilian.yaml
-	rabhc|rules/decoration.yaml
-	rabhc|rules/aircraft.yaml
-	rabhc|rules/ships.yaml
-	rabhc|rules/fakes.yaml
+	ra|rules/misc.yaml
+	ra|rules/ai.yaml
+	ra|rules/player.yaml
+	ra|rules/palettes.yaml
+	ra|rules/world.yaml
+	ra|rules/defaults.yaml
+	ra|rules/vehicles.yaml
+	ra|rules/husks.yaml
+	ra|rules/structures.yaml
+	ra|rules/infantry.yaml
+	ra|rules/civilian.yaml
+	ra|rules/decoration.yaml
+	ra|rules/aircraft.yaml
+	ra|rules/ships.yaml
+	ra|rules/fakes.yaml
 
 Sequences:
-	rabhc|sequences/ships.yaml
-	rabhc|sequences/vehicles.yaml
-	rabhc|sequences/structures.yaml
-	rabhc|sequences/infantry.yaml
-	rabhc|sequences/aircraft.yaml
-	rabhc|sequences/misc.yaml
-	rabhc|sequences/decorations.yaml
+	ra|sequences/ships.yaml
+	ra|sequences/vehicles.yaml
+	ra|sequences/structures.yaml
+	ra|sequences/infantry.yaml
+	ra|sequences/aircraft.yaml
+	ra|sequences/misc.yaml
+	ra|sequences/decorations.yaml
 
 TileSets:
-	rabhc|tilesets/snow.yaml
-	rabhc|tilesets/interior.yaml
-	rabhc|tilesets/temperat.yaml
-	rabhc|tilesets/desert.yaml
+	ra|tilesets/snow.yaml
+	ra|tilesets/interior.yaml
+	ra|tilesets/temperat.yaml
+	ra|tilesets/desert.yaml
 
 Cursors:
-	rabhc|cursors.yaml
+	ra|cursors.yaml
 
 Chrome:
-	rabhc|chrome.yaml
+	ra|chrome.yaml
 
 Assemblies:
 	common|OpenRA.Mods.Common.dll
@@ -91,11 +88,12 @@ ChromeLayout:
 	common|chrome/ingame-infoobjectives.yaml
 	common|chrome/ingame-infostats.yaml
 	common|chrome/ingame-menu.yaml
-	rabhc|chrome/ingame-observer.yaml
+	ra|chrome/ingame-observer.yaml
 	common|chrome/ingame-observerstats.yaml
-	common|chrome/ingame-player.yaml
+	ra|chrome/ingame-player.yaml
 	common|chrome/ingame-perf.yaml
 	common|chrome/ingame-debug.yaml
+	common|chrome/ingame-infochat.yaml
 	common|chrome/mainmenu.yaml
 	common|chrome/settings.yaml
 	common|chrome/credits.yaml
@@ -124,27 +122,27 @@ ChromeLayout:
 	common|chrome/editor.yaml
 
 Weapons:
-	rabhc|weapons/explosions.yaml
-	rabhc|weapons/ballistics.yaml
-	rabhc|weapons/missiles.yaml
-	rabhc|weapons/other.yaml
-	rabhc|weapons/smallcaliber.yaml
-	rabhc|weapons/superweapons.yaml
+	ra|weapons/explosions.yaml
+	ra|weapons/ballistics.yaml
+	ra|weapons/missiles.yaml
+	ra|weapons/other.yaml
+	ra|weapons/smallcaliber.yaml
+	ra|weapons/superweapons.yaml
 	
 Voices:
-	rabhc|audio/voices.yaml
+	ra|audio/voices.yaml
 
 Notifications:
-	rabhc|audio/notifications.yaml
+	ra|audio/notifications.yaml
 
 Music:
-	rabhc|audio/music.yaml
+	ra|audio/music.yaml
 
 Translations:
-	rabhc|languages/english.yaml
+	ra|languages/english.yaml
 
 LoadScreen: LogoStripeLoadScreen
-	Image: rabhc|uibits/loadscreen.png
+	Image: ra|uibits/loadscreen.png
 	Text: Filling Crates..., Charging Capacitors..., Reticulating Splines..., Planting Trees..., Building Bridges..., Aging Empires..., Compiling EVA..., Constructing Pylons..., Activating Skynet..., Splitting Atoms...
 
 ServerTraits:
@@ -155,7 +153,7 @@ ServerTraits:
 
 ChromeMetrics:
 	common|metrics.yaml
-	rabhc|metrics.yaml
+	ra|metrics.yaml
 
 Fonts:
 	Regular:
@@ -165,7 +163,7 @@ Fonts:
 		Font: common|FreeSansBold.ttf
 		Size:14
 	Title:
-		Font: rabhc|ZoodRangmah.ttf
+		Font: ra|ZoodRangmah.ttf
 		Size:48
 	MediumBold:
 		Font: common|FreeSansBold.ttf
@@ -184,13 +182,13 @@ Fonts:
 		Size:10
 
 Missions:
-	rabhc|missions.yaml
+	ra|missions.yaml
 
 MapGrid:
 	TileSize: 24,24
 	Type: Rectangular
 
-SupportsMapsFrom: ra, rabhc
+SupportsMapsFrom: ra
 
 SoundFormats: Aud, Wav
 
@@ -203,6 +201,8 @@ SpriteSequenceFormat: TilesetSpecificSpriteSequence
 		INTERIOR: .int
 		DESERT: .des
 
+ModelSequenceFormat: PlaceholderModelSequence
+
 GameSpeeds:
 	slower:
 		Name: Slower
@@ -212,6 +212,10 @@ GameSpeeds:
 		Name: Normal
 		Timestep: 40
 		OrderLatency: 3
+	fast:
+		Name: Fast
+		Timestep: 35
+		OrderLatency: 4
 	faster:
 		Name: Faster
 		Timestep: 30
@@ -260,12 +264,12 @@ ModContent:
 			TestFiles: ^Content/ra/v2/expand/await.aud, ^Content/ra/v2/expand/bog.aud, ^Content/ra/v2/expand/float_v2.aud, ^Content/ra/v2/expand/gloom.aud, ^Content/ra/v2/expand/grndwire.aud, ^Content/ra/v2/expand/rpt.aud, ^Content/ra/v2/expand/search.aud, ^Content/ra/v2/expand/traction.aud, ^Content/ra/v2/expand/wastelnd.aud
 			Sources: aftermath, aftermath-linux, ra-origin
 	Downloads:
-		rabhc|installer/downloads.yaml
+		ra|installer/downloads.yaml
 	Sources:
-		rabhc|installer/aftermath.yaml
-		rabhc|installer/allies95.yaml
-		rabhc|installer/cnc95.yaml
-		rabhc|installer/counterstrike.yaml
-		rabhc|installer/firstdecade.yaml
-		rabhc|installer/origin.yaml
-		rabhc|installer/soviet95.yaml
+		ra|installer/aftermath.yaml
+		ra|installer/allies95.yaml
+		ra|installer/cnc95.yaml
+		ra|installer/counterstrike.yaml
+		ra|installer/firstdecade.yaml
+		ra|installer/origin.yaml
+		ra|installer/soviet95.yaml

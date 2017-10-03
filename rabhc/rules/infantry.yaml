@@ -16,7 +16,7 @@ DOG:
 	SelectionDecorations:
 		VisualBounds: 12,17,-1,-4
 	Health:
-		HP: 12
+		HP: 18
 	Mobile:
 		Speed: 99
 		Voice: Move
@@ -34,6 +34,8 @@ DOG:
 		Voice: Move
 	AutoTarget:
 		InitialStance: AttackAnything
+	AutoTargetPriority@DEFAULT:
+		Types: Infantry
 	Targetable:
 		TargetTypes: Ground, Infantry
 	WithInfantryBody:
@@ -48,6 +50,7 @@ DOG:
 
 E1:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -85,6 +88,7 @@ E1R1:
 
 E2:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -114,13 +118,13 @@ E2:
 		DefaultAttackSequence: throw
 	Explodes:
 		Weapon: UnitExplodeSmall
-        EmptyWeapon: UnitExplodeSmall
 		Chance: 50
 	ProducibleWithLevel:
 		Prerequisites: barracks.upgraded
 
 E3:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -166,6 +170,7 @@ E3R1:
 
 E4:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -210,9 +215,8 @@ E6:
 	EngineerRepair:
 	RepairsBridges:
 	ExternalCaptures:
-		Type: building
+		CaptureTypes: building
 		PlayerExperience: 25
-	-AutoTarget:
 	Voiced:
 		VoiceSet: EngineerVoice
 	Selectable:
@@ -220,6 +224,7 @@ E6:
 
 SPY:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -250,7 +255,7 @@ SPY:
 		ScanRadius: 5
 	-WithInfantryBody:
 	WithDisguisingInfantryBody:
-		AttackSequence: shoot
+		DefaultAttackSequence: shoot
 		IdleSequences: idle1,idle2
 		StandSequences: stand,stand2
 	WithDecoration@disguise:
@@ -286,6 +291,7 @@ SPY.England:
 
 E7:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -326,6 +332,8 @@ E7:
 		StandSequences: stand
 	AnnounceOnBuild:
 	AnnounceOnKill:
+	DetectCloaked:
+		CloakTypes: Cloak, Hijacker
 	Voiced:
 		VoiceSet: TanyaVoice
 	ProducibleWithLevel:
@@ -344,7 +352,7 @@ MEDI:
 	Tooltip:
 		Name: Medic
 	Health:
-		HP: 80
+		HP: 60
 	RevealsShroud:
 		Range: 3c0
 	Passenger:
@@ -361,6 +369,9 @@ MEDI:
 		DefaultAttackSequence: heal
 	Voiced:
 		VoiceSet: MedicVoice
+	AutoTarget:
+	AutoTargetPriority@DEFAULT:
+		Types: Infantry
 
 MECH:
 	Inherits: ^Soldier
@@ -399,6 +410,9 @@ MECH:
 		StandSequences: stand
 	Voiced:
 		VoiceSet: MechanicVoice
+	AutoTarget:
+	AutoTargetPriority@DEFAULT:
+		Types: Vehicle
 
 EINSTEIN:
 	Inherits: ^CivInfantry
@@ -448,6 +462,10 @@ GNRL:
 	Voiced:
 		VoiceSet: StavrosVoice
 	-ScaredyCat:
+	TakeCover:
+		DamageModifiers:
+			Prone50Percent: 50
+		DamageTriggers: TriggerProne
 	WithInfantryBody:
 		IdleSequences: idle1
 
@@ -464,7 +482,6 @@ THF:
 	Infiltrates:
 		InfiltrateTypes: Cash
 		PlayerExperience: 50
-	-AutoTarget:
 	Voiced:
 		VoiceSet: ThiefVoice
 	WithInfantryBody:
@@ -494,7 +511,6 @@ HIJACKER:
 	Captures:
 		CaptureTypes: vehicle
 		PlayerExperience: 50
-	-AutoTarget:
 	Voiced:
 		VoiceSet: ThiefVoice
 	-TakeCover:
@@ -518,6 +534,7 @@ HIJACKER:
 
 SHOK:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -525,11 +542,11 @@ SHOK:
 		Prerequisites: ~barr, stek, tsla, ~infantry.russia, ~techlevel.high
 		Description: Elite infantry with portable tesla coils.\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
 	Valued:
-		Cost: 400
+		Cost: 300
 	Tooltip:
 		Name: Shock Trooper
 	Health:
-		HP: 60
+		HP: 50
 	Mobile:
 		Voice: Move
 	RevealsShroud:
@@ -578,6 +595,8 @@ SNIPER:
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: ReturnFire
+	AutoTargetPriority@DEFAULT:
+		Types: Infantry
 	Armament@PRIMARY:
 		Weapon: Sniper
 	Armament@GARRISONED:
@@ -607,6 +626,7 @@ SNIPER:
 
 Zombie:
 	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Valued:
 		Cost: 100
 	Tooltip:
@@ -635,6 +655,7 @@ Zombie:
 
 Ant:
 	Inherits: ^Infantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Valued:
 		Cost: 300
 	Tooltip:
@@ -652,8 +673,6 @@ Ant:
 		VisualBounds: 30,30,0,-2
 	Health:
 		HP: 750
-		Shape: Circle
-			Radius: 469
 	Mobile:
 		Speed: 99
 		TurnSpeed: 12
@@ -672,3 +691,6 @@ Ant:
 		UseDeathTypeSuffix: false
 	Voiced:
 		VoiceSet: AntVoice
+	HitShape:
+		Type: Circle
+			Radius: 469

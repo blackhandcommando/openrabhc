@@ -1,3 +1,11 @@
+--[[
+   Copyright 2007-2017 The OpenRA Developers (see AUTHORS)
+   This file is part of OpenRA, which is free software. It is made
+   available to you under the terms of the GNU General Public License
+   as published by the Free Software Foundation, either version 3 of
+   the License, or (at your option) any later version. For more
+   information, see COPYING.
+]]
 AlliedReinforcementsA = { "e1", "e1", "e1", "e1", "e1" }
 AlliedReinforcementsB = { "e3", "e3", "e3", "e3", "e3" }
 BadGuys = { BadGuy1, BadGuy2, BadGuy3 }
@@ -110,7 +118,6 @@ CaptureRadarDome = function()
 	end)
 end
 
-infiltrated = false
 InfiltrateTechCenter = function()
 	Utils.Do(SovietTechLabs, function(a)
 		Trigger.OnInfiltrated(a, function()
@@ -127,9 +134,15 @@ InfiltrateTechCenter = function()
 			end)
 			Proxy.Destroy()
 		end)
+
+		Trigger.OnCapture(a, function()
+			if not infiltrated then
+				Media.DisplayMessage("Do not capture the tech centers! Infiltrate one with a spy.")
+			end
+		end)
 	end)
 
-	Trigger.OnAllKilled(SovietTechLabs, function()
+	Trigger.OnAllKilledOrCaptured(SovietTechLabs, function()
 		if not player.IsObjectiveCompleted(InfiltrateTechCenterObj) then
 			player.MarkFailedObjective(InfiltrateTechCenterObj)
 		end
@@ -138,6 +151,9 @@ end
 
 InfiltrateRef = function()
 	Trigger.OnInfiltrated(Refinery, function()
+		player.MarkCompletedObjective(InfiltrateRefObj)
+	end)
+	Trigger.OnCapture(Refinery, function()
 		player.MarkCompletedObjective(InfiltrateRefObj)
 	end)
 	Trigger.OnKilled(Refinery, function()
@@ -180,7 +196,7 @@ WorldLoaded = function()
 		Media.PlaySpeechNotification(player, "MissionAccomplished")
 	end)
 
-	InfiltrateTechCenterObj = player.AddPrimaryObjective("Infiltrate one of the Soviet tech centers.")
+	InfiltrateTechCenterObj = player.AddPrimaryObjective("Infiltrate one of the Soviet tech centers with a spy.")
 	CaptureRadarDomeObj = player.AddSecondaryObjective("Capture the Radar Dome at the shore.")
 	InfiltrateRefObj = player.AddSecondaryObjective("Infiltrate the Refinery for money.")
 

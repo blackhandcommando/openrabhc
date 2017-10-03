@@ -12,7 +12,7 @@ MapSize: 128,128
 
 Bounds: 16,16,96,96
 
-Visibility: MissionSelector, Lobby
+Visibility: Lobby, MissionSelector
 
 Categories: Mission, Cooperative Mission
 
@@ -1785,4 +1785,4 @@ Actors:
 		Owner: Soviets
 		Location: 43,50
 
-Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml
+Rules: ra|rules/campaign-rules.yaml, ra|rules/campaign-tooltips.yaml, rules.yaml

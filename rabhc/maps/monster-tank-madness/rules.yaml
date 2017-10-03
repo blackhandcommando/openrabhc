@@ -1,6 +1,6 @@
 Player:
 	PlayerResources:
-		DefaultCash: 5000
+		DefaultCash: 0
 
 World:
 	LuaScript:
@@ -8,11 +8,72 @@ World:
 	-StartGameNotification:
 	MissionData:
 		Briefing: Dr. Demitri, creator of a Soviet Super Tank, wants to defect.\n\nWe planned to extract him while the Soviets were testing their new weapon, but something has gone wrong.\n\nThe Super Tanks are out of control, and Demitri is missing -- likely hiding in the village to the far south.\n\nFind our outpost and start repairs on it, then find and evacuate Demitri.\n\nAs for the tanks, we can reprogram them. Send a spy into the Soviet radar dome in the NE, turning the tanks on their creators.\n
+		WinVideo: sovbatl.vqa
+		LossVideo: sovtstar.vqa
 
 ^Building:
 	AnnounceOnSeen:
 
-^CivBuilding:
+^ExplodingCivBuilding:
+	Inherits: ^CivBuilding
+	Explodes:
+		Weapon: BarrelExplode
+		EmptyWeapon: BarrelExplode
+	-SpawnActorOnDeath@1:
+	-SpawnActorOnDeath@2:
+	-SpawnActorOnDeath@3:
+
+V01.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V01
+
+V02.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V02
+
+V03.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V03
+
+V04.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V04
+
+V05.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V05
+
+V06.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V06
+
+V07.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V07
+
+V08.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V08
+
+V09.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V09
+
+V11.exploding:
+	Inherits: ^ExplodingCivBuilding
+	RenderSprites:
+		Image: V11
+
+V19:
 	Explodes:
 		Weapon: BarrelExplode
 		EmptyWeapon: BarrelExplode
@@ -50,6 +111,7 @@ PBOX:
 
 5TNK:
 	Inherits: ^Tank
+	Inherits@AUTOTARGET: ^AutoTargetAll
 	Valued:
 		Cost: 10000
 	Tooltip:
@@ -64,6 +126,13 @@ PBOX:
 		Crushes: wall, mine, crate, infantry
 	RevealsShroud:
 		Range: 6c0
+		RequiresCondition: !friendly
+	RevealsShroud@friendly:
+		Range: 6c0
+		RequiresCondition: friendly
+		ValidStances: Ally, Enemy
+	ExternalCondition@friendly:
+		Condition: friendly
 	Turreted:
 		TurnSpeed: 1
 	Armament@PRIMARY:
@@ -82,7 +151,6 @@ PBOX:
 	AttackTurreted:
 	WithMuzzleOverlay:
 	WithSpriteTurret:
-	AutoTarget:
 	Explodes:
 		Weapon: MiniNuke
 		EmptyWeapon: MiniNuke
@@ -95,7 +163,6 @@ PBOX:
 		DamageCooldown: 150
 	Selectable:
 		Bounds: 44,38,0,-4
-	-EjectOnDeath:
 	RenderSprites:
 		Image: 4TNK
 
@@ -118,7 +185,7 @@ DOME.NoInfiltrate:
 		Image: DOME
 	-InfiltrateForExploration:
 	Targetable:
-		TargetTypes: Ground, C4, DetonateAttack, MissionObjective
+		TargetTypes: Ground, Structure, C4, DetonateAttack, MissionObjective
 
 SPY:
 	Infiltrates:
@@ -128,7 +195,6 @@ BAD3TNK:
 	Inherits: 3TNK
 	Buildable:
 		Prerequisites: ~disabled
-	-EjectOnDeath:
 	RenderSprites:
 		Image: 3TNK
 
@@ -136,7 +202,6 @@ BADTRUK:
 	Inherits: TRUK
 	Buildable:
 		Prerequisites: ~disabled
-	-EjectOnDeath:
 	RenderSprites:
 		Image: TRUK
 

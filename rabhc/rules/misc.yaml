@@ -17,9 +17,6 @@ MINP:
 
 CRATE:
 	Inherits: ^Crate
-    SupportPowerCrateAction@armordrop:
-		SelectionShares: 5
-		Proxy: powerproxy.armordrop
 	GiveCashCrateAction:
 		Amount: 1000
 		SelectionShares: 50
@@ -107,7 +104,6 @@ CRATE:
 		Condition: invulnerability
 		Duration: 600
 
-
 MONEYCRATE:
 	Inherits: ^Crate
 	Tooltip:
@@ -154,6 +150,8 @@ CAMERA:
 	WithSpriteBody:
 	RenderSpritesEditorOnly:
 		Image: camera
+	EditorTilesetFilter:
+		Categories: System
 
 camera.paradrop:
 	Inherits: CAMERA
@@ -196,6 +194,8 @@ FLARE:
 		Name: Flare
 		ShowOwnerRow: false
 	AutoSelectionSize:
+	EditorTilesetFilter:
+		Categories: Decoration
 
 MINE:
 	Inherits@1: ^SpriteActor
@@ -211,8 +211,9 @@ MINE:
 	AppearsOnRadar:
 	RadarColorFromTerrain:
 		Terrain: Ore
-	AutoTargetIgnore:
 	SeedsResource:
+	EditorTilesetFilter:
+		Categories: Resource spawn
 
 GMINE:
 	Inherits@1: ^SpriteActor
@@ -228,9 +229,10 @@ GMINE:
 	AppearsOnRadar:
 	RadarColorFromTerrain:
 		Terrain: Gems
-	AutoTargetIgnore:
 	SeedsResource:
 		ResourceType: Gems
+	EditorTilesetFilter:
+		Categories: Resource spawn
 
 RAILMINE:
 	Inherits@1: ^SpriteActor
@@ -243,12 +245,13 @@ RAILMINE:
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
-	AutoTargetIgnore:
 	EditorTilesetFilter:
 		ExcludeTilesets: INTERIOR
+		Categories: Civilian building
 
 QUEE:
 	Inherits@1: ^SpriteActor
+	Inherits@shape: ^2x1Shape
 	HiddenUnderShroud:
 	Tooltip:
 		Name: Queen Ant
@@ -259,9 +262,11 @@ QUEE:
 	AppearsOnRadar:
 	EditorTilesetFilter:
 		RequireTilesets: INTERIOR
+		Categories: Critter
 
 LAR1:
 	Inherits@1: ^SpriteActor
+	Inherits@shape: ^1x1Shape
 	HiddenUnderShroud:
 	Tooltip:
 		Name: Ant Larva
@@ -274,32 +279,13 @@ LAR1:
 	AppearsOnRadar:
 	EditorTilesetFilter:
 		RequireTilesets: INTERIOR
+		Categories: Critter
 
 LAR2:
 	Inherits@1: LAR1
 	Tooltip:
 		Name: Ant Larvae
 
-         
-powerproxy.armordrop:
-	AlwaysVisible:
-	ParatroopersPower:
-		Icon: paratroopers
-		Description: ArmorDrop (Single Use)
-		LongDesc: A Badger drops a load of parachuted\nrandom Units on your target.
-		DropItems: jeep,1tnk,2tnk,jeep
-        OneShot: true
-        AllowMultiple: true
-		SelectTargetSpeechNotification: SelectTarget
-		AllowImpassableCells: false
-		QuantizedFacings: 8
-		CameraActor: camera.paradrop
-		DisplayBeacon: true
-		BeaconPoster: pinficon
-		ArrowSequence: arrow
-		ClockSequence: clock
-		CircleSequence: circles       
-        
 powerproxy.parabombs:
 	AlwaysVisible:
 	AirstrikePower:
@@ -317,7 +303,6 @@ powerproxy.parabombs:
 		ArrowSequence: arrow
 		ClockSequence: clock
 		CircleSequence: circles
-
 
 powerproxy.sonarpulse:
 	AlwaysVisible:
@@ -373,6 +358,8 @@ mpspawn:
 	RenderSpritesEditorOnly:
 	BodyOrientation:
 		QuantizedFacings: 1
+	EditorTilesetFilter:
+		Categories: System
 
 waypoint:
 	EditorOnlyTooltip:
@@ -384,6 +371,8 @@ waypoint:
 	RenderSpritesEditorOnly:
 	BodyOrientation:
 		QuantizedFacings: 1
+	EditorTilesetFilter:
+		Categories: System
 
 ^fact.colorpicker:
 	Inherits: FACT
@@ -398,10 +387,13 @@ CTFLAG:
 		Dimensions: 1,1
 	Tooltip:
 		Name: Flag
-	Bib:
+	WithBuildingBib:
 		HasMinibib: Yes
-	DamageMultiplier@INVULNERABLE:
-		Modifier: 0
+	-HitShape:
+	-Health:
+	-Explodes:
 	-Selectable:
 	-SelectionDecorations:
 	-Targetable:
+	EditorTilesetFilter:
+		Categories: Decoration

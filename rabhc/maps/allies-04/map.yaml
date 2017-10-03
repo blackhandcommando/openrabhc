@@ -535,5 +535,4 @@ Actors:
 		Location: 88,52
 		Owner: Neutral
 
-Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml
-
+Rules: ra|rules/campaign-rules.yaml, ra|rules/campaign-tooltips.yaml, rules.yaml
