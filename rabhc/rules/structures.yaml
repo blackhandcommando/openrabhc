@@ -43,8 +43,7 @@ MSLO:
 		InsufficientPowerSpeechNotification: InsufficientPower
 		IncomingSpeechNotification: AbombLaunchDetected
 		MissileWeapon: atomic
-		MissileDelay: 5
-		SpawnOffset: 1c0,427,0
+		SpawnOffset: 0,427,0
 		DisplayTimerStances: Ally, Neutral, Enemy
 		DisplayBeacon: True
 		DisplayRadarPing: True
@@ -63,7 +62,6 @@ MSLO:
 		Amount: -150
 	MustBeDestroyed:
 		RequiredForShortGame: false
-	WithNukeLaunchAnimation:
 
 GAP:
 	Inherits: ^ScienceBuilding
@@ -549,7 +547,7 @@ AGUN:
 		TurnSpeed: 15
 		InitialFacing: 224
 	-WithSpriteBody:
-	WithEmbeddedTurretSpriteBody:
+	WithTurretedSpriteBody:
 	Armament:
 		Weapon: ZSU-23
 		LocalOffset: 520,100,450, 520,-150,450
@@ -752,7 +750,7 @@ GUN:
 		TurnSpeed: 12
 		InitialFacing: 56
 	-WithSpriteBody:
-	WithEmbeddedTurretSpriteBody:
+	WithTurretedSpriteBody:
 	Armament:
 		Weapon: TurretGun
 		LocalOffset: 512,0,112
@@ -849,7 +847,7 @@ SAM:
 		TurnSpeed: 30
 		InitialFacing: 0
 	-WithSpriteBody:
-	WithEmbeddedTurretSpriteBody:
+	WithTurretedSpriteBody:
 	Armament:
 		Weapon: Nike
 		LocalOffset: 0,0,320
@@ -1026,31 +1024,31 @@ FACT:
 		Prerequisites: ~disabled
 		Description: Produces structures.
 	ProvidesPrerequisite@allies:
-		Factions: allies, england, france, germany
+		Factions: allies, england, france, germany, sallies
 		Prerequisite: structures.allies
 	ProvidesPrerequisite@alliesvanilla:
 		Factions: allies
 		Prerequisite: structures.alliesvanilla
 	ProvidesPrerequisite@england:
-		Factions: england
+		Factions: england, sallies
 		Prerequisite: structures.england
 	ProvidesPrerequisite@france:
-		Factions: france
+		Factions: france, sallies
 		Prerequisite: structures.france
 	ProvidesPrerequisite@germany:
-		Factions: germany
+		Factions: germany, sallies
 		Prerequisite: structures.germany
 	ProvidesPrerequisite@soviet:
-		Factions: soviet, russia, ukraine
+		Factions: soviet, russia, ukraine, ssoviet
 		Prerequisite: structures.soviet
 	ProvidesPrerequisite@sovietvanilla:
 		Factions: soviet
 		Prerequisite: structures.sovietvanilla
 	ProvidesPrerequisite@russia:
-		Factions: russia
+		Factions: russia, ssoviet
 		Prerequisite: structures.russia
 	ProvidesPrerequisite@ukraine:
-		Factions: ukraine
+		Factions: ukraine, ssoviet
 		Prerequisite: structures.ukraine
 	Health:
 		HP: 1500

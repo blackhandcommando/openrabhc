@@ -1,7 +1,7 @@
 Metadata:
 	Title: Red Alert (BlackHandCommando Edition)
 	Description: In a world where Hitler was assassinated and the Third Reich never\nexisted, the Soviet Union seeks power over all of Europe.  Allied\nagainst this Evil Empire, the free world faces a Cold War turned hot.\n\nRed Alert fuses the quick and fun gameplay of the original\nC&C: Red Alert, with balance improvements and new gameplay\nfeatures inspired by modern RTS games. 
-	Version: playtest-20170923_bhc1 
+	Version: playtest-20170930_bhc1 
 	Author: the OpenRA Developers and modified by BlackHandCommando 
 
 PackageFormats: Mix
@@ -12,7 +12,7 @@ Packages:
 	~^Content/ra/v2/cnc
 	~^Content/ra/v2/movies
 	.
-	$ra: ra
+	$rabhc: rabhc
 	./mods/common: common
 	~main.mix
 	~conquer.mix
@@ -36,7 +36,7 @@ Packages:
 
 MapFolders:
 	rabhc|maps: System
-	~^maps/ra/{DEV_VERSION}: User
+	~^maps/rabhc: User
 
 Rules:
 	rabhc|rules/misc.yaml
@@ -95,7 +95,6 @@ ChromeLayout:
 	rabhc|chrome/ingame-player.yaml
 	common|chrome/ingame-perf.yaml
 	common|chrome/ingame-debug.yaml
-	common|chrome/ingame-infochat.yaml
 	common|chrome/mainmenu.yaml
 	common|chrome/settings.yaml
 	common|chrome/credits.yaml
@@ -190,7 +189,7 @@ MapGrid:
 	TileSize: 24,24
 	Type: Rectangular
 
-SupportsMapsFrom: ra
+SupportsMapsFrom: ra, rabhc
 
 SoundFormats: Aud, Wav
 
