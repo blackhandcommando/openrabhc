@@ -47,10 +47,20 @@
 		InternalName: ukraine
 		Side: Soviet
 		Description: Ukraine: Demolitions\nSpecial Ability: Parabombs\nSpecial Unit: Demolition Truck
+		Faction@7:								
+ 		Name: Super Soviet							
+ 		InternalName: ssoviet							
+ 		Side: Soviet							
+ 		Description: ssoviet: AllUnits\nSpecial Ability: Parabombs\nSpecial Unit: Tesla Tank\nSpecial Unit: Shock Trooper\nSpecial Unit: Demolition Truck		
+     Faction@8:								
+ 		Name: Super Allies							
+ 		InternalName: sallies											
+		Side: Allies							
+ 		Description: sallies: Espionage\nSpecial Unit: British Spy\nSpecial Unit: Phase TransportDeception\nSpecial Ability: Can build fake structures\nSpecial Unit: Mobile Gap GeneratorTechnology\nSpecial Unit: Chrono Tank	        
 	Faction@random:
 		Name: Any
 		InternalName: Random
-		RandomFactionMembers: RandomAllies, RandomSoviet
+		RandomFactionMembers: sallies, ssoviet
 		Side: Random
 		Description: Random Country\nA random country will be chosen when the game starts.
 	Faction@randomallies:
@@ -130,12 +140,12 @@ World:
 	MPStartUnits@mcvonly:
 		Class: none
 		ClassName: MCV Only
-		Factions: allies, england, france, germany, soviet, russia, ukraine
+		Factions: allies, england, france, germany, soviet, russia, ukraine, ssoviet, sallies
 		BaseActor: mcv
 	MPStartUnits@lightallies:
 		Class: light
 		ClassName: Light Support
-		Factions: allies, england, france, germany
+		Factions: allies, england, france, germany, sallies
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk
 		InnerSupportRadius: 3
@@ -143,7 +153,7 @@ World:
 	MPStartUnits@lightsoviet:
 		Class: light
 		ClassName: Light Support
-		Factions: soviet, russia, ukraine
+		Factions: soviet, russia, ukraine, ssoviet
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk
 		InnerSupportRadius: 3
@@ -151,7 +161,7 @@ World:
 	MPStartUnits@heavyallies:
 		Class: heavy
 		ClassName: Heavy Support
-		Factions: allies, england, france, germany
+		Factions: allies, england, france, germany, sallies
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk,2tnk,2tnk,2tnk
 		InnerSupportRadius: 3
@@ -159,7 +169,7 @@ World:
 	MPStartUnits@heavysoviet:
 		Class: heavy
 		ClassName: Heavy Support
-		Factions: soviet, russia, ukraine
+		Factions: soviet, russia, ukraine, ssoviet
 		BaseActor: mcv
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk,3tnk,3tnk
 		InnerSupportRadius: 3
