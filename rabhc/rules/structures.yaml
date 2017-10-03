@@ -30,6 +30,7 @@ MSLO:
 		Range: 5c0
 		RequiresCondition: !disabled
 	NukePower:
+		OneShot: yes
 		PauseOnCondition: disabled
 		Cursor: nuke
 		Icon: abomb
