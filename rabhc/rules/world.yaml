@@ -46,34 +46,34 @@
 		InternalName: ukraine
 		Side: Soviet
 		Description: Ukraine: Demolitions\nSpecial Ability: Parabombs\nSpecial Unit: Demolition Truck
-    Faction@7:								
-		Name: Super Soviet							
-		InternalName: ssoviet							
-		Side: Soviet							
-		Description: ssoviet: AllUnits\nSpecial Ability: Parabombs\nSpecial Unit: Tesla Tank\nSpecial Unit: Shock Trooper\nSpecial Unit: Demolition Truck		
-    Faction@8:								
-		Name: Super Allies							
-		InternalName: sallies							
+	Faction@7:								
+ 		Name: Super Soviet							
+ 		InternalName: ssoviet							
+ 		Side: Soviet							
+ 		Description: ssoviet: AllUnits\nSpecial Ability: Parabombs\nSpecial Unit: Tesla Tank\nSpecial Unit: Shock Trooper\nSpecial Unit: Demolition Truck		
+     Faction@8:								
+ 		Name: Super Allies							
+ 		InternalName: sallies											
 		Side: Allies							
-		Description: sallies: Espionage\nSpecial Unit: British Spy\nSpecial Unit: Phase TransportDeception\nSpecial Ability: Can build fake structures\nSpecial Unit: Mobile Gap GeneratorTechnology\nSpecial Unit: Chrono Tank	        
+ 		Description: sallies: Espionage\nSpecial Unit: British Spy\nSpecial Unit: Phase TransportDeception\nSpecial Ability: Can build fake structures\nSpecial Unit: Mobile Gap GeneratorTechnology\nSpecial Unit: Chrono Tank	        
 	Faction@random:
 		Name: Any
 		InternalName: Random
 		RandomFactionMembers: sallies, ssoviet
 		Side: Random
-		Description: A random country.
+		Description: Random Country\nA random country will be chosen when the game starts.
 	Faction@randomallies:
 		Name: Allies
 		InternalName: RandomAllies
 		RandomFactionMembers: england, france, germany
 		Side: Random
-		Description: A random Allied country.
+		Description: Random Allied Country\nA random Allied country will be chosen when the game starts.
 	Faction@randomsoviet:
 		Name: Soviet
 		InternalName: RandomSoviet
 		RandomFactionMembers: russia, ukraine
 		Side: Random
-		Description: A random Soviet country.
+		Description: Random Soviet Country\nA random Soviet country will be chosen when the game starts.
 	ResourceType@ore:
 		Type: Ore
 		Name: Valuable Minerals

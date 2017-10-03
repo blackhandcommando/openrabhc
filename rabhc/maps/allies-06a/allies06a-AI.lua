@@ -1,3 +1,11 @@
+--[[
+   Copyright 2007-2017 The OpenRA Developers (see AUTHORS)
+   This file is part of OpenRA, which is free software. It is made
+   available to you under the terms of the GNU General Public License
+   as published by the Free Software Foundation, either version 3 of
+   the License, or (at your option) any later version. For more
+   information, see COPYING.
+]]
 
 WTransWays =
 {
@@ -107,6 +115,13 @@ ProduceVehicles = function()
 end
 
 ProduceNaval = function()
+	if not shouldProduce and #Utils.Where(Map.ActorsInWorld, function(self) return self.Owner == player and self.Type == "syrd" end) < 1 then
+		Trigger.AfterDelay(DateTime.Minutes(1), ProduceNaval)
+		return
+	end
+
+	shouldProduce = true
+
 	if SubPen.IsDead or SubPen.Owner ~= ussr then
 		return
 	end
@@ -145,15 +160,13 @@ end
 
 TargetAndAttack = function(yak, target)
 	if not target or target.IsDead or (not target.IsInWorld) then
-		local enemies = Utils.Where(Map.ActorsInWorld, function(self) return self.Owner == player and self.HasProperty("Health") end)
+		local enemies = Utils.Where(Map.ActorsInWorld, function(self) return self.Owner == player and self.HasProperty("Health") and yak.CanTarget(self) end)
 		if #enemies > 0 then
 			target = Utils.Random(enemies)
-		else
-			yak.Wait(DateTime.Seconds(5))
 		end
 	end
 
-	if target and yak.AmmoCount() > 0 then
+	if target and yak.AmmoCount() > 0 and yak.CanTarget(target) then
 		yak.Attack(target)
 	else
 		yak.ReturnToBase()

@@ -536,4 +536,3 @@ Actors:
 		Owner: Neutral
 
 Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml
-

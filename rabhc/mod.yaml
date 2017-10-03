@@ -1,11 +1,10 @@
 Metadata:
 	Title: Red Alert (BlackHandCommando Edition)
-	Description: In a world where Hitler was assassinated and the Third Reich never\nexisted, the Soviet Union seeks power over all of Europe.  Allied\nagainst this Evil Empire, the free world faces a Cold War turned hot.\n\nRed Alert fuses the quick and fun gameplay of the original\nC&C: Red Alert, with balance improvements and new gameplay\nfeatures inspired by modern RTS games.
-	Version: playtest-20170408_bhc3
-	Author: the OpenRA Developers and modified by BlackHandCommando
+	Description: In a world where Hitler was assassinated and the Third Reich never\nexisted, the Soviet Union seeks power over all of Europe.  Allied\nagainst this Evil Empire, the free world faces a Cold War turned hot.\n\nRed Alert fuses the quick and fun gameplay of the original\nC&C: Red Alert, with balance improvements and new gameplay\nfeatures inspired by modern RTS games. 
+	Version: playtest-20170930_bhc1 
+	Author: the OpenRA Developers and modified by BlackHandCommando 
 
-RequiresMods:
-	modchooser: playtest-20170408
+PackageFormats: Mix
 
 Packages:
 	~^Content/ra/v2/
@@ -37,7 +36,7 @@ Packages:
 
 MapFolders:
 	rabhc|maps: System
-	~^maps/rabhc/playtest-20170408: User
+	~^maps/rabhc: User
 
 Rules:
 	rabhc|rules/misc.yaml
@@ -93,7 +92,7 @@ ChromeLayout:
 	common|chrome/ingame-menu.yaml
 	rabhc|chrome/ingame-observer.yaml
 	common|chrome/ingame-observerstats.yaml
-	common|chrome/ingame-player.yaml
+	rabhc|chrome/ingame-player.yaml
 	common|chrome/ingame-perf.yaml
 	common|chrome/ingame-debug.yaml
 	common|chrome/mainmenu.yaml
@@ -203,6 +202,8 @@ SpriteSequenceFormat: TilesetSpecificSpriteSequence
 		INTERIOR: .int
 		DESERT: .des
 
+ModelSequenceFormat: PlaceholderModelSequence
+
 GameSpeeds:
 	slower:
 		Name: Slower
@@ -212,6 +213,10 @@ GameSpeeds:
 		Name: Normal
 		Timestep: 40
 		OrderLatency: 3
+	fast:
+		Name: Fast
+		Timestep: 35
+		OrderLatency: 4
 	faster:
 		Name: Faster
 		Timestep: 30
