@@ -548,10 +548,12 @@ flags: buttons.png
 	russia: 0,127,30,15
 	ukraine: 30,127,30,15
 	england: 60,127,30,15
+	ssoviet: 0,112,30,15
 	
 	germany: 0,142,30,15
 	spain: 30,142,30,15
 	france: 60,142,30,15
+	sallies: 30,112,30,15
 	
 	turkey: 0,157,30,15
 	greece: 30,157,30,15

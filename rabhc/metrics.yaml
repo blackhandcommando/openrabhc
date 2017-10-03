@@ -10,5 +10,7 @@ Metrics:
 	FactionSuffix-russia: soviet
 	FactionSuffix-soviet: soviet
 	FactionSuffix-ukraine: soviet
+	FactionSuffix-ssoviet: soviet
+	FactionSuffix-sallies: allies
 	IncompatibleProtectedGameColor: B22222
 	IncompatibleVersionColor: D3D3D3
