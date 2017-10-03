@@ -43,10 +43,10 @@
 	Warhead@3Eff: CreateEffect
 		VictimScanRadius: 0
 
-Maverick:
+MaverickAG:
 	Inherits: ^AntiGroundMissile
 	ReloadDelay: 30
-	Range: 9c0
+	Range: 11c0
 	MinRange: 3c0
 	Report: missile7.aud
 	Burst: 2
@@ -58,6 +58,27 @@ Maverick:
 		RangeLimit: 14c410
 	Warhead@1Dam: SpreadDamage
 		Damage: 70
+		Versus:
+			None: 30
+			Wood: 90
+			Light: 90
+			Concrete: 100
+            
+MaverickAA:
+	Inherits: ^AntiAirMissile
+	ReloadDelay: 30
+	Range: 11c0
+	MinRange: 3c0
+	Report: missile7.aud
+	Burst: 2
+	BurstDelay: 7
+	Projectile: Missile
+		Speed: 256
+		Inaccuracy: 512
+		CruiseAltitude: 2c0
+		RangeLimit: 14c410
+	Warhead@1Dam: SpreadDamage
+		Damage: 50
 		Versus:
 			None: 30
 			Wood: 90
@@ -314,7 +335,7 @@ SubMissileAA:
 SCUD:
 	Inherits: ^AntiGroundMissile
 	ReloadDelay: 240
-	Range: 10c0
+	Range: 12c0
 	MinRange: 3c0
 	Report: missile1.aud
 	-Projectile:

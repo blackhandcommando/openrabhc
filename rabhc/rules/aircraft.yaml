@@ -98,14 +98,18 @@ MIG:
 	Armor:
 		Type: Light
 	RevealsShroud:
-		Range: 13c0
+		Range: 14c0
 		Type: GroundPosition
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 11c0
 		Type: GroundPosition
-	Armament:
-		Weapon: Maverick
+	Armament@PRIMARY:
+		Weapon: MaverickAG
+		LocalOffset: 0,-640,0, 0,640,0
+		LocalYaw: -40, 24
+	Armament@SECONDARY:
+		Weapon: MaverickAA
 		LocalOffset: 0,-640,0, 0,640,0
 		LocalYaw: -40, 24
 	AttackPlane:
