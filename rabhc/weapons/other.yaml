@@ -90,7 +90,7 @@ PortaTesla:
 	ReloadDelay: 70
 	Range: 6c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 45
+		Damage: 40
 		Versus:
 			Wood: 75
 			Heavy: 60
