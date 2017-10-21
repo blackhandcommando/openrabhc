@@ -1620,7 +1620,7 @@ KENN:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 175
-		Prerequisites: anypower, ~structures.soviet, ~techlevel.infonly
+		Prerequisites: anypower, ~techlevel.infonly
 		Description: Trains Attack Dogs.
 	Valued:
 		Cost: 100
