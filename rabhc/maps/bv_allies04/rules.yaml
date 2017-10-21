@@ -1,0 +1,132 @@
+Player:
+	PlayerResources:
+		DefaultCash: 5000
+
+World:
+	LuaScript:
+		Scripts: bv_allies04.lua, bv_allies04AI.lua
+	MusicPlaylist:
+		StartingMusic: tren226m
+	MissionData:
+		Briefing: -
+	MapOptions:
+		ShortGameLocked: True
+		ShortGameEnabled: False
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: Difficulty
+		Values:
+			easy: Easy
+			normal: Normal
+			hard: Hard
+		Default: normal
+
+ATEK:
+	GpsPower:
+		PauseOnCondition: disabled
+		Icon: gps
+		OneShot: yes
+		ChargeTime: 600
+		Description: GPS Satellite
+		LongDesc: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 15
+		LaunchSpeechNotification: SatelliteLaunched
+		DisplayTimerStances: Ally, Neutral, Enemy
+
+powerproxy.paras1:
+	Inherits: powerproxy.paratroopers
+	ParatroopersPower:
+		DropItems: E1,E1,E1,SHOK,3TNK
+
+SAM:
+	-MustBeDestroyed:
+
+SS:
+	-MustBeDestroyed:
+
+MSUB:
+	Buildable:
+		Prerequisites: ~miss, ~spen
+	-MustBeDestroyed:
+
+4TNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+3TNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+TTNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+SHOK:
+	Buildable:
+		Prerequisites: ~miss, ~barr
+
+MIG.AI:
+	Inherits: MIG
+	RenderSprites:
+		Image: MIG
+	AutoTarget:
+		InitialStanceAI: AttackAnything
+	AmmoPool:
+		Ammo: 999
+	Buildable:
+		Prerequisites: ~miss, ~afld
+
+YAK.AI:
+	Inherits: YAK
+	RenderSprites:
+		Image: YAK
+	AutoTarget:
+		InitialStanceAI: AttackAnything
+	AmmoPool:
+		Ammo: 999
+	Buildable:
+		Prerequisites: ~miss, ~afld
+
+PDOX:
+    Buildable:
+        Prerequisites: ~disabled
+
+MSLO:
+    Buildable:
+        Prerequisites: ~disabled
+
+GAP:
+    Buildable:
+        Prerequisites: ~disabled
+
+MNLY:
+    Buildable:
+        Prerequisites: ~disabled
+
+TRUK:
+    Buildable:
+        Prerequisites: ~disabled
+
+MGG:
+    Buildable:
+        Prerequisites: ~disabled
+
+MRJ:
+    Buildable:
+        Prerequisites: ~disabled
+
+STNK:
+    Buildable:
+        Prerequisites: ~disabled
+
+CTNK:
+    Buildable:
+        Prerequisites: ~disabled
+
+E7:
+    Buildable:
+        Prerequisites: ~disabled
+
+QTNK:
+	Buildable:
+		Prerequisites: ~disabled
