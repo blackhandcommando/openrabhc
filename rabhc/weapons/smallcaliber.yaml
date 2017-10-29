@@ -16,6 +16,7 @@
 			Light: 60
 			Heavy: 10
 			Concrete: 20
+			Cybernetic: 90
 		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
 	Warhead@2Eff: CreateEffect
 		Explosions: small_explosion_air
@@ -72,6 +73,7 @@ FLAK-23-AG:
 			Light: 60
 			Heavy: 25
 			Concrete: 25
+			Cybernetic: 90
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@2Eff: CreateEffect
 		Explosions: piffs
@@ -90,6 +92,7 @@ FLAK-23-AG:
 			Light: 30
 			Heavy: 10
 			Concrete: 10
+			Cybernetic: 80
 
 Vulcan:
 	Inherits: ^HeavyMG
@@ -294,3 +297,54 @@ Sniper:
 	Range: 10c0
 	Warhead@1Dam: SpreadDamage
 		Damage: 140
+        
+
+
+VolkAT:
+	ReloadDelay: 5
+	Range: 5
+	Report: volk_at.aud
+	Projectile: Bullet
+		Speed: 50
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 128
+		Damage: 70
+		ValidTargets: Ground, Water
+		Versus: 
+			None: 0
+			Wood: 0
+			Light: 75
+			Heavy: 90
+			Concrete: 50
+		Explosion: small_explosion
+		WaterExplosion: small_splash                      
+		SmudgeType: Crater
+
+		
+VolkNapalm:
+	ROF: 70
+	ReloadDelay: 5
+	Range: 5
+	Report: volknapalm.aud
+	ValidTargets: Ground
+	Burst: 1
+	BurstDelay: 1
+	Projectile: Bullet
+		Speed: 50
+		Image: 120MM
+	Warhead@1Dam: SpreadDamage
+		Spread: 8
+		Damage: 80
+		Versus: 
+			None: 90
+			Wood: 170
+			Light: 0
+			Heavy: 0
+			Concrete: 0
+		Explosion: napalm
+		WaterExplosion: small_napalm
+		InfDeath: 4
+		SmudgeType: Scorch
+		ImpactSound: firebl3
+

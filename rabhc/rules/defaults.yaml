@@ -417,6 +417,11 @@
 	DetectCloaked:
 		CloakTypes: Hijacker
 
+^CyborgInfantry:        
+	Inherits: ^Soldier
+	Armor:
+		Type: Cybernetic
+        
 ^CivInfantry:
 	Inherits: ^Infantry
 	Selectable:

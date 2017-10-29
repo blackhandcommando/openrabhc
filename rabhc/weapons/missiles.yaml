@@ -23,6 +23,7 @@
 			Light: 35
 			Heavy: 100
 			Concrete: 50
+			Cybernetic: 100
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
@@ -174,6 +175,7 @@ Nike:
 			None: 90
 			Light: 90
 			Heavy: 50
+			Cybernetic: 90
 	Warhead@3Eff: CreateEffect
 		Explosions: med_explosion_air
 		ImpactSounds: kaboom25.aud

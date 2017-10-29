@@ -14,6 +14,7 @@
 			Wood: 75
 			Light: 75
 			Concrete: 50
+			Cybernetic: 80
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
@@ -78,6 +79,51 @@
 			None: 30
 			Heavy: 115
 		InvalidTargets: Air
+
+Volk_AT:
+	Inherits: ^Cannon
+	ReloadDelay: 50
+	Burst: 1
+    BurstDelay: 1
+	Range: 7c0
+	Report: volk_at.aud
+	InvalidTargets: Air, Infantry
+	Warhead@1Dam: SpreadDamage
+		Damage: 125
+		Spread: 256
+		Versus: 
+			None: 0
+			Wood: 80
+			Light: 75
+			Heavy: 90
+			Concrete: 80
+			Cybernetic: 5
+	Warhead@3Eff: CreateEffect
+		Explosions: med_explosion
+		ImpactSounds: kaboom25.aud
+
+Volk_Nap:
+	Inherits: ^Cannon
+	ReloadDelay: 50
+	Burst: 1
+	BurstDelay: 1
+	Range: 7c0
+	Report: volknapalm.aud
+    ValidTargets: Infantry
+	InvalidTargets: Air, Vehicle, Tank
+	Warhead@1Dam: SpreadDamage
+		Damage: 75
+		Spread: 256
+		Versus: 
+			None: 90
+			Wood: 0
+			Light: 0
+			Heavy: 0
+			Concrete: 5
+			Cybernetic: 70
+	Warhead@3Eff: CreateEffect
+		Explosions: napalm
+		ImpactSounds: firebl3.aud
 
 TurretGun:
 	Inherits: ^Cannon
@@ -212,3 +258,4 @@ DepthCharge:
 		Explosions: small_explosion
 		ImpactSounds: kaboom15.aud
 		ValidTargets: Submarine
+

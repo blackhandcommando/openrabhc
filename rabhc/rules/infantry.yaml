@@ -339,6 +339,63 @@ E7:
 	ProducibleWithLevel:
 		Prerequisites: barracks.upgraded
 
+E8:
+	Inherits: ^CyborgInfantry
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildPaletteOrder: 110
+		Prerequisites: stek
+		Owner: soviet
+		BuildLimit: 1
+		Description: Elite commando cyborg, armed with \nmodular cannons and grenade launcher.\n  Strong vs Vehicles, Infantry\n  Weak vs Aircraft\n\nMaximum 1 can be trained
+	Valued:
+		Cost: 1800
+	Tooltip:
+		Name: Volkov        
+	Health:
+		HP: 600
+	Selectable:
+		Class: GNRL
+	Mobile:
+		Voice: Move
+	AttackFrontal:
+		Voice: Attack
+	AttackMove:
+		Voice: Move
+	Passenger:
+		Voice: Move
+	Guard:
+		Voice: Move
+	Armament@PRIMARY:
+		Weapon: Volk_AT
+	Armament@SECONDARY:
+		Name: secondary
+		Weapon: Volk_Nap
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Volk_AT
+	SelfHealing:
+		Step: 1
+		Delay: 3
+		HealIfBelow: 50
+		DamageCooldown: 150        
+	Armor:
+		Type: Cybernetic
+	AttackFrontal:
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+	TakeCover:
+		IdleAnimations: idle1
+		CrushSound: crunchy2.aud
+	Voiced:
+		VoiceSet: VolkovsVoice
+	RepairableNear:
+		Buildings: BARR
+		CloseEnough: 3
+	RenderSprites:
+		Image: GNRL
+
 MEDI:
 	Inherits: ^Soldier
 	Buildable:

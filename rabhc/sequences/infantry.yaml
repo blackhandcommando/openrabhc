@@ -909,7 +909,8 @@ gnrl:
 		TilesetOverrides:
 			DESERT: TEMPERAT
 			INTERIOR: TEMPERAT
-
+	icon: gnrlicon
+    
 shok:
 	stand:
 		Facings: 8
