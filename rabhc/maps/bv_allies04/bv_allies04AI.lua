@@ -174,13 +174,15 @@ VehicleProduction = function()
 		return
 	elseif HarvesterDead and BaseBuildings[10] then
 		Trigger.AfterDelay(DateTime.Seconds(1), function()
-			ussr.Build({ "harv" }, function(harv)
-				harv[1].FindResources()
-				Trigger.OnKilled(harv[1], function() HarvesterDead = true end)
+			if BaseBuildings[10] then
+				ussr.Build({ "harv" }, function(harv)
+					harv[1].FindResources()
+					Trigger.OnKilled(harv[1], function() HarvesterDead = true end)
 
-				HarvesterDead = false
-				VehicleProduction()
-			end)
+					HarvesterDead = false
+					VehicleProduction()
+				end)
+			end
 		end)
 	elseif BaseBuildings[10] then
 		Trigger.AfterDelay(DateTime.Seconds(1), function()
@@ -239,29 +241,31 @@ NavalProduction = function()
 	else
 		if BaseBuildings[20] and NavalPatrol1 and NavalPatrol2 then
 			Trigger.AfterDelay(DateTime.Seconds(1), function()
-				ussr.Build(team, function(unit)
-					USSRNavalAttack[#USSRNavalAttack + 1] = unit[1]
+				if BaseBuildings[20] then
+					ussr.Build(team, function(unit)
+						USSRNavalAttack[#USSRNavalAttack + 1] = unit[1]
 
-					if #USSRNavalAttack >= Utils.RandomInteger(NavalMinAttackForce, NavalMaxAttackForce) then
-						SendUnits(USSRNavalAttack, AttackPosNaval)
-						Trigger.AfterDelay(DateTime.Minutes(3), function()
-							NavalProduction()
-							USSRNavalAttack = { }
-						end)
-					else
-						Trigger.AfterDelay(NavyDelay, NavalProduction)
-					end
-				end)
+						if #USSRNavalAttack >= Utils.RandomInteger(NavalMinAttackForce, NavalMaxAttackForce) then
+							SendUnits(USSRNavalAttack, AttackPosNaval)
+							Trigger.AfterDelay(DateTime.Minutes(3), function()
+								NavalProduction()
+								USSRNavalAttack = { }
+							end)
+						else
+							Trigger.AfterDelay(NavyDelay, NavalProduction)
+						end
+					end)
+				end
 			end)
-		elseif not NavalPatrol1 then
+		elseif BaseBuildings[20] and not NavalPatrol1 then
 			local team = { "ss" }
 			ussr.Build(team, SendNavalPatrol1)
 			Trigger.AfterDelay(DateTime.Minutes(1), NavalProduction)
-		elseif not NavalPatrol2 then
+		elseif BaseBuildings[20] and not NavalPatrol2 then
 			local team = { "ss" }
 			ussr.Build(team, SendNavalPatrol2)
 			Trigger.AfterDelay(DateTime.Minutes(1), NavalProduction)
-		elseif not NavalPatrol3 and not TryMeOnce then
+		elseif BaseBuildings[20] and not NavalPatrol3 and not TryMeOnce then
 			local team = { "ss", "ss" }
 			TryMeOnce = true
 			ussr.Build(team, SendNavalPatrol3)
