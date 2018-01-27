@@ -345,7 +345,7 @@ E8:
 	Buildable:
 		Queue: Infantry
 		BuildPaletteOrder: 110
-		Prerequisites: stek
+		Prerequisites: ~barr, stek, ~techlevel.high
 		Owner: soviet
 		BuildLimit: 1
 		Description: Elite commando cyborg, armed with \nmodular cannons and grenade launcher.\n  Strong vs Vehicles, Infantry\n  Weak vs Aircraft\n\nMaximum 1 can be trained
