@@ -19,10 +19,10 @@ if Map.LobbyOption("difficulty") == "easy" then
 
 	LargeAttackDelay = DateTime.Minutes(15)
 	MadTankAttackDelay = DateTime.Minutes(12)
-	NavyDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(10)
-	VehicleDelay = DateTime.Seconds(30)
-	YakDelay = DateTime.Seconds(250)
+	NavyDelay = DateTime.Seconds(120)
+	InfantryDelay = DateTime.Seconds(30)
+	VehicleDelay = DateTime.Seconds(50)
+	YakDelay = DateTime.Seconds(300)
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -39,9 +39,9 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 	LargeAttackDelay = DateTime.Minutes(13)
 	MadTankAttackDelay = DateTime.Minutes(10)
-	NavyDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(10)
-	VehicleDelay = DateTime.Seconds(30)
+	NavyDelay = DateTime.Seconds(90)
+	InfantryDelay = DateTime.Seconds(20)
+	VehicleDelay = DateTime.Seconds(40)
 	YakDelay = DateTime.Seconds(200)
 
 elseif Map.LobbyOption("difficulty") == "hard" then
@@ -200,6 +200,13 @@ AttackPos = {
 	Actor819,
 	Actor820,
 	Actor821,
+}
+
+AttackPosInfantry = {
+	Actor819,
+	Actor820,
+	Actor821,
+	Actor937,
 }
 
 AttackPosAir = {
@@ -388,7 +395,7 @@ InfantryProduction2 = function()
 					USSRInfantryAttack[#USSRInfantryAttack + 1] = unit[1]
 
 					if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
-						SendUnits(USSRInfantryAttack)
+						SendUnitsInfantry(USSRInfantryAttack)
 						USSRInfantryAttack = { }
 						Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction2(building) end)
 					else
@@ -843,6 +850,20 @@ end
 SendUnits = function(units)
 
 	local waypoint = Utils.Random(AttackPos)
+
+	Utils.Do(units, function(unit)
+		if not unit.IsDead then
+			unit.AttackMove(waypoint.Location)
+			Trigger.OnIdle(unit, function()
+				unit.Hunt()
+			end)
+		end
+	end)
+end
+
+SendUnitsInfantry = function(units)
+
+	local waypoint = Utils.Random(AttackPosInfantry)
 
 	Utils.Do(units, function(unit)
 		if not unit.IsDead then

@@ -86,7 +86,7 @@ WorldLoaded = function()
 	nuker = Player.GetPlayer("Nuker")
 
 	Camera.Position = Actor160.CenterPosition
-	
+
 	Actor790.Guard(Actor826)
 	Actor792.Guard(Actor827)
 	Actor791.Guard(Actor828)
@@ -105,8 +105,8 @@ WorldLoaded = function()
 	Trigger.AfterDelay(DateTime.Seconds(4.6), function()
 		Media.PlaySound("laugh1.aud")
 	end)
-	Trigger.OnKilled(spy1, function()
-		if not TechCenterInfiltrated then
+	Trigger.OnRemovedFromWorld(spy1, function()
+		if not TechCenterInfiltrated and not TechCenterInfiltrated then
 			SpiesKilled = SpiesKilled + 1
 			Trigger.AfterDelay(DateTime.Seconds(0.25), function()
 				if SpiesKilled == 3 then
@@ -115,8 +115,8 @@ WorldLoaded = function()
 			end)
 		end
 	end)
-	Trigger.OnKilled(spy2, function()
-		if not TechCenterInfiltrated then
+	Trigger.OnRemovedFromWorld(spy2, function()
+		if not TechCenterInfiltrated and not TechCenterInfiltrated then
 			SpiesKilled = SpiesKilled + 1
 			Trigger.AfterDelay(DateTime.Seconds(0.25), function()
 				if SpiesKilled == 3 then
@@ -125,8 +125,8 @@ WorldLoaded = function()
 			end)
 		end
 	end)
-	Trigger.OnKilled(spy3, function()
-		if not TechCenterInfiltrated then
+	Trigger.OnRemovedFromWorld(spy3, function()
+		if not TechCenterInfiltrated and not TechCenterInfiltrated then
 			SpiesKilled = SpiesKilled + 1
 			Trigger.AfterDelay(DateTime.Seconds(0.25), function()
 				if SpiesKilled == 3 then
@@ -218,7 +218,7 @@ Triggers = function()
 				Vision8.Destroy()
 			end
 			Trigger.AfterDelay(DateTime.Seconds(5), function()
-				DestroyRadarDome = player.AddPrimaryObjective("Destroy the Radar Dome in this Area.")
+				DestroyRadarDome = player.AddPrimaryObjective("Destroy the Radar Dome in this area.")
 			end)
 		end
 	end)
@@ -283,7 +283,7 @@ Triggers = function()
 				USSRSecondWave()
 			end)
 		end
-		if Map.LobbyOption("difficulty") ~= "easy" then
+		if Map.LobbyOption("difficulty") == "hard" then
 			Trigger.AfterDelay(DateTime.Seconds(400), function()
 				Media.DisplayMessage("Trucks armed with nuclear explosives detected.")
 				USSRMadTank()--Actually a demolition truck

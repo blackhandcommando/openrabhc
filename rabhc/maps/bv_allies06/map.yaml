@@ -1045,15 +1045,6 @@ Actors:
 	Actor339: sbag
 		Owner: USSR
 		Location: 59,117
-	Actor340: sbag
-		Owner: USSR
-		Location: 59,118
-	Actor341: sbag
-		Owner: USSR
-		Location: 59,119
-	Actor342: sbag
-		Owner: USSR
-		Location: 59,119
 	Actor343: sbag
 		Owner: USSR
 		Location: 59,120
@@ -3051,5 +3042,8 @@ Actors:
 		Location: 12,37
 		SubCell: 3
 		Facing: 92
+	Actor937: waypoint
+		Owner: USSR
+		Location: 2,71
 
 Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml
