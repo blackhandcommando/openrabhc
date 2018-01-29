@@ -59,15 +59,24 @@ YAK.AI:
 	Buildable:
 		Prerequisites: ~miss, ~afld
 
-C1:
+C1.ob:
+	Inherits: C1
+	RenderSprites:
+		Image: C1
 	Health:
 		HP: 300
 
-C2:
+C2.ob:
+	Inherits: C2
+	RenderSprites:
+		Image: C2
 	Health:
 		HP: 300
 
-C3:
+C3.ob:
+	Inherits: C3
+	RenderSprites:
+		Image: C3
 	Health:
 		HP: 300
 

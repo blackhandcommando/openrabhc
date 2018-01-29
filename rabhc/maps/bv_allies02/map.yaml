@@ -633,17 +633,17 @@ Actors:
 	Actor180: v30
 		Owner: Neutral
 		Location: 85,42
-	Actor181: c1
+	Actor181: c1.ob
 		Owner: Neutral
 		Location: 12,38
 		SubCell: 3
 		Facing: 92
-	Actor182: c2
+	Actor182: c2.ob
 		Owner: Neutral
 		Location: 48,51
 		SubCell: 3
 		Facing: 92
-	Actor183: c3
+	Actor183: c3.ob
 		Owner: Neutral
 		Location: 90,73
 		SubCell: 3

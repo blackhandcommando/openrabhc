@@ -382,19 +382,19 @@ end
 
 EvacuateScientist = function()
 	Trigger.OnEnteredProximityTrigger(Actor240.CenterPosition, WDist.FromCells(5), function(actor)
-		if actor.Type == "c1" or actor.Type == "c2" or actor.Type == "c3" then
+		if actor.Type == "c1.ob" or actor.Type == "c2.ob" or actor.Type == "c3.ob" then
 			Media.PlaySpeechNotification(player, "TargetRescued")
 			actor.Owner = greece
 			actor.Stop()
 			actor.ScriptedMove(Actor252.Location)
 			actor.Destroy()
-			if actor.Type == "c1" and not C1Rescued then
+			if actor.Type == "c1.ob" and not C1Rescued then
 				C1Rescued = true
 				ScientistsEvacuated = ScientistsEvacuated + 1
-			elseif actor.Type == "c2" and not C2Rescued then
+			elseif actor.Type == "c2.ob" and not C2Rescued then
 				C2Rescued = true
 				ScientistsEvacuated = ScientistsEvacuated + 1
-			elseif actor.Type == "c3" and not C3Rescued then
+			elseif actor.Type == "c3.ob" and not C3Rescued then
 				C3Rescued = true
 				ScientistsEvacuated = ScientistsEvacuated + 1
 			end
