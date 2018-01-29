@@ -17,8 +17,8 @@ if Map.LobbyOption("difficulty") == "easy" then
 	VehicleMinAttackForce = 5
 	VehicleMaxAttackForce = 10
 
-	LargeAttackDelay = DateTime.Minutes(15)
-	MadTankAttackDelay = DateTime.Minutes(12)
+	LargeAttackDelay = DateTime.Minutes(18)
+	MadTankAttackDelay = DateTime.Minutes(15)
 	NavyDelay = DateTime.Seconds(120)
 	InfantryDelay = DateTime.Seconds(30)
 	VehicleDelay = DateTime.Seconds(50)
@@ -37,8 +37,8 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 	VehicleMinAttackForce = 7
 	VehicleMaxAttackForce = 10
 
-	LargeAttackDelay = DateTime.Minutes(13)
-	MadTankAttackDelay = DateTime.Minutes(10)
+	LargeAttackDelay = DateTime.Minutes(16)
+	MadTankAttackDelay = DateTime.Minutes(13)
 	NavyDelay = DateTime.Seconds(90)
 	InfantryDelay = DateTime.Seconds(20)
 	VehicleDelay = DateTime.Seconds(40)
@@ -57,8 +57,8 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 	VehicleMinAttackForce = 7
 	VehicleMaxAttackForce = 15
 
-	LargeAttackDelay = DateTime.Minutes(11)
-	MadTankAttackDelay = DateTime.Minutes(8)
+	LargeAttackDelay = DateTime.Minutes(14)
+	MadTankAttackDelay = DateTime.Minutes(11)
 	NavyDelay = DateTime.Seconds(60)
 	InfantryDelay = DateTime.Seconds(10)
 	VehicleDelay = DateTime.Seconds(30)
@@ -884,6 +884,26 @@ SendUnitsInfantry1 = function(units)
 			end)
 		end
 	end)
+end
+
+SubmarineGuards = function()
+
+	Actor792.Guard(Actor826)
+	Actor794.Guard(Actor829)
+	Actor793.Guard(Actor830)
+	if Map.LobbyOption("difficulty") == "hard" then
+		Actor790.Guard(Actor827)
+	end
+
+	Actor795.Stance = "AttackAnything"
+	Actor797.Stance = "AttackAnything"
+	Actor792.Stance = "AttackAnything"
+	Actor794.Stance = "AttackAnything"
+	Actor793.Stance = "AttackAnything"
+	if Map.LobbyOption("difficulty") == "hard" then
+		Actor790.Stance = "AttackAnything"
+	end
+
 end
 
 SendNavalPatrol1 = function(units)

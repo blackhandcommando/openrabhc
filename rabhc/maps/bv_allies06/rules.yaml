@@ -73,7 +73,7 @@ Player:
 			MinimumAttractiveness: 1000
 			Consideration@1:
 				Against: Enemy
-				Types: Air, Ground, Water, Structure
+				Types: Structure
 				Attractiveness: 10
 				TargetMetric: Value
 				CheckRadius: 5c0

@@ -2479,10 +2479,6 @@ Actors:
 		Owner: USSR
 		Location: 34,71
 		Facing: 105
-	Actor791: msub
-		Owner: USSR
-		Location: 68,70
-		Facing: 140
 	Actor792: msub
 		Owner: USSR
 		Location: 50,64
@@ -2612,9 +2608,6 @@ Actors:
 	Actor827: waypoint
 		Owner: USSR
 		Location: 50,65
-	Actor828: waypoint
-		Owner: USSR
-		Location: 69,71
 	Actor829: waypoint
 		Owner: USSR
 		Location: 64,51
@@ -3045,5 +3038,5 @@ Actors:
 	Actor937: waypoint
 		Owner: USSR
 		Location: 2,71
-
+		
 Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml

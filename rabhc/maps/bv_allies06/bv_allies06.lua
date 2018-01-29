@@ -26,8 +26,8 @@ USSRMigs = { Actor875, Actor876, Actor877 }
 
 ActorRemovals =
 {
-	easy = { },
-	normal = { },
+	easy = { Actor790 },
+	normal = { Actor790 },
 	hard = { },
 }
 
@@ -54,7 +54,7 @@ Tick = function()
 		GameLost = true
 		ussr.MarkCompletedObjective(DestroyEnemies)
 	end
-	if ussr.HasNoRequiredUnits() and not nuker.HasNoRequiredUnits() and NukesDestroyed and not GameWon then
+	if ussr.HasNoRequiredUnits() and NukesDestroyed and not GameWon then
 		GameWon = true
 		player.MarkCompletedObjective(EliminateAllEnemies)
 	end
@@ -87,11 +87,7 @@ WorldLoaded = function()
 
 	Camera.Position = Actor160.CenterPosition
 
-	Actor790.Guard(Actor826)
-	Actor792.Guard(Actor827)
-	Actor791.Guard(Actor828)
-	Actor794.Guard(Actor829)
-	Actor793.Guard(Actor830)
+	SubmarineGuards()
 	Actor881.Stance = "Defend"
 	Actor882.Stance = "Defend"
 	Actor883.Stance = "Defend"
@@ -106,7 +102,7 @@ WorldLoaded = function()
 		Media.PlaySound("laugh1.aud")
 	end)
 	Trigger.OnRemovedFromWorld(spy1, function()
-		if not TechCenterInfiltrated and not TechCenterInfiltrated then
+		if not TechCenterInfiltrated then
 			SpiesKilled = SpiesKilled + 1
 			Trigger.AfterDelay(DateTime.Seconds(0.25), function()
 				if SpiesKilled == 3 then
@@ -116,7 +112,7 @@ WorldLoaded = function()
 		end
 	end)
 	Trigger.OnRemovedFromWorld(spy2, function()
-		if not TechCenterInfiltrated and not TechCenterInfiltrated then
+		if not TechCenterInfiltrated then
 			SpiesKilled = SpiesKilled + 1
 			Trigger.AfterDelay(DateTime.Seconds(0.25), function()
 				if SpiesKilled == 3 then
@@ -126,7 +122,7 @@ WorldLoaded = function()
 		end
 	end)
 	Trigger.OnRemovedFromWorld(spy3, function()
-		if not TechCenterInfiltrated and not TechCenterInfiltrated then
+		if not TechCenterInfiltrated then
 			SpiesKilled = SpiesKilled + 1
 			Trigger.AfterDelay(DateTime.Seconds(0.25), function()
 				if SpiesKilled == 3 then
