@@ -675,13 +675,13 @@ BuildBuilding = function(building, cyard)
 		building.exists = true
 		
 		if actor.Type == 'barr' and Actor324.IsDead then
-			Trigger.AfterDelay(DateTime.Seconds(5), function() InfantryProduction2(building) end)
+			Trigger.AfterDelay(DateTime.Seconds(5), function() InfantryProduction2(actor) end)
 		elseif actor.Type == 'weap' then
-			Trigger.AfterDelay(DateTime.Seconds(5), function() VehicleProduction(building) end)
+			Trigger.AfterDelay(DateTime.Seconds(5), function() VehicleProduction(actor) end)
 		elseif actor.Type == 'spen' then
-			Trigger.AfterDelay(DateTime.Seconds(5), function() NavalProduction(building) end)
+			Trigger.AfterDelay(DateTime.Seconds(5), function() NavalProduction(actor) end)
 		elseif actor.Type == 'afld' then
-			Trigger.AfterDelay(DateTime.Seconds(5), function() AirProduction(building) end)
+			Trigger.AfterDelay(DateTime.Seconds(5), function() AirProduction(actor) end)
 		end
 
 		Trigger.OnKilled(actor, function() building.exists = false end)
