@@ -319,12 +319,14 @@ VehicleProduction = function(building)
 			end
 		end)
 	elseif BaseBuildings[12] then
-		local rallypoint = Utils.Random(RallyPoints)
-		building.RallyPoint = rallypoint.Location
+		if not building.IsDead then
+			local rallypoint = Utils.Random(RallyPoints)
+			building.RallyPoint = rallypoint.Location
+			building.IsPrimaryBuilding = true
+		end
 
 		Trigger.AfterDelay(DateTime.Seconds(1), function()
 			if BaseBuildings[12] then
-				building.IsPrimaryBuilding = true
 				ussr.Build(VehicleTeam, function(unit)
 					USSRVehicleAttack[#USSRVehicleAttack + 1] = unit[1]
 
@@ -663,7 +665,7 @@ BuildBuilding = function(building, cyard)
 
 		BuildingsBuilt = BuildingsBuilt + 1
 
-		if BuildingsBuilt == 20 then
+		if BuildingsBuilt == 10 then
 			IdlingUnitsRedAlert()
 		end
 

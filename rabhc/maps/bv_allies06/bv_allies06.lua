@@ -281,7 +281,7 @@ Triggers = function()
 		end
 		if Map.LobbyOption("difficulty") == "hard" then
 			Trigger.AfterDelay(DateTime.Seconds(400), function()
-				Media.DisplayMessage("Trucks armed with nuclear explosives detected.")
+				Media.DisplayMessage("WARNING: Trucks armed with nuclear explosives detected.")
 				USSRMadTank()--Actually a demolition truck
 			end)
 		end

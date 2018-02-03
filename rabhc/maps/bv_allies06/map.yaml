@@ -3038,5 +3038,5 @@ Actors:
 	Actor937: waypoint
 		Owner: USSR
 		Location: 2,71
-		
+
 Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml
