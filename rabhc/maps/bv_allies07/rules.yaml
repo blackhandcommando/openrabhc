@@ -1,0 +1,556 @@
+Player:
+	PlayerResources:
+		DefaultCash: 0
+	HackyAI@USSRNukes:
+		Name: USSRNukes
+		Type: nuke
+		MinimumExcessPower: 40
+		BuildingCommonNames:
+			ConstructionYard: fact
+			Refinery: 
+			Power: 
+			Barracks: 
+			VehiclesFactory: 
+			Production: 
+			Silo: 
+		UnitsCommonNames:
+			Mcv: mcv
+		BuildingLimits:
+			proc: 0
+			barr: 0
+			kenn: 0
+			dome: 0
+			weap: 0
+			afld: 0
+			stek: 0
+			fix: 0
+			powr: 0
+			apwr: 0
+			ftur: 0
+		BuildingFractions:
+		UnitsToBuild:
+		UnitLimits:
+			dog: 0
+			harv: 0
+			mig: 0
+			yak: 0
+		SquadSize: 999999
+		SupportPowerDecision@spyplane:
+			OrderName: SovietSpyPlane
+			MinimumAttractiveness: 1
+			Consideration@1:
+				Against: Enemy
+				Types: Structure
+				Attractiveness: 1
+				TargetMetric: Value
+				CheckRadius: 5c0
+		SupportPowerDecision@paratroopers:
+			OrderName: SovietParatroopers
+			MinimumAttractiveness: 5
+			Consideration@1:
+				Against: Enemy
+				Types: Structure
+				Attractiveness: 1
+				TargetMetric: Value
+				CheckRadius: 8c0
+			Consideration@2:
+				Against: Enemy
+				Types: Water
+				Attractiveness: -5
+				TargetMetric: Value
+				CheckRadius: 8c0
+		SupportPowerDecision@parabombs:
+			OrderName: UkraineParabombs
+			MinimumAttractiveness: 1
+			Consideration@1:
+				Against: Enemy
+				Types: Ground, Water
+				Attractiveness: 1
+				TargetMetric: Value
+				CheckRadius: 5c0
+		SupportPowerDecision@nukepower:
+			OrderName: NukePowerInfoOrder
+			MinimumAttractiveness: 1000
+			Consideration@1:
+				Against: Enemy
+				Types: Structure
+				Attractiveness: 10
+				TargetMetric: Value
+				CheckRadius: 5c0
+	-HackyAI@RushAI:
+	-HackyAI@NormalAI:
+	-HackyAI@TurtleAI:
+	-HackyAI@NavalAI:
+
+World:
+	LuaScript:
+		Scripts: bv_allies07.lua, bv_allies07USSRAI.lua, bv_allies07USSR2AI.lua, bv_allies07GreeceAI.lua
+	MusicPlaylist:
+		StartingMusic: hell226m
+	MissionData:
+		Briefing: -
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: Difficulty
+		Values:
+			easy: Easy
+			normal: Normal
+			hard: Hard
+		Default: normal
+
+FCOM:
+	Inherits: ^TechBuilding
+	Inherits@shape: ^2x2Shape
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 2000
+	Armor:
+		Type: Wood
+	Tooltip:
+		Name: Soviet HQ
+	RevealsShroud:
+		Range: 5c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 4c0
+	WithBuildingBib:
+	ExternalCapturable:
+		CaptureCompleteTime: 30
+	ExternalCapturableBar:
+	GivesBuildableArea:
+	BaseProvider:
+		Range: 8c0
+	EngineerRepairable:
+	Power:
+		Amount: 0
+	Targetable:
+		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
+	ProvidesPrerequisite@buildingname:
+
+AFLD:
+	AirstrikePower@spyplane:
+		OrderName: SovietSpyPlane
+		Prerequisites: aircraft.soviet
+		Icon: spyplane
+		ChargeTime: 300
+		Description: Spy Plane
+		LongDesc: Reveals an area of the map\nand cloaked enemy units.
+		SelectTargetSpeechNotification: SelectTarget
+		EndChargeSpeechNotification: SpyPlaneReady
+		CameraActor: camera.spyplane
+		CameraRemoveDelay: 300
+		UnitType: u2
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		BeaconPoster: camicon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+	ParatroopersPower@paratroopers:
+		OrderName: SovietParatroopers
+		Prerequisites: aircraft.soviet
+		Icon: paratroopers
+		ChargeTime: 175
+		Description: Paratroopers
+		LongDesc: A Badger drops a squad of infantry\nanywhere on the map.
+		DropItems: SHOK,SHOK,SHOK,E3R1,E3R1
+		SelectTargetSpeechNotification: SelectTarget
+		AllowImpassableCells: false
+		QuantizedFacings: 8
+		CameraActor: camera.paradrop
+		DisplayBeacon: true
+		BeaconPoster: pinficon
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+	AirstrikePower@parabombs:
+		OrderName: UkraineParabombs
+		Prerequisites: aircraft.soviet
+		Icon: parabombs
+		ChargeTime: 400
+		Description: Parabombs
+		LongDesc: A squad of Badgers drops parachuted\nbombs on your target.
+		SelectTargetSpeechNotification: SelectTarget
+		CameraActor: camera
+		CameraRemoveDelay: 150
+		UnitType: badr.bomber
+		QuantizedFacings: 8
+		DisplayBeacon: true
+		BeaconPoster: pbmbicon
+		SquadSize: 3
+		SquadOffset: 1792,1792,0
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+
+MISS:
+	RevealsShroud:
+		Range: 0c0
+	RevealsShroud@Offline:
+		Range: 0c0
+	RevealsShroud@GAPGEN:
+		Range: 0c0
+
+ATEK:
+	GpsPower:
+		PauseOnCondition: disabled
+		Icon: gps
+		OneShot: yes
+		ChargeTime: 600
+		Description: GPS Satellite
+		LongDesc: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		RevealDelay: 15
+		LaunchSpeechNotification: SatelliteLaunched
+		DisplayTimerStances: Ally, Neutral, Enemy
+
+PDOX:
+	ChronoshiftPower@chronoshift:
+		OrderName: Chronoshift
+		PauseOnCondition: disabled
+		Prerequisites: !pdox.germany
+		Icon: chrono
+		ChargeTime: 180
+		Description: Chronoshift
+		LongDesc: Teleports a group of units across\nthe map for 20 seconds.
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		BeginChargeSpeechNotification: ChronosphereCharging
+		EndChargeSpeechNotification: ChronosphereReady
+		Duration: 20
+		KillCargo: yes
+		DisplayRadarPing: True
+
+MSLO:
+	Inherits: ^ScienceBuilding
+	Inherits@IDISABLE: ^DisabledOverlay
+	Inherits@shape: ^2x1Shape
+	Valued:
+		Cost: 2500
+	Tooltip:
+		Name: Missile Silo
+	Buildable:
+		Queue: Defense
+		BuildPaletteOrder: 140
+		Prerequisites: techcenter, ~techlevel.unrestricted
+		BuildLimit: 1
+		Description: Provides an atomic bomb.\nRequires power to operate.\n  Special Ability: Atom Bomb\nMaximum 1 can be built.
+	Building:
+		Footprint: xx
+		Dimensions: 2,1
+	Health:
+		HP: 1000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 6c0
+		RequiresCondition: !disabled
+		RevealGeneratedShroud: False
+	RevealsShroud@Offline:
+		Range: 5c0
+		RequiresCondition: disabled
+	RevealsShroud@GAPGEN:
+		Range: 5c0
+		RequiresCondition: !disabled
+	NukePower:
+		OneShot: no
+		PauseOnCondition: disabled
+		Cursor: nuke
+		Icon: abomb
+		ChargeTime: 720
+		Description: Atom Bomb
+		LongDesc: Launches a devastating atomic bomb\nat a target location.
+		BeginChargeSpeechNotification: AbombPrepping
+		EndChargeSpeechNotification: AbombReady
+		SelectTargetSpeechNotification: SelectTarget
+		InsufficientPowerSpeechNotification: InsufficientPower
+		IncomingSpeechNotification: AbombLaunchDetected
+		MissileWeapon: atomic
+		SpawnOffset: 0,427,0
+		DisplayTimerStances: Ally, Neutral, Enemy
+		DisplayBeacon: True
+		DisplayRadarPing: True
+		BeaconPoster: atomicon
+		FlashType: Nuke
+		CameraRange: 10c0
+		ArrowSequence: arrow
+		ClockSequence: clock
+		CircleSequence: circles
+	CanPowerDown:
+		PowerupSound: EnablePower
+		PowerdownSound: DisablePower
+	RequiresPower:
+	SupportPowerChargeBar:
+	Power:
+		Amount: -200
+	MustBeDestroyed:
+		RequiredForShortGame: false
+
+CAMERA:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 6c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	EditorTilesetFilter:
+		Categories: System
+
+TRAN.IN:
+	Inherits: TRAN
+	RenderSprites:
+		Image: TRAN
+	Buildable:
+		Prerequisites: ~miss
+	RejectsOrders:
+	-Selectable:
+
+powerproxy.paras1:
+	Inherits: powerproxy.paratroopers
+	ParatroopersPower:
+		DropItems: E1,E1,E1,E3,E3
+
+powerproxy.paras2:
+	Inherits: powerproxy.paratroopers
+	ParatroopersPower:
+		DropItems: E1,E1,E4,E4,SHOK
+
+powerproxy.paras3:
+	Inherits: powerproxy.paratroopers
+	ParatroopersPower:
+		DropItems: E1,E4,SHOK,SHOK,SHOK
+
+SAM:
+	-MustBeDestroyed:
+
+1TNK.ai:
+	Inherits: 1TNK
+	RenderSprites:
+		Image: 1TNK
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+2TNK.ai:
+	Inherits: 2TNK
+	RenderSprites:
+		Image: 2TNK
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+ARTY.ai:
+	Inherits: ARTY
+	RenderSprites:
+		Image: ARTY
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+APC.ai:
+	Inherits: APC
+	RenderSprites:
+		Image: APC
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+E1.ai:
+	Inherits: E1
+	RenderSprites:
+		Image: E1
+	Buildable:
+		Prerequisites: ~miss, ~tent
+
+E2.ai:
+	Inherits: E2
+	RenderSprites:
+		Image: E2
+	Buildable:
+		Prerequisites: ~miss, ~tent
+
+E3.ai:
+	Inherits: E1
+	RenderSprites:
+		Image: E1
+	Buildable:
+		Prerequisites: ~miss, ~tent
+
+DD.ai:
+	Inherits: DD
+	RenderSprites:
+		Image: DD
+	Buildable:
+		Prerequisites: ~miss, ~syrd
+	
+PT.ai:
+	Inherits: PT
+	RenderSprites:
+		Image: PT
+	Buildable:
+		Prerequisites: ~miss, ~syrd
+
+CA.ai:
+	Inherits: CA
+	RenderSprites:
+		Image: CA
+	Buildable:
+		Prerequisites: ~miss, ~syrd
+
+SS:
+	Buildable:
+		Prerequisites: ~miss, ~spen
+	-MustBeDestroyed:
+
+MSUB:
+	Buildable:
+		Prerequisites: ~miss, ~spen
+	-MustBeDestroyed:
+
+4TNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+3TNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+V2RL:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+	-MustBeDestroyed:
+
+TTNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+SHOK:
+	Buildable:
+		Prerequisites: ~miss, ~barr
+
+MIG.AI:
+	Inherits: MIG
+	RenderSprites:
+		Image: MIG
+	AutoTarget:
+		InitialStanceAI: AttackAnything
+	AmmoPool:
+		Ammo: 999
+	Buildable:
+		Prerequisites: ~miss, ~afld
+
+YAK.AI:
+	Inherits: YAK
+	RenderSprites:
+		Image: YAK
+	AutoTarget:
+		InitialStanceAI: AttackAnything
+	AmmoPool:
+		Ammo: 999
+	Buildable:
+		Prerequisites: ~miss, ~afld
+
+E7:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 120
+		Prerequisites: ~tent, atek, ~techlevel.high
+		BuildLimit: 1
+		Description: Elite commando infantry. Armed with\ndual pistols and C4.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Destroy Building with C4\nMaximum 1 can be trained.
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Tanya
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 71
+		Voice: Move
+	Guard:
+		Voice: Move
+	RevealsShroud:
+		Range: 6c0
+	Demolition:
+		DetonationDelay: 45
+		Voice: Demolish
+	Passenger:
+		PipType: Red
+		Voice: Move
+	Armament@PRIMARY:
+		Weapon: Colt45
+	Armament@SECONDARY:
+		Weapon: Colt45
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Colt45
+		MuzzleSequence: garrison-muzzle
+	AttackFrontal:
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		StandSequences: stand
+	AnnounceOnBuild:
+	AnnounceOnKill:
+	DetectCloaked:
+		CloakTypes: Cloak, Hijacker
+	Voiced:
+		VoiceSet: TanyaVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+
+E7.noautotarget:
+	Inherits: ^Soldier
+	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Buildable:
+		Queue: Infantry
+		BuildAtProductionType: Soldier
+		BuildPaletteOrder: 120
+		Prerequisites: ~disabled
+		BuildLimit: 1
+		Description: Elite commando infantry. Armed with\ndual pistols and C4.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Destroy Building with C4\nMaximum 1 can be trained.
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: Tanya
+	Health:
+		HP: 100
+	Mobile:
+		Speed: 71
+		Voice: Move
+	Guard:
+		Voice: Move
+	RevealsShroud:
+		Range: 6c0
+	Demolition:
+		DetonationDelay: 45
+		Voice: Demolish
+	Passenger:
+		PipType: Red
+		Voice: Move
+	Armament@PRIMARY:
+		Weapon: Colt45
+	Armament@SECONDARY:
+		Weapon: Colt45
+	Armament@GARRISONED:
+		Name: garrisoned
+		Weapon: Colt45
+		MuzzleSequence: garrison-muzzle
+	AttackFrontal:
+	WithInfantryBody:
+		DefaultAttackSequence: shoot
+		StandSequences: stand
+	AnnounceOnBuild:
+	AnnounceOnKill:
+	DetectCloaked:
+		CloakTypes: Cloak, Hijacker
+	Voiced:
+		VoiceSet: TanyaVoice
+	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
