@@ -1,11 +1,11 @@
 Allied Campaign:
-	./mods/ra/maps/allies-01
-	./mods/ra/maps/allies-02
-	./mods/ra/maps/allies-03a
-	./mods/ra/maps/allies-03b
-	./mods/ra/maps/allies-04
-	./mods/ra/maps/allies-05a
-	./mods/ra/maps/allies-06a
+	./mods/ra/maps/bv_allies01
+	./mods/ra/maps/bv_allies02
+	./mods/ra/maps/bv_allies03
+	./mods/ra/maps/bv_allies04
+	./mods/ra/maps/bv_allies05
+	./mods/ra/maps/bv_allies06
+	./mods/ra/maps/bv_allies07
 Soviet Campaign:
 	./mods/ra/maps/soviet-01
 	./mods/ra/maps/soviet-02a
