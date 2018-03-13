@@ -213,9 +213,8 @@
 
 ^Vehicle:
 	Inherits@1: ^ExistsInWorld
-	Inherits@2: ^GainsExperience
-	Inherits@3: ^IronCurtainable
-	Inherits@4: ^SpriteActor
+	Inherits@2: ^IronCurtainable
+	Inherits@3: ^SpriteActor
 	Inherits@bounty: ^GlobalBounty
 	Huntable:
 	DrawLineToTarget:
@@ -418,11 +417,11 @@
 	DetectCloaked:
 		CloakTypes: Hijacker
 
-^CyborgInfantry:        
+^CyborgInfantry:
 	Inherits: ^Soldier
 	Armor:
 		Type: Cybernetic
-        
+
 ^CivInfantry:
 	Inherits: ^Infantry
 	Selectable:
@@ -571,6 +570,8 @@
 		CanHover: True
 		CruisingCondition: cruising
 		WaitDistanceFromResupplyBase: 4c0
+		TakeOffOnResupply: true
+		VTOL: true
 	GpsDot:
 		String: Helicopter
 	Hovers@CRUISING:
@@ -963,6 +964,7 @@
 		GenericName: Destroyed Helicopter
 	Aircraft:
 		CanHover: True
+		VTOL: true
 	FallsToEarth:
 		Explosion: UnitExplodeHeli
 	BodyOrientation:

@@ -329,7 +329,7 @@ BRL3:
 	SelectionDecorations:
 		RenderSelectionBars: False
 	Health:
-		HP: 100
+		HP: 1000
 	Explodes:
 		Weapon: BarrelExplode
 	Tooltip:
