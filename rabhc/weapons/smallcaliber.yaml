@@ -8,7 +8,7 @@
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
-		Damage: 20
+		Damage: 2000
 		ValidTargets: Air
 		Versus:
 			None: 40
@@ -31,9 +31,9 @@ ZSU-23:
 	Projectile: Bullet
 		Speed: 3c340
 	Warhead@1Dam: SpreadDamage
-		Damage: 12
+		Damage: 1200
 		Versus:
-			None: 30
+			None: 25
 			Wood: 75
 			Light: 75
 			Heavy: 100
@@ -66,13 +66,13 @@ FLAK-23-AG:
 		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 30
+		Damage: 2500
 		Versus:
-			None: 100
-			Wood: 50
-			Light: 60
-			Heavy: 25
-			Concrete: 25
+			None: 120
+			Wood: 60
+			Light: 72
+			Heavy: 28
+			Concrete: 28
 			Cybernetic: 90
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@2Eff: CreateEffect
@@ -86,10 +86,11 @@ FLAK-23-AG:
 ^LightMG:
 	Inherits: ^HeavyMG
 	Warhead@1Dam: SpreadDamage
-		Damage: 15
+		Damage: 1000
 		Versus:
+			None: 150
 			Wood: 10
-			Light: 30
+			Light: 40
 			Heavy: 10
 			Concrete: 10
 			Cybernetic: 80
@@ -97,19 +98,23 @@ FLAK-23-AG:
 Vulcan:
 	Inherits: ^HeavyMG
 	Warhead@1Dam: SpreadDamage
-		Damage: 10
+		Damage: 1000
 		Versus:
 			None: 200
+			Wood: 50
+			Light: 50
+			Heavy: 20
+			Concrete: 20
 	Warhead@4Dam_2: SpreadDamage
 		Spread: 128
-		Damage: 10
+		Damage: 1000
 		Delay: 2
 		Versus:
 			None: 200
 			Wood: 50
 			Light: 50
-			Heavy: 25
-			Concrete: 25
+			Heavy: 20
+			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@4Eff_2: CreateEffect
 		Explosions: piffs
@@ -122,14 +127,14 @@ Vulcan:
 		Delay: 2
 	Warhead@5Dam_3: SpreadDamage
 		Spread: 128
-		Damage: 10
+		Damage: 1000
 		Delay: 4
 		Versus:
 			None: 200
 			Wood: 50
-			Light: 60
-			Heavy: 25
-			Concrete: 25
+			Light: 50
+			Heavy: 20
+			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@6Eff_3: CreateEffect
 		Explosions: piffs
@@ -142,14 +147,14 @@ Vulcan:
 		Delay: 4
 	Warhead@7Dam_4: SpreadDamage
 		Spread: 128
-		Damage: 10
+		Damage: 1000
 		Delay: 6
 		Versus:
 			None: 200
 			Wood: 50
-			Light: 60
-			Heavy: 25
-			Concrete: 25
+			Light: 50
+			Heavy: 20
+			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@8Eff_4: CreateEffect
 		Explosions: piffs
@@ -162,14 +167,14 @@ Vulcan:
 		Delay: 6
 	Warhead@9Dam_5: SpreadDamage
 		Spread: 128
-		Damage: 10
+		Damage: 1000
 		Delay: 8
 		Versus:
 			None: 200
 			Wood: 50
 			Light: 60
-			Heavy: 25
-			Concrete: 25
+			Heavy: 20
+			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@10Eff_5: CreateEffect
 		Explosions: piffs
@@ -182,14 +187,14 @@ Vulcan:
 		Delay: 8
 	Warhead@11Dam_6: SpreadDamage
 		Spread: 128
-		Damage: 10
+		Damage: 1000
 		Delay: 10
 		Versus:
 			None: 200
 			Wood: 50
 			Light: 60
-			Heavy: 25
-			Concrete: 25
+			Heavy: 20
+			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 	Warhead@12Eff_6: CreateEffect
 		Explosions: piffs
@@ -210,7 +215,7 @@ ChainGun:
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			None: 120
+			None: 125
 
 ChainGun.Yak:
 	Inherits: ^HeavyMG
@@ -220,7 +225,13 @@ ChainGun.Yak:
 	Projectile: Bullet
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
-		Damage: 40
+		Damage: 4000
+		Versus: 
+			None: 100 
+			Wood: 50 
+			Light: 60 
+			Heavy: 25 
+			Concrete: 25 
 
 Pistol:
 	Inherits: ^LightMG
@@ -228,7 +239,9 @@ Pistol:
 	Range: 3c0
 	Report: gun27.aud
 	Warhead@1Dam: SpreadDamage
-		Damage: 1
+		Damage: 100
+		Versus:
+			None: 100
 	Warhead@2Eff: CreateEffect
 		Explosions: piff
 	Warhead@3EffWater: CreateEffect
@@ -241,7 +254,7 @@ M1Carbine:
 	Report: gun11.aud
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			Wood: 25
+			Wood: 30
 
 M60mg:
 	Inherits: ^LightMG
@@ -255,12 +268,12 @@ M60mg:
 	Range: 2c512
 	Report: gun5.aud
 	ValidTargets: Ground, Infantry
-	InvalidTargets: Vehicle, Tank, Water, Structure, Wall, Husk
+	InvalidTargets:  Vehicle, Water, Structure, Wall, Husk
 	Projectile: Bullet
 		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
 		Spread: 42
-		Damage: 150
+		Damage: 15000
 		ValidTargets: Barrel, Infantry
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
 
@@ -282,7 +295,7 @@ Colt45:
 	ReloadDelay: 5
 	Range: 7c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 50
+		Damage: 5000
 	Warhead@2Eff: CreateEffect
 		Explosions: piff
 		ValidTargets: Ground, Ship, Air, Trees
@@ -296,7 +309,7 @@ Sniper:
 	ReloadDelay: 70
 	Range: 10c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 140
+		Damage: 14000
         
 
 
@@ -309,7 +322,7 @@ VolkAT:
 		Image: 120MM
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
-		Damage: 70
+		Damage: 7000
 		ValidTargets: Ground, Water
 		Versus: 
 			None: 0
@@ -335,7 +348,7 @@ VolkNapalm:
 		Image: 120MM
 	Warhead@1Dam: SpreadDamage
 		Spread: 8
-		Damage: 80
+		Damage: 8000
 		Versus: 
 			None: 90
 			Wood: 170
