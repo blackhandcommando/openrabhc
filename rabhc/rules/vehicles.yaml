@@ -1,5 +1,6 @@
 V2RL:
 	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -47,6 +48,7 @@ V2RL:
 
 1TNK:
 	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -59,7 +61,7 @@ V2RL:
 		Name: Light Tank
 		GenericName: Tank
 	Health:
-		HP: 2200
+		HP: 22000
 	Armor:
 		Type: Heavy
 	Mobile:
@@ -90,6 +92,7 @@ V2RL:
 
 2TNK:
 	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -136,6 +139,7 @@ V2RL:
 
 3TNK:
 	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -182,6 +186,7 @@ V2RL:
 
 4TNK:
 	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -244,6 +249,7 @@ V2RL:
 
 ARTY:
 	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -372,6 +378,7 @@ MCV:
 
 JEEP:
 	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -415,6 +422,7 @@ JEEP:
 
 APC:
 	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -593,6 +601,7 @@ MRJ:
 
 TTNK:
 	Inherits: ^TrackedVehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -632,6 +641,7 @@ TTNK:
 
 FTRK:
 	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetAllAssaultMove
 	Buildable:
 		Queue: Vehicle
@@ -707,13 +717,14 @@ DTRK:
 
 CTNK:
 	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle
 		BuildPaletteOrder: 200
 		Prerequisites: atek, ~vehicles.germany, ~techlevel.high
 		BuildDuration: 1166
-		DDescription: Armed with anti-ground missiles.\nTeleports to areas within range.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft\n  Special ability: Can teleport
+		Description: Armed with anti-ground missiles.\nTeleports to areas within range.\n  Strong vs Vehicles, Buildings\n  Weak vs Infantry, Aircraft\n  Special ability: Can teleport
 	Valued:
 		Cost: 1350
 	Tooltip:
@@ -781,6 +792,7 @@ QTNK:
 
 STNK:
 	Inherits: ^Vehicle
+	Inherits@GAINSEXPERIENCE: ^GainsExperience
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Vehicle

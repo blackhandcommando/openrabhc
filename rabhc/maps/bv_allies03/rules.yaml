@@ -41,7 +41,7 @@ ATEK:
 		Dimensions: 2,3
 		LocalCenterOffset: 0,-512,0
 	Health:
-		HP: 600
+		HP: 60000
 	Armor:
 		Type: Wood
 	RevealsShroud:

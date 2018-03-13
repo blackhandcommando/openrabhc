@@ -33,7 +33,7 @@ HIND:
 	RejectsOrders:
 	-Selectable:
 	Health:
-		HP: 50
+		HP: 5000
 	AmmoPool:
 		Ammo: 999
 
@@ -44,7 +44,7 @@ HELI:
 	RejectsOrders:
 	-Selectable:
 	Health:
-		HP: 60
+		HP: 6000
 	AmmoPool:
 		Ammo: 999
 

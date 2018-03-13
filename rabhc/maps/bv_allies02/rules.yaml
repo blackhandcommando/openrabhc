@@ -64,21 +64,21 @@ C1.ob:
 	RenderSprites:
 		Image: C1
 	Health:
-		HP: 300
+		HP: 30000
 
 C2.ob:
 	Inherits: C2
 	RenderSprites:
 		Image: C2
 	Health:
-		HP: 300
+		HP: 30000
 
 C3.ob:
 	Inherits: C3
 	RenderSprites:
 		Image: C3
 	Health:
-		HP: 300
+		HP: 30000
 
 APWR:
     Buildable:

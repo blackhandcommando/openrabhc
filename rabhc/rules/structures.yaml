@@ -11,7 +11,7 @@ MSLO:
 		BuildPaletteOrder: 140
 		Prerequisites: techcenter, ~techlevel.unrestricted
 		BuildLimit: 1
-Description: Provides an atomic bomb.\nRequires power to operate.\nMaximum 1 can be built.\n  Special Ability: Atom Bomb
+		Description: Provides an atomic bomb.\nRequires power to operate.\nMaximum 1 can be built.\n  Special Ability: Atom Bomb
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -43,7 +43,8 @@ Description: Provides an atomic bomb.\nRequires power to operate.\nMaximum 1 can
 		InsufficientPowerSpeechNotification: InsufficientPower
 		IncomingSpeechNotification: AbombLaunchDetected
 		MissileWeapon: atomic
-		SpawnOffset: 0,427,0
+		MissileDelay: 5
+		SpawnOffset: 1c0,427,0
 		DisplayTimerStances: Ally, Neutral, Enemy
 		DisplayBeacon: True
 		DisplayRadarPing: True
@@ -58,6 +59,7 @@ Description: Provides an atomic bomb.\nRequires power to operate.\nMaximum 1 can
 		Amount: -150
 	MustBeDestroyed:
 		RequiredForShortGame: false
+	WithNukeLaunchAnimation:
 
 GAP:
 	Inherits: ^ScienceBuilding
@@ -158,33 +160,33 @@ SPEN:
 		Facing: 224
 		ExitCell: 2,0
 		ProductionTypes: Submarine
-	Exit@b1: 
-		SpawnOffset: -1024,1024,0 
-		Facing: 160 
-		ExitCell: 0,2 
-		ProductionTypes: Ship 
-	Exit@b2: 
-		SpawnOffset: 1024,1024,0 
-		Facing: 224 
-		ExitCell: 2,2 
-		ProductionTypes: Ship 
-	Exit@b3: 
-		SpawnOffset: -1024,-1024,0 
-		Facing: 96 
-		ExitCell: 0,0 
-		ProductionTypes: Ship 
-	Exit@b4: 
-		SpawnOffset: 1024,-1024,0 
-		Facing: 32 
-		ExitCell: 2,0 
-		ProductionTypes: Ship 
+	Exit@b1:
+		SpawnOffset: -1024,1024,0
+		Facing: 160
+		ExitCell: 0,2
+		ProductionTypes: Ship
+	Exit@b2:
+		SpawnOffset: 1024,1024,0
+		Facing: 224
+		ExitCell: 2,2
+		ProductionTypes: Ship
+	Exit@b3:
+		SpawnOffset: -1024,-1024,0
+		Facing: 96
+		ExitCell: 0,0
+		ProductionTypes: Ship
+	Exit@b4:
+		SpawnOffset: 1024,-1024,0
+		Facing: 32
+		ExitCell: 2,0
+		ProductionTypes: Ship
 	Production:
 		Produces: Ship, Submarine
 	PrimaryBuilding:
 		PrimaryCondition: primary
 	-EmitInfantryOnSell:
 	RepairsUnits:
-		HpPerStep: 1000 
+		HpPerStep: 1000
 		FinishRepairingNotification: UnitRepaired
 		PlayerExperience: 15
 	RallyPoint:
@@ -293,7 +295,7 @@ SYRD:
 		PrimaryCondition: primary
 	-EmitInfantryOnSell:
 	RepairsUnits:
-	HpPerStep: 1000
+		HpPerStep: 1000
 		FinishRepairingNotification: UnitRepaired
 		PlayerExperience: 15
 	RallyPoint:
@@ -561,7 +563,7 @@ AGUN:
 		TurnSpeed: 15
 		InitialFacing: 224
 	-WithSpriteBody:
-	WithTurretedSpriteBody:
+	WithEmbeddedTurretSpriteBody:
 	Armament:
 		Weapon: ZSU-23
 		LocalOffset: 520,100,450, 520,-150,450
@@ -760,7 +762,7 @@ GUN:
 		TurnSpeed: 12
 		InitialFacing: 56
 	-WithSpriteBody:
-	WithTurretedSpriteBody:
+	WithEmbeddedTurretSpriteBody:
 	Armament:
 		Weapon: TurretGun
 		LocalOffset: 512,0,112
@@ -853,7 +855,7 @@ SAM:
 		TurnSpeed: 30
 		InitialFacing: 0
 	-WithSpriteBody:
-	WithTurretedSpriteBody:
+	WithEmbeddedTurretSpriteBody:
 	Armament:
 		Weapon: Nike
 		LocalOffset: 0,0,320
@@ -1082,10 +1084,10 @@ FACT:
 		IntoActor: mcv
 		Offset: 1,1
 		Facing: 96
-		RequiresCondition: factundeploy 
-	GrantConditionOnPrerequisite@GLOBALFACTUNDEPLOY: 
-		Condition: factundeploy 
-		Prerequisites: global-factundeploy 
+		RequiresCondition: factundeploy
+	GrantConditionOnPrerequisite@GLOBALFACTUNDEPLOY:
+		Condition: factundeploy
+		Prerequisites: global-factundeploy
 	ProductionBar@Building:
 		ProductionType: Building
 	ProductionBar@Defense:
@@ -1305,14 +1307,14 @@ AFLD:
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 130
-		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~!structures.ukraine 
-		Description: Produces and reloads aircraft.\n  Special Ability: Spy Plane\n  Special Ability: Paratroopers 
+		Prerequisites: dome, ~structures.soviet, ~techlevel.medium, ~!structures.ukraine
+		Description: Produces and reloads aircraft.\n  Special Ability: Spy Plane\n  Special Ability: Paratroopers
 	Valued:
 		Cost: 500
 	Tooltip:
 		Name: Airfield
-	Selectable: 
-		Class: afld 
+	Selectable:
+		Class: afld
 	Building:
 		Footprint: xxx xxx
 		Dimensions: 3,2
@@ -1399,7 +1401,7 @@ AFLD:
 		Icon: parabombs
 		ChargeInterval: 7500
 		Description: Parabombs
-		LLongDesc: A squad of Badgers drop parachuted\nbombs on your target.
+		LongDesc: A squad of Badgers drop parachuted\nbombs on your target.
 		SelectTargetSpeechNotification: SelectTarget
 		CameraActor: camera
 		CameraRemoveDelay: 150
@@ -1434,13 +1436,13 @@ AFLD:
 		RequiresCondition: primary
 	WithRearmAnimation:
 
-AFLD.Ukraine: 
-	Inherits: AFLD 
-	Buildable: 
-		Prerequisites: dome, ~techlevel.medium, ~structures.ukraine 
-		Description: Produces and reloads aircraft.\n  Special Ability: Spy Plane\n  Special Ability: Paratroopers\n  Special Ability: Parabombs 
-	RenderSprites: 
-		Image: afld 
+AFLD.Ukraine:
+	Inherits: AFLD
+	Buildable:
+		Prerequisites: dome, ~techlevel.medium, ~structures.ukraine
+		Description: Produces and reloads aircraft.\n  Special Ability: Spy Plane\n  Special Ability: Paratroopers\n  Special Ability: Parabombs
+	RenderSprites:
+		Image: afld
 
 POWR:
 	Inherits: ^Building
@@ -1455,7 +1457,7 @@ POWR:
 		Prerequisites: ~techlevel.infonly
 		Description: Provides power for other structures.
 	Valued:
-		Cost: 30000
+		Cost: 300
 	Tooltip:
 		Name: Power Plant
 	ProvidesPrerequisite:
@@ -1465,7 +1467,7 @@ POWR:
 		Dimensions: 2,3
 		LocalCenterOffset: 0,-512,0
 	Health:
-		HP: 400
+		HP: 40000
 	Armor:
 		Type: Wood
 	RevealsShroud:

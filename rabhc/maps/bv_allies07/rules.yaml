@@ -106,7 +106,7 @@ FCOM:
 		Dimensions: 2,3
 		LocalCenterOffset: 0,-512,0
 	Health:
-		HP: 2000
+		HP: 200000
 	Armor:
 		Type: Wood
 	Tooltip:
@@ -241,7 +241,7 @@ MSLO:
 		Footprint: xx
 		Dimensions: 2,1
 	Health:
-		HP: 1000
+		HP: 100000
 	Armor:
 		Type: Wood
 	RevealsShroud:
@@ -470,7 +470,7 @@ E7:
 	Tooltip:
 		Name: Tanya
 	Health:
-		HP: 100
+		HP: 10000
 	Mobile:
 		Speed: 71
 		Voice: Move
@@ -520,7 +520,7 @@ E7.noautotarget:
 	Tooltip:
 		Name: Tanya
 	Health:
-		HP: 100
+		HP: 10000
 	Mobile:
 		Speed: 71
 		Voice: Move
