@@ -1767,8 +1767,7 @@ TENT:
 	ProvidesPrerequisite@buildingname:
 	InfiltrateForSupportPower:
 		Proxy: barracks.upgraded
-	
-Types: SpyInfiltrate
+		Types: SpyInfiltrate
 	Targetable:
 		TargetTypes: Ground, C4, DetonateAttack, Structure, SpyInfiltrate
 	WithDecoration@primary:
