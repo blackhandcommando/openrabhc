@@ -716,7 +716,7 @@ Actors:
 		TurretFacing: 116
 	Actor191: ftrk
 		Owner: USSR
-		Location: 38,20
+		Location: 38,18
 		Facing: 141
 		TurretFacing: 141
 	Actor192: sam
@@ -966,5 +966,5 @@ Actors:
 		Location: 22,8
 		Facing: 139
 		TurretFacing: 139
-		
+
 Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml

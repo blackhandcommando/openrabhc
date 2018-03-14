@@ -78,14 +78,14 @@ GreeceBaseBuildings = { BaseNuke1, BaseProc, BaseNuke2, VehicleProductionBuildin
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 GreeceStartAI = function()
-	greece.Cash = greece.Cash + 6000
+	Greece.Cash = Greece.Cash + 6000
 	GreeceCash()
 	GreeceStartReinforcements()
 end
 
 GreeceStartReinforcements = function()
 
-	Reinforcements.Reinforce(greece, GreeceMCV, { Actor1104.Location, Actor1105.Location }, 5, function(actor)
+	Reinforcements.Reinforce(Greece, GreeceMCV, { Actor1104.Location, Actor1105.Location }, 5, function(actor)
 		Trigger.OnIdle(actor, function()
 			actor.Move(Actor1106.Location)
 			Trigger.AfterDelay(DateTime.Seconds(10), function()
@@ -93,7 +93,7 @@ GreeceStartReinforcements = function()
 					GreeceMCVExists = false
 					if not actor.IsDead then
 						actor.Destroy()
-						GreeceConyard = Actor.Create("fact", true, { Owner = greece, Location = Actor1142.Location })
+						GreeceConyard = Actor.Create("fact", true, { Owner = Greece, Location = Actor1142.Location })
 						GreeceRepairBase()
 						GreeceBuildBase(GreeceConyard)
 					end
@@ -103,31 +103,31 @@ GreeceStartReinforcements = function()
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(1), function()
-		Reinforcements.Reinforce(greece, {"2tnk"}, { Actor1104.Location, Actor1132.Location }, 5, function() end)
+		Reinforcements.Reinforce(Greece, {"2tnk"}, { Actor1104.Location, Actor1132.Location }, 5, function() end)
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(2), function()
-		Reinforcements.Reinforce(greece, {"1tnk"}, { Actor1104.Location, Actor1134.Location }, 5, function() end)
+		Reinforcements.Reinforce(Greece, {"1tnk"}, { Actor1104.Location, Actor1134.Location }, 5, function() end)
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(3), function()
-		Reinforcements.Reinforce(greece, {"e3"}, { Actor1104.Location, Actor1130.Location }, 5, function() end)
+		Reinforcements.Reinforce(Greece, {"e3"}, { Actor1104.Location, Actor1130.Location }, 5, function() end)
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(4), function()
-		Reinforcements.Reinforce(greece, {"e1"}, { Actor1104.Location, Actor1129.Location }, 5, function() end)
+		Reinforcements.Reinforce(Greece, {"e1"}, { Actor1104.Location, Actor1129.Location }, 5, function() end)
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(5), function()
-		Reinforcements.Reinforce(greece, {"arty"}, { Actor1104.Location, Actor1133.Location }, 5, function() end)
+		Reinforcements.Reinforce(Greece, {"arty"}, { Actor1104.Location, Actor1133.Location }, 5, function() end)
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(6), function()
-		Reinforcements.Reinforce(greece, {"2tnk"}, { Actor1104.Location, Actor1130.Location }, 5, function() end)
+		Reinforcements.Reinforce(Greece, {"2tnk"}, { Actor1104.Location, Actor1130.Location }, 5, function() end)
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(7), function()
-		Reinforcements.Reinforce(greece, { "2tnk", "2tnk", "2tnk", "2tnk", "arty", "arty", "arty", "e3", "e3", "e3", "e3", "e1", "e1", "e1" }, { Actor1104.Location, Actor1104.Location }, 5, function(units) 
+		Reinforcements.Reinforce(Greece, { "2tnk", "2tnk", "2tnk", "2tnk", "arty", "arty", "arty", "e3", "e3", "e3", "e3", "e1", "e1", "e1" }, { Actor1104.Location, Actor1104.Location }, 5, function(units) 
 			Trigger.OnIdle(units, function()
 				units.Hunt()
 			end)
@@ -154,7 +154,7 @@ GreeceBuildBuilding = function(building, cyard)
 	Trigger.AfterDelay(5/4 * Actor.BuildTime(building.type), function()
 		GreececyardIsBuilding = false
 
-		if cyard.IsDead or cyard.Owner ~= greece then
+		if cyard.IsDead or cyard.Owner ~= Greece then
 			--Media.Debug("Cyard doesn't exist...")
 			if not GreeceISentEverything then
 				GreeceISentEverything = true
@@ -165,8 +165,8 @@ GreeceBuildBuilding = function(building, cyard)
 
 		--Media.Debug("Building Complete")
 
-		local actor = Actor.Create(building.type, true, { Owner = greece, Location = building.pos })
-		greece.Cash = greece.Cash - building.cost
+		local actor = Actor.Create(building.type, true, { Owner = Greece, Location = building.pos })
+		Greece.Cash = Greece.Cash - building.cost
 
 		building.exists = true
 		
@@ -181,7 +181,7 @@ GreeceBuildBuilding = function(building, cyard)
 		Trigger.OnKilled(actor, function() building.exists = false end)
 
 		Trigger.OnDamaged(actor, function(building)
-			if building.Owner == greece and building.Health < building.MaxHealth * 9/10 then
+			if building.Owner == Greece and building.Health < building.MaxHealth * 9/10 then
 				building.StartBuildingRepairs()
 			end
 		end)
@@ -203,7 +203,7 @@ GreeceInfantryProduction = function(building)
 		Trigger.AfterDelay(DateTime.Seconds(1), function()
 			if GreeceBaseBuildings[4] then
 				building.IsPrimaryBuilding = true
-				greece.Build(GreeceInfantryTeam, function(unit)
+				Greece.Build(GreeceInfantryTeam, function(unit)
 					GreeceInfantryAttack[#GreeceInfantryAttack + 1] = unit[1]
 
 					if #GreeceInfantryAttack >= Utils.RandomInteger(GreeceInfantryMinAttackForce, GreeceInfantryMaxAttackForce) then
@@ -229,7 +229,7 @@ GreeceVehicleProduction = function(building)
 	elseif GreeceHarvesterDead and GreeceBaseBuildings[3] then
 		Trigger.AfterDelay(DateTime.Seconds(1), function()
 			if GreeceBaseBuildings[3] then
-				greece.Build({ "harv" }, function(harv)
+				Greece.Build({ "harv" }, function(harv)
 					harv[1].FindResources()
 					Trigger.OnKilled(harv[1], function() GreeceHarvesterDead = true end)
 
@@ -245,7 +245,7 @@ GreeceVehicleProduction = function(building)
 		Trigger.AfterDelay(DateTime.Seconds(1), function()
 			if GreeceBaseBuildings[3] then
 				building.IsPrimaryBuilding = true
-				greece.Build(GreeceVehicleTeam, function(unit)
+				Greece.Build(GreeceVehicleTeam, function(unit)
 					GreeceVehicleAttack[#GreeceVehicleAttack + 1] = unit[1]
 
 					if #GreeceVehicleAttack >= Utils.RandomInteger(GreeceVehicleMinAttackForce, GreeceVehicleMaxAttackForce) then
@@ -271,7 +271,7 @@ GreeceNavalProduction = function()
 	elseif GreeceBaseBuildings[14] and GreeceNavalPatrol1 and not SecondBaseDestroyed then
 		Trigger.AfterDelay(DateTime.Seconds(1), function()
 			if GreeceBaseBuildings[14] then
-				greece.Build(team, function(unit)
+				Greece.Build(team, function(unit)
 					GreeceNavalAttack[#GreeceNavalAttack + 1] = unit[1]
 
 					if #GreeceNavalAttack >= Utils.RandomInteger(GreeceNavalMinAttackForce, GreeceNavalMaxAttackForce) then
@@ -288,7 +288,7 @@ GreeceNavalProduction = function()
 		end)
 	elseif GreeceBaseBuildings[14] and not GreeceNavalPatrol1 then
 		local team = { "dd", "dd" }
-		greece.Build(team, GreeceSendNavalPatrol1)
+		Greece.Build(team, GreeceSendNavalPatrol1)
 		Trigger.AfterDelay(DateTime.Minutes(1), GreeceNavalProduction)
 	end
 
@@ -313,9 +313,9 @@ end
 
 GreeceRepairBase = function()
 	Utils.Do(Map.NamedActors, function(actor)
-		if actor.Owner == greece and actor.HasProperty("StartBuildingRepairs") then
+		if actor.Owner == Greece and actor.HasProperty("StartBuildingRepairs") then
 			Trigger.OnDamaged(actor, function(building)
-				if building.Owner == greece and building.Health < 0.9 * building.MaxHealth then
+				if building.Owner == Greece and building.Health < 0.9 * building.MaxHealth then
 					building.StartBuildingRepairs()
 				end
 			end)
@@ -325,8 +325,8 @@ end
 
 GreeceCash = function()
 	Trigger.AfterDelay(DateTime.Seconds(30), function()
-		if greece.Cash < 250 then
-			greece.Cash = greece.Cash + 500
+		if Greece.Cash < 250 then
+			Greece.Cash = Greece.Cash + 500
 		end
 		GreeceCash()
 	end)
@@ -362,7 +362,7 @@ end
 
 
 GreeceIdlingUnitsRedAlert = function()
-	local lazyUnits = greece.GetGroundAttackers()
+	local lazyUnits = Greece.GetGroundAttackers()
 
 	Utils.Do(lazyUnits, function(unit)
 		GreeceIdleHuntRedAlert(unit)

@@ -20,7 +20,7 @@ end
 
 AlliedMCV = { "mcv" }
 AlliedReinforcements = { "2tnk", "2tnk", "2tnk", "arty", "jeep" }
-InsertionHelicopter = "tran.in"
+InsertionHelicopter = "tran.insertion"
 MigReinforcementsAndOneYak = { "mig.ai", "mig.ai", "mig.ai", "yak.ai" }
 USSRMigs = { Actor875, Actor876, Actor877 }
 

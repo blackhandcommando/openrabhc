@@ -85,7 +85,7 @@ WorldLoaded = function()
 	USSR2BuildingsBuilt = 0
 
 	player = Player.GetPlayer("England")
-	greece = Player.GetPlayer("Greece")
+	Greece = Player.GetPlayer("Greece")
 	ussr = Player.GetPlayer("USSR")
 	ussr_2 = Player.GetPlayer("USSR_2")
 	nuker = Player.GetPlayer("Nuker")
@@ -173,10 +173,6 @@ RemoveActors = function()
 end
 
 Triggers = function()
-
-	Trigger.AfterDelay(DateTime.Seconds(404), function()
-		Media.DisplayMessage("WARNING: Soviet bombers detected.")
-	end)
 
 	Trigger.AfterDelay(DifficultyDelay, function()
 		Trigger.AfterDelay(DateTime.Seconds(10), function()

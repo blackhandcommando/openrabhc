@@ -33,8 +33,8 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 
 end
 
-GreeceHelo1 = { "hind" }
-GreeceHelo2 = { "heli" }
+GreeceHelo1 = { "hind.ai" }
+GreeceHelo2 = { "heli.ai" }
 
 CurtainActivated = false
 
@@ -98,7 +98,7 @@ Tick = function()
 	if not IronCurtain.IsDead then
 		if IronCurtain.Health < IronCurtain.MaxHealth * 7.5/10 and not CurtainActivated then
 			CurtainActivated = true
-			IronCurtain.GrantCondition("invulnerability", DateTime.Seconds(30))
+			IronCurtain.GrantCondition("invulnerability", DateTime.Seconds(20))
 			Media.PlaySpeechNotification(player, "IronCurtainCharging")
 			SendParatroopers()
 			IdlingUnitsRedAlert()
@@ -336,7 +336,7 @@ end
 
 GreeceSupportHinds1 = function()--Under player's control now, but not selectable
 	Trigger.AfterDelay(DateTime.Seconds(9), function()
-		Reinforcements.Reinforce(player, GreeceHelo1, { Actor183.Location, StartPosition.Location }, 15, function(actor)
+		Reinforcements.Reinforce(greece, GreeceHelo1, { Actor183.Location, StartPosition.Location }, 15, function(actor)
 			Trigger.OnIdle(actor, function()
 				actor.Hunt()
 			end)
@@ -346,7 +346,7 @@ end
 
 GreeceSupportHinds2 = function()
 	Trigger.AfterDelay(DateTime.Seconds(9), function()
-		Reinforcements.Reinforce(player, GreeceHelo1, { Actor182.Location, StartPosition.Location }, 15, function(actor)
+		Reinforcements.Reinforce(greece, GreeceHelo1, { Actor182.Location, StartPosition.Location }, 15, function(actor)
 			Trigger.OnIdle(actor, function()
 				actor.Hunt()
 			end)
@@ -356,7 +356,7 @@ end
 
 GreeceSupportHinds3 = function()
 	Trigger.AfterDelay(DateTime.Seconds(6), function()
-		Reinforcements.Reinforce(player, GreeceHelo2, { Actor184.Location, Actor198.Location }, 15, function(actor)
+		Reinforcements.Reinforce(greece, GreeceHelo2, { Actor184.Location, Actor198.Location }, 15, function(actor)
 			Trigger.OnIdle(actor, function()
 				actor.Hunt()
 			end)

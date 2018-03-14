@@ -70,13 +70,13 @@ Player:
 				CheckRadius: 5c0
 		SupportPowerDecision@nukepower:
 			OrderName: NukePowerInfoOrder
-			MinimumAttractiveness: 1000
+			MinimumAttractiveness: 2000
 			Consideration@1:
 				Against: Enemy
 				Types: Structure
-				Attractiveness: 10
+				Attractiveness: 1
 				TargetMetric: Value
-				CheckRadius: 5c0
+				CheckRadius: 10c0
 	-HackyAI@RushAI:
 	-HackyAI@NormalAI:
 	-HackyAI@TurtleAI:
@@ -106,132 +106,52 @@ STEK.ST:
 		TargetTypes: Ground, Structure, C4, DetonateAttack, SpyInfiltrate
 
 ATEK:
+	Inherits: ^ScienceBuilding
+	Inherits@IDISABLE: ^DisableOnLowPower
+	Inherits@shape: ^2x2Shape
+	Buildable:
+		Queue: Building
+		BuildPaletteOrder: 140
+		Prerequisites: weap, dome, ~structures.allies, ~techlevel.high
+		Description: Provides Allied advanced technologies.\n  Special Ability: GPS Satellite
+	Valued:
+		Cost: 1500
+	Tooltip:
+		Name: Allied Tech Center
+	ProvidesPrerequisite:
+		Prerequisite: techcenter
+	Building:
+		Footprint: xx xx ==
+		Dimensions: 2,3
+		LocalCenterOffset: 0,-512,0
+	Health:
+		HP: 60000
+	Armor:
+		Type: Wood
+	RevealsShroud:
+		Range: 10c0
+		RevealGeneratedShroud: False
+	RevealsShroud@GAPGEN:
+		Range: 6c0
+	WithBuildingBib:
 	GpsPower:
 		PauseOnCondition: disabled
 		Icon: gps
 		OneShot: yes
-		ChargeTime: 600
+		ChargeInterval: 18000
 		Description: GPS Satellite
 		LongDesc: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
-		RevealDelay: 15
+		RevealDelay: 375
 		LaunchSpeechNotification: SatelliteLaunched
 		DisplayTimerStances: Ally, Neutral, Enemy
-
-PDOX:
-	ChronoshiftPower@chronoshift:
-		OrderName: Chronoshift
-		PauseOnCondition: disabled
-		Prerequisites: !pdox.germany
-		Icon: chrono
-		ChargeTime: 180
-		Description: Chronoshift
-		LongDesc: Teleports a group of units across\nthe map for 20 seconds.
-		SelectTargetSpeechNotification: SelectTarget
-		InsufficientPowerSpeechNotification: InsufficientPower
-		BeginChargeSpeechNotification: ChronosphereCharging
-		EndChargeSpeechNotification: ChronosphereReady
-		Duration: 20
-		KillCargo: yes
-		DisplayRadarPing: True
-
-CAMERA:
-	EditorOnlyTooltip:
-		Name: (reveals area to owner)
-	AlwaysVisible:
-	Immobile:
-		OccupiesSpace: false
-	RevealsShroud:
-		Range: 6c0
-		Type: CenterPosition
-	BodyOrientation:
-		QuantizedFacings: 1
-	WithSpriteBody:
-	RenderSpritesEditorOnly:
-		Image: camera
-	EditorTilesetFilter:
-		Categories: System
-
-TRAN.IN:
-	Inherits: TRAN
-	RenderSprites:
-		Image: TRAN
-	Buildable:
-		Prerequisites: ~miss
-	RejectsOrders:
-	-Selectable:
-
-powerproxy.paras1:
-	Inherits: powerproxy.paratroopers
-	ParatroopersPower:
-		DropItems: E1,E1,E1,E3,E3
-
-powerproxy.paras2:
-	Inherits: powerproxy.paratroopers
-	ParatroopersPower:
-		DropItems: E1,E1,E4,E4,SHOK
-
-powerproxy.paras3:
-	Inherits: powerproxy.paratroopers
-	ParatroopersPower:
-		DropItems: E1,E4,SHOK,SHOK,SHOK
-
-SAM:
-	-MustBeDestroyed:
-
-SS:
-	-MustBeDestroyed:
-
-MSUB:
-	Buildable:
-		Prerequisites: ~miss, ~spen
-	-MustBeDestroyed:
-
-4TNK:
-	Buildable:
-		Prerequisites: ~miss, ~weap
-
-3TNK:
-	Buildable:
-		Prerequisites: ~miss, ~weap
-
-V2RL:
-	Buildable:
-		Prerequisites: ~miss, ~weap
-	-MustBeDestroyed:
-
-TTNK:
-	Buildable:
-		Prerequisites: ~miss, ~weap
-
-SHOK:
-	Buildable:
-		Prerequisites: ~miss, ~barr
-
-MIG.AI:
-	Inherits: MIG
-	RenderSprites:
-		Image: MIG
-	AutoTarget:
-		InitialStanceAI: AttackAnything
-	AmmoPool:
-		Ammo: 999
-	Buildable:
-		Prerequisites: ~miss, ~afld
-
-YAK.AI:
-	Inherits: YAK
-	RenderSprites:
-		Image: YAK
-	AutoTarget:
-		InitialStanceAI: AttackAnything
-	AmmoPool:
-		Ammo: 999
-	Buildable:
-		Prerequisites: ~miss, ~afld
+	SupportPowerChargeBar:
+	Power:
+		Amount: -200
+	ProvidesPrerequisite@buildingname:
 
 MSLO:
 	Inherits: ^ScienceBuilding
-	Inherits@IDISABLE: ^DisabledOverlay
+	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x1Shape
 	Valued:
 		Cost: 2500
@@ -240,9 +160,9 @@ MSLO:
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 140
-		Prerequisites: techcenter, ~techlevel.unrestricted, ~miss
+		Prerequisites: techcenter, ~techlevel.unrestricted
 		BuildLimit: 1
-		Description: Provides an atomic bomb.\nRequires power to operate.\n  Special Ability: Atom Bomb\nMaximum 1 can be built.
+		Description: Provides an atomic bomb.\nRequires power to operate.\nMaximum 1 can be built.\n  Special Ability: Atom Bomb
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
@@ -265,7 +185,7 @@ MSLO:
 		PauseOnCondition: disabled
 		Cursor: nuke
 		Icon: abomb
-		ChargeTime: 780
+		ChargeInterval: 20000
 		Description: Atom Bomb
 		LongDesc: Launches a devastating atomic bomb\nat a target location.
 		BeginChargeSpeechNotification: AbombPrepping
@@ -274,7 +194,8 @@ MSLO:
 		InsufficientPowerSpeechNotification: InsufficientPower
 		IncomingSpeechNotification: AbombLaunchDetected
 		MissileWeapon: atomic
-		SpawnOffset: 0,427,0
+		MissileDelay: 5
+		SpawnOffset: 1c0,427,0
 		DisplayTimerStances: Ally, Neutral, Enemy
 		DisplayBeacon: True
 		DisplayRadarPing: True
@@ -284,19 +205,12 @@ MSLO:
 		ArrowSequence: arrow
 		ClockSequence: clock
 		CircleSequence: circles
-	CanPowerDown:
-		PowerupSound: EnablePower
-		PowerdownSound: DisablePower
-	RequiresPower:
 	SupportPowerChargeBar:
 	Power:
-		Amount: -200
+		Amount: -150
 	MustBeDestroyed:
 		RequiredForShortGame: false
-
-STNK:
-    Buildable:
-        Prerequisites: ~disabled
+	WithNukeLaunchAnimation:
 
 E7:
 	Inherits: ^Soldier
@@ -397,3 +311,106 @@ E7.noautotarget:
 		VoiceSet: TanyaVoice
 	ProducibleWithLevel:
 		Prerequisites: barracks.upgraded
+
+CAMERA:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 6c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	EditorTilesetFilter:
+		Categories: System
+
+TRAN.Insertion:
+	Inherits: TRAN
+	WithFacingSpriteBody:
+	RejectsOrders:
+	-Selectable:
+	Buildable:
+		Prerequisites: ~miss
+	Cargo:
+		MaxWeight: 0
+	RenderSprites:
+		Image: tran
+	Interactable:
+
+powerproxy.paras1:
+	Inherits: powerproxy.paratroopers
+	ParatroopersPower:
+		DropItems: E1,E1,E1,E3,E3
+
+powerproxy.paras2:
+	Inherits: powerproxy.paratroopers
+	ParatroopersPower:
+		DropItems: E1,E1,E4,E4,SHOK
+
+powerproxy.paras3:
+	Inherits: powerproxy.paratroopers
+	ParatroopersPower:
+		DropItems: E1,E4,SHOK,SHOK,SHOK
+
+SAM:
+	-MustBeDestroyed:
+
+SS:
+	-MustBeDestroyed:
+
+MSUB:
+	Buildable:
+		Prerequisites: ~miss, ~spen
+	-MustBeDestroyed:
+
+4TNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+3TNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+V2RL:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+	-MustBeDestroyed:
+
+TTNK:
+	Buildable:
+		Prerequisites: ~miss, ~weap
+
+SHOK:
+	Buildable:
+		Prerequisites: ~miss, ~barr
+
+MIG.AI:
+	Inherits: MIG
+	RenderSprites:
+		Image: MIG
+	AutoTarget:
+		InitialStanceAI: AttackAnything
+	AmmoPool:
+		Ammo: 999
+	Buildable:
+		Prerequisites: ~miss, ~afld
+
+YAK.AI:
+	Inherits: YAK
+	RenderSprites:
+		Image: YAK
+	AutoTarget:
+		InitialStanceAI: AttackAnything
+	AmmoPool:
+		Ammo: 999
+	Buildable:
+		Prerequisites: ~miss, ~afld
+
+STNK:
+    Buildable:
+        Prerequisites: ~disabled

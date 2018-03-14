@@ -23,7 +23,7 @@ World:
 
 ATEK:
 	Inherits: ^ScienceBuilding
-	Inherits@IDISABLE: ^DisabledOverlay
+	Inherits@IDISABLE: ^DisableOnLowPower
 	Inherits@shape: ^2x2Shape
 	Buildable:
 		Queue: Building
@@ -54,27 +54,16 @@ ATEK:
 		PauseOnCondition: disabled
 		Icon: gps
 		OneShot: yes
-		ChargeTime: 600
+		ChargeInterval: 18000
 		Description: GPS Satellite
 		LongDesc: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
-		RevealDelay: 15
+		RevealDelay: 375
 		LaunchSpeechNotification: SatelliteLaunched
 		DisplayTimerStances: Ally, Neutral, Enemy
 	SupportPowerChargeBar:
-	RequiresPower:
 	Power:
 		Amount: -200
 	ProvidesPrerequisite@buildingname:
-
-SAM:
-	Power:
-		Amount: 0
-	-MustBeDestroyed:
-
-TSLA:
-	Power:
-		Amount: 0
-	-MustBeDestroyed:
 
 APWR:
     Buildable:
@@ -143,6 +132,16 @@ E7:
 MECH:
     Buildable:
         Prerequisites: ~disabled
+
+SAM:
+	Power:
+		Amount: 0
+	-MustBeDestroyed:
+
+TSLA:
+	Power:
+		Amount: 0
+	-MustBeDestroyed:
 
 YAK:
 	AutoTarget:

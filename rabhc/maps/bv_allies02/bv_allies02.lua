@@ -75,7 +75,7 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 
 end
 
-TimerTicks = DateTime.Minutes(20)
+TimerTicks = DateTime.Minutes(15)
 TenMinutes = DateTime.Minutes(10)
 FiveMinutes = DateTime.Minutes(5)
 FourMinutes = DateTime.Minutes(4)
@@ -357,22 +357,22 @@ Triggers = function ()
 			Trigger.AfterDelay(DateTime.Seconds(1), function()
 				if not TimerAborted then Media.PlaySpeechNotification(player, "TimerStarted") end
 			end)
-			Trigger.AfterDelay(DateTime.Minutes(10), function()
+			Trigger.AfterDelay(DateTime.Minutes(5), function()
 				if not TimerAborted then Media.PlaySpeechNotification(player, "TenMinutesRemaining") end
 			end)
-			Trigger.AfterDelay(DateTime.Minutes(15), function()
+			Trigger.AfterDelay(DateTime.Minutes(10), function()
 				if not TimerAborted then Media.PlaySpeechNotification(player, "WarningFiveMinutesRemaining") end
 			end)
-			Trigger.AfterDelay(DateTime.Minutes(16), function()
+			Trigger.AfterDelay(DateTime.Minutes(11), function()
 				if not TimerAborted then Media.PlaySpeechNotification(player, "WarningFourMinutesRemaining") end
 			end)
-			Trigger.AfterDelay(DateTime.Minutes(17), function()
+			Trigger.AfterDelay(DateTime.Minutes(12), function()
 				if not TimerAborted then Media.PlaySpeechNotification(player, "WarningThreeMinutesRemaining") end
 			end)
-			Trigger.AfterDelay(DateTime.Minutes(18), function()
+			Trigger.AfterDelay(DateTime.Minutes(13), function()
 				if not TimerAborted then Media.PlaySpeechNotification(player, "WarningTwoMinutesRemaining") end
 			end)
-			Trigger.AfterDelay(DateTime.Minutes(19), function()
+			Trigger.AfterDelay(DateTime.Minutes(14), function()
 				if not TimerAborted then Media.PlaySpeechNotification(player, "WarningOneMinuteRemaining") end
 			end)
 		end)

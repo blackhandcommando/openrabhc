@@ -26,27 +26,33 @@ powerproxy.paras1:
 	ParatroopersPower:
 		DropItems: E1,E1,E1,E3,E3
 
-HIND:
+HIND.AI:
+	Inherits: HIND
+	RenderSprites:
+		Image: HIND
 	AutoTarget:
 		InitialStance: AttackAnything
         InitialStanceAI: AttackAnything
-	RejectsOrders:
-	-Selectable:
 	Health:
-		HP: 5000
+		HP: 14000
 	AmmoPool:
 		Ammo: 999
+		PipCount: 6
+		ReloadDelay: 8
+		AmmoCondition: ammo
 
-HELI:
+HELI.AI:
+	Inherits: HELI
+	RenderSprites:
+		Image: HELI
 	AutoTarget:
 		InitialStance: AttackAnything
         InitialStanceAI: AttackAnything
-	RejectsOrders:
-	-Selectable:
 	Health:
-		HP: 6000
+		HP: 15000
 	AmmoPool:
 		Ammo: 999
+        AmmoCondition: ammo
 
 SAM:
 	Power:
