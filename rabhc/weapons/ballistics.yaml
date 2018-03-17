@@ -82,7 +82,7 @@
 
 Volk_AT:
 	Inherits: ^Cannon
-	ReloadDelay: 5000
+	ReloadDelay: 50
 	Burst: 1
     BurstDelay: 1
 	Range: 7c0
