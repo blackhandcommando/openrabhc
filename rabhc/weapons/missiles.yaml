@@ -42,7 +42,7 @@
 	Inherits: ^AntiGroundMissile
 	ValidTargets: Air
 	Warhead@3Eff: CreateEffect
-		VictimScanRadius: 0
+		ImpactActors: false
 
 MaverickAG:
 	Inherits: ^AntiGroundMissile
@@ -51,10 +51,10 @@ MaverickAG:
 	MinRange: 3c0
 	Report: missile7.aud
 	Burst: 2
-	BurstDelay: 7
+	BurstDelays: 7
 	Projectile: Missile
 		Speed: 256
-		Inaccuracy: 512
+		Inaccuracy: 316
 		CruiseAltitude: 2c0
 		RangeLimit: 14c410
 	Warhead@1Dam: SpreadDamage
@@ -65,7 +65,7 @@ MaverickAG:
 			Light: 90
 			Heavy: 115
 			Concrete: 100
-            
+			
 MaverickAA:
 	Inherits: ^AntiAirMissile
 	ReloadDelay: 30
@@ -73,7 +73,7 @@ MaverickAA:
 	MinRange: 3c0
 	Report: missile7.aud
 	Burst: 2
-	BurstDelay: 7
+	BurstDelays: 7
 	Projectile: Missile
 		Speed: 256
 		Inaccuracy: 512
@@ -97,7 +97,7 @@ HellfireAG:
 	ReloadDelay: 60
 	MinRange: 1c256
 	Burst: 4
-	BurstDelay: 14
+	BurstDelays: 14
 	Projectile: Missile
 		Speed: 256
 		HorizontalRateOfTurn: 10
@@ -115,17 +115,17 @@ HellfireAA:
 	ReloadDelay: 60
 	MinRange: 1c256
 	Burst: 2
-	BurstDelay: 10
+	BurstDelays: 10
 	Projectile: Missile
 		Speed: 384
 		Inaccuracy: 128
 		HorizontalRateOfTurn: 10
 		RangeLimit: 7c0
 	Warhead@1Dam: SpreadDamage
-		Damage: 40
-		ValidTargets00: Air
+		Damage: 4000
+		ValidTargets: Air
 		Versus:
-			Woold: 75
+			Wood: 75
 			Light: 75
 	Warhead@3Eff: CreateEffect
 		Explosions: med_explosion_air
@@ -143,7 +143,6 @@ MammothTusk:
 	Warhead@1Dam: SpreadDamage
 		Spread: 256
 		Damage: 5000
-		ValidTargets: Air, Infantry
 		Versus:
 			None: 100
 			Light: 60
@@ -174,9 +173,7 @@ Nike:
 		Damage: 5000
 		ValidTargets: Air
 		Versus:
-			None: 90
 			Light: 90
-			Heavy: 50
 			Cybernetic: 90
 	Warhead@3Eff: CreateEffect
 		Explosions: med_explosion_air
@@ -193,16 +190,14 @@ RedEye:
 		Damage: 4000
 		ValidTargets: Air
 		Versus:
-			Wood: 75
 			Light: 60
-			Heavy: 25
 
 Stinger:
 	Inherits: ^AntiGroundMissile
 	ReloadDelay: 60
 	Range: 7c512
 	Burst: 2
-	BurstDelay: 0
+	BurstDelays: 0
 	InvalidTargets: Underwater
 	Projectile: Missile
 		Arm: 3
@@ -254,7 +249,7 @@ TorpTube:
 	Report: torpedo1.aud
 	ValidTargets: Water, Underwater, Bridge
 	Burst: 2
-	BurstDelay: 20
+	BurstDelays: 20
 	Projectile: Missile
 		Image: torpedo
 		Arm: 3
@@ -271,7 +266,6 @@ TorpTube:
 		Damage: 18000
 		ValidTargets: Water, Underwater, Bridge
 		Versus:
-			None: 30
 			Wood: 75
 			Light: 75
 			Heavy: 100
@@ -297,7 +291,6 @@ TorpTube:
 		Inaccuracy: 0c614
 		HorizontalRateOfTurn: 15
 		RangeLimit: 9c0
-		LaunchAngle: 120
 		Image: MISSILE
 		TrailImage: smokey
 		ContrailLength: 30
@@ -307,7 +300,7 @@ TorpTube:
 		Falloff: 1000, 368, 135, 50, 18, 7, 0
 		Versus:
 			None: 40
-			Wood: 40
+			Wood: 50
 			Light: 30
 			Heavy: 30
 			Concrete: 100
@@ -342,7 +335,7 @@ SubMissileAA:
 
 SCUD:
 	Inherits: ^AntiGroundMissile
-	ReloadDelay: 0
+	ReloadDelay: 240
 	Range: 12c0
 	MinRange: 4c0
 	Report: missile1.aud

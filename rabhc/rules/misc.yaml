@@ -34,14 +34,14 @@ CRATE:
 		SelectionShares: 5
 	HideMapCrateAction:
 		SelectionShares: 5
-		Effect: hide-map
+		Sequence: hide-map
 	HealUnitsCrateAction:
-		Notification: heal2.aud
+		Sound: heal2.aud
 		SelectionShares: 2
-		Effect: heal
+		Sequence: heal
 	RevealMapCrateAction:
 		SelectionShares: 1
-		Effect: reveal-map
+		Sequence: reveal-map
 	DuplicateUnitCrateAction:
 		SelectionShares: 10
 		MaxAmount: 5
@@ -107,8 +107,8 @@ CRATE:
 		TimeDelay: 4500
 	GrantExternalConditionCrateAction@invuln:
 		SelectionShares: 5
-		Effect: invuln
-		Notification: ironcur9.aud
+		Sequence: invuln
+		Sound: ironcur9.aud
 		Condition: invulnerability
 		Duration: 600
 
@@ -128,9 +128,9 @@ HEALCRATE:
 	Tooltip:
 		Name: Heal Crate
 	HealUnitsCrateAction:
-		Notification: heal2.aud
+		Sound: heal2.aud
 		SelectionShares: 1
-		Effect: heal
+		Sequence: heal
 
 WCRATE:
 	Inherits: ^Crate
@@ -159,7 +159,7 @@ CAMERA:
 	WithSpriteBody:
 	RenderSpritesEditorOnly:
 		Image: camera
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: System
 
 camera.paradrop:
@@ -175,7 +175,7 @@ camera.spyplane:
 		Name: (support power proxy camera)
 	DetectCloaked:
 		Range: 10c0
-		CloakTypes: Cloak, Hijacker
+		CloakTypes: Cloak, Thief
 
 SONAR:
 	Inherits: camera.spyplane
@@ -203,7 +203,7 @@ FLARE:
 	Tooltip:
 		Name: Flare
 		ShowOwnerRow: false
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Decoration
 
 MINE:
@@ -222,8 +222,10 @@ MINE:
 	RadarColorFromTerrain:
 		Terrain: Ore
 	SeedsResource:
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Resource spawn
+	RequiresSpecificOwners:
+		ValidOwnerNames: Neutral
 
 GMINE:
 	Inherits@1: ^SpriteActor
@@ -242,8 +244,10 @@ GMINE:
 		Terrain: Gems
 	SeedsResource:
 		ResourceType: Gems
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Resource spawn
+	RequiresSpecificOwners:
+		ValidOwnerNames: Neutral
 
 RAILMINE:
 	Inherits@1: ^SpriteActor
@@ -257,9 +261,11 @@ RAILMINE:
 	Building:
 		Footprint: xx
 		Dimensions: 2,1
-	EditorTilesetFilter:
+	MapEditorData:
 		ExcludeTilesets: INTERIOR
 		Categories: Civilian building
+	RequiresSpecificOwners:
+		ValidOwnerNames: Neutral
 
 QUEE:
 	Inherits@1: ^SpriteActor
@@ -273,7 +279,7 @@ QUEE:
 		Dimensions: 2,1
 	WithSpriteBody:
 	AppearsOnRadar:
-	EditorTilesetFilter:
+	MapEditorData:
 		RequireTilesets: INTERIOR
 		Categories: Critter
 
@@ -291,7 +297,7 @@ LAR1:
 		Palette: terrain
 	WithSpriteBody:
 	AppearsOnRadar:
-	EditorTilesetFilter:
+	MapEditorData:
 		RequireTilesets: INTERIOR
 		Categories: Critter
 
@@ -301,23 +307,23 @@ LAR2:
 		Name: Ant Larvae
 
 powerproxy.armordrop: 
-    AlwaysVisible: 
-    ParatroopersPower: 
-        Icon: paratroopers 
-        Description: ArmorDrop (Single Use) 
-        LongDesc: A Badger drops a load of parachuted bombs on your target. 
-        DropItems: jeep,1tnk,2tnk,jeep 
-        OneShot: true 
-        AllowMultiple: true 
-        SelectTargetSpeechNotification: SelectTarget 
-        AllowImpassableCells: false 
-        QuantizedFacings: 8 
-        CameraActor: camera.paradrop 
-        DisplayBeacon: true 
-        BeaconPoster: pinficon 
-        ArrowSequence: arrow 
-        ClockSequence: clock 
-        CircleSequence: circles
+	AlwaysVisible: 
+	ParatroopersPower: 
+		Icon: paratroopers 
+		Description: ArmorDrop (Single Use) 
+		LongDesc: A Badger drops a load of parachuted bombs on your target. 
+		DropItems: jeep,1tnk,2tnk,jeep 
+		OneShot: true 
+		AllowMultiple: true 
+		SelectTargetSpeechNotification: SelectTarget 
+		AllowImpassableCells: false 
+		QuantizedFacings: 8 
+		CameraActor: camera.paradrop 
+		DisplayBeacon: true 
+		BeaconPoster: pinficon 
+		ArrowSequence: arrow 
+		ClockSequence: clock 
+		CircleSequence: circles
 		
 powerproxy.parabombs:
 	AlwaysVisible:
@@ -344,7 +350,7 @@ powerproxy.sonarpulse:
 		Icon: sonar
 		Description: Sonar Pulse
 		LongDesc: Reveals all submarines in the vicinity for a \nshort time.
-		ChargeTime: 30
+		ChargeInterval: 750
 		EndChargeSpeechNotification: SonarPulseReady
 		SelectTargetSpeechNotification: SelectTarget
 		Actor: sonar
@@ -393,8 +399,10 @@ mpspawn:
 	RenderSpritesEditorOnly:
 	BodyOrientation:
 		QuantizedFacings: 1
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: System
+	RequiresSpecificOwners:
+		ValidOwnerNames: Neutral
 
 waypoint:
 	Interactable:
@@ -407,11 +415,13 @@ waypoint:
 	RenderSpritesEditorOnly:
 	BodyOrientation:
 		QuantizedFacings: 1
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: System
 
-^fact.colorpicker:
+fact.colorpicker:
 	Inherits: FACT
+	-Buildable:
+	-MapEditorData:
 	RenderSprites:
 		Image: fact
 		Palette: colorpicker
@@ -431,6 +441,6 @@ CTFLAG:
 	-Selectable:
 	-SelectionDecorations:
 	-Targetable:
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: Decoration
 	Interactable:
