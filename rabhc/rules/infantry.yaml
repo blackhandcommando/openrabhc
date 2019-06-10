@@ -422,6 +422,7 @@ E8:
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
 	Buildable:
 		Queue: Infantry
+		BuildAtProductionType: Soldier
 		BuildPaletteOrder: 110
 		Prerequisites: ~barr, stek, ~techlevel.high
 		Owner: soviet
@@ -431,6 +432,8 @@ E8:
 		Cost: 1800
 	Tooltip:
 		Name: Volkov
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
 	Health:
 		HP: 60000
 	Selectable:
