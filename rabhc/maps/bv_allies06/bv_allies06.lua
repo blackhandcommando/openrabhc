@@ -14,7 +14,7 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
-	StartTeam = { "e7", "spy", "spy", "spy" }
+	StartTeam = { "e7.noautotarget", "spy", "spy", "spy" }
 
 end
 
@@ -54,9 +54,15 @@ Tick = function()
 		GameLost = true
 		ussr.MarkCompletedObjective(DestroyEnemies)
 	end
+
 	if ussr.HasNoRequiredUnits() and NukesDestroyed and not GameWon then
 		GameWon = true
 		player.MarkCompletedObjective(EliminateAllEnemies)
+	end
+
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
 	end
 end
 

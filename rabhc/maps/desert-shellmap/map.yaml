@@ -1207,10 +1207,10 @@ Actors:
 		Location: 60,93
 		Owner: Neutral
 	Chinook1Entry: waypoint
-		Location: 44,126
+		Location: 45,126
 		Owner: Neutral
 	Chinook2Entry: waypoint
-		Location: 47,126
+		Location: 48,126
 		Owner: Neutral
 	Paradrop1: waypoint
 		Location: 70,50
@@ -1264,6 +1264,6 @@ Actors:
 		Location: 1,28
 		Owner: Neutral
 
-Rules: rabhc|rules/campaign-palettes.yaml, rules.yaml
+Rules: ra|rules/campaign-palettes.yaml, rules.yaml
 
 Weapons: weapons.yaml

@@ -103,6 +103,11 @@ Tick = function()
 		GameWon = true
 		player.MarkCompletedObjective(SecureArea)
 	end
+
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
+	end
 end
 
 EnterParadrops = function()

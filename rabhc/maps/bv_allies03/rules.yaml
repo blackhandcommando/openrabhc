@@ -66,72 +66,72 @@ ATEK:
 	ProvidesPrerequisite@buildingname:
 
 APWR:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 SYRD:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 PDOX:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MSLO:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 GAP:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 	
 ARTY:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MNLY:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 TRUK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MGG:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MRJ:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 STNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 CTNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 HBOX:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 E6:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 SPY:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 E7:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MECH:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 SAM:
 	Power:

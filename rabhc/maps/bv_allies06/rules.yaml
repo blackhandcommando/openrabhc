@@ -1,86 +1,61 @@
 Player:
 	PlayerResources:
 		DefaultCash: 0
-	HackyAI@USSRNukes:
+	ModularBot@USSRNukes:
 		Name: USSRNukes
 		Type: nuke
-		MinimumExcessPower: 40
-		BuildingCommonNames:
-			ConstructionYard: fact
-			Refinery: 
-			Power: 
-			Barracks: 
-			VehiclesFactory: 
-			Production: 
-			Silo: 
-		UnitsCommonNames:
-			Mcv: mcv
-		BuildingLimits:
-			proc: 0
-			barr: 0
-			kenn: 0
-			dome: 0
-			weap: 0
-			afld: 0
-			stek: 0
-			fix: 0
-			powr: 0
-			apwr: 0
-			ftur: 0
-		BuildingFractions:
-		UnitsToBuild:
-		UnitLimits:
-			dog: 0
-			harv: 0
-			mig: 0
-			yak: 0
-		SquadSize: 999999
-		SupportPowerDecision@spyplane:
-			OrderName: SovietSpyPlane
-			MinimumAttractiveness: 1
-			Consideration@1:
-				Against: Enemy
-				Types: Structure
-				Attractiveness: 1
-				TargetMetric: Value
-				CheckRadius: 5c0
-		SupportPowerDecision@paratroopers:
-			OrderName: SovietParatroopers
-			MinimumAttractiveness: 5
-			Consideration@1:
-				Against: Enemy
-				Types: Structure
-				Attractiveness: 1
-				TargetMetric: Value
-				CheckRadius: 8c0
-			Consideration@2:
-				Against: Enemy
-				Types: Water
-				Attractiveness: -5
-				TargetMetric: Value
-				CheckRadius: 8c0
-		SupportPowerDecision@parabombs:
-			OrderName: UkraineParabombs
-			MinimumAttractiveness: 1
-			Consideration@1:
-				Against: Enemy
-				Types: Water
-				Attractiveness: 1
-				TargetMetric: Value
-				CheckRadius: 5c0
-		SupportPowerDecision@nukepower:
-			OrderName: NukePowerInfoOrder
-			MinimumAttractiveness: 2000
-			Consideration@1:
-				Against: Enemy
-				Types: Structure
-				Attractiveness: 1
-				TargetMetric: Value
-				CheckRadius: 10c0
-	-HackyAI@RushAI:
-	-HackyAI@NormalAI:
-	-HackyAI@TurtleAI:
-	-HackyAI@NavalAI:
+	GrantConditionOnBotOwner@rush:
+		Condition: enable-nuke-ai
+		Bots: nuke
+	SupportPowerBotModule:
+		RequiresCondition: enable-nuke-ai
+		Decisions:
+			spyplane:
+				OrderName: SovietSpyPlane
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			paratroopers:
+				OrderName: SovietParatroopers
+				MinimumAttractiveness: 5
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 8c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -5
+					TargetMetric: Value
+					CheckRadius: 8c0
+			parabombs:
+				OrderName: UkraineParabombs
+				MinimumAttractiveness: 500
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+			nukepower:
+				OrderName: NukePowerInfoOrder
+				MinimumAttractiveness: 2000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 10c0
+	-ModularBot@RushAI:
+	-ModularBot@NormalAI:
+	-ModularBot@TurtleAI:
+	-ModularBot@NavalAI:
 
 World:
 	LuaScript:
@@ -221,11 +196,13 @@ E7:
 		BuildPaletteOrder: 120
 		Prerequisites: ~tent, atek, ~techlevel.high
 		BuildLimit: 1
-		Description: Elite commando infantry. Armed with\ndual pistols and C4.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Destroy Building with C4\nMaximum 1 can be trained.
+		Description: Elite commando infantry. Armed with\ndual pistols and C4.\nCan detect cloaked units.\nMaximum 1 can be trained.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Destroy Building with C4
 	Valued:
 		Cost: 1200
 	Tooltip:
 		Name: Tanya
+	UpdatesPlayerStatistics:
+		AddToArmyValue: true
 	Health:
 		HP: 10000
 	Mobile:
@@ -253,66 +230,33 @@ E7:
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
 		StandSequences: stand
-	AnnounceOnBuild:
+	ExternalCondition@PRODUCED:
+		Condition: produced
+	VoiceAnnouncement:
+		RequiresCondition: produced
+		Voice: Build
 	AnnounceOnKill:
 	DetectCloaked:
-		CloakTypes: Cloak, Hijacker
+		CloakTypes: Cloak, Thief
 	Voiced:
 		VoiceSet: TanyaVoice
 	ProducibleWithLevel:
 		Prerequisites: barracks.upgraded
 
 E7.noautotarget:
-	Inherits: ^Soldier
-	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
+	Inherits: E7
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveScanCondition:
+	RenderSprites:
+		Image: E7
 	Buildable:
-		Queue: Infantry
-		BuildAtProductionType: Soldier
-		BuildPaletteOrder: 120
 		Prerequisites: ~disabled
-		BuildLimit: 1
-		Description: Elite commando infantry. Armed with\ndual pistols and C4.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Destroy Building with C4\nMaximum 1 can be trained.
-	Valued:
-		Cost: 1200
-	Tooltip:
-		Name: Tanya
-	Health:
-		HP: 10000
-	Mobile:
-		Speed: 71
-		Voice: Move
-	Guard:
-		Voice: Move
-	RevealsShroud:
-		Range: 6c0
-	Demolition:
-		DetonationDelay: 45
-		Voice: Demolish
-	Passenger:
-		PipType: Red
-		Voice: Move
-	Armament@PRIMARY:
-		Weapon: Colt45
-	Armament@SECONDARY:
-		Weapon: Colt45
-	Armament@GARRISONED:
-		Name: garrisoned
-		Weapon: Colt45
-		MuzzleSequence: garrison-muzzle
-	AttackFrontal:
-	WithInfantryBody:
-		DefaultAttackSequence: shoot
-		StandSequences: stand
-	AnnounceOnBuild:
-	AnnounceOnKill:
-	DetectCloaked:
-		CloakTypes: Cloak, Hijacker
-	Voiced:
-		VoiceSet: TanyaVoice
-	ProducibleWithLevel:
-		Prerequisites: barracks.upgraded
 
 CAMERA:
+	Interactable:
 	EditorOnlyTooltip:
 		Name: (reveals area to owner)
 	AlwaysVisible:
@@ -326,7 +270,7 @@ CAMERA:
 	WithSpriteBody:
 	RenderSpritesEditorOnly:
 		Image: camera
-	EditorTilesetFilter:
+	MapEditorData:
 		Categories: System
 
 TRAN.Insertion:
@@ -412,5 +356,5 @@ YAK.AI:
 		Prerequisites: ~miss, ~afld
 
 STNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled

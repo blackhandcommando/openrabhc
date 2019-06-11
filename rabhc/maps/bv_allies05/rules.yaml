@@ -65,23 +65,6 @@ ATEK:
 		Amount: -200
 	ProvidesPrerequisite@buildingname:
 
-CAMERA:
-	EditorOnlyTooltip:
-		Name: (reveals area to owner)
-	AlwaysVisible:
-	Immobile:
-		OccupiesSpace: false
-	RevealsShroud:
-		Range: 6c0
-		Type: CenterPosition
-	BodyOrientation:
-		QuantizedFacings: 1
-	WithSpriteBody:
-	RenderSpritesEditorOnly:
-		Image: camera
-	EditorTilesetFilter:
-		Categories: System
-
 powerproxy.paras1:
 	Inherits: powerproxy.paratroopers
 	ParatroopersPower:
@@ -147,21 +130,39 @@ YAK.AI:
 		Prerequisites: ~miss, ~afld
 
 MSLO:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 TRUK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 STNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 CTNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 E7:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
+
+CAMERA:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 6c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System

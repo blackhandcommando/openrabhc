@@ -6,7 +6,7 @@
 
 if Map.LobbyOption("difficulty") == "easy" then
 
-	DifficultyDelay = DateTime.Minutes(1.5)
+	DifficultyDelay = DateTime.Minutes(2.0)
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -40,10 +40,12 @@ Tick = function()
 		GameLost = true
 		ussr.MarkCompletedObjective(DestroyEnemies)
 	end
+
 	if ussr.HasNoRequiredUnits() and nuker.HasNoRequiredUnits() and not GameWon then
 		GameWon = true
 		player.MarkCompletedObjective(EliminateAllEnemies)
 	end
+
 	if OutpostDestroyed or SecondBaseDestroyed or AirfieldsDestroyed then
 		if DemoTruck and not DemoTruckSpawned then
 			DemoTruckSpawned = true
@@ -52,6 +54,21 @@ Tick = function()
 				USSRDemolitonTruck()
 			end)
 		end
+	end
+
+	if Greece.Resources >= Greece.ResourceCapacity * 0.75 then
+		Greece.Cash = Greece.Cash + Greece.Resources - Greece.ResourceCapacity * 0.25
+		Greece.Resources = Greece.ResourceCapacity * 0.25
+	end
+
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
+	end
+
+	if ussr_2.Resources >= ussr_2.ResourceCapacity * 0.75 then
+		ussr_2.Cash = ussr_2.Cash + ussr_2.Resources - ussr_2.ResourceCapacity * 0.25
+		ussr_2.Resources = ussr_2.ResourceCapacity * 0.25
 	end
 end
 
@@ -194,7 +211,7 @@ Triggers = function()
 			SendAttackers2USSR2()
 		end)
 
-		Trigger.AfterDelay(DateTime.Seconds(400), function()
+		Trigger.AfterDelay(DateTime.Seconds(4), function()
 			Actor64.Owner = nuker
 			USSR1StartAI()
 			SendAttackers1USSR1()

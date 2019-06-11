@@ -178,6 +178,11 @@ Tick = function()
 		Reinforcements.ReinforceWithTransport(player, "lst", AlliedReinforcements, InsertionPath2, { USSRReinforcementsEntry3.Location })
 		Reinforcements.ReinforceWithTransport(player, "lst", AlliedReinforcements, InsertionPath3, { USSRReinforcementsEntry4.Location })
 	end
+
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
+	end
 end
 
 FinishTimer = function()

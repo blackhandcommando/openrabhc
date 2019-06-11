@@ -1,23 +1,13 @@
 MapFormat: 11
-
 RequiresMod: rabhc
-
 Title: Allies04 Stormbringer
-
 Author: Boxhead
-
 Tileset: TEMPERAT
-
 MapSize: 130,130
-
 Bounds: 1,45,128,83
-
 Visibility: MissionSelector
-
 Categories: Mission
-
 LockPreview: True
-
 Players:
 	PlayerReference@Neutral:
 		Name: Neutral
@@ -58,7 +48,6 @@ Players:
 		LockColor: True
 		Color: 7FFFD4
 		Enemies: USSR, USSRParas
-
 Actors:
 	PlayerReinfEntry1: waypoint
 		Owner: England
@@ -1852,5 +1841,7 @@ Actors:
 	Actor538: mine
 		Owner: Neutral
 		Location: 22,69
-
+	Actor539: waypoint
+		Owner: USSR
+		Location: 111,76
 Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml
