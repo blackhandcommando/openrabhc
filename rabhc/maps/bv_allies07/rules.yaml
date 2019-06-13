@@ -1,64 +1,66 @@
 Player:
 	PlayerResources:
 		DefaultCash: 0
-	ModularBot@USSRNukes:
-		Name: USSRNukes
 	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
 		Enabled: True
 		Locked: True
+	ModularBot@NukeAI:
+		Name: Nuke AI
 		Type: nuke
-		GrantConditionOnBotOwner@rush:
-			Condition: enable-nuke-ai
-			Bots: nuke
-		SupportPowerBotModule:
-			RequiresCondition: enable-nuke-ai
-			Decisions:
-				spyplane:
-					OrderName: SovietSpyPlane
-					MinimumAttractiveness: 1
-					Consideration@1:
-						Against: Enemy
-						Types: Structure
-						Attractiveness: 1
-						TargetMetric: None
-						CheckRadius: 5c0
-				paratroopers:
-					OrderName: SovietParatroopers
-					MinimumAttractiveness: 5
-					Consideration@1:
-						Against: Enemy
-						Types: Structure
-						Attractiveness: 1
-						TargetMetric: Value
-						CheckRadius: 8c0
-					Consideration@2:
-						Against: Enemy
-						Types: Water
-						Attractiveness: -5
-						TargetMetric: Value
-						CheckRadius: 8c0
-				parabombs:
-					OrderName: UkraineParabombs
-					MinimumAttractiveness: 500
-					Consideration@1:
-						Against: Enemy
-						Types: Structure
-						Attractiveness: 1
-						TargetMetric: Value
-						CheckRadius: 5c0
-				nukepower:
-					OrderName: NukePowerInfoOrder
-					MinimumAttractiveness: 2000
-					Consideration@1:
-						Against: Enemy
-						Types: Structure
-						Attractiveness: 1
-						TargetMetric: Value
-						CheckRadius: 10c0
-	-ModularBot@RushAI:
-	-ModularBot@NormalAI:
-	-ModularBot@TurtleAI:
-	-ModularBot@NavalAI:
+	GrantConditionOnBotOwner@nuke:
+		Condition: enable-nuke-ai
+		Bots: nuke
+	SupportPowerBotModule:
+		RequiresCondition: enable-nuke-ai
+		Decisions:
+			spyplane:
+				OrderName: SovietSpyPlane
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Ground
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			paratroopers:
+				OrderName: SovietParatroopers
+				MinimumAttractiveness: 1000
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: Value
+					CheckRadius: 5c0
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 10c0
+			parabombs:
+				OrderName: UkraineParabombs
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 5c0
+			nukepower:
+				OrderName: NukePowerInfoOrder
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 6c0
+		-HarvesterBotModule:
+		-BaseBuilderBotModule@nuke:
+		-BuildingRepairBotModule:
+		-SquadManagerBotModule@nuke:
+		-McvManagerBotModule:
+		-UnitBuilderBotModule@nuke:
 
 World:
 	LuaScript:
@@ -190,7 +192,7 @@ AFLD:
 		OrderName: SovietSpyPlane
 		Prerequisites: aircraft.soviet
 		Icon: spyplane
-		ChargeInterval: 6000
+		ChargeInterval: 8000
 		Description: Spy Plane
 		LongDesc: Reveals an area of the map\nand cloaked enemy units.
 		SelectTargetSpeechNotification: SelectTarget
@@ -208,7 +210,7 @@ AFLD:
 		OrderName: SovietParatroopers
 		Prerequisites: aircraft.soviet
 		Icon: paratroopers
-		ChargeInterval: 4000
+		ChargeInterval: 4500
 		Description: Paratroopers
 		LongDesc: A Badger drops a squad of infantry\nanywhere on the map.
 		DropItems: E1R1,SHOK,SHOK,E3R1,E3R1
@@ -226,7 +228,7 @@ AFLD:
 		OrderName: UkraineParabombs
 		Prerequisites: aircraft.soviet
 		Icon: parabombs
-		ChargeInterval: 6000
+		ChargeInterval: 9000
 		Description: Parabombs
 		LongDesc: A squad of Badgers drop parachuted\nbombs on your target.
 		SelectTargetSpeechNotification: SelectTarget
@@ -390,6 +392,24 @@ CAMERA:
 		OccupiesSpace: false
 	RevealsShroud:
 		Range: 6c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+
+CAMERA.NUKER:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 49c0
 		Type: CenterPosition
 	BodyOrientation:
 		QuantizedFacings: 1

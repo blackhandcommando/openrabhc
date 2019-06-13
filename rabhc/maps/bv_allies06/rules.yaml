@@ -1,13 +1,13 @@
 Player:
 	PlayerResources:
 		DefaultCash: 0
-	ModularBot@USSRNukes:
-		Name: USSRNukes
 	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
 		Enabled: True
 		Locked: True
+	ModularBot@NukeAI:
+		Name: Nuke AI
 		Type: nuke
-	GrantConditionOnBotOwner@rush:
+	GrantConditionOnBotOwner@nuke:
 		Condition: enable-nuke-ai
 		Bots: nuke
 	SupportPowerBotModule:
@@ -18,47 +18,49 @@ Player:
 				MinimumAttractiveness: 1
 				Consideration@1:
 					Against: Enemy
-					Types: Structure
+					Types: Ground
 					Attractiveness: 1
 					TargetMetric: None
 					CheckRadius: 5c0
 			paratroopers:
 				OrderName: SovietParatroopers
-				MinimumAttractiveness: 5
-				Consideration@1:
-					Against: Enemy
-					Types: Structure
-					Attractiveness: 1
-					TargetMetric: Value
-					CheckRadius: 8c0
-				Consideration@2:
-					Against: Enemy
-					Types: Water
-					Attractiveness: -5
-					TargetMetric: Value
-					CheckRadius: 8c0
-			parabombs:
-				OrderName: UkraineParabombs
-				MinimumAttractiveness: 500
+				MinimumAttractiveness: 1000
 				Consideration@1:
 					Against: Enemy
 					Types: Structure
 					Attractiveness: 1
 					TargetMetric: Value
 					CheckRadius: 5c0
-			nukepower:
-				OrderName: NukePowerInfoOrder
-				MinimumAttractiveness: 2000
+				Consideration@2:
+					Against: Enemy
+					Types: Water
+					Attractiveness: -10
+					TargetMetric: Value
+					CheckRadius: 10c0
+			parabombs:
+				OrderName: UkraineParabombs
+				MinimumAttractiveness: 1
 				Consideration@1:
 					Against: Enemy
 					Types: Structure
 					Attractiveness: 1
-					TargetMetric: Value
-					CheckRadius: 10c0
-	-ModularBot@RushAI:
-	-ModularBot@NormalAI:
-	-ModularBot@TurtleAI:
-	-ModularBot@NavalAI:
+					TargetMetric: None
+					CheckRadius: 5c0
+			nukepower:
+				OrderName: NukePowerInfoOrder
+				MinimumAttractiveness: 1
+				Consideration@1:
+					Against: Enemy
+					Types: Structure
+					Attractiveness: 1
+					TargetMetric: None
+					CheckRadius: 6c0
+		-HarvesterBotModule:
+		-BaseBuilderBotModule@nuke:
+		-BuildingRepairBotModule:
+		-SquadManagerBotModule@nuke:
+		-McvManagerBotModule:
+		-UnitBuilderBotModule@nuke:
 
 World:
 	LuaScript:
@@ -267,6 +269,24 @@ CAMERA:
 		OccupiesSpace: false
 	RevealsShroud:
 		Range: 6c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+
+CAMERA.NUKER:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 49c0
 		Type: CenterPosition
 	BodyOrientation:
 		QuantizedFacings: 1

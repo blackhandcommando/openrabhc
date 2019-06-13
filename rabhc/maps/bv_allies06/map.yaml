@@ -1,23 +1,13 @@
 MapFormat: 11
-
 RequiresMod: rabhc
-
 Title: Allies06 Fallout
-
 Author: Boxhead
-
 Tileset: SNOW
-
 MapSize: 130,130
-
 Bounds: 1,20,100,108
-
 Visibility: MissionSelector
-
 Categories: Mission
-
 LockPreview: True
-
 Players:
 	PlayerReference@Neutral:
 		Name: Neutral
@@ -65,7 +55,6 @@ Players:
 		Faction: allies
 		Color: 7FFFD4
 		Enemies: USSR, USSRParas, Nuker
-
 Actors:
 	Actor0: brik
 		Owner: USSR
@@ -3038,5 +3027,37 @@ Actors:
 	Actor937: waypoint
 		Owner: USSR
 		Location: 2,71
-
+	Actor938: camera.nuker
+		Owner: Nuker
+		Location: 75,96
+	Actor939: camera.nuker
+		Owner: Nuker
+		Location: 75,65
+	Actor940: camera.nuker
+		Owner: Nuker
+		Location: 74,40
+	Actor941: camera.nuker
+		Owner: Nuker
+		Location: 52,40
+	Actor942: camera.nuker
+		Owner: Nuker
+		Location: 24,40
+	Actor943: camera.nuker
+		Owner: Nuker
+		Location: 21,66
+	Actor944: camera.nuker
+		Owner: Nuker
+		Location: 22,95
+	Actor945: camera.nuker
+		Owner: Nuker
+		Location: 59,107
+	Actor946: camera.nuker
+		Owner: Nuker
+		Location: 51,82
+	Actor947: camera.nuker
+		Owner: Nuker
+		Location: 43,55
+	Actor948: afld.ukraine
+		Owner: Nuker
+		Location: 105,1
 Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml

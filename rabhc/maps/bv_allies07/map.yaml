@@ -4172,4 +4172,34 @@ Actors:
 		Location: 27,37
 		SubCell: 3
 		Facing: 92
+	Actor1280: camera.nuker
+		Owner: Nuker
+		Location: 42,28
+	Actor1281: camera.nuker
+		Owner: Nuker
+		Location: 87,27
+	Actor1282: camera.nuker
+		Owner: Nuker
+		Location: 89,53
+	Actor1283: camera.nuker
+		Owner: Nuker
+		Location: 38,54
+	Actor1284: camera.nuker
+		Owner: Nuker
+		Location: 35,83
+	Actor1285: camera.nuker
+		Owner: Nuker
+		Location: 34,113
+	Actor1286: camera.nuker
+		Owner: Nuker
+		Location: 71,113
+	Actor1287: camera.nuker
+		Owner: Nuker
+		Location: 68,81
+	Actor1288: camera.nuker
+		Owner: Nuker
+		Location: 106,101
+	Actor1289: camera.nuker
+		Owner: Nuker
+		Location: 105,71
 Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml
