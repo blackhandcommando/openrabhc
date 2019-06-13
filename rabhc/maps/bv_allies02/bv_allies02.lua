@@ -389,9 +389,11 @@ EvacuateScientist = function()
 		if actor.Type == "c1.ob" or actor.Type == "c2.ob" or actor.Type == "c3.ob" then
 			Media.PlaySpeechNotification(player, "TargetRescued")
 			actor.Owner = greece
-			actor.Stop()
-			actor.ScriptedMove(Actor252.Location)
-			actor.Destroy()
+			Trigger.OnIdle(actor, function()
+				actor.Stop()
+				actor.ScriptedMove(Actor252.Location)
+				actor.Destroy()
+			end)
 			if actor.Type == "c1.ob" and not C1Rescued then
 				C1Rescued = true
 				ScientistsEvacuated = ScientistsEvacuated + 1
