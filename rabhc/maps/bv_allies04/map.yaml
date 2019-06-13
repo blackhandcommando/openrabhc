@@ -1844,4 +1844,16 @@ Actors:
 	Actor539: waypoint
 		Owner: USSR
 		Location: 111,76
+	Actor540: waypoint
+		Owner: USSR
+		Location: 109,60
+	Actor541: waypoint
+		Owner: USSR
+		Location: 115,77
+	Actor542: waypoint
+		Owner: USSR
+		Location: 116,88
+	Actor550: waypoint
+		Owner: USSR
+		Location: 17,45
 Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml

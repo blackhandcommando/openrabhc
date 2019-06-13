@@ -1,23 +1,13 @@
 MapFormat: 11
-
 RequiresMod: rabhc
-
 Title: Allies02 Treasure Hunt
-
 Author: Boxhead
-
 Tileset: DESERT
-
 MapSize: 94,94
-
 Bounds: 1,28,92,64
-
 Visibility: MissionSelector
-
 Categories: Mission
-
 LockPreview: True
-
 Players:
 	PlayerReference@Neutral:
 		Name: Neutral
@@ -52,7 +42,6 @@ Players:
 		LockColor: True
 		Color: 7FFFD4
 		Enemies: USSR
-
 Actors:
 	Actor0: fact
 		Owner: England
@@ -987,5 +976,10 @@ Actors:
 	Actor251: miss
 		Owner: USSR
 		Location: 87,18
-
+	Actor253: waypoint
+		Owner: USSR
+		Location: 71,78
+	Actor254: waypoint
+		Owner: USSR
+		Location: 75,78
 Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml
