@@ -212,7 +212,6 @@ WorldLoaded = function()
 
 	Camera.Position = StartPosition.CenterPosition
 
-	EnemyMoney()
 	IdleUnitsLogic()
 	IdleHuntPara()
 	InitObjectives()

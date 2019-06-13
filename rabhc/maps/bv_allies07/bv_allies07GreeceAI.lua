@@ -78,7 +78,6 @@ GreeceBaseBuildings = { BaseNuke1, BaseProc, BaseNuke2, VehicleProductionBuildin
 
 GreeceStartAI = function()
 	Greece.Cash = Greece.Cash + 6000
-	GreeceCash()
 	GreeceStartReinforcements()
 end
 
@@ -304,15 +303,6 @@ GreeceRepairBase = function()
 				end
 			end)
 		end
-	end)
-end
-
-GreeceCash = function()
-	Trigger.AfterDelay(DateTime.Seconds(30), function()
-		if Greece.Cash < 250 then
-			Greece.Cash = Greece.Cash + 500
-		end
-		GreeceCash()
 	end)
 end
 

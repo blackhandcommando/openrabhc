@@ -148,7 +148,6 @@ WorldLoaded = function()
 	end)
 
 	BuildBase(Actor718)
-	EnemyCash()
 	IdleUnitsLogic()
 	IdleHuntPara()
 	InitObjectives()

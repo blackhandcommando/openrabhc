@@ -137,7 +137,6 @@ WorldLoaded = function()
 
 	IdleUnitsLogic()--for ussr ai
 	IdleUnitsLogic2()--for greece ai
-	EnemyMoney()--so that the ussr harvester has to do something
 	InitObjectives()
 	Triggers()
 	RemoveActors()
@@ -170,13 +169,6 @@ AttackLogic1 = function(actors)
 				end
 			end)
 		end
-	end)
-end
-
-EnemyMoney = function()
-	Trigger.AfterDelay(DateTime.Seconds(30), function()
-		ussr.Cash = ussr.Cash - 500
-		EnemyMoney()
 	end)
 end
 

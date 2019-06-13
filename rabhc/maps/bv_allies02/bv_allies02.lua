@@ -218,7 +218,6 @@ WorldLoaded = function()
 	local difficulty = Map.LobbyOption("difficulty")
 
 	USSRFirstTroop()
-	EnemyMoney()
 	EvacuateScientist()
 	IdleUnitsLogic()--for ussr ai
 	InitObjectives()

@@ -820,24 +820,6 @@ RepairBase = function()
 	end)
 end
 
-EnemyCash = function()
-	if Phase2 then
-		Trigger.AfterDelay(DateTime.Seconds(30), function()
-			if ussr.Cash < 500 then
-				ussr.Cash = ussr.Cash + 725
-			end
-			EnemyCash()
-		end)
-	else
-		Trigger.AfterDelay(DateTime.Seconds(5), function() --Give harvesters something to do
-			if ussr.Cash > 2000 then
-				ussr.Cash = ussr.Cash - 2000
-			end
-			EnemyCash()
-		end)	
-	end
-end
-
 SendUnits = function(units)
 
 	local waypoint = Utils.Random(AttackPos)

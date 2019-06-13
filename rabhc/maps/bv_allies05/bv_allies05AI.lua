@@ -204,15 +204,6 @@ RepairBase = function()
 	end)
 end
 
-EnemyMoney = function()
-	Trigger.AfterDelay(DateTime.Seconds(30), function()
-		if ussr.Cash < 500 then
-			ussr.Cash = ussr.Cash + 725
-		end
-		EnemyMoney()
-	end)
-end
-
 IdleUnitsLogic = function()
 
 	Trigger.AfterDelay(DateTime.Seconds(0.5), function()

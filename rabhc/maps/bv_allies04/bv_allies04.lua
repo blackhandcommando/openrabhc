@@ -108,6 +108,7 @@ Tick = function()
 		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
 		ussr.Resources = ussr.ResourceCapacity * 0.25
 	end
+
 end
 
 EnterParadrops = function()
@@ -136,7 +137,6 @@ WorldLoaded = function()
 	Trigger.AfterDelay(DateTime.Seconds(1), function() Media.PlaySpeechNotification(player, "ReinforcementsArrived") end)
 
 	BuildBase(cyard)
-	EnemyMoney()
 	IdleUnitsLogic()
 	InitObjectives()
 	Triggers()
