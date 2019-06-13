@@ -14,7 +14,7 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
-	StartTeam = { "e7.noautotarget", "spy", "spy", "spy" }
+	StartTeam = { "e7", "spy", "spy", "spy" }
 
 end
 
