@@ -19,7 +19,7 @@ if Map.LobbyOption("difficulty") == "easy" then
 	InfantryDelay = DateTime.Seconds(20)
 	VehicleDelay = DateTime.Seconds(60)
 
-	USSRAirType = { "yak" }
+	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "ftrk", "ftrk" }
 	USSRInfantryTypes = { "e1", "e1", "e1" }
 
@@ -42,7 +42,7 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 	InfantryDelay = DateTime.Seconds(10)
 	VehicleDelay = DateTime.Seconds(30)
 
-	USSRAirType = { "yak" }
+	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "3tnk", "ftrk" }
 	USSRInfantryTypes = { "e1", "e1", "e3" }
 
@@ -65,7 +65,7 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 	InfantryDelay = DateTime.Seconds(10)
 	VehicleDelay = DateTime.Seconds(30)
 
-	USSRAirType = { "yak" }
+	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "3tnk", "ftrk", "v2rl" }
 	USSRInfantryTypes = { "e1", "e1", "e3", "e4" }
 

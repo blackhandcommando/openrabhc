@@ -364,17 +364,30 @@ USSR1AirProduction = function(building)
 
 end
 
-USSR1TargetAndAttack = function(yak)
-
-	local waypoint = Utils.Random(USSR1AttackPosAir)
+USSR1TargetAndAttack = function(yak, target)
+	local waypoint = Utils.Random(AttackPosAir)
 
 	if not yak.IsDead then
-		Trigger.OnIdle(yak, function()
-			yak.AttackMove(waypoint.Location)
-			yak.Hunt()
-		end)
+		yak.AttackMove(waypoint.Location)
 	end
 
+	if not target or target.IsDead or (not target.IsInWorld) then
+		local enemies = Utils.Where(Map.ActorsInWorld, function(self) return self.Owner == player and self.HasProperty("Health") and yak.CanTarget(self) end)
+
+		if #enemies > 0 then
+			target = Utils.Random(enemies)
+		end
+	end
+
+	if target and yak.AmmoCount() > 0 and yak.CanTarget(target) then
+		yak.Attack(target)
+	else
+		yak.ReturnToBase()
+	end
+
+	yak.CallFunc(function()
+		USSR1TargetAndAttack(yak, target)
+	end)
 end
 
 USSR1SendAirforceLoop = function()

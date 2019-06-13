@@ -482,15 +482,6 @@ USSR2RepairBase = function()
 	end)
 end
 
-USSR2EnemyCash = function()
-	Trigger.AfterDelay(DateTime.Seconds(30), function()
-		if ussr_2.Cash < 500 then
-			ussr_2.Cash = ussr_2.Cash + 725
-		end
-		USSR2EnemyCash()
-	end)
-end
-
 USSR2SendUnits = function(units)
 
 	local waypoint = Utils.Random(USSR2AttackPos)
