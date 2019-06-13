@@ -190,10 +190,10 @@ end
 
 GreeceInfantryProduction = function(building)
 
-	Trigger.AfterDelay(DateTime.Seconds(10), function()
-		if not GreeceBaseBuildings[4] then
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
 			return
-		elseif GreeceBaseBuildings[4] then
+		elseif not building.IsDead then
 			GreeceInfantryTeam = { Utils.Random(GreeceInfantryTypes) }
 			local rallypoint = Utils.Random(GreeceRallyPos)
 			building.RallyPoint = rallypoint.Location
@@ -215,17 +215,16 @@ end
 GreeceVehicleProduction = function(building)
 
 	GreeceHarvesters = Greece.GetActorsByType("harv")
-	Trigger.AfterDelay(DateTime.Seconds(10), function()
-		if not GreeceBaseBuildings[3] then
-			Media.DisplayMessage("Back.")
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
 			return
-		elseif #GreeceHarvesters < 2 and GreeceBaseBuildings[3] then
+		elseif #GreeceHarvesters < 2 and not building.IsDead then
 			local rallypoint = Utils.Random(GreeceRallyPos)
 			building.RallyPoint = rallypoint.Location
 			building.Produce("harv")
 
 			Trigger.AfterDelay(DateTime.Minutes(1), function() GreeceVehicleProduction(building) end)
-		elseif GreeceBaseBuildings[3] then
+		elseif not building.IsDead then
 			GreeceVehicleTeam = { Utils.Random(GreeceVehicleTypes) }
 			local rallypoint = Utils.Random(GreeceRallyPos)
 			building.RallyPoint = rallypoint.Location
@@ -248,10 +247,10 @@ GreeceNavalProduction = function(building)
 	
 	local team = { Utils.Random(GreeceNavalTypes) }
 
-	Trigger.AfterDelay(DateTime.Seconds(10), function()
-		if not GreeceBaseBuildings[14] then
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
 			return
-		elseif GreeceBaseBuildings[14] and GreeceNavalPatrol1 and not SecondBaseDestroyed then
+		elseif not building.IsDead and GreeceNavalPatrol1 and not SecondBaseDestroyed then
 			Reinforcements.Reinforce(Greece, team, { building.Location, Actor1110.Location }, 5, function(unit)
 				GreeceNavalAttack[#GreeceNavalAttack + 1] = unit
 				if #GreeceNavalAttack >= Utils.RandomInteger(GreeceNavalMinAttackForce, GreeceNavalMaxAttackForce) then
@@ -266,7 +265,7 @@ GreeceNavalProduction = function(building)
 					end)
 				end
 			end)
-		elseif GreeceBaseBuildings[14] and not GreeceNavalPatrol1 then
+		elseif not building.IsDead and not GreeceNavalPatrol1 then
 			local team = { "dd", "dd" }
 			Reinforcements.Reinforce(Greece, team, { building.Location, Actor1110.Location }, 5, GreeceSendNavalPatrol1)
 			Trigger.AfterDelay(DateTime.Minutes(2), function()
@@ -277,20 +276,18 @@ GreeceNavalProduction = function(building)
 
 end
 
-GreeceSendNavalPatrol1 = function(units)
+GreeceSendNavalPatrol1 = function(unit)
 
 	GreeceNavalPatrol1 = true
 
-	Utils.Do(units, function(unit)
-		if not unit.IsDead then
-			Trigger.OnIdle(unit, function()
-				unit.Patrol(GreeceNavalRoute1, true)
-			end)
-		end
-
-		Trigger.OnKilled(unit, function()
-			GreeceNavalPatrol1 = false
+	if not unit.IsDead then
+		Trigger.OnIdle(unit, function()
+			unit.Patrol(GreeceNavalRoute1, true)
 		end)
+	end
+
+	Trigger.OnKilled(unit, function()
+		GreeceNavalPatrol1 = false
 	end)
 end
 
@@ -320,18 +317,16 @@ GreeceSendUnits = function(units)
 	end)
 end
 
-GreeceSendUnitsNaval = function(units)
+GreeceSendUnitsNaval = function(unit)
 
 	local waypoint = Actor1114
 
-	Utils.Do(units, function(unit)
-		if not unit.IsDead then
+	if not unit.IsDead then
+		unit.AttackMove(waypoint.Location)
+		Trigger.OnIdle(unit, function()
 			unit.AttackMove(waypoint.Location)
-			Trigger.OnIdle(unit, function()
-				unit.AttackMove(waypoint.Location)
-			end)
-		end
-	end)
+		end)
+	end
 end
 
 

@@ -23,7 +23,7 @@ if Map.LobbyOption("difficulty") == "easy" then
 	USSRWave7 = { "ttnk", "v2rl", "e1", "e4", "shok", "e3", "e3", "e4", "shok", "ttnk", "v2rl", "e1", "e4", "shok", "e3", "e3", "e4", "shok" }
 	USSRWave8 = { "ttnk", "ttnk", "ttnk", "ttnk", "4tnk" }
 
-	InfantryDelay = DateTime.Seconds(25)
+	InfantryDelay = DateTime.Seconds(35)
 	VehicleDelay = DateTime.Seconds(35)
 
 	DefendTimer = DateTime.Minutes(15)
@@ -73,8 +73,8 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 	USSRWave9 = { "ttnk", "ttnk", "3tnk", "4tnk", "4tnk", "4tnk",  "e3", "e3", "e4", "shok", "e3", "e3", "e4", "shok" }
 	USSRWave10 = { "ttnk", "ttnk", "ttnk", "3tnk", "3tnk", "4tnk", "v2rl", "ftrk", "e3", "e3", "e4", "shok", "e3", "e3", "e4", "shok" }
 
-	InfantryDelay = DateTime.Seconds(20)
-	VehicleDelay = DateTime.Seconds(32)
+	InfantryDelay = DateTime.Seconds(15)
+	VehicleDelay = DateTime.Seconds(29)
 
 	DefendTimer = DateTime.Minutes(20)
 
@@ -291,10 +291,8 @@ EnterWaves = function()
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(675),function()
-		if Map.LobbyOption("difficulty") ~= "hard" then
-			InfantryProduction()
-			VehicleProduction()
-		end
+		InfantryProduction(Actor112)
+		VehicleProduction(Actor113)
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(775),function()--Wave8 + Iron Curtain /Last Wave on Easy/Normal
@@ -304,9 +302,7 @@ EnterWaves = function()
 		SendSovietIronCurtain()
 		SendUSSRAttackersMid()
 		SendUSSRAttackersTop()
-		if Map.LobbyOption("difficulty") ~= "hard" then
-			IronCurtainLoop()
-		end
+		IronCurtainLoop()
 	end)
 
 	Trigger.AfterDelay(DateTime.Seconds(800), function()--Paratroopers4
@@ -323,8 +319,6 @@ EnterWaves = function()
 		end)
 
 		Trigger.AfterDelay(DateTime.Seconds(1000), function()--Paratroopers5 + 6
-			InfantryProduction()
-			VehicleProduction()
 			SendUSSRParatroopers()
 			Trigger.AfterDelay(DateTime.Seconds(10), SendUSSRParatroopers)
 		end)
@@ -336,10 +330,6 @@ EnterWaves = function()
 			SendUSSRAttackersMid()
 			SendUSSRAttackersTop()
 			Trigger.AfterDelay(DateTime.Seconds(25), SendUSSRParatroopers)
-		end)
-
-		Trigger.AfterDelay(DateTime.Seconds(1110), function()--IronCurtain Loop
-			IronCurtainLoop()
 		end)
 
 	end

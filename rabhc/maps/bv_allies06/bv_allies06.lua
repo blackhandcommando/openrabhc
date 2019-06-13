@@ -233,7 +233,7 @@ Triggers = function()
 		EliminateAllEnemies = player.AddPrimaryObjective("Eliminate all remaining enemies in this area.")
 		NukesDestroyed = true
 		player.MarkCompletedObjective(DestroyNukes)
-		Reinforcements.Reinforce(nuker, MigReinforcementsAndOneYak, { USSRReinforcementsWP1.Location, USSRReinforcementsWP2.Location }, 5, function() end) --Bot sends them hunting
+		Reinforcements.Reinforce(ussr, MigReinforcementsAndOneYak, { USSRReinforcementsWP1.Location, USSRReinforcementsWP2.Location }, 5, function(units) TargetAndAttack(units) end)
 		if not ISentEverything then
 			ISentEverything = true
 			IdlingUnitsRedAlert()
@@ -293,7 +293,7 @@ Triggers = function()
 		Trigger.AfterDelay(DateTime.Seconds(540), function()--Start to build more mammoths and teslas
 			IUseStrongUnits = true
 		end)
-		Trigger.AfterDelay(DateTime.Seconds(820), function()
+		Trigger.AfterDelay(DateTime.Seconds(1000), function()
 			USSRLargeAttack()
 		end)
 	end)

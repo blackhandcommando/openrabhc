@@ -211,7 +211,7 @@ Triggers = function()
 			SendAttackers2USSR2()
 		end)
 
-		Trigger.AfterDelay(DateTime.Seconds(4), function()
+		Trigger.AfterDelay(DateTime.Seconds(400), function()
 			Actor64.Owner = nuker
 			USSR1StartAI()
 			SendAttackers1USSR1()

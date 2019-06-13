@@ -261,10 +261,10 @@ USSR1InfantryProduction = function(building)
 	USSR1InfantryProductionActivated = true
 	USSR1InfantryTeam = { Utils.Random(USSR1InfantryTypes) }
 
-	Trigger.AfterDelay(DateTime.Seconds(10), function()
-		if not USSR1BaseBuildings[12] then
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
 			return
-		elseif VolkovDead and USSR1BaseBuildings[12] then
+		elseif VolkovDead and not building.IsDead then
 			local rallypoint = Utils.Random(USSR1InfRallyPos)
 			building.RallyPoint = rallypoint.Location
 			building.IsPrimaryBuilding = true
@@ -284,7 +284,7 @@ USSR1InfantryProduction = function(building)
 
 				VolkovDead = false
 			end)
-		elseif USSR1BaseBuildings[12] then
+		elseif not building.IsDead then
 			local rallypoint = Utils.Random(USSR1InfRallyPos)
 			building.RallyPoint = rallypoint.Location
 			building.IsPrimaryBuilding = true
@@ -311,16 +311,16 @@ USSR1VehicleProduction = function(building)
 	USSR1VehicleTeam = { Utils.Random(USSR1VehicleTypes) }
 	USSR1Harvesters = ussr.GetActorsByType("harv")
 	
-	Trigger.AfterDelay(DateTime.Seconds(10), function()
-		if not USSR1BaseBuildings[15] then
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
 			return
-		elseif #USSR1Harvesters < 2 and USSR1BaseBuildings[15] then
+		elseif #USSR1Harvesters < 2 and not building.IsDead then
 			local rallypoint = Utils.Random(GreeceRallyPos)
 			building.RallyPoint = rallypoint.Location
 			building.Produce("harv")
 
 			Trigger.AfterDelay(DateTime.Minutes(1), function() USSR1VehicleProduction(building) end)
-		elseif USSR1BaseBuildings[15] then
+		elseif not building.IsDead then
 			local rallypoint = Utils.Random(USSR1RallyPos)
 			building.RallyPoint = rallypoint.Location
 			building.IsPrimaryBuilding = true
@@ -414,7 +414,7 @@ SendAirforceUSSR1 = function()
 	local waypoint = Utils.Random(USSR1SpawnPosAir)
 
 	Trigger.AfterDelay(DateTime.Seconds(1), function()
-		Reinforcements.Reinforce(nuker, team, { waypoint.Location, waypoint.Location }, 5, function() end)
+		Reinforcements.Reinforce(ussr, team, { waypoint.Location, waypoint.Location }, 5, function(units) USSR1TargetAndAttack(units) end)
 	end)
 
 end
@@ -672,15 +672,6 @@ USSRRepairBase = function()
 				end
 			end)
 		end
-	end)
-end
-
-USSREnemyCash = function()
-	Trigger.AfterDelay(DateTime.Seconds(30), function()
-		if ussr.Cash < 500 then
-			ussr.Cash = ussr.Cash + 725
-		end
-		USSREnemyCash()
 	end)
 end
 

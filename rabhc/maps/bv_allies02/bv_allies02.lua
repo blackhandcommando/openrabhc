@@ -16,8 +16,8 @@ if Map.LobbyOption("difficulty") == "easy" then
 	VehicleMaxAttackForce = 4
 
 	AirDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(20)
-	VehicleDelay = DateTime.Seconds(60)
+	InfantryDelay = DateTime.Seconds(30)
+	VehicleDelay = DateTime.Seconds(90)
 
 	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "ftrk", "ftrk" }
@@ -39,8 +39,8 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 	VehicleMaxAttackForce = 7
 
 	AirDelay = DateTime.Seconds(45)
-	InfantryDelay = DateTime.Seconds(10)
-	VehicleDelay = DateTime.Seconds(30)
+	InfantryDelay = DateTime.Seconds(20)
+	VehicleDelay = DateTime.Seconds(60)
 
 	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "3tnk", "ftrk" }
@@ -223,11 +223,11 @@ WorldLoaded = function()
 	InitObjectives()
 	Triggers()
 	RemoveActors()
-	Trigger.AfterDelay(DateTime.Seconds(60), function() AirProduction() end)
+	Trigger.AfterDelay(DateTime.Seconds(60), function() AirProduction(Actor166) end)
 	BuildBase(cyard)
-	InfantryProduction()
+	InfantryProduction(USSRBarracks2)
 	RepairBase()
-	VehicleProduction()
+	VehicleProduction(USSRWeaponFactory1)
 
 end
 
