@@ -3,6 +3,9 @@ Player:
 		DefaultCash: 0
 	ModularBot@USSRNukes:
 		Name: USSRNukes
+	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
+		Enabled: True
+		Locked: True
 		Type: nuke
 		GrantConditionOnBotOwner@rush:
 			Condition: enable-nuke-ai

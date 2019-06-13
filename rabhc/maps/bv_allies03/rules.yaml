@@ -1,6 +1,9 @@
 Player:
 	PlayerResources:
 		DefaultCash: 5000
+	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
+		Enabled: True
+		Locked: True
 
 World:
 	LuaScript:
