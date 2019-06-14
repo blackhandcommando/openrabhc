@@ -317,16 +317,18 @@ GreeceSendUnits = function(units)
 	end)
 end
 
-GreeceSendUnitsNaval = function(unit)
+GreeceSendUnitsNaval = function(units)
 
 	local waypoint = Actor1114
 
-	if not unit.IsDead then
-		unit.AttackMove(waypoint.Location)
-		Trigger.OnIdle(unit, function()
+	Utils.Do(units, function(unit)
+		if not unit.IsDead then
 			unit.AttackMove(waypoint.Location)
-		end)
-	end
+			Trigger.OnIdle(unit, function()
+				unit.AttackMove(waypoint.Location)
+			end)
+		end
+	end)
 end
 
 

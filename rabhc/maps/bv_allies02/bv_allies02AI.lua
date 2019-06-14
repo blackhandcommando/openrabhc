@@ -102,7 +102,7 @@ AirProduction = function(building)
 					Yaks[#Yaks + 1] = yak
 
 					Trigger.OnKilled(yak, function()
-						Trigger.AfterDelay(DateTime.Minutes(2), function() AirProduction(building) end)
+						Trigger.AfterDelay(GlobalDelay, function() AirProduction(building) end)
 					end)
 
 					TargetAndAttack(yak)
@@ -283,7 +283,7 @@ InfantryProduction = function(building)
 				if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
 					SendUnits(USSRInfantryAttack, AttackPos)
 					USSRInfantryAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() InfantryProduction(building) end)
 				else
 					Trigger.AfterDelay(InfantryDelay, function() InfantryProduction(building) end)
 				end
@@ -296,7 +296,7 @@ InfantryProduction = function(building)
 				if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
 					SendUnits(USSRInfantryAttack, AttackPos)
 					USSRInfantryAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() InfantryProduction(building) end)
 				else
 					Trigger.AfterDelay(InfantryDelay, function() InfantryProduction(building) end)
 				end
@@ -318,7 +318,7 @@ VehicleProduction = function(building)
 			building.IsPrimaryBuilding = true
 			building.Produce("harv")
 
-			Trigger.AfterDelay(DateTime.Minutes(1), function() VehicleProduction(building) end)
+			Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
 		else
 			Reinforcements.Reinforce(ussr, team, { building.Location, Actor254.Location }, 5, function(unit)
 				USSRVehicleAttack[#USSRVehicleAttack + 1] = unit
@@ -326,7 +326,7 @@ VehicleProduction = function(building)
 				if #USSRVehicleAttack >= Utils.RandomInteger(VehicleMinAttackForce, VehicleMaxAttackForce) then
 					SendUnits(USSRVehicleAttack, AttackPos)
 					USSRVehicleAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(0.5), function() VehicleProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
 				else
 					Trigger.AfterDelay(VehicleDelay, function() VehicleProduction(building) end)
 				end

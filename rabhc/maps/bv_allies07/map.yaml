@@ -1124,9 +1124,6 @@ Actors:
 	Actor326: brik
 		Owner: USSR
 		Location: 5,97
-	Actor327: brik
-		Owner: USSR
-		Location: 4,97
 	Actor328: brik
 		Owner: USSR
 		Location: 3,97
@@ -1211,9 +1208,6 @@ Actors:
 	Actor367: brik
 		Owner: USSR
 		Location: 5,103
-	Actor368: brik
-		Owner: USSR
-		Location: 4,103
 	Actor369: brik
 		Owner: USSR
 		Location: 3,103
@@ -1253,9 +1247,6 @@ Actors:
 	Actor389: brik
 		Owner: USSR
 		Location: 5,112
-	Actor390: brik
-		Owner: USSR
-		Location: 4,112
 	Actor391: brik
 		Owner: USSR
 		Location: 3,112
@@ -1721,21 +1712,12 @@ Actors:
 	Actor542: brik
 		Owner: USSR
 		Location: 22,107
-	Actor544: brik
-		Owner: USSR
-		Location: 22,108
-	Actor545: brik
-		Owner: USSR
-		Location: 22,108
 	Actor546: brik
 		Owner: USSR
 		Location: 22,109
 	Actor547: brik
 		Owner: USSR
 		Location: 22,105
-	Actor548: brik
-		Owner: USSR
-		Location: 22,104
 	Actor549: brik
 		Owner: USSR
 		Location: 22,103
@@ -2285,9 +2267,6 @@ Actors:
 	Actor724: brik
 		Owner: USSR_2
 		Location: 6,23
-	Actor725: brik
-		Owner: USSR_2
-		Location: 5,23
 	Actor726: brik
 		Owner: USSR_2
 		Location: 4,23
@@ -2318,9 +2297,6 @@ Actors:
 	Actor735: brik
 		Owner: USSR_2
 		Location: 8,23
-	Actor736: brik
-		Owner: USSR_2
-		Location: 9,23
 	Actor737: brik
 		Owner: USSR_2
 		Location: 10,23
@@ -2486,9 +2462,6 @@ Actors:
 	Actor792: brik
 		Owner: USSR_2
 		Location: 11,33
-	Actor793: brik
-		Owner: USSR_2
-		Location: 9,33
 	Actor794: brik
 		Owner: USSR_2
 		Location: 8,33
@@ -3554,7 +3527,7 @@ Actors:
 		Facing: 104
 	Actor1119: msub
 		Owner: USSR_2
-		Location: 63,45
+		Location: 60,36
 		Facing: 92
 	Actor1120: ss
 		Owner: USSR_2

@@ -26,7 +26,7 @@ USSRMigs = { Actor875, Actor876, Actor877 }
 
 ActorRemovals =
 {
-	easy = { Actor790 },
+	easy = { Actor790, Actor948 },
 	normal = { Actor790 },
 	hard = { },
 }

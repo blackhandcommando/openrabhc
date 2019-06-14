@@ -25,8 +25,8 @@ if Map.LobbyOption("difficulty") == "easy" then
 
 	InfantryDelay = DateTime.Seconds(35)
 	VehicleDelay = DateTime.Seconds(35)
-
 	DefendTimer = DateTime.Minutes(15)
+	GlobalDelay = DateTime.Minutes(3) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -49,8 +49,8 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 	InfantryDelay = DateTime.Seconds(20)
 	VehicleDelay = DateTime.Seconds(32)
-
 	DefendTimer = DateTime.Minutes(15)
+	GlobalDelay = DateTime.Minutes(2) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
@@ -75,8 +75,8 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 
 	InfantryDelay = DateTime.Seconds(15)
 	VehicleDelay = DateTime.Seconds(29)
-
 	DefendTimer = DateTime.Minutes(20)
+	GlobalDelay = DateTime.Minutes(1) --Time the AI will wait after successfully creating a team
 
 end
 

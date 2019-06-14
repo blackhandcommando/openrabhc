@@ -16,9 +16,10 @@ if Map.LobbyOption("difficulty") == "easy" then
 	USSR2VehicleMinAttackForce = 4
 	USSR2VehicleMaxAttackForce = 10
 
-	USSR2NavyDelay = DateTime.Seconds(120)
+	USSR2NavyDelay = DateTime.Seconds(150)
 	USSR2InfantryDelay = DateTime.Seconds(30)
-	USSR2VehicleDelay = DateTime.Seconds(50)
+	USSR2VehicleDelay = DateTime.Seconds(75)
+	GlobalDelay = DateTime.Minutes(5) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -32,9 +33,10 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 	USSR2VehicleMinAttackForce = 5
 	USSR2VehicleMaxAttackForce = 10
 
-	USSR2NavyDelay = DateTime.Seconds(90)
-	USSR2InfantryDelay = DateTime.Seconds(20)
-	USSR2VehicleDelay = DateTime.Seconds(40)
+	USSR2NavyDelay = DateTime.Seconds(120)
+	USSR2InfantryDelay = DateTime.Seconds(30)
+	USSR2VehicleDelay = DateTime.Seconds(60)
+	GlobalDelay = DateTime.Minutes(3.5) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
@@ -48,9 +50,10 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 	USSR2VehicleMinAttackForce = 6
 	USSR2VehicleMaxAttackForce = 10
 
-	USSR2NavyDelay = DateTime.Seconds(60)
-	USSR2InfantryDelay = DateTime.Seconds(10)
-	USSR2VehicleDelay = DateTime.Seconds(30)
+	USSR2NavyDelay = DateTime.Seconds(120)
+	USSR2InfantryDelay = DateTime.Seconds(20)
+	USSR2VehicleDelay = DateTime.Seconds(45)
+	GlobalDelay = DateTime.Minutes(2) --Time the AI will wait after successfully creating a team
 
 end
 
@@ -148,7 +151,7 @@ USSR2StartAI = function()
 	if not USSR2InfantryProductionActivated then USSR2InfantryProduction(Actor755) end
 	if not USSR2VehicleProductionActivated then USSR2VehicleProduction(Actor720) end
 	Trigger.AfterDelay(DateTime.Seconds(180), function()
-		if not USSR2NavalProductionActivated then USSR2NavalProduction() end
+		if not USSR2NavalProductionActivated then USSR2NavalProduction(Actor722) end
 	end)
 
 end
@@ -172,7 +175,7 @@ USSR2InfantryProduction = function(building)
 				if #USSR2InfantryAttack >= Utils.RandomInteger(USSR2InfantryMinAttackForce, USSR2InfantryMaxAttackForce) then
 					USSR2SendUnits(USSR2InfantryAttack)
 					USSR2InfantryAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() USSR2InfantryProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() USSR2InfantryProduction(building) end)
 				else
 					Trigger.AfterDelay(USSR2InfantryDelay, function() USSR2InfantryProduction(building) end)
 				end
@@ -196,7 +199,7 @@ USSR2VehicleProduction = function(building)
 			building.RallyPoint = rallypoint.Location
 			building.Produce("harv")
 
-			Trigger.AfterDelay(DateTime.Minutes(1), function() USSR2VehicleProduction(building) end)
+			Trigger.AfterDelay(GlobalDelay, function() USSR2VehicleProduction(building) end)
 		elseif not building.IsDead then
 			local rallypoint = Utils.Random(USSR2RallyPos)
 			building.RallyPoint = rallypoint.Location
@@ -208,7 +211,7 @@ USSR2VehicleProduction = function(building)
 				if #USSR2VehicleAttack >= Utils.RandomInteger(USSR2VehicleMinAttackForce, USSR2VehicleMaxAttackForce) then
 					USSR2SendUnits(USSR2VehicleAttack)
 					USSR2VehicleAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(0.5), function() USSR2VehicleProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() USSR2VehicleProduction(building) end)
 				else
 					Trigger.AfterDelay(USSR2VehicleDelay, function() USSR2VehicleProduction(building) end)
 				end
@@ -218,7 +221,7 @@ USSR2VehicleProduction = function(building)
 
 end
 
-USSR2NavalProduction = function()
+USSR2NavalProduction = function(building)
 
 	USSR2NavalProductionActivated = true
 	
@@ -234,33 +237,36 @@ USSR2NavalProduction = function()
 				if #USSR2NavalAttack >= Utils.RandomInteger(USSR2NavalMinAttackForce, USSR2NavalMaxAttackForce) then
 					USSR2SendUnitsNaval(USSR2NavalAttack)
 					Trigger.AfterDelay(DateTime.Minutes(2), function()
-						USSR2NavalProduction()
+						USSR2NavalProduction(building)
 						USSR2NavalAttack = { }
 					end)
 				else
-					Trigger.AfterDelay(USSR2NavyDelay, USSR2NavalProduction)
+					Trigger.AfterDelay(USSR2NavyDelay, function() USSR2NavalProduction(building) end)
 				end
 			end)
 		elseif not building.IsDead and not USSR2NavalPatrol1 then
 			local team = { "ss", "ss" }
 			Reinforcements.Reinforce(ussr_2, team, { building.Location, Actor1114.Location }, 5, USSR2SendNavalPatrol1)
-			Trigger.AfterDelay(DateTime.Minutes(2), USSR2NavalProduction)
+			Trigger.AfterDelay(DateTime.Minutes(2), function() USSR2NavalProduction(building) end)
 		end
 	end)
 
 end
 
-USSR2SendUnitsNaval = function(unit)
+USSR2SendUnitsNaval = function(units)
 
 	local waypoint = Actor1216
 
-	if not unit.IsDead then
-		unit.Stance = "AttackAnything"
-		unit.AttackMove(waypoint.Location)
-		Trigger.OnIdle(unit, function()
-			unit.Hunt()
-		end)
-	end
+	Utils.Do(units, function(unit)
+		if not unit.IsDead then
+			unit.Stance = "AttackAnything"
+			unit.AttackMove(waypoint.Location)
+			Trigger.OnIdle(unit, function()
+				unit.Hunt()
+			end)
+		end
+	end)
+
 end
 
 USSR2SendNavalPatrol1 = function(unit)

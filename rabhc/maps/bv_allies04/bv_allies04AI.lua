@@ -191,7 +191,7 @@ VehicleProduction = function(building)
 			building.IsPrimaryBuilding = true
 			building.Produce("harv")
 
-			Trigger.AfterDelay(DateTime.Minutes(1), function() VehicleProduction(building) end)
+			Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
 		elseif not building.IsDead then
 			building.IsPrimaryBuilding = true
 			Reinforcements.Reinforce(ussr, VehicleTeam, { building.Location, Actor540.Location }, 5, function(unit)
@@ -200,7 +200,7 @@ VehicleProduction = function(building)
 				if #USSRVehicleAttack >= Utils.RandomInteger(VehicleMinAttackForce, VehicleMaxAttackForce) then
 					SendUnits(USSRVehicleAttack, AttackPos)
 					USSRVehicleAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() VehicleProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
 				else
 					Trigger.AfterDelay(VehicleDelay, function() VehicleProduction(building) end)
 				end
@@ -225,7 +225,7 @@ InfantryProduction = function(building)
 				if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
 					SendUnits(USSRInfantryAttack, AttackPos)
 					USSRInfantryAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() InfantryProduction(building) end)
 				else
 					Trigger.AfterDelay(InfantryDelay, function() InfantryProduction(building) end)
 				end

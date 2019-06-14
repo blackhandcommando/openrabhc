@@ -80,7 +80,7 @@ VehicleProduction = function(building)
 			building.IsPrimaryBuilding = true
 			building.Produce("harv")
 
-			Trigger.AfterDelay(DateTime.Minutes(1), function() VehicleProduction(building) end)
+			Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
 		else
 			local rallypoint = Utils.Random(RallyPoints)
 			Actor113.RallyPoint = rallypoint.Location
@@ -90,7 +90,7 @@ VehicleProduction = function(building)
 
 				if #USSRVehicleAttack >= Utils.RandomInteger(VehicleMinAttackForce, VehicleMaxAttackForce) then
 					SendUnits(USSRVehicleAttack, AttackPos)
-					Trigger.AfterDelay(DateTime.Minutes(2), function()
+					Trigger.AfterDelay(GlobalDelay, function()
 						VehicleProduction(building)
 						USSRVehicleAttack = { }
 					end)
@@ -119,13 +119,13 @@ InfantryProduction = function(building)
 				if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
 					SendUnits(USSRInfantryAttack, AttackPos)
 					USSRInfantryAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() InfantryProduction(building) end)
 				else
 					Trigger.AfterDelay(InfantryDelay, function() InfantryProduction(building) end)
 				end
 			end)
 		else
-			Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction(building) end)
+			Trigger.AfterDelay(GlobalDelay, function() InfantryProduction(building) end)
 		end
 	end)
 

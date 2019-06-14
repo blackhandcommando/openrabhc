@@ -19,10 +19,11 @@ if Map.LobbyOption("difficulty") == "easy" then
 
 	LargeAttackDelay = DateTime.Minutes(18)
 	MadTankAttackDelay = DateTime.Minutes(15)
-	NavyDelay = DateTime.Seconds(120)
+	NavyDelay = DateTime.Seconds(150)
 	InfantryDelay = DateTime.Seconds(30)
 	VehicleDelay = DateTime.Seconds(50)
 	YakDelay = DateTime.Seconds(300)
+	GlobalDelay = DateTime.Minutes(3) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -39,10 +40,11 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 	LargeAttackDelay = DateTime.Minutes(16)
 	MadTankAttackDelay = DateTime.Minutes(13)
-	NavyDelay = DateTime.Seconds(90)
-	InfantryDelay = DateTime.Seconds(20)
-	VehicleDelay = DateTime.Seconds(40)
+	NavyDelay = DateTime.Seconds(120)
+	InfantryDelay = DateTime.Seconds(25)
+	VehicleDelay = DateTime.Seconds(50)
 	YakDelay = DateTime.Seconds(200)
+	GlobalDelay = DateTime.Minutes(2) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
@@ -59,10 +61,11 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 
 	LargeAttackDelay = DateTime.Minutes(14)
 	MadTankAttackDelay = DateTime.Minutes(11)
-	NavyDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(10)
-	VehicleDelay = DateTime.Seconds(30)
+	NavyDelay = DateTime.Seconds(90)
+	InfantryDelay = DateTime.Seconds(25)
+	VehicleDelay = DateTime.Seconds(50)
 	YakDelay = DateTime.Seconds(150)
+	GlobalDelay = DateTime.Minutes(1) --Time the AI will wait after successfully creating a team
 
 end
 
@@ -324,7 +327,7 @@ VehicleProduction = function(building)
 			building.IsPrimaryBuilding = true
 			building.Produce("harv")
 
-			Trigger.AfterDelay(DateTime.Minutes(1), function() VehicleProduction(building) end)
+			Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
 		elseif not building.IsDead then
 			local rallypoint = Utils.Random(RallyPoints)
 			building.RallyPoint = rallypoint.Location
@@ -336,7 +339,7 @@ VehicleProduction = function(building)
 				if #USSRVehicleAttack >= Utils.RandomInteger(VehicleMinAttackForce, VehicleMaxAttackForce) then
 					SendUnits(USSRVehicleAttack)
 					USSRVehicleAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() VehicleProduction(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
 				else
 					Trigger.AfterDelay(VehicleDelay, function() VehicleProduction(building) end)
 				end
@@ -368,7 +371,7 @@ InfantryProduction1 = function()
 					if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
 						SendUnitsInfantry1(USSRInfantryAttack)
 						USSRInfantryAttack = { }
-						Trigger.AfterDelay(DateTime.Minutes(1), InfantryProduction1)
+						Trigger.AfterDelay(GlobalDelay, InfantryProduction1)
 					else
 						Trigger.AfterDelay(InfantryDelay, InfantryProduction1)
 					end
@@ -403,7 +406,7 @@ InfantryProduction2 = function(building)
 				if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
 					SendUnitsInfantry(USSRInfantryAttack)
 					USSRInfantryAttack = { }
-					Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction2(building) end)
+					Trigger.AfterDelay(GlobalDelay, function() InfantryProduction2(building) end)
 				else
 					Trigger.AfterDelay(InfantryDelay, function() InfantryProduction2(building) end)
 				end

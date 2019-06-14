@@ -18,10 +18,11 @@ if Map.LobbyOption("difficulty") == "easy" then
 	VehicleMinAttackForce = 1
 	VehicleMaxAttackForce = 6
 
-	NavyDelay = DateTime.Seconds(75)
-	InfantryDelay = DateTime.Seconds(20)
+	NavyDelay = DateTime.Seconds(150)
+	InfantryDelay = DateTime.Seconds(45)
 	VehicleDelay = DateTime.Seconds(60)
-	YakDelay = DateTime.Seconds(60)
+	YakDelay = DateTime.Seconds(75)
+	GlobalDelay = DateTime.Minutes(3) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -38,10 +39,11 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 	VehicleMaxAttackForce = 10
 
 
-	NavyDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(15)
+	NavyDelay = DateTime.Seconds(120)
+	InfantryDelay = DateTime.Seconds(30)
 	VehicleDelay = DateTime.Seconds(45)
-	YakDelay = DateTime.Seconds(45)
+	YakDelay = DateTime.Seconds(60)
+	GlobalDelay = DateTime.Minutes(2) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
@@ -57,10 +59,11 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 	VehicleMinAttackForce = 3
 	VehicleMaxAttackForce = 10
 
-	NavyDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(10)
+	NavyDelay = DateTime.Seconds(90)
+	InfantryDelay = DateTime.Seconds(20)
 	VehicleDelay = DateTime.Seconds(30)
-	YakDelay = DateTime.Seconds(30)
+	YakDelay = DateTime.Seconds(45)
+	GlobalDelay = DateTime.Minutes(1) --Time the AI will wait after successfully creating a team
 
 end
 

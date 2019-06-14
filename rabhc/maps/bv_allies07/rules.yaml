@@ -192,7 +192,7 @@ AFLD:
 		OrderName: SovietSpyPlane
 		Prerequisites: aircraft.soviet
 		Icon: spyplane
-		ChargeInterval: 8000
+		ChargeInterval: 9000
 		Description: Spy Plane
 		LongDesc: Reveals an area of the map\nand cloaked enemy units.
 		SelectTargetSpeechNotification: SelectTarget
@@ -210,7 +210,7 @@ AFLD:
 		OrderName: SovietParatroopers
 		Prerequisites: aircraft.soviet
 		Icon: paratroopers
-		ChargeInterval: 4500
+		ChargeInterval: 10000
 		Description: Paratroopers
 		LongDesc: A Badger drops a squad of infantry\nanywhere on the map.
 		DropItems: E1R1,SHOK,SHOK,E3R1,E3R1
@@ -228,7 +228,7 @@ AFLD:
 		OrderName: UkraineParabombs
 		Prerequisites: aircraft.soviet
 		Icon: parabombs
-		ChargeInterval: 9000
+		ChargeInterval: 15000
 		Description: Parabombs
 		LongDesc: A squad of Badgers drop parachuted\nbombs on your target.
 		SelectTargetSpeechNotification: SelectTarget
