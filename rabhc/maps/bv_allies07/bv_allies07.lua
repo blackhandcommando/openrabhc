@@ -14,7 +14,7 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
-	DifficultyDelay = DateTime.Seconds(5)
+	DifficultyDelay = DateTime.Seconds(40)
 
 end
 
@@ -160,7 +160,7 @@ InitObjectives = function()
 	end)
 
 	DestroyEnemies = ussr.AddPrimaryObjective("Infiltrate the soviet tech center near your position.")
-	InfiltrateFCom = player.AddPrimaryObjective("Infiltrate or capture the soviet HQ.")
+	InfiltrateFCom = player.AddPrimaryObjective("Infiltrate the soviet HQ.")
 	DestroySuperweapons = player.AddPrimaryObjective("Destroy all soviet superweapons in this area.")
 	DestroySovietOutpost = player.AddSecondaryObjective("Soviets are blocking off our allies entering this area.\nDestroy the soviet outpost to the east.")
 
