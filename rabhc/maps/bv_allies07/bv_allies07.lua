@@ -6,7 +6,7 @@
 
 if Map.LobbyOption("difficulty") == "easy" then
 
-	DifficultyDelay = DateTime.Minutes(1.5)
+	DifficultyDelay = DateTime.Minutes(2.0)
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -14,7 +14,7 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
-	DifficultyDelay = DateTime.Seconds(5)
+	DifficultyDelay = DateTime.Seconds(40)
 
 end
 
@@ -40,10 +40,12 @@ Tick = function()
 		GameLost = true
 		ussr.MarkCompletedObjective(DestroyEnemies)
 	end
+
 	if ussr.HasNoRequiredUnits() and nuker.HasNoRequiredUnits() and not GameWon then
 		GameWon = true
 		player.MarkCompletedObjective(EliminateAllEnemies)
 	end
+
 	if OutpostDestroyed or SecondBaseDestroyed or AirfieldsDestroyed then
 		if DemoTruck and not DemoTruckSpawned then
 			DemoTruckSpawned = true
@@ -52,6 +54,21 @@ Tick = function()
 				USSRDemolitonTruck()
 			end)
 		end
+	end
+
+	if Greece.Resources >= Greece.ResourceCapacity * 0.75 then
+		Greece.Cash = Greece.Cash + Greece.Resources - Greece.ResourceCapacity * 0.25
+		Greece.Resources = Greece.ResourceCapacity * 0.25
+	end
+
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
+	end
+
+	if ussr_2.Resources >= ussr_2.ResourceCapacity * 0.75 then
+		ussr_2.Cash = ussr_2.Cash + ussr_2.Resources - ussr_2.ResourceCapacity * 0.25
+		ussr_2.Resources = ussr_2.ResourceCapacity * 0.25
 	end
 end
 
@@ -143,7 +160,7 @@ InitObjectives = function()
 	end)
 
 	DestroyEnemies = ussr.AddPrimaryObjective("Infiltrate the soviet tech center near your position.")
-	InfiltrateFCom = player.AddPrimaryObjective("Infiltrate or capture the soviet HQ.")
+	InfiltrateFCom = player.AddPrimaryObjective("Infiltrate the soviet HQ.")
 	DestroySuperweapons = player.AddPrimaryObjective("Destroy all soviet superweapons in this area.")
 	DestroySovietOutpost = player.AddSecondaryObjective("Soviets are blocking off our allies entering this area.\nDestroy the soviet outpost to the east.")
 

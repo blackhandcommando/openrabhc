@@ -19,10 +19,11 @@ if Map.LobbyOption("difficulty") == "easy" then
 
 	LargeAttackDelay = DateTime.Minutes(18)
 	MadTankAttackDelay = DateTime.Minutes(15)
-	NavyDelay = DateTime.Seconds(120)
+	NavyDelay = DateTime.Seconds(150)
 	InfantryDelay = DateTime.Seconds(30)
 	VehicleDelay = DateTime.Seconds(50)
 	YakDelay = DateTime.Seconds(300)
+	GlobalDelay = DateTime.Minutes(3) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "normal" then
 
@@ -39,10 +40,11 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 
 	LargeAttackDelay = DateTime.Minutes(16)
 	MadTankAttackDelay = DateTime.Minutes(13)
-	NavyDelay = DateTime.Seconds(90)
-	InfantryDelay = DateTime.Seconds(20)
-	VehicleDelay = DateTime.Seconds(40)
+	NavyDelay = DateTime.Seconds(120)
+	InfantryDelay = DateTime.Seconds(25)
+	VehicleDelay = DateTime.Seconds(50)
 	YakDelay = DateTime.Seconds(200)
+	GlobalDelay = DateTime.Minutes(2) --Time the AI will wait after successfully creating a team
 
 elseif Map.LobbyOption("difficulty") == "hard" then
 
@@ -59,10 +61,11 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 
 	LargeAttackDelay = DateTime.Minutes(14)
 	MadTankAttackDelay = DateTime.Minutes(11)
-	NavyDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(10)
-	VehicleDelay = DateTime.Seconds(30)
+	NavyDelay = DateTime.Seconds(90)
+	InfantryDelay = DateTime.Seconds(25)
+	VehicleDelay = DateTime.Seconds(50)
 	YakDelay = DateTime.Seconds(150)
+	GlobalDelay = DateTime.Minutes(1) --Time the AI will wait after successfully creating a team
 
 end
 
@@ -74,7 +77,6 @@ USSRVehicleTypes2 = { "v2rl", "3tnk", "ttnk", "4tnk" }
 USSRAirType = { "yak.ai", "mig.ai" }
 USSRMadTankTank = { "dtrk" }
 
-HarvesterDead = true
 cyardIsBuilding = false
 
 USSRInfantryAttack = { }
@@ -241,22 +243,22 @@ StartAI = function()
 	InfantryProduction1()
 	if Map.LobbyOption("difficulty") == "easy" then
 		Trigger.AfterDelay(DateTime.Seconds(350), function()
-			NavalProduction()
+			NavalProduction(Actor775)
 			VehicleProduction(Actor752)
 		end)
-		Trigger.AfterDelay(DateTime.Seconds(450), AirProduction)
+		Trigger.AfterDelay(DateTime.Seconds(450), function() AirProduction(Actor768) end)
 	elseif Map.LobbyOption("difficulty") == "normal" then
 		Trigger.AfterDelay(DateTime.Seconds(300), function()
-			NavalProduction()
+			NavalProduction(Actor775)
 			VehicleProduction(Actor752)
 		end)
-		Trigger.AfterDelay(DateTime.Seconds(350), AirProduction)
+		Trigger.AfterDelay(DateTime.Seconds(350), function() AirProduction(Actor768) end)
 	elseif Map.LobbyOption("difficulty") == "hard" then
 		Trigger.AfterDelay(DateTime.Seconds(200), function()
-			NavalProduction()
+			NavalProduction(Actor775)
 			VehicleProduction(Actor752)
 		end)
-		Trigger.AfterDelay(DateTime.Seconds(250), AirProduction)
+		Trigger.AfterDelay(DateTime.Seconds(250), function() AirProduction(Actor768) end)
 	end
 end
 
@@ -264,36 +266,47 @@ AirProduction = function(building)
 
 	local team = { Utils.Random(USSRAirType) }
 
-	if not BaseBuildings[13] then
-		return
-	else
-		Trigger.AfterDelay(DateTime.Seconds(1), function()
-			if BaseBuildings[13] then
-				ussr.Build(team, function(units)
-					local yak = units[1]
-					Yaks[#Yaks + 1] = yak
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
+			return
+		else
+			Reinforcements.Reinforce(ussr, team, { building.Location, building.Location }, 5, function(unit)
+				local yak = unit
+				Yaks[#Yaks + 1] = yak
 
-					Trigger.AfterDelay(YakDelay, AirProduction)
+				Trigger.AfterDelay(YakDelay, function() AirProduction(building) end)
 
-					TargetAndAttack(yak)
-				end)
-			end
-		end)
-	end
+				TargetAndAttack(yak)
+			end)
+		end
+	end)
 
 end
 
 TargetAndAttack = function(yak, target)
-
 	local waypoint = Utils.Random(AttackPosAir)
 
 	if not yak.IsDead then
-		Trigger.OnIdle(yak, function()
-			yak.AttackMove(waypoint.Location)
-			yak.Hunt()
-		end)
+		yak.AttackMove(waypoint.Location)
 	end
 
+	if not target or target.IsDead or (not target.IsInWorld) then
+		local enemies = Utils.Where(Map.ActorsInWorld, function(self) return self.Owner == player and self.HasProperty("Health") and yak.CanTarget(self) end)
+
+		if #enemies > 0 then
+			target = Utils.Random(enemies)
+		end
+	end
+
+	if target and yak.AmmoCount() > 0 and yak.CanTarget(target) then
+		yak.Attack(target)
+	else
+		yak.ReturnToBase()
+	end
+
+	yak.CallFunc(function()
+		TargetAndAttack(yak, target)
+	end)
 end
 
 VehicleProduction = function(building)
@@ -303,44 +316,36 @@ VehicleProduction = function(building)
 	else
 		VehicleTeam = { Utils.Random(USSRVehicleTypes2) }
 	end
+	USSRHarvesters = ussr.GetActorsByType("harv")
 
-	if not BaseBuildings[12] then
-		return
-	elseif HarvesterDead and BaseBuildings[12] then
-		Trigger.AfterDelay(DateTime.Seconds(1), function()
-			if BaseBuildings[12] then
-				ussr.Build({ "harv" }, function(harv)
-					harv[1].FindResources()
-					Trigger.OnKilled(harv[1], function() HarvesterDead = true end)
-
-					HarvesterDead = false
-					VehicleProduction(building)
-				end)
-			end
-		end)
-	elseif BaseBuildings[12] then
-		if not building.IsDead then
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
+			return
+		elseif #USSRHarvesters < 2 and not building.IsDead then
 			local rallypoint = Utils.Random(RallyPoints)
 			building.RallyPoint = rallypoint.Location
 			building.IsPrimaryBuilding = true
+			building.Produce("harv")
+
+			Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
+		elseif not building.IsDead then
+			local rallypoint = Utils.Random(RallyPoints)
+			building.RallyPoint = rallypoint.Location
+			building.IsPrimaryBuilding = true
+
+			Reinforcements.Reinforce(ussr, VehicleTeam, { building.Location, rallypoint.Location }, 5, function(unit)
+				USSRVehicleAttack[#USSRVehicleAttack + 1] = unit
+
+				if #USSRVehicleAttack >= Utils.RandomInteger(VehicleMinAttackForce, VehicleMaxAttackForce) then
+					SendUnits(USSRVehicleAttack)
+					USSRVehicleAttack = { }
+					Trigger.AfterDelay(GlobalDelay, function() VehicleProduction(building) end)
+				else
+					Trigger.AfterDelay(VehicleDelay, function() VehicleProduction(building) end)
+				end
+			end)
 		end
-
-		Trigger.AfterDelay(DateTime.Seconds(1), function()
-			if BaseBuildings[12] then
-				ussr.Build(VehicleTeam, function(unit)
-					USSRVehicleAttack[#USSRVehicleAttack + 1] = unit[1]
-
-					if #USSRVehicleAttack >= Utils.RandomInteger(VehicleMinAttackForce, VehicleMaxAttackForce) then
-						SendUnits(USSRVehicleAttack)
-						USSRVehicleAttack = { }
-						Trigger.AfterDelay(DateTime.Minutes(1), function() VehicleProduction(building) end)
-					else
-						Trigger.AfterDelay(VehicleDelay, function() VehicleProduction(building) end)
-					end
-				end)
-			end
-		end)
-	end
+	end)
 
 end
 
@@ -353,7 +358,7 @@ InfantryProduction1 = function()
 	end
 
 	if Actor324.IsDead then
-		InfantryProduction2()
+		InfantryProduction2(Actor754)
 		return
 	elseif not Actor324.IsDead then
 
@@ -366,20 +371,20 @@ InfantryProduction1 = function()
 					if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
 						SendUnitsInfantry1(USSRInfantryAttack)
 						USSRInfantryAttack = { }
-						Trigger.AfterDelay(DateTime.Minutes(1), InfantryProduction1)
+						Trigger.AfterDelay(GlobalDelay, InfantryProduction1)
 					else
 						Trigger.AfterDelay(InfantryDelay, InfantryProduction1)
 					end
 				end)
 			else
-				InfantryProduction2()
+				InfantryProduction2(Actor754)
 			end
 		end)
 	end
 
 end
 
-InfantryProduction2 = function()
+InfantryProduction2 = function(building)
 
 	if not IUseStrongUnits then
 		InfantryTeam = { Utils.Random(USSRInfantryTypes1) }
@@ -387,47 +392,50 @@ InfantryProduction2 = function()
 		InfantryTeam = { Utils.Random(USSRInfantryTypes2) }
 	end
 
-	if not BaseBuildings[10] then
-		return
-	elseif BaseBuildings[10] then
+	Trigger.AfterDelay(DateTime.Seconds(5), function()
+		if building.IsDead then
+			return
+		elseif not building.IsDead then
+			local rallypoint = Utils.Random(RallyPoints)
+			building.RallyPoint = rallypoint.Location
+			building.IsPrimaryBuilding = true
 
-		Trigger.AfterDelay(DateTime.Seconds(1), function()
-			if BaseBuildings[10] then
-				ussr.Build(InfantryTeam, function(unit)
-					USSRInfantryAttack[#USSRInfantryAttack + 1] = unit[1]
+			Reinforcements.Reinforce(ussr, InfantryTeam, { building.Location, rallypoint.Location }, 5, function(unit)
+				USSRInfantryAttack[#USSRInfantryAttack + 1] = unit
 
-					if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
-						SendUnitsInfantry(USSRInfantryAttack)
-						USSRInfantryAttack = { }
-						Trigger.AfterDelay(DateTime.Minutes(1), function() InfantryProduction2(building) end)
-					else
-						Trigger.AfterDelay(InfantryDelay, function() InfantryProduction2(building) end)
-					end
-				end)
-			end
-		end)
-	end
+				if #USSRInfantryAttack >= Utils.RandomInteger(InfantryMinAttackForce, InfantryMaxAttackForce) then
+					SendUnitsInfantry(USSRInfantryAttack)
+					USSRInfantryAttack = { }
+					Trigger.AfterDelay(GlobalDelay, function() InfantryProduction2(building) end)
+				else
+					Trigger.AfterDelay(InfantryDelay, function() InfantryProduction2(building) end)
+				end
+			end)
+		end
+	end)
 
 end
 
-NavalProduction = function()
+NavalProduction = function(building)
 	
 	local team = { Utils.Random(USSRNavalTypes) }
 
-	if not BaseBuildings[24] then
-		return
-	else
-		if BaseBuildings[24] and not NavalPatrol1 then
-			local team = { "ss", "ss" }
-			ussr.Build(team, SendNavalPatrol1)
-			Trigger.AfterDelay(DateTime.Minutes(1), NavalProduction)
-		elseif BaseBuildings[24] and not NavalPatrol2 and not TryMeOnce then
-			local team = { "ss", "ss", "ss" }
-			TryMeOnce = true
-			ussr.Build(team, SendNavalPatrol2)
-			Trigger.AfterDelay(DateTime.Minutes(3), NavalProduction)
+	Trigger.AfterDelay(DateTime.Seconds(75), function()
+		if building.IsDead then
+			return
+		else
+			if not building.IsDead and not NavalPatrol1 then
+				local team = { "ss", "ss" }
+				Reinforcements.Reinforce(ussr, team, { building.Location, Actor823.Location }, 5, SendNavalPatrol1)
+				Trigger.AfterDelay(DateTime.Minutes(2), function() NavalProduction(building) end)
+			elseif not building.IsDead and not NavalPatrol2 and not TryMeOnce then
+				local team = { "ss", "ss", "ss" }
+				TryMeOnce = true
+				Reinforcements.Reinforce(ussr, team, { building.Location, Actor823.Location }, 5, SendNavalPatrol2)
+				Trigger.AfterDelay(DateTime.Minutes(3), function() NavalProduction(building) end)
+			end
 		end
-	end
+	end)
 
 end
 
@@ -831,24 +839,6 @@ RepairBase = function()
 	end)
 end
 
-EnemyCash = function()
-	if Phase2 then
-		Trigger.AfterDelay(DateTime.Seconds(30), function()
-			if ussr.Cash < 500 then
-				ussr.Cash = ussr.Cash + 725
-			end
-			EnemyCash()
-		end)
-	else
-		Trigger.AfterDelay(DateTime.Seconds(5), function() --Give harvesters something to do
-			if ussr.Cash > 2000 then
-				ussr.Cash = ussr.Cash - 2000
-			end
-			EnemyCash()
-		end)	
-	end
-end
-
 SendUnits = function(units)
 
 	local waypoint = Utils.Random(AttackPos)
@@ -908,37 +898,33 @@ SubmarineGuards = function()
 
 end
 
-SendNavalPatrol1 = function(units)
+SendNavalPatrol1 = function(unit)
 
 	NavalPatrol1 = true
 
-	Utils.Do(units, function(unit)
-		if not unit.IsDead then
-			Trigger.OnIdle(unit, function()
-				unit.Patrol(SSNavalRoute1, true)
-			end)
-		end
-
-		Trigger.OnKilled(unit, function()
-			NavalPatrol1 = false
+	if not unit.IsDead then
+		Trigger.OnIdle(unit, function()
+			unit.Patrol(SSNavalRoute1, true)
 		end)
+	end
+
+	Trigger.OnKilled(unit, function()
+		NavalPatrol1 = false
 	end)
 end
 
-SendNavalPatrol2 = function(units)
+SendNavalPatrol2 = function(unit)
 
 	NavalPatrol2 = true
 
-	Utils.Do(units, function(unit)
-		if not unit.IsDead then
-			Trigger.OnIdle(unit, function()
-				unit.Patrol(SSNavalRoute2, true)
-			end)
-		end
-
-		Trigger.OnKilled(unit, function()
-			NavalPatrol2 = false
+	if not unit.IsDead then
+		Trigger.OnIdle(unit, function()
+			unit.Patrol(SSNavalRoute2, true)
 		end)
+	end
+
+	Trigger.OnKilled(unit, function()
+		NavalPatrol2 = false
 	end)
 end
 

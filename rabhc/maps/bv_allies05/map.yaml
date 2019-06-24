@@ -1,23 +1,13 @@
 MapFormat: 11
-
 RequiresMod: rabhc
-
 Title: Allies05 Hell's Fury
-
 Author: Boxhead
-
 Tileset: TEMPERAT
-
 MapSize: 130,130
-
 Bounds: 1,52,100,76
-
 Visibility: MissionSelector
-
 Categories: Mission
-
 LockPreview: True
-
 Players:
 	PlayerReference@Neutral:
 		Name: Neutral
@@ -58,7 +48,6 @@ Players:
 		LockColor: True
 		Color: 7FFFD4
 		Enemies: USSR, USSRParas
-
 Actors:
 	Actor3: fact
 		Owner: England
@@ -1589,5 +1578,4 @@ Actors:
 		Owner: USSR
 		Location: 84,61
 		Facing: 92
-
 Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml

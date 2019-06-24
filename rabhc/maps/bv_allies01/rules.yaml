@@ -1,6 +1,9 @@
 Player:
 	PlayerResources:
 		DefaultCash: 5000
+	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
+		Enabled: True
+		Locked: True
 
 World:
 	LuaScript:
@@ -32,7 +35,7 @@ HIND.AI:
 		Image: HIND
 	AutoTarget:
 		InitialStance: AttackAnything
-        InitialStanceAI: AttackAnything
+		InitialStanceAI: AttackAnything
 	Health:
 		HP: 14000
 	AmmoPool:
@@ -47,12 +50,12 @@ HELI.AI:
 		Image: HELI
 	AutoTarget:
 		InitialStance: AttackAnything
-        InitialStanceAI: AttackAnything
+		InitialStanceAI: AttackAnything
 	Health:
 		HP: 15000
 	AmmoPool:
 		Ammo: 999
-        AmmoCondition: ammo
+		AmmoCondition: ammo
 
 SAM:
 	Power:
@@ -63,113 +66,113 @@ IRON:
 		Amount: 0
 
 POWR:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 TENT:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 PROC:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 WEAP:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 HPAD:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 DOME:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 FIX:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 ATEC:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 PDOX:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MSLO:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 GAP:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 2TNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 	
 ARTY:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MNLY:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 TRUK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MGG:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MRJ:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 STNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 CTNK:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 			
 PBOX:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 HBOX:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 GUN:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 AGUN:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 E6:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 SPY:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 E7:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MECH:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled
 
 MCV:
-    Buildable:
-        Prerequisites: ~disabled
+	Buildable:
+		Prerequisites: ~disabled

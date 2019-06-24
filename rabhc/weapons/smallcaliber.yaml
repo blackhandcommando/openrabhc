@@ -25,8 +25,8 @@
 ZSU-23:
 	Inherits: ^AACannon
 	Burst: 2
-	BurstDelay: 0
-	ReloadDelay: 5
+	BurstDelays: 0
+	ReloadDelay: 6
 	Range: 10c0
 	Projectile: Bullet
 		Speed: 3c340
@@ -94,6 +94,7 @@ FLAK-23-AG:
 			Heavy: 10
 			Concrete: 10
 			Cybernetic: 80
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
 
 Vulcan:
 	Inherits: ^HeavyMG
@@ -172,7 +173,7 @@ Vulcan:
 		Versus:
 			None: 200
 			Wood: 50
-			Light: 60
+			Light: 50
 			Heavy: 20
 			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
@@ -192,7 +193,7 @@ Vulcan:
 		Versus:
 			None: 200
 			Wood: 50
-			Light: 60
+			Light: 50
 			Heavy: 20
 			Concrete: 20
 		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
@@ -215,7 +216,7 @@ ChainGun:
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			None: 125
+			None: 144
 
 ChainGun.Yak:
 	Inherits: ^HeavyMG
@@ -268,14 +269,14 @@ M60mg:
 	Range: 2c512
 	Report: gun5.aud
 	ValidTargets: Ground, Infantry
-	InvalidTargets:  Vehicle, Water, Structure, Wall, Husk
+	InvalidTargets: Vehicle, Water, Structure, Wall, Husk
 	Projectile: Bullet
 		Speed: 1c682
 	Warhead@1Dam: SpreadDamage
 		Spread: 42
 		Damage: 15000
 		ValidTargets: Barrel, Infantry
-		DamageTypes: Prone50Percent, TriggerProne, BulletDeath
+		DamageTypes: Prone50Percent, TriggerProne, DefaultDeath
 
 SilencedPPK:
 	Inherits: ^SnipeWeapon
@@ -310,9 +311,7 @@ Sniper:
 	Range: 10c0
 	Warhead@1Dam: SpreadDamage
 		Damage: 14000
-        
-
-
+		
 VolkAT:
 	ReloadDelay: 5
 	Range: 5
@@ -331,7 +330,7 @@ VolkAT:
 			Heavy: 90
 			Concrete: 50
 		Explosion: small_explosion
-		WaterExplosion: small_splash                      
+		WaterExplosion: small_splash					  
 		SmudgeType: Crater
 
 		
@@ -342,7 +341,7 @@ VolkNapalm:
 	Report: volknapalm.aud
 	ValidTargets: Ground
 	Burst: 1
-	BurstDelay: 1
+	BurstDelays: 1
 	Projectile: Bullet
 		Speed: 50
 		Image: 120MM

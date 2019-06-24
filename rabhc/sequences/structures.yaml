@@ -59,11 +59,16 @@ fact:
 	build:
 		Start: 1
 		Length: 25
+	pdox: factpdox
+		Length: 80
 	damaged-idle:
 		Start: 26
 	damaged-build:
 		Start: 27
 		Length: 25
+	damaged-pdox: factpdox
+		Start: 80
+		Length: 80
 	dead: factdead
 		Tick: 800
 	bib: bib2
@@ -78,6 +83,7 @@ proc:
 	idle:
 		ZOffset: -1c511
 	damaged-idle:
+		Start: 1
 		ZOffset: -1c511
 	idle-top: proctop
 		ZOffset: 0
@@ -273,10 +279,12 @@ hpad:
 	active:
 		Start: 1
 		Length: 6
+		Tick: 100
 		ZOffset: -1023
 	damaged-active:
 		Start: 8
 		Length: 6
+		Tick: 100
 		ZOffset: -1023
 	make: hpadmake
 		Length: *
@@ -618,33 +626,6 @@ brik:
 		Start: 32
 		Length: 16
 	icon: brikicon
-
-vgate:
-	make:
-		Length: 7
-	idle:
-		Frames: 6, 5, 4, 3, 2, 1, 0
-		Length: 7
-		ZOffset: -1c511
-	damaged-idle:
-		Frames: 13, 12, 11, 10, 9, 8, 7
-		Length: 7
-		ZOffset: -1c511
-
-agate:
-	make:
-		Length: 7
-	idle:
-		Frames: 6, 5, 4, 3, 2, 1, 0
-		Length: 7
-		ZOffset: -1c511
-	damaged-idle:
-		Frames: 13, 12, 11, 10, 9, 8, 7
-		Length: 7
-		ZOffset: -1c511
-
-sgate:
-	Inherits: agate
 
 sbag:
 	idle:

@@ -109,6 +109,11 @@ Tick = function()
 
 		end
 	end
+
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
+	end
 end
 
 WorldLoaded = function()
@@ -132,7 +137,6 @@ WorldLoaded = function()
 
 	IdleUnitsLogic()--for ussr ai
 	IdleUnitsLogic2()--for greece ai
-	EnemyMoney()--so that the ussr harvester has to do something
 	InitObjectives()
 	Triggers()
 	RemoveActors()
@@ -143,8 +147,8 @@ Barracks1Production = function(building)
 
 	local team = Utils.Random(AttackTeam1)
 	
-	Trigger.AfterDelay(DateTime.Seconds(1), function()
-		ussr.Build(team, AttackLogic1)
+	Trigger.AfterDelay(DateTime.Seconds(15), function()
+		Reinforcements.Reinforce(ussr, team, { building.Location, Paradrop1Rally.Location }, 5, AttackLogic1)
 		Trigger.AfterDelay(DateTime.Seconds(75), function()
 			Barracks1Production(building)
 		end)
@@ -155,23 +159,12 @@ end
 AttackLogic1 = function(actors)
 	Trigger.AfterDelay(DateTime.Seconds(10), function()
 		if not actors.IsDead then
-			Utils.Do(actors, function(actor)
-				if not actor.IsDead then
-					Trigger.OnIdle(actor, function()
-						if not actor.IsDead then
-							actor.Hunt()
-						end
-					end)
+			Trigger.OnIdle(actors, function()
+				if not actors.IsDead then
+					actors.Hunt()
 				end
 			end)
 		end
-	end)
-end
-
-EnemyMoney = function()
-	Trigger.AfterDelay(DateTime.Seconds(30), function()
-		ussr.Cash = ussr.Cash - 500
-		EnemyMoney()
 	end)
 end
 

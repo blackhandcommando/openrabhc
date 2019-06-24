@@ -15,11 +15,12 @@ if Map.LobbyOption("difficulty") == "easy" then
 	VehicleMinAttackForce = 2
 	VehicleMaxAttackForce = 4
 
-	AirDelay = DateTime.Seconds(60)
-	InfantryDelay = DateTime.Seconds(20)
-	VehicleDelay = DateTime.Seconds(60)
+	AirDelay = DateTime.Seconds(90)
+	InfantryDelay = DateTime.Seconds(45)
+	VehicleDelay = DateTime.Seconds(100)
+	GlobalDelay = DateTime.Minutes(3) --Time the AI will wait after successfully creating a team
 
-	USSRAirType = { "yak" }
+	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "ftrk", "ftrk" }
 	USSRInfantryTypes = { "e1", "e1", "e1" }
 
@@ -38,11 +39,12 @@ elseif Map.LobbyOption("difficulty") == "normal" then
 	VehicleMinAttackForce = 3
 	VehicleMaxAttackForce = 7
 
-	AirDelay = DateTime.Seconds(45)
-	InfantryDelay = DateTime.Seconds(10)
-	VehicleDelay = DateTime.Seconds(30)
+	AirDelay = DateTime.Seconds(60)
+	InfantryDelay = DateTime.Seconds(30)
+	VehicleDelay = DateTime.Seconds(75)
+	GlobalDelay = DateTime.Minutes(2) --Time the AI will wait after successfully creating a team
 
-	USSRAirType = { "yak" }
+	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "3tnk", "ftrk" }
 	USSRInfantryTypes = { "e1", "e1", "e3" }
 
@@ -61,11 +63,12 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 	VehicleMinAttackForce = 3
 	VehicleMaxAttackForce = 10
 
-	AirDelay = DateTime.Seconds(45)
-	InfantryDelay = DateTime.Seconds(10)
-	VehicleDelay = DateTime.Seconds(30)
+	AirDelay = DateTime.Seconds(60)
+	InfantryDelay = DateTime.Seconds(20)
+	VehicleDelay = DateTime.Seconds(45)
+	GlobalDelay = DateTime.Minutes(1) --Time the AI will wait after successfully creating a team
 
-	USSRAirType = { "yak" }
+	USSRAirType = { "yak.ai" }
 	USSRVehicleTypes = { "3tnk", "3tnk", "ftrk", "v2rl" }
 	USSRInfantryTypes = { "e1", "e1", "e3", "e4" }
 
@@ -167,6 +170,11 @@ Tick = function()
 		UserInterface.SetMissionText("")
 	end
 
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
+	end
+
 end
 
 FinishTimer = function()
@@ -213,17 +221,16 @@ WorldLoaded = function()
 	local difficulty = Map.LobbyOption("difficulty")
 
 	USSRFirstTroop()
-	EnemyMoney()
 	EvacuateScientist()
 	IdleUnitsLogic()--for ussr ai
 	InitObjectives()
 	Triggers()
 	RemoveActors()
-	Trigger.AfterDelay(DateTime.Seconds(60), function() AirProduction() end)
+	Trigger.AfterDelay(DateTime.Seconds(60), function() AirProduction(Actor166) end)
 	BuildBase(cyard)
-	InfantryProduction()
+	InfantryProduction(USSRBarracks2)
 	RepairBase()
-	VehicleProduction()
+	VehicleProduction(USSRWeaponFactory1)
 
 end
 
@@ -385,9 +392,11 @@ EvacuateScientist = function()
 		if actor.Type == "c1.ob" or actor.Type == "c2.ob" or actor.Type == "c3.ob" then
 			Media.PlaySpeechNotification(player, "TargetRescued")
 			actor.Owner = greece
-			actor.Stop()
-			actor.ScriptedMove(Actor252.Location)
-			actor.Destroy()
+			Trigger.OnIdle(actor, function()
+				actor.Stop()
+				actor.ScriptedMove(Actor252.Location)
+				actor.Destroy()
+			end)
 			if actor.Type == "c1.ob" and not C1Rescued then
 				C1Rescued = true
 				ScientistsEvacuated = ScientistsEvacuated + 1

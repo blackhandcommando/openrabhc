@@ -26,7 +26,7 @@ USSRMigs = { Actor875, Actor876, Actor877 }
 
 ActorRemovals =
 {
-	easy = { Actor790 },
+	easy = { Actor790, Actor948 },
 	normal = { Actor790 },
 	hard = { },
 }
@@ -54,9 +54,15 @@ Tick = function()
 		GameLost = true
 		ussr.MarkCompletedObjective(DestroyEnemies)
 	end
+
 	if ussr.HasNoRequiredUnits() and NukesDestroyed and not GameWon then
 		GameWon = true
 		player.MarkCompletedObjective(EliminateAllEnemies)
+	end
+
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
 	end
 end
 
@@ -142,7 +148,6 @@ WorldLoaded = function()
 	end)
 
 	BuildBase(Actor718)
-	EnemyCash()
 	IdleUnitsLogic()
 	IdleHuntPara()
 	InitObjectives()
@@ -228,7 +233,7 @@ Triggers = function()
 		EliminateAllEnemies = player.AddPrimaryObjective("Eliminate all remaining enemies in this area.")
 		NukesDestroyed = true
 		player.MarkCompletedObjective(DestroyNukes)
-		Reinforcements.Reinforce(nuker, MigReinforcementsAndOneYak, { USSRReinforcementsWP1.Location, USSRReinforcementsWP2.Location }, 5, function() end) --Bot sends them hunting
+		Reinforcements.Reinforce(ussr, MigReinforcementsAndOneYak, { USSRReinforcementsWP1.Location, USSRReinforcementsWP2.Location }, 5, function(units) TargetAndAttack(units) end)
 		if not ISentEverything then
 			ISentEverything = true
 			IdlingUnitsRedAlert()
@@ -288,7 +293,7 @@ Triggers = function()
 		Trigger.AfterDelay(DateTime.Seconds(540), function()--Start to build more mammoths and teslas
 			IUseStrongUnits = true
 		end)
-		Trigger.AfterDelay(DateTime.Seconds(820), function()
+		Trigger.AfterDelay(DateTime.Seconds(1000), function()
 			USSRLargeAttack()
 		end)
 	end)

@@ -250,6 +250,11 @@ Tick = function()--Mostly timers for waves and attacks
 
 	Trigger.AfterDelay(DateTime.Seconds(12) + FirstTroopTime, function() UserInterface.SetMissionText(EscapedUnits .. "/" .. EscapedUnitsNeeded .. " units escaped", player.Color) end)
 
+	if ussr.Resources >= ussr.ResourceCapacity * 0.75 then
+		ussr.Cash = ussr.Cash + ussr.Resources - ussr.ResourceCapacity * 0.25
+		ussr.Resources = ussr.ResourceCapacity * 0.25
+	end
+
 end
 
 SendAttackers = function()--How many and which attackers
