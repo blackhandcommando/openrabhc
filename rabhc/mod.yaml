@@ -13,7 +13,6 @@ Packages:
 	~^Content/ra/v2/movies
 	.
 	$rabhc: rabhc
-	$ra: ra
 	
 	./mods/common: common
 	~main.mix
