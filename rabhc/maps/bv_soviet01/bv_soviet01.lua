@@ -77,9 +77,11 @@ Tick = function()
 		Vision.Destroy()
 	end
 
-	if england_cruiser.Health < england_cruiser.MaxHealth * 7.5/10 and not ReinforcementsSent then
-		ReinforcementsSent = true
-		EnglandSendReinforcements()
+	if not england_cruiser.IsDead then
+		if england_cruiser.Health < england_cruiser.MaxHealth * 7.5/10 and not ReinforcementsSent then
+			ReinforcementsSent = true
+			EnglandSendReinforcements()
+		end
 	end
 end
 
