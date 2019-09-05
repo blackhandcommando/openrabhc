@@ -1,0 +1,146 @@
+Player:
+	PlayerResources:
+		DefaultCash: 0
+	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
+		Enabled: True
+		Locked: True
+
+World:
+	LuaScript:
+		Scripts: bv_soviet02.lua, bv_soviet02AI.lua
+	MusicPlaylist:
+		StartingMusic: terminat
+	MissionData:
+		Briefing: After destroying the cruiser, it's now time to get our foot into their land and establish a base. \nFirst destroy the allied outpost near your location. Afterwards we will send the reinforcements.
+	MapOptions:
+		ShortGameLocked: True
+		ShortGameEnabled: False
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: Difficulty
+		Values:
+			easy: Easy
+			normal: Normal
+			hard: Hard
+		Default: normal
+
+	ScriptLobbyDropdown@test:
+		ID: test
+		Label: Test
+		Values:
+			easy: Test 1
+			normal: Test 2
+			hard: Test 3
+		Default: normal
+
+CAMERA.SMALL:
+	Interactable:
+	EditorOnlyTooltip:
+		Name: (reveals area to owner)
+	AlwaysVisible:
+	Immobile:
+		OccupiesSpace: false
+	RevealsShroud:
+		Range: 5c0
+		Type: CenterPosition
+	BodyOrientation:
+		QuantizedFacings: 1
+	WithSpriteBody:
+	RenderSpritesEditorOnly:
+		Image: camera
+	MapEditorData:
+		Categories: System
+
+TRAN.Insertion:
+	Inherits: TRAN
+	WithFacingSpriteBody:
+	RejectsOrders:
+	-Selectable:
+	Buildable:
+		Prerequisites: ~disabled
+	Cargo:
+		MaxWeight: 0
+	RenderSprites:
+		Image: tran
+	Interactable:
+
+AFLD:
+	-AirstrikePower@parabombs:
+
+MIG:
+	Buildable:
+		Prerequisites: ~disabled
+
+FIX:
+	Buildable:
+		Prerequisites: ~miss
+
+3TNK:
+	Buildable:
+		Prerequisites: ~miss, fix, ~vehicles.soviet, ~techlevel.medium
+
+MSUB:
+	Buildable:
+		Prerequisites: ~disabled
+
+QTNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+MNLY:
+	Buildable:
+		Prerequisites: ~disabled
+
+APWR:
+	Buildable:
+		Prerequisites: ~disabled
+
+STEK:
+	Buildable:
+		Prerequisites: ~disabled
+
+IRON:
+	Buildable:
+		Prerequisites: ~disabled
+
+MSLO:
+	Buildable:
+		Prerequisites: ~disabled
+
+GAP:
+	Buildable:
+		Prerequisites: ~disabled
+
+TSLA:
+	Buildable:
+		Prerequisites: ~disabled
+
+E6:
+	Buildable:
+		Prerequisites: ~disabled
+
+-E8:
+
+THF:
+	Buildable:
+		Prerequisites: ~disabled
+
+SHOK:
+	Buildable:
+		Prerequisites: ~disabled
+
+V2RL:
+	Buildable:
+		Prerequisites: ~disabled
+
+4TNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+TTNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+DTRK:
+	Buildable:
+		Prerequisites: ~disabled

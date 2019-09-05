@@ -148,10 +148,12 @@ Barracks1Production = function(building)
 	local team = Utils.Random(AttackTeam1)
 	
 	Trigger.AfterDelay(DateTime.Seconds(15), function()
-		Reinforcements.Reinforce(ussr, team, { building.Location, Paradrop1Rally.Location }, 5, AttackLogic1)
-		Trigger.AfterDelay(DateTime.Seconds(75), function()
-			Barracks1Production(building)
-		end)
+		if not building.IsDead then
+			Reinforcements.Reinforce(ussr, team, { building.Location, Paradrop1Rally.Location }, 5, AttackLogic1)
+			Trigger.AfterDelay(DateTime.Seconds(75), function()
+				Barracks1Production(building)
+			end)
+		end
 	end)
 	
 end
