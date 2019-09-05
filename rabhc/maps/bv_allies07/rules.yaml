@@ -631,7 +631,7 @@ E7.noautotarget:
 	-AutoTargetPriority@DEFAULT:
 	-AutoTargetPriority@ATTACKANYTHING:
 	AttackMove:
-		-AssaultMoveScanCondition:
+		-AssaultMoveCondition:
 	RenderSprites:
 		Image: E7
 	Buildable:

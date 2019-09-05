@@ -36,7 +36,7 @@ ActorRemovals =
 --Teams here
 EnglandBase1 = { Actor81, Actor6, Actor7, Actor84, Actor82, Actor83 }
 DefendableBuildings = { Actor104, Actor94, Actor95, Actor96, Actor97, Actor100, Actor101, Actpr98, Actor99, Actor273, Actor103 }
-EnglandHinds = { Actor414, Actor415 }
+Englandmh60s = { Actor414, Actor415 }
 EnglandHelipads = { Actor94, Actor95, Actor96, Actor97 }
 EnglandMainbase = { Actor164, Actor165, Actor166, Actor93, Actor162, Actor163, Actor171, Actor172, Actor168 }
 
@@ -112,7 +112,7 @@ WorldLoaded = function()
 
 	Utils.Do(DefendableBuildings, function(building)
 		Trigger.OnDamaged(building, function(guard)
-			Utils.Do(EnglandHinds, function(guard)
+			Utils.Do(Englandmh60s, function(guard)
 				if not guard.IsDead and not building.IsDead then
 					guard.Guard(building)
 				end

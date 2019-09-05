@@ -137,9 +137,6 @@ AntVoice:
 		Zapped: antdie
 
 StavrosVoice:
-	Variants:
-		soviet: .r01,.r03
-		allies: .v01,.v03
 	Voices:
 		Select: stavcmdr
 		Move: stavcrse, stavyes, stavmov

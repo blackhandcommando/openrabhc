@@ -27,7 +27,7 @@
 		DamageTypes: Prone50Percent, TriggerProne, ExplosionDeath
 	Warhead@2Smu: LeaveSmudge
 		SmudgeType: Crater
-		InvalidTargets: Vehicle, Tank, Structure, Wall, Husk, Trees
+		InvalidTargets: Vehicle, Structure, Wall, Husk, Trees
 	Warhead@3Eff: CreateEffect
 		Explosions: med_explosion
 		ImpactSounds: kaboom25.aud
@@ -133,7 +133,7 @@ HellfireAA:
 MammothTusk:
 	Inherits: ^AntiGroundMissile
 	ReloadDelay: 60
-	Range: 8c0
+	Range: 6c512
 	Burst: 2
 	ValidTargets: Air, Infantry
 	Projectile: Missile

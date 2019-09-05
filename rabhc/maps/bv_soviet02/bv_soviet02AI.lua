@@ -48,7 +48,7 @@ end
 EnglandInfantryTypes = { "e1", "e3" } --Infantry types the AI will build
 EnglandVehicleTypes = { "1tnk", "2tnk", "jeep" } --Vehicle types the AI will build
 EnglandNavalTypes = { "dd" } --Naval types the AI will build
-EnglandAirTypes = { "hind" } --Air types the AI will build
+EnglandAirTypes = { "mh60" } --Air types the AI will build
 
 EnglandInfantryAttack = { }
 EnglandVehicleAttack = { }
@@ -223,11 +223,11 @@ EnglandAirReinforcements = function()
 	if Actor94.IsDead and Actor95.IsDead and Actor96.IsDead and Actor97.IsDead then
 		return
 	else
-		Reinforcements.Reinforce(england, team, { entrypoint.Location, entrypoint.Location }, 15, function(hind) 
-			Trigger.OnIdle(hind, function()
+		Reinforcements.Reinforce(england, team, { entrypoint.Location, entrypoint.Location }, 15, function(mh60) 
+			Trigger.OnIdle(mh60, function()
 				local attackpos = Utils.Random(EnglandAirAttackPos)
-				hind.AttackMove(attackpos.Location)
-				hind.Hunt()
+				mh60.AttackMove(attackpos.Location)
+				mh60.Hunt()
 			end)
 		end)
 		Trigger.AfterDelay(EnglandAirDelay, EnglandAirReinforcements)
