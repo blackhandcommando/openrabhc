@@ -152,7 +152,7 @@ VolkovsVoice:
 	Voices:
 		Select: stavcmdr
 		Move: stavcrse, stavyes, stavmov
-		Attack: stavcrse, stavyes
+		Action: stavcrse, stavyes
 		Die: dedbot1,dedbot2,dedbot3,dedbot4,dedbot5,dedbot6,dedbot7,dedbot8,dedbot10
 		Burned: dedman10
 		Zapped: dedman6
