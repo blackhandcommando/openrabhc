@@ -29,15 +29,15 @@ powerproxy.paras1:
 	ParatroopersPower:
 		DropItems: E1,E1,E1,E3,E3
 
-HIND.AI:
-	Inherits: HIND
+MH60.AI:
+	Inherits: MH60
 	RenderSprites:
-		Image: HIND
+		Image: MH60
+	Health:
+		HP: 14000
 	AutoTarget:
 		InitialStance: AttackAnything
 		InitialStanceAI: AttackAnything
-	Health:
-		HP: 14000
 	AmmoPool:
 		Ammo: 999
 		PipCount: 6
@@ -55,6 +55,7 @@ HELI.AI:
 		HP: 15000
 	AmmoPool:
 		Ammo: 999
+		PipCount: 6
 		AmmoCondition: ammo
 
 SAM:

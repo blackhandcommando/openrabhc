@@ -24,15 +24,6 @@ World:
 			hard: Hard
 		Default: normal
 
-	ScriptLobbyDropdown@test:
-		ID: test
-		Label: Test
-		Values:
-			easy: Test 1
-			normal: Test 2
-			hard: Test 3
-		Default: normal
-
 CAMERA.SMALL:
 	Interactable:
 	EditorOnlyTooltip:

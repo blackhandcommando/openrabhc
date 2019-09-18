@@ -105,7 +105,7 @@ TRAN:
 	Valued:
 		Cost: 150
 
-HIND:
+MH60:
 	Buildable:
 		Prerequisites: hpad
 	Valued:

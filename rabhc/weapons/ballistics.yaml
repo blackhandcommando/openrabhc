@@ -32,7 +32,7 @@
 25mm:
 	Inherits: ^Cannon
 	ReloadDelay: 21
-	Range: 4c0
+	Range: 4c768
 	Report: cannon2.aud
 	Projectile: Bullet
 		Speed: 853
@@ -45,7 +45,7 @@
 			Light: 116 
 			Heavy: 48 
 			Concrete: 32 
-	-Warhead@2Smu: LeaveSmudge
+	-Warhead@2Smu:
 	Warhead@3Eff: CreateEffect
 		-ImpactSounds:
 	Warhead@4EffWater: CreateEffect
@@ -55,17 +55,14 @@
 	Inherits: ^Cannon
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			None: 30
 			Heavy: 115
 
 105mm:
 	Inherits: ^Cannon
 	ReloadDelay: 70
 	Burst: 2
-	BurstDelays: 4
 	Warhead@1Dam: SpreadDamage
 		Versus:
-			None: 30
 			Heavy: 115
 
 120mm:
@@ -76,7 +73,6 @@
 	Warhead@1Dam: SpreadDamage
 		Damage: 6000
 		Versus:
-			None: 30
 			Heavy: 115
 		InvalidTargets: Air
 
@@ -92,7 +88,6 @@ Volk_AT:
 		Damage: 12500
 		Spread: 256
 		Versus: 
-			None: 0
 			Wood: 80
 			Light: 75
 			Heavy: 90
@@ -115,7 +110,6 @@ Volk_Nap:
 		Damage: 7500
 		Spread: 256
 		Versus: 
-			None: 90
 			Wood: 0
 			Light: 0
 			Heavy: 0

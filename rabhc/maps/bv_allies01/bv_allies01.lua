@@ -33,7 +33,7 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 
 end
 
-GreeceHelo1 = { "hind.ai" }
+GreeceHelo1 = { "mh60.ai" }
 GreeceHelo2 = { "heli.ai" }
 
 CurtainActivated = false
@@ -206,8 +206,8 @@ end
 Triggers = function ()
 
 	USSRSendTanks()
-	GreeceSupportHinds1()
-	GreeceSupportHinds2()
+	GreeceSupportmh60s1()
+	GreeceSupportmh60s2()
 
 	Trigger.OnEnteredFootprint(CellTriggers1, function(a, id)
 		if a.Owner == player and not NeutralTrigger1 then
@@ -246,8 +246,8 @@ Triggers = function ()
 			end)
 
 			Vision1 = Actor.Create('camera', true, { Owner = player, Location = VillageCamera.Location })
-			GreeceSupportHinds1()
-			GreeceSupportHinds2()
+			GreeceSupportmh60s1()
+			GreeceSupportmh60s2()
 			Barracks1Production(USSRBarracks)
 
 			Trigger.AfterDelay(DateTime.Seconds(15), function()
@@ -284,9 +284,9 @@ Triggers = function ()
 		if a.Owner == player and not NeutralTrigger5 then
 			Trigger.RemoveFootprintTrigger(id)
 			NeutralTrigger5 = true
-			GreeceSupportHinds1()
-			GreeceSupportHinds2()
-			GreeceSupportHinds3()
+			GreeceSupportmh60s1()
+			GreeceSupportmh60s2()
+			GreeceSupportmh60s3()
 		end
 	end)
 
@@ -329,7 +329,7 @@ USSRSendTanks = function()
 	end)
 end
 
-GreeceSupportHinds1 = function()--Under player's control now, but not selectable
+GreeceSupportmh60s1 = function()--Under player's control now, but not selectable
 	Trigger.AfterDelay(DateTime.Seconds(9), function()
 		Reinforcements.Reinforce(greece, GreeceHelo1, { Actor183.Location, StartPosition.Location }, 15, function(actor)
 			Trigger.OnIdle(actor, function()
@@ -339,7 +339,7 @@ GreeceSupportHinds1 = function()--Under player's control now, but not selectable
 	end)
 end
 
-GreeceSupportHinds2 = function()
+GreeceSupportmh60s2 = function()
 	Trigger.AfterDelay(DateTime.Seconds(9), function()
 		Reinforcements.Reinforce(greece, GreeceHelo1, { Actor182.Location, StartPosition.Location }, 15, function(actor)
 			Trigger.OnIdle(actor, function()
@@ -349,7 +349,7 @@ GreeceSupportHinds2 = function()
 	end)
 end
 
-GreeceSupportHinds3 = function()
+GreeceSupportmh60s3 = function()
 	Trigger.AfterDelay(DateTime.Seconds(6), function()
 		Reinforcements.Reinforce(greece, GreeceHelo2, { Actor184.Location, Actor198.Location }, 15, function(actor)
 			Trigger.OnIdle(actor, function()

@@ -148,11 +148,11 @@ Actors:
 	Actor28: mine
 		Owner: Neutral
 		Location: 6,24
-	Actor29: hind
+	Actor29: mh60
 		Owner: England
 		Location: 27,27
 		Facing: 126
-	Actor30: hind
+	Actor30: mh60
 		Owner: England
 		Location: 30,27
 		Facing: 127
