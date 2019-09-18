@@ -176,7 +176,7 @@ GreeceBuildBuilding = function(building, cyard)
 			Trigger.AfterDelay(DateTime.Seconds(5), function() GreeceNavalProduction(actor) end)
 		end
 
-		Trigger.OnKilled(actor, function() building.exists = false end)
+		Trigger.OnRemovedFromWorld(actor, function() building.exists = false end)
 
 		Trigger.OnDamaged(actor, function(building)
 			if building.Owner == Greece and building.Health < building.MaxHealth * 9/10 then
