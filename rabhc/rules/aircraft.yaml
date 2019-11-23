@@ -8,7 +8,7 @@ BADR:
 	Aircraft:
 		CruiseAltitude: 2560
 		TurnSpeed: 5
-		Speed: 149
+		Speed: 180
 		Repulsable: False
 		MaximumPitch: 56
 	Cargo:
@@ -47,11 +47,11 @@ BADR.Bomber:
 	Aircraft:
 		CruiseAltitude: 2560
 		TurnSpeed: 5
-		Speed: 149
+		Speed: 180
 		Repulsable: False
 		MaximumPitch: 56
 	AmmoPool:
-		Ammo: 7
+		Ammo: 5
 	-Selectable:
 	SelectionDecorations:
 		RenderSelectionBars: False
@@ -156,7 +156,7 @@ YAK:
 		BuildAtProductionType: Plane
 		BuildPaletteOrder: 30
 		Prerequisites: ~afld, ~techlevel.medium
-		Description: Anti-Tanks & Anti-Infantry Plane.\n  Strong vs Infantry, Vehicles\n  Weak vs Aircraft
+		Description: Attack Plane armed with\ndual machine guns.\n  Strong vs Infantry, Light armor\n  Weak vs Tanks, Aircraft
 	Valued:
 		Cost: 1350
 	Tooltip:

@@ -10,51 +10,51 @@ Utils.Do(PatrolDudes, function(Patroler)
 	end)
 end)
 
-Trigger.OnKilled(Actor136, function(building)
+Trigger.OnRemovedFromWorld(Actor136, function(building)
 	BaseProc.exists = false
 end)
 
-Trigger.OnKilled(Actor137, function(building)
+Trigger.OnRemovedFromWorld(Actor137, function(building)
 	BaseNuke1.exists = false
 end)
 
-Trigger.OnKilled(Actor138, function(building)
+Trigger.OnRemovedFromWorld(Actor138, function(building)
 	BaseNuke2.exists = false
 end)
 
-Trigger.OnKilled(Actor169, function(building)
+Trigger.OnRemovedFromWorld(Actor169, function(building)
 	BaseNuke3.exists = false
 end)
 
-Trigger.OnKilled(Actor168, function(building)
+Trigger.OnRemovedFromWorld(Actor168, function(building)
 	BaseNuke4.exists = false
 end)
 
-Trigger.OnKilled(Actor170, function(building)
+Trigger.OnRemovedFromWorld(Actor170, function(building)
 	BaseNuke5.exists = false
 end)
 
-Trigger.OnKilled(USSRBarracks2, function(building)
+Trigger.OnRemovedFromWorld(USSRBarracks2, function(building)
 	InfantryProductionBuilding.exists = false
 end)
 
-Trigger.OnKilled(USSRWeaponFactory1, function(building)
+Trigger.OnRemovedFromWorld(USSRWeaponFactory1, function(building)
 	VehicleProductionBuilding.exists = false
 end)
 
-Trigger.OnKilled(Actor149, function(building)
+Trigger.OnRemovedFromWorld(Actor149, function(building)
 	BaseHQ.exists = false
 end)
 
-Trigger.OnKilled(Actor225, function(building)
+Trigger.OnRemovedFromWorld(Actor225, function(building)
 	Fix.exists = false
 end)
 
-Trigger.OnKilled(Actor144, function(building)
+Trigger.OnRemovedFromWorld(Actor144, function(building)
 	Tesla.exists = false
 end)
 
-Trigger.OnKilled(Actor166, function(building)
+Trigger.OnRemovedFromWorld(Actor166, function(building)
 	Airfield.exists = false
 end)
 
@@ -256,7 +256,7 @@ BuildBuilding = function(building, cyard)
 			Trigger.AfterDelay(DateTime.Seconds(5), function() VehicleProduction(building) end)
 		end
 
-		Trigger.OnKilled(actor, function() building.exists = false end)
+		Trigger.OnRemovedFromWorld(actor, function() building.exists = false end)
 
 		Trigger.OnDamaged(actor, function(building)
 			if building.Owner == ussr and building.Health < building.MaxHealth * 9/10 then

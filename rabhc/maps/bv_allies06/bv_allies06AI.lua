@@ -694,7 +694,7 @@ BuildBuilding = function(building, cyard)
 			Trigger.AfterDelay(DateTime.Seconds(5), function() AirProduction(actor) end)
 		end
 
-		Trigger.OnKilled(actor, function() building.exists = false end)
+		Trigger.OnRemovedFromWorld(actor, function() building.exists = false end)
 
 		Trigger.OnDamaged(actor, function(building)
 			if building.Owner == ussr and building.Health < building.MaxHealth * 9/10 then
@@ -714,115 +714,115 @@ TriggersAI = function()
 		end)
 	end)
 
-	Trigger.OnKilled(Actor768, function(building)
+	Trigger.OnRemovedFromWorld(Actor768, function(building)
 		AirProductionBuilding.exists = false
 	end)
 
-	Trigger.OnKilled(Actor719, function(building)
+	Trigger.OnRemovedFromWorld(Actor719, function(building)
 		BaseProc.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor787, function(building)
+	Trigger.OnRemovedFromWorld(Actor787, function(building)
 		BaseNuke1.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor786, function(building)
+	Trigger.OnRemovedFromWorld(Actor786, function(building)
 		BaseNuke2.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor765, function(building)
+	Trigger.OnRemovedFromWorld(Actor765, function(building)
 		BaseNuke3.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor766, function(building)
+	Trigger.OnRemovedFromWorld(Actor766, function(building)
 		BaseNuke4.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor767, function(building)
+	Trigger.OnRemovedFromWorld(Actor767, function(building)
 		BaseNuke5.exists = false
 	end)
 
-	Trigger.OnKilled(Actor769, function(building)
+	Trigger.OnRemovedFromWorld(Actor769, function(building)
 		BaseNuke6.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor763, function(building)
+	Trigger.OnRemovedFromWorld(Actor763, function(building)
 		BaseNuke7.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor764, function(building)
+	Trigger.OnRemovedFromWorld(Actor764, function(building)
 		BaseNuke8.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor785, function(building)
+	Trigger.OnRemovedFromWorld(Actor785, function(building)
 		BaseNuke9.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor754, function(building)
+	Trigger.OnRemovedFromWorld(Actor754, function(building)
 		InfantryProductionBuilding.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor752, function(building)
+	Trigger.OnRemovedFromWorld(Actor752, function(building)
 		VehicleProductionBuilding.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor775, function(building)
+	Trigger.OnRemovedFromWorld(Actor775, function(building)
 		NavalProductionBuilding.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor774, function(building)
+	Trigger.OnRemovedFromWorld(Actor774, function(building)
 		Fix.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor755, function(building)
+	Trigger.OnRemovedFromWorld(Actor755, function(building)
 		DogBuilding.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor756, function(building)
+	Trigger.OnRemovedFromWorld(Actor756, function(building)
 		TechCenter.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor789, function(building)
+	Trigger.OnRemovedFromWorld(Actor789, function(building)
 		SAM1.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor788, function(building)
+	Trigger.OnRemovedFromWorld(Actor788, function(building)
 		SAM2.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor773, function(building)
+	Trigger.OnRemovedFromWorld(Actor773, function(building)
 		SAM3.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor772, function(building)
+	Trigger.OnRemovedFromWorld(Actor772, function(building)
 		SAM4.exists = false
 	end)
 
-	Trigger.OnKilled(Actor771, function(building)
+	Trigger.OnRemovedFromWorld(Actor771, function(building)
 		SAM5.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor759, function(building)
+	Trigger.OnRemovedFromWorld(Actor759, function(building)
 		Flame1.exists = false
 	end)
 
-	Trigger.OnKilled(Actor760, function(building)
+	Trigger.OnRemovedFromWorld(Actor760, function(building)
 		Flame2.exists = false
 	end)
 
-	Trigger.OnKilled(Actor770, function(building)
+	Trigger.OnRemovedFromWorld(Actor770, function(building)
 		Flame3.exists = false
 	end)
 	
-	Trigger.OnKilled(Actor310, function(building)
+	Trigger.OnRemovedFromWorld(Actor310, function(building)
 		Tesla1.exists = false
 	end)
 
-	Trigger.OnKilled(Actor757, function(building)
+	Trigger.OnRemovedFromWorld(Actor757, function(building)
 		Tesla2.exists = false
 	end)
 
-	Trigger.OnKilled(Actor758, function(building)
+	Trigger.OnRemovedFromWorld(Actor758, function(building)
 		Tesla3.exists = false
 	end)
 end

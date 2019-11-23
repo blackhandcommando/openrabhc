@@ -48,6 +48,11 @@ powerproxy.paras:
 		ChargeInterval: 2000
 		DropItems: E1,E1,E3,E3,E3
 
+HARV:
+	Harvester:
+		SearchFromProcRadius: 32
+		SearchFromHarvesterRadius: 20
+
 AGUN:
 	Power:
 		Amount: -5
