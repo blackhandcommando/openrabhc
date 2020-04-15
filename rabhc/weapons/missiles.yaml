@@ -114,6 +114,7 @@ HellfireAA:
 	Inherits: ^AntiAirMissile
 	ReloadDelay: 60
 	MinRange: 1c256
+	Range: 4c0
 	Burst: 2
 	BurstDelays: 10
 	Projectile: Missile
@@ -121,6 +122,7 @@ HellfireAA:
 		Inaccuracy: 128
 		HorizontalRateOfTurn: 10
 		RangeLimit: 7c0
+		CloseEnough: 0c600
 	Warhead@1Dam: SpreadDamage
 		Damage: 4000
 		ValidTargets: Air
@@ -242,6 +244,10 @@ APTusk:
 			Light: 88 
 			Heavy: 120 
 			Concrete: 60 
+
+APTusk.stnk:
+	Inherits: APTusk
+	ReloadDelay: 100
 
 TorpTube:
 	ReloadDelay: 100
