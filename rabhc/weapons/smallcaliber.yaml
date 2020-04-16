@@ -3,9 +3,7 @@
 	Range: 8c0
 	Report: aacanon3.aud
 	ValidTargets: Air
-	Projectile: Bullet
-		Speed: 1c682
-		Blockable: false
+	Projectile: InstantHit
 	Warhead@1Dam: SpreadDamage
 		Spread: 213
 		Damage: 2000
@@ -28,8 +26,6 @@ ZSU-23:
 	BurstDelays: 0
 	ReloadDelay: 6
 	Range: 10c0
-	Projectile: Bullet
-		Speed: 3c340
 	Warhead@1Dam: SpreadDamage
 		Damage: 1200
 		Versus:
@@ -48,8 +44,8 @@ FLAK-23-AG:
 	Inherits: ^AACannon
 	Range: 6c0
 	ValidTargets: Ground, Water
-	Projectile: Bullet
-		Blockable: True
+	Projectile: InstantHit
+		Blockable: true
 	Warhead@1Dam: SpreadDamage
 		ValidTargets: Air, Ground, Water
 	Warhead@2Eff: CreateEffect
@@ -64,8 +60,8 @@ FLAK-23-AG:
 	ReloadDelay: 30
 	Range: 6c0
 	Report: gun13.aud
-	Projectile: Bullet
-		Speed: 1c682
+	Projectile: InstantHit
+		Blockable: true
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
 		Damage: 2500
@@ -214,7 +210,7 @@ ChainGun:
 	ReloadDelay: 10
 	Range: 5c0
 	MinRange: 0c768
-	Projectile: Bullet
+	Projectile: InstantHit
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Versus:
@@ -225,7 +221,7 @@ ChainGun.Yak:
 	ReloadDelay: 3
 	Range: 5c0
 	MinRange: 3c0
-	Projectile: Bullet
+	Projectile: InstantHit
 		Blockable: false
 	Warhead@1Dam: SpreadDamage
 		Damage: 4000
@@ -265,6 +261,9 @@ M60mg:
 	Range: 4c0
 	Report: pillbox1.aud
 	Burst: 5
+	Warhead@1Dam: SpreadDamage
+		Versus:
+			Light: 30
 
 ^SnipeWeapon:
 	ReloadDelay: 80
@@ -272,8 +271,8 @@ M60mg:
 	Report: gun5.aud
 	ValidTargets: Ground, Infantry
 	InvalidTargets: Vehicle, Water, Structure, Wall, Husk, Mine
-	Projectile: Bullet
-		Speed: 1c682
+	Projectile: InstantHit
+		Blockable: true
 	Warhead@1Dam: SpreadDamage
 		Spread: 42
 		Damage: 15000

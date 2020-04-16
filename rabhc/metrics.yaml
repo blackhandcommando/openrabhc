@@ -13,8 +13,8 @@ Metrics:
 	FactionSuffix-russia: soviet
 	FactionSuffix-soviet: soviet
 	FactionSuffix-ukraine: soviet
-	FactionSuffix-ssoviet: soviet
-	FactionSuffix-sallies: allies
+  FactionSuffix-ssoviet: soviet
+  FactionSuffix-sallies: soviet
 	IncompatibleProtectedGameColor: B22222
 	IncompatibleVersionColor: D3D3D3
 	TextfieldColorHighlight: 562020
@@ -23,3 +23,6 @@ Metrics:
 	ClickSound: ClickSound
 	ChatMessageColor: FFFFFF
 	SystemMessageColor: FFFF00
+	NormalSelectionColor: FFFFFF
+	AltSelectionColor: 00FFFF
+	CtrlSelectionColor: FFFF00

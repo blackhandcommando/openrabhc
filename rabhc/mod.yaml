@@ -1,8 +1,8 @@
 Metadata:
-	Title: Red Alert (BlackHandCommando Edition)
-	Description: In a world where Hitler was assassinated and the Third Reich never\nexisted, the Soviet Union seeks power over all of Europe.  Allied\nagainst this Evil Empire, the free world faces a Cold War turned hot.\n\nRed Alert fuses the quick and fun gameplay of the original\nC&C: Red Alert, with balance improvements and new gameplay\nfeatures inspired by modern RTS games. 
-	Version: release-20191117_bhc_v1
-	Author: the OpenRA Developers and modified by BlackHandCommando 
+	Title: Red Alert
+	Version: playtest-20200329_bhc_v1
+	Website: https://blackhandcommando.de/
+	WebIcon32: https://www.openra.net/images/icons/ra_32x32.png
 
 PackageFormats: Mix
 
@@ -13,7 +13,6 @@ Packages:
 	~^Content/ra/v2/movies
 	.
 	$rabhc: rabhc
-	
 	./mods/common: common
 	~main.mix
 	~conquer.mix
@@ -98,6 +97,7 @@ ChromeLayout:
 	common|chrome/ingame-debuginfo.yaml
 	common|chrome/ingame-infochat.yaml
 	common|chrome/mainmenu.yaml
+	common|chrome/mainmenu-prompts.yaml
 	common|chrome/settings.yaml
 	common|chrome/credits.yaml
 	common|chrome/lobby.yaml
@@ -156,6 +156,8 @@ Hotkeys:
 
 LoadScreen: LogoStripeLoadScreen
 	Image: rabhc|uibits/loadscreen.png
+	Image2x: rabhc|uibits/loadscreen-2x.png
+	Image3x: rabhc|uibits/loadscreen-3x.png
 	Text: Filling Crates..., Charging Capacitors..., Reticulating Splines..., Planting Trees..., Building Bridges..., Aging Empires..., Compiling EVA..., Constructing Pylons..., Activating Skynet..., Splitting Atoms...
 
 ServerTraits:
@@ -223,6 +225,9 @@ SpriteSequenceFormat: TilesetSpecificSpriteSequence
 		DESERT: .des
 
 ModelSequenceFormat: PlaceholderModelSequence
+
+AssetBrowser:
+	SupportedExtensions: .shp, .tmp, .tem, .des, .sno, .int, .vqa
 
 GameSpeeds:
 	slowest:

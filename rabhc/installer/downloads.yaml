@@ -101,4 +101,3 @@ music: Freeware Music
 	MirrorList: http://www.openra.net/packages/ra-scores-mirrors.txt
 	Extract:
 		^Content/ra/v2/scores.mix: scores.mix
-		
