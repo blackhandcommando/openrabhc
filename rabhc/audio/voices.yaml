@@ -7,8 +7,8 @@ GenericVoice:
 		soviet: .r01,.r03
 		russia: .r01,.r03
 		ukraine: .r01,.r03
-    ssoviet: .r01,.r03
-    sallies: .r01,.r03
+        ssoviet: .r01,.r03
+        sallies: .r01,.r03
 	Voices:
 		Select: await1,ready,report1,yessir1
 		Action: ackno,affirm1,noprob,overout,ritaway,roger,ugotit
@@ -26,8 +26,8 @@ VehicleVoice:
 		soviet: .r00,.r02
 		russia: .r00,.r02
 		ukraine: .r00,.r02
-    ssoviet: .r00,.r02
-    sallies: .r00,.r02
+        ssoviet: .r00,.r02
+        sallies: .r00,.r02
 	Voices:
 		Select: vehic1,yessir1,report1,await1
 		Action: ackno,affirm1
@@ -156,3 +156,4 @@ VolkovsVoice:
 		Die: dedbot1,dedbot2,dedbot3,dedbot4,dedbot5,dedbot6,dedbot7,dedbot8,dedbot10
 		Burned: dedman10
 		Zapped: dedman6
+
