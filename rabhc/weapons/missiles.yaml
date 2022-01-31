@@ -193,7 +193,7 @@ RedEye:
 		Speed: 298
 	Warhead@1Dam: SpreadDamage
 		Damage: 4000
-		ValidTargets: Air
+		ValidTargets: AirborneActor
 		Versus:
 			Light: 60
 
