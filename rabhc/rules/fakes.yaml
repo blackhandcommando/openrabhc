@@ -83,13 +83,13 @@ SYRF:
 		GenericVisibility: Enemy
 		GenericStancePrefix: False
 	Targetable:
-		TargetTypes: Ground, Water, Structure, SpyInfiltrate
+		TargetTypes: WaterActor, Structure, SpyInfiltrate
 	Building:
 		Footprint: XXX xxx XXX
 		Dimensions: 3,3
 		TerrainTypes: Water
-	RequiresBuildableArea: 
-		Adjacent: 8 
+	RequiresBuildableArea:
+		Adjacent: 8
 	RenderSprites:
 		Image: SYRD
 	Valued:
@@ -117,7 +117,7 @@ SPEF:
 	Selectable:
 		Bounds: 72,48
 	Targetable:
-		TargetTypes: Ground, Water, Structure, SpyInfiltrate
+		TargetTypes: WaterActor, Structure, SpyInfiltrate
 	Buildable:
 		BuildPaletteOrder: 890
 		Queue: Defense
@@ -133,8 +133,8 @@ SPEF:
 		Footprint: XXX xxx XXX
 		Dimensions: 3,3
 		TerrainTypes: Water
-	RequiresBuildableArea: 
-		Adjacent: 8 
+	RequiresBuildableArea:
+		Adjacent: 8
 	RenderSprites:
 		Image: SPEN
 	Valued:
@@ -293,7 +293,6 @@ FAPW:
 	Selectable:
 		Bounds: 72,48
 		DecorationBounds: 72,68,0,-10
-	SelectionDecorations:
 	Valued:
 		Cost: 50
 

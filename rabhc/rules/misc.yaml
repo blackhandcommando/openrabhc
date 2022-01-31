@@ -35,7 +35,7 @@ CRATE:
 	HideMapCrateAction:
 		SelectionShares: 5
 		Sequence: hide-map
-	HealUnitsCrateAction:
+	HealActorsCrateAction:
 		Sound: heal2.aud
 		SelectionShares: 2
 		Sequence: heal
@@ -56,23 +56,23 @@ CRATE:
 		Units: jeep
 		ValidFactions: allies, england, france, germany
 		Prerequisites: techlevel.low
-	GiveUnitCrateAction@1tnk: 
-		SelectionShares: 6 
-		Units: 1tnk 
-		ValidFactions: allies, england, france, germany 
-		Prerequisites: techlevel.low 
-	GiveUnitCrateAction@apc: 
-		SelectionShares: 6 
-		Units: apc 
-		ValidFactions: soviet, russia, ukraine 
-		Prerequisites: techlevel.low 
-	GiveUnitCrateAction@ftrk: 
-		SelectionShares: 6 
-		Units: ftrk 
-		ValidFactions: soviet, russia, ukraine 
-		Prerequisites: techlevel.low 
-	GiveUnitCrateAction@arty: 
-		SelectionShares: 5 
+	GiveUnitCrateAction@1tnk:
+		SelectionShares: 6
+		Units: 1tnk
+		ValidFactions: allies, england, france, germany
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@apc:
+		SelectionShares: 6
+		Units: apc
+		ValidFactions: soviet, russia, ukraine
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@ftrk:
+		SelectionShares: 6
+		Units: ftrk
+		ValidFactions: soviet, russia, ukraine
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@arty:
+		SelectionShares: 5
 		Units: arty
 		ValidFactions: allies, england, france, germany
 		Prerequisites: techlevel.medium, dome
@@ -127,7 +127,7 @@ HEALCRATE:
 	Inherits: ^Crate
 	Tooltip:
 		Name: Heal Crate
-	HealUnitsCrateAction:
+	HealActorsCrateAction:
 		Sound: heal2.aud
 		SelectionShares: 1
 		Sequence: heal
@@ -361,6 +361,7 @@ powerproxy.sonarpulse:
 		EffectImage: moveflsh
 		EffectPalette: moveflash
 		SupportPowerPaletteOrder: 80
+		EffectSequence: idle
 
 powerproxy.paratroopers:
 	AlwaysVisible:
@@ -442,7 +443,6 @@ CTFLAG:
 	-Health:
 	-Explodes:
 	-Selectable:
-	-SelectionDecorations:
 	-Targetable:
 	MapEditorData:
 		Categories: Decoration
