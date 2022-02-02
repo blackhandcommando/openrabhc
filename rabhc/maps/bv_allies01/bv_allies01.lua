@@ -306,10 +306,10 @@ end
 
 SendParatroopers = function()
 	local powerproxy = Actor.Create("powerproxy.paras1", false, { Owner = ussr })
-	local unitsA = powerproxy.ActivateParatroopers(Paradrop1Rally.CenterPosition,Facing.West)
-	local unitsB = powerproxy.ActivateParatroopers(Paradrop2Rally.CenterPosition,Facing.West)
+	local unitsA = powerproxy.TargetParatroopers(Paradrop1Rally.CenterPosition,Angle.West)
+	local unitsB = powerproxy.TargetParatroopers(Paradrop2Rally.CenterPosition,Angle.West)
 	if Map.LobbyOption("difficulty") == "hard" then
-		local unitsC = powerproxy.ActivateParatroopers(Paradrop3Rally.CenterPosition,Facing.West)
+		local unitsC = powerproxy.TargetParatroopers(Paradrop3Rally.CenterPosition,Angle.West)
 	end
 
 	powerproxy.Destroy()
