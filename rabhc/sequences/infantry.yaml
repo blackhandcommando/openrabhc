@@ -1001,6 +1001,10 @@ gnrl:
 		Start: 184
 		Length: 26
 		Tick: 120
+	idle2:
+		Start: 184
+		Length: 26
+		Tick: 120
 	die1:
 		Start: 210
 		Length: 8
