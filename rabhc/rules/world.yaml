@@ -161,7 +161,6 @@
 	ResourceType@ore:
 		Type: Ore
 		Name: Valuable Minerals
-		PipColor: Yellow
 		ResourceType: 1
 		TerrainType: Ore
 		Palette: player
@@ -173,7 +172,6 @@
 	ResourceType@gem:
 		Type: Gems
 		Name: Valuable Minerals
-		PipColor: Red
 		ResourceType: 2
 		TerrainType: Gems
 		Palette: player
@@ -182,6 +180,8 @@
 		ValuePerUnit: 50
 		AllowedTerrainTypes: Clear,Road
 		AllowUnderActors: true
+	ResourceRenderer:
+		RenderTypes: Ore, Gems
 
 World:
 	Inherits: ^BaseWorld
@@ -210,23 +210,26 @@ World:
 	SmudgeLayer@SCORCH:
 		Type: Scorch
 		Sequence: scorches
-		SmokePercentage: 50
+		SmokeChance: 50
+		SmokeImage: smoke_m
+		SmokeSequences: idle
 	SmudgeLayer@CRATER:
 		Type: Crater
 		Sequence: craters
+		SmokeChance: 25
+		SmokeImage: smoke_m
+		SmokeSequences: idle
 	ResourceLayer:
-	ResourceRenderer:
-		RenderTypes: Ore, Gems
 	ResourceClaimLayer:
 	WarheadDebugOverlay:
 	SpawnMapActors:
 	MapBuildRadius:
-		AllyBuildRadiusCheckboxDisplayOrder: 4 
-		BuildRadiusCheckboxDisplayOrder: 5 
-	MapOptions: 
-		ShortGameCheckboxDisplayOrder: 2 
-		TechLevelDropdownDisplayOrder: 2 
-		GameSpeedDropdownDisplayOrder: 3 
+		AllyBuildRadiusCheckboxDisplayOrder: 4
+		BuildRadiusCheckboxDisplayOrder: 5
+	MapOptions:
+		ShortGameCheckboxDisplayOrder: 2
+		TechLevelDropdownDisplayOrder: 2
+		GameSpeedDropdownDisplayOrder: 3
 	CreateMPPlayers:
 	MPStartUnits@mcvonly:
 		Class: none
@@ -268,7 +271,7 @@ World:
 	MPStartLocations:
 		SeparateTeamSpawnsCheckboxDisplayOrder: 6
 	SpawnMPUnits:
-		DropdownDisplayOrder: 1 
+		DropdownDisplayOrder: 1
 	PathFinder:
 	ValidateOrder:
 	DebugPauseState:

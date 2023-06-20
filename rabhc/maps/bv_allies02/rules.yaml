@@ -79,7 +79,7 @@ C2.ob:
 C3.ob:
 	Inherits: C3
 	RenderSprites:
-		Image: C3
+		Image: C2
 	Health:
 		HP: 30000
 

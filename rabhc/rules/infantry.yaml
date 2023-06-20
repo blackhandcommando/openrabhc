@@ -16,7 +16,6 @@ DOG:
 	Selectable:
 		Bounds: 12,17,-1,-4
 		DecorationBounds: 12,17,-1,-4
-	SelectionDecorations:
 	Health:
 		HP: 1800
 	Mobile:
@@ -48,7 +47,7 @@ DOG:
 	AutoTargetPriority@DEFAULT:
 		ValidTargets: Infantry
 	Targetable:
-		TargetTypes: Ground, Infantry
+		TargetTypes: GroundActor, Infantry
 	WithInfantryBody:
 		MoveSequence: walk
 		StandSequences: stand
@@ -265,7 +264,7 @@ E6:
 		StandSequences: parachute
 		RequiresCondition: parachute
 	Passenger:
-		PipType: Yellow
+		CustomPipType: yellow
 	EngineerRepair:
 	RepairsBridges:
 	CaptureManager:
@@ -312,7 +311,7 @@ SPY:
 	RevealsShroud:
 		Range: 5c0
 	Passenger:
-		PipType: Blue
+		CustomPipType: blue
 		Voice: Move
 	Disguise:
 		DisguisedCondition: disguise
@@ -330,11 +329,11 @@ SPY:
 		IdleSequences: idle1,idle2
 		StandSequences: stand,stand2
 	WithDecoration@disguise:
+		Position: Top
+		Margin: 0, -6
 		Image: pips
-		Sequence: pip-disguise
+		Sequence: tag-spy
 		Palette: effect
-		ReferencePoint: Top, Right
-		ZOffset: 256
 		RequiresCondition: disguise
 	IgnoresDisguise:
 	Armament:
@@ -386,18 +385,21 @@ E7:
 		DetonationDelay: 45
 		Voice: Demolish
 	Passenger:
-		PipType: Red
+		CustomPipType: red
 		Voice: Move
 	Armament@PRIMARY:
 		Weapon: Colt45
+		LocalOffset: 0,0,0, 0,0,0
 	Armament@SECONDARY:
 		Weapon: Colt45
+		LocalOffset: 0,0,0, 0,0,0
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: Colt45
 		MuzzleSequence: garrison-muzzle
 	WithInfantryBody:
-		DefaultAttackSequence: shoot
+		AttackSequences:
+			primary: shoot-left, shoot-right
 		StandSequences: stand
 	ExternalCondition@PRODUCED:
 		Condition: produced
@@ -435,6 +437,7 @@ E8:
 	AttackMove:
 		Voice: Move
 	Passenger:
+		CustomPipType: red
 		Voice: Move
 	Guard:
 		Voice: Move
@@ -446,11 +449,11 @@ E8:
 	Armament@GARRISONED:
 		Name: garrisoned
 		Weapon: Volk_AT
-	SelfHealing:
+	ChangesHealth:
 		Step: 1
 		Delay: 3
-		HealIfBelow: 50
-		DamageCooldown: 150	   
+		StartIfBelow: 50
+		DamageCooldown: 150 
 	Armor:
 		Type: Cybernetic
 	WithInfantryBody:
@@ -486,13 +489,13 @@ MEDI:
 	RevealsShroud:
 		Range: 3c0
 	Passenger:
-		PipType: Blue
+		CustomPipType: blue
 	Armament:
 		Weapon: Heal
 		Cursor: heal
 		OutsideRangeCursor: heal
-		TargetStances: Ally
-		ForceTargetStances: None
+		TargetRelationships: Ally
+		ForceTargetRelationships: None
 	WithInfantryBody:
 		IdleSequences: idle
 		StandSequences: stand
@@ -525,14 +528,14 @@ MECH:
 	RevealsShroud:
 		Range: 3c0
 	Passenger:
-		PipType: Blue
+		CustomPipType: blue
 		Voice: Move
 	Armament:
 		Weapon: Repair
 		Cursor: repair
 		OutsideRangeCursor: repair
-		TargetStances: Ally
-		ForceTargetStances: None
+		TargetRelationships: Ally
+		ForceTargetRelationships: None
 	AttackFrontal:
 		Voice: Action
 	CaptureManager:
@@ -541,7 +544,7 @@ MECH:
 		PlayerExperience: 25
 	Infiltrates:
 		Types: Husk
-		ValidStances: Ally
+		ValidRelationships: Ally
 		EnterCursor: goldwrench
 		PlayerExperience: 25
 	WithInfantryBody:
@@ -628,10 +631,10 @@ THF:
 	RevealsShroud:
 		Range: 5c0
 	Passenger:
-		PipType: Blue
+		CustomPipType: blue
 	CaptureManager:
 	Captures:
-		CaptureTypes: vehicle
+		CaptureTypes: vehicle, aircraft
 		PlayerExperience: 50
 	Infiltrates:
 		Types: ThiefInfiltrate
@@ -724,7 +727,7 @@ SNIPER:
 	Health:
 		HP: 8000
 	Passenger:
-		PipType: Red
+		CustomPipType: red
 	RevealsShroud:
 		Range: 6c0
 	AutoTarget:
@@ -804,12 +807,11 @@ Ant:
 	Selectable:
 		Bounds: 24,24,0,-5
 		DecorationBounds: 30,30,0,-2
-	SelectionDecorations:
 	Health:
 		HP: 75000
 	Mobile:
 		Speed: 99
-		TurnSpeed: 12
+		TurnSpeed: 48
 		Locomotor: lighttracked
 	-Crushable:
 	AutoTarget:
@@ -820,7 +822,7 @@ Ant:
 	Armament:
 		Weapon: mandible
 	Targetable:
-		TargetTypes: Ground, Infantry, Ant
+		TargetTypes: GroundActor, Infantry, Ant
 	WithDeathAnimation:
 		UseDeathTypeSuffix: false
 	Voiced:
@@ -876,4 +878,3 @@ WarriorAnt:
 		Prerequisites: ~disabled
 	RenderSprites:
 		Image: Ant
-		

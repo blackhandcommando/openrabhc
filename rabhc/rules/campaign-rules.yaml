@@ -2,11 +2,12 @@ Player:
 	-ConquestVictoryConditions:
 	MissionObjectives:
 		EarlyGameOver: true
+		GameOverDelay: 3000
 	Shroud:
-		FogCheckboxLocked: True 
-		FogCheckboxEnabled: True 
-		ExploredMapCheckboxLocked: True 
-		ExploredMapCheckboxEnabled: False 
+		FogCheckboxLocked: True
+		FogCheckboxEnabled: True
+		ExploredMapCheckboxLocked: True
+		ExploredMapCheckboxEnabled: False
 	PlayerResources:
 		DefaultCashDropdownLocked: True
 		DefaultCash: 0
@@ -16,21 +17,21 @@ Player:
 
 World:
 	CrateSpawner:
-		CheckboxEnabled: False 
-		CheckboxLocked: True 
+		CheckboxEnabled: False
+		CheckboxLocked: True
 	-SpawnMPUnits:
 	-MPStartLocations:
 	ObjectivesPanel:
 		PanelName: MISSION_OBJECTIVES
 	MapBuildRadius:
-		AllyBuildRadiusCheckboxLocked: True 
-		AllyBuildRadiusCheckboxEnabled: False 
-		BuildRadiusCheckboxLocked: True 
-		BuildRadiusCheckboxEnabled: True 
+		AllyBuildRadiusCheckboxLocked: True
+		AllyBuildRadiusCheckboxEnabled: False
+		BuildRadiusCheckboxLocked: True
+		BuildRadiusCheckboxEnabled: True
 	MapOptions:
-		TechLevelDropdownLocked: True 
-		ShortGameCheckboxLocked: True 
-		ShortGameCheckboxEnabled: False 
+		TechLevelDropdownLocked: True
+		ShortGameCheckboxLocked: True
+		ShortGameCheckboxEnabled: False
 
 E7:
 	-Crushable:
@@ -48,6 +49,11 @@ E7.noautotarget:
 ^Vehicle:
 	Demolishable:
 
+HARV:
+	Harvester:
+		SearchFromProcRadius: 15
+		SearchFromHarvesterRadius: 8
+
 MONEYCRATE:
 	Tooltip:
 		Name: Crate
@@ -62,6 +68,16 @@ FCOM:
 	-GivesBuildableArea:
 	BaseProvider:
 		Range: 0
+	RepairableBuilding:
+		RepairStep: 700
+		PlayerExperience: 25
+		RepairingNotification: Repairing
+	WithBuildingRepairDecoration:
+		Image: allyrepair
+		Sequence: repair
+		Position: Center
+		Palette: player
+		IsPlayerPalette: True
 
 MISS:
 	RevealsShroud:
@@ -75,4 +91,3 @@ Ant:
 Zombie:
 	Buildable:
 		Prerequisites: ~disabled
-		
