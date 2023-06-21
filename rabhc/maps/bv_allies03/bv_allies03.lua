@@ -64,7 +64,7 @@ elseif Map.LobbyOption("difficulty") == "hard" then
 
 end
 
-	GreeceFleeingInfantryTypes = { "e1", "e3", "e6", "medi" }
+	GreeceFleeingInfantryTypes = { "e1.slow", "e3.slow", "e6.slow", "medi.slow" }
 	GreeceFleeingTanksTypes = { "2tnk.slow", "arty.slow", "1tnk.slow", "arty.slow", "1tnk.slow" }
 	GreeceFleeingVehiclesTypes = { "truk.slow", "jeep.slow" }
 
