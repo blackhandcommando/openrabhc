@@ -196,7 +196,7 @@ NavalProductionBuilding = { type = "spen", pos = CPos.New(42, 39), cost = 1000, 
 
 BaseBuildings = { BaseProc, BaseNuke1, BaseNuke2, BaseNuke3, BaseNuke4, BaseNuke5, BaseNuke6, BaseNuke7, BaseNuke8, BaseNuke9, InfantryProductionBuilding, DogBuilding, VehicleProductionBuilding, AirProductionBuilding, Fix, TechCenter, SAM1, SAM2, SAM3, SAM4, SAM5, Flame1, Flame2, Flame3, NavalProductionBuilding, Tesla1, Tesla2, Tesla3 }
 SellBuildings = { Actor253, Actor251, Actor255, Actor401, Actor254, Actor405, Actor527, Actor76, Actor77, Actor78 }
-InfiltrateableBuildings = { Actor324, Actor325, Actor722 }
+InfiltrateableBuildings = { Actor255, Actor324, Actor325, Actor401, Actor722 }
 
 AttackPos = {
 	Actor819,
