@@ -75,8 +75,8 @@ E7.noautotarget:
 
 HARV:
 	Harvester:
-		SearchFromProcRadius: 50
-		SearchFromHarvesterRadius: 50
+		SearchFromProcRadius: 15
+		SearchFromHarvesterRadius: 8
 
 ^Crate:
 	Crate:
