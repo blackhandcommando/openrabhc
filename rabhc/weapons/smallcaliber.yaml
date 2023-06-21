@@ -57,7 +57,7 @@ FLAK-23-AG:
 		InvalidTargets: Bridge
 
 ^HeavyMG:
-	ReloadDelay: 30
+	ReloadDelay: 35
 	Range: 6c0
 	Report: gun13.aud
 	ValidTargets: Ground, Water, GroundActor, WaterActor
@@ -332,7 +332,7 @@ SilencedPPK:
 
 Colt45:
 	Inherits: ^SnipeWeapon
-	ReloadDelay: 5
+	ReloadDelay: 7
 	Range: 7c0
 	Warhead@1Dam: SpreadDamage
 		Damage: 5000

@@ -2720,8 +2720,6 @@ Templates:
 			8: Rock
 			9: Rock
 			12: Rough
-			13: Clear
-			14: Clear
 	Template@382:
 		Id: 382
 		Images: bridge1x.tem
@@ -3226,7 +3224,7 @@ Templates:
 			2: Clear
 			9: Clear
 			10: Road
-			11: Rock
+			11: Clear
 	Template@520:
 		Id: 520
 		Images: sbridge1.tem
@@ -3417,12 +3415,12 @@ Templates:
 		Size: 4,4
 		Categories: Bridge
 		Tiles:
-			0: Clear
-			3: Rock
+			0: Rough
+			3: Rough
 			4: Road
 			7: Road
-			8: Clear
-			11: Rock
+			8: Rough
+			11: Rough
 			12: Clear
 			13: River
 			14: River
@@ -3609,15 +3607,15 @@ Templates:
 		Categories: Debris
 		Tiles:
 			0: Rough
-			1: Rough
-			2: Rough
-			3: Rough
-			4: Rough
-			5: Rough
+			1: Rock
+			2: Rock
+			3: Rock
+			4: Rock
+			5: Rock
 			6: Rough
 			7: Rough
-			8: Rough
-			9: Rough
+			8: Rock
+			9: Rock
 			10: Rough
 			11: Clear
 	Template@401:

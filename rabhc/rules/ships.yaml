@@ -19,7 +19,7 @@ SS:
 		Type: Light
 	Mobile:
 		TurnSpeed: 16
-		Speed: 71
+		Speed: 78
 	RevealsShroud:
 		MinRange: 5c0
 		Range: 8c0
@@ -33,7 +33,7 @@ SS:
 		TargetTypes: Underwater, Submarine
 		RequiresCondition: underwater
 	Cloak:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		InitialDelay: 0
 		CloakDelay: 50
 		CloakSound: subshow1.aud
@@ -49,13 +49,14 @@ SS:
 		LocalOffset: 0,-171,0, 0,171,0
 		FireDelay: 2
 	AttackFrontal:
+		FacingTolerance: 0
 	AutoTargetPriority@DEFAULT:
 		ValidTargets: WaterActor, Underwater
 		InvalidTargets: NoAutoTarget, Structure
 	AutoTargetPriority@ATTACKANYTHING:
 		ValidTargets: WaterActor, Underwater
 	DetectCloaked:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		Range: 4c0
 	RenderDetectionCircle:
 	Explodes:
@@ -63,7 +64,7 @@ SS:
 		EmptyWeapon: UnitExplodeSubmarine
 	-MustBeDestroyed:
 	Selectable:
-		DecorationBounds: 38,38
+		DecorationBounds: 1621, 1621
 
 MSUB:
 	Inherits: ^Ship
@@ -86,7 +87,7 @@ MSUB:
 		Type: Light
 	Mobile:
 		TurnSpeed: 12
-		Speed: 42
+		Speed: 44
 	RevealsShroud:
 		MinRange: 5c0
 		Range: 8c0
@@ -100,7 +101,7 @@ MSUB:
 		TargetTypes: Underwater, Submarine
 		RequiresCondition: underwater
 	Cloak:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		InitialDelay: 0
 		CloakDelay: 100
 		CloakSound: subshow1.aud
@@ -122,11 +123,12 @@ MSUB:
 	AttackFrontal:
 		TargetFrozenActors: True
 		ForceFireIgnoresActors: True
+		FacingTolerance: 0
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: ReturnFire
 	DetectCloaked:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		Range: 4c0
 	RenderDetectionCircle:
 	Explodes:
@@ -134,7 +136,7 @@ MSUB:
 		EmptyWeapon: UnitExplodeSubmarine
 	-MustBeDestroyed:
 	Selectable:
-		DecorationBounds: 44,44
+		DecorationBounds: 1877, 1877
 
 DD:
 	Inherits: ^Ship
@@ -157,7 +159,7 @@ DD:
 		Type: Heavy
 	Mobile:
 		TurnSpeed: 28
-		Speed: 85
+		Speed: 92
 	RevealsShroud:
 		MinRange: 5c0
 		Range: 6c0
@@ -182,11 +184,11 @@ DD:
 	AttackTurreted:
 	WithSpriteTurret:
 	DetectCloaked:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		Range: 4c0
 	RenderDetectionCircle:
 	Selectable:
-		DecorationBounds: 38,38
+		DecorationBounds: 1621, 1621
 
 CA:
 	Inherits: ^Ship
@@ -209,7 +211,7 @@ CA:
 		Type: Heavy
 	Mobile:
 		TurnSpeed: 12
-		Speed: 42
+		Speed: 44
 	RevealsShroud:
 		MinRange: 5c0
 		Range: 7c0
@@ -249,7 +251,7 @@ CA:
 	WithSpriteTurret@SECONDARY:
 		Turret: secondary
 	Selectable:
-		DecorationBounds: 44,44
+		DecorationBounds: 1877, 1877
 
 LST:
 	Inherits: ^Ship
@@ -271,7 +273,7 @@ LST:
 		Type: Heavy
 	Mobile:
 		Locomotor: lcraft
-		Speed: 113
+		Speed: 128
 		PauseOnCondition: notmobile
 	RevealsShroud:
 		MinRange: 5c0
@@ -288,7 +290,7 @@ LST:
 		LoadingCondition: notmobile
 	-Chronoshiftable:
 	Selectable:
-		DecorationBounds: 36,36
+		DecorationBounds: 1536, 1536
 
 PT:
 	Inherits: ^Ship
@@ -311,7 +313,7 @@ PT:
 		Type: Heavy
 	Mobile:
 		TurnSpeed: 28
-		Speed: 128
+		Speed: 142
 	RevealsShroud:
 		MinRange: 5c0
 		Range: 7c0
@@ -333,8 +335,8 @@ PT:
 	WithMuzzleOverlay:
 	WithSpriteTurret:
 	DetectCloaked:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		Range: 4c0
 	RenderDetectionCircle:
 	Selectable:
-		DecorationBounds: 36,36
+		DecorationBounds: 1536, 1536

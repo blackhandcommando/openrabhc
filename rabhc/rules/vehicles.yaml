@@ -18,7 +18,7 @@ V2RL:
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 85
+		Speed: 72
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 5c0
@@ -33,6 +33,7 @@ V2RL:
 	AttackFrontal:
 		TargetFrozenActors: True
 		ForceFireIgnoresActors: True
+		FacingTolerance: 0
 	WithFacingSpriteBody:
 		RequiresCondition: !reloading
 		Name: loaded
@@ -45,7 +46,10 @@ V2RL:
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
-		DecorationBounds: 28,28
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
 
 1TNK:
 	Inherits: ^TrackedVehicle
@@ -68,7 +72,7 @@ V2RL:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 118
+		Speed: 113
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 5c0
@@ -86,9 +90,10 @@ V2RL:
 	AttackTurreted:
 	WithMuzzleOverlay:
 	WithSpriteTurret:
-	SpawnActorOnDeath:
-		Actor: 1TNK.Husk
 	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: vehicles.upgraded
 
 2TNK:
@@ -112,7 +117,7 @@ V2RL:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 85
+		Speed: 72
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 6c0
@@ -135,7 +140,10 @@ V2RL:
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
-		DecorationBounds: 28,28
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
 
 3TNK:
 	Inherits: ^TrackedVehicle
@@ -158,7 +166,7 @@ V2RL:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 71
+		Speed: 60
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 6c0
@@ -181,7 +189,10 @@ V2RL:
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
-		DecorationBounds: 28,28
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
 
 4TNK:
 	Inherits: ^TrackedVehicle
@@ -204,7 +215,7 @@ V2RL:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 50
+		Speed: 43
 		Locomotor: heavytracked
 	RevealsShroud:
 		MinRange: 4c0
@@ -240,7 +251,10 @@ V2RL:
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
-		DecorationBounds: 44,38,0,-4
+		DecorationBounds: 1877, 1621, 0, -170
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
 
 ARTY:
 	Inherits: ^TrackedVehicle
@@ -263,7 +277,7 @@ ARTY:
 		Type: Light
 	Mobile:
 		TurnSpeed: 8
-		Speed: 85
+		Speed: 72
 		Locomotor: lighttracked
 	RevealsShroud:
 		MinRange: 4c0
@@ -278,12 +292,16 @@ ARTY:
 	AttackFrontal:
 		TargetFrozenActors: True
 		ForceFireIgnoresActors: True
+		FacingTolerance: 0
 	WithMuzzleOverlay:
 	Explodes:
 		Weapon: ArtilleryExplode
 		EmptyWeapon: UnitExplodeSmall
 		LoadedChance: 75
 	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: vehicles.upgraded
 
 HARV:
@@ -300,7 +318,7 @@ HARV:
 		Name: Ore Truck
 		GenericName: Harvester
 	Selectable:
-		DecorationBounds: 42,42
+		DecorationBounds: 1792, 1792
 	Harvester:
 		Capacity: 20
 		Resources: Ore,Gems
@@ -314,7 +332,7 @@ HARV:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 85
+		Speed: 72
 		Locomotor: heavywheeled
 	RevealsShroud:
 		Range: 4c0
@@ -361,13 +379,13 @@ MCV:
 	Tooltip:
 		Name: Mobile Construction Vehicle
 	Selectable:
-		DecorationBounds: 42,42
+		DecorationBounds: 1792, 1792
 	Health:
 		HP: 60000
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 71
+		Speed: 60
 		Locomotor: heavywheeled
 	RevealsShroud:
 		Range: 4c0
@@ -377,6 +395,7 @@ MCV:
 		Facing: 384
 		TransformSounds: placbldg.aud, build5.aud
 		NoTransformNotification: BuildingCannotPlaceAudio
+		NoTransformTextNotification: Cannot deploy here.
 	MustBeDestroyed:
 		RequiredForShortGame: true
 	BaseBuilding:
@@ -407,11 +426,11 @@ JEEP:
 		Type: Light
 	Mobile:
 		TurnSpeed: 40
-		Speed: 170
+		Speed: 160
 		PauseOnCondition: notmobile || being-captured
 	RevealsShroud:
 		MinRange: 4c0
-		Range: 8c0
+		Range: 7c0
 		RevealGeneratedShroud: False
 	RevealsShroud@GAPGEN:
 		Range: 4c0
@@ -430,6 +449,9 @@ JEEP:
 		MaxWeight: 1
 		LoadingCondition: notmobile
 	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: vehicles.upgraded
 
 APC:
@@ -453,7 +475,7 @@ APC:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 142
+		Speed: 128
 		PauseOnCondition: notmobile || being-captured
 	RevealsShroud:
 		MinRange: 4c0
@@ -466,12 +488,16 @@ APC:
 		LocalOffset: 85,0,171
 		MuzzleSequence: muzzle
 	AttackFrontal:
+		FacingTolerance: 0
 	WithMuzzleOverlay:
 	Cargo:
 		Types: Infantry
 		MaxWeight: 5
 		LoadingCondition: notmobile
 	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: vehicles.upgraded
 
 MNLY:
@@ -493,7 +519,7 @@ MNLY:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 128
+		Speed: 113
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 5c0
@@ -510,7 +536,7 @@ MNLY:
 		RearmSound: minelay1.aud
 	DetectCloaked:
 		Range: 5c0
-		CloakTypes: Mine
+		DetectionTypes: Mine
 	RenderDetectionCircle:
 	Explodes:
 		Weapon: ATMine
@@ -542,12 +568,12 @@ TRUK:
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 128
+		Speed: 113
 	RevealsShroud:
 		Range: 4c0
 	DeliversCash:
 		Payload: 500
-		PlayerExperience: 50
+		PlayerExperience: 5
 	SpawnActorOnDeath:
 		Actor: moneycrate
 
@@ -569,7 +595,7 @@ MGG:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 85
+		Speed: 72
 	WithIdleOverlay@SPINNER:
 		Offset: -299,0,171
 		Sequence: spinner
@@ -603,7 +629,7 @@ MRJ:
 	Armor:
 		Type: Heavy
 	Mobile:
-		Speed: 78
+		Speed: 68
 	RevealsShroud:
 		Range: 7c0
 	WithIdleOverlay@SPINNER:
@@ -643,7 +669,7 @@ TTNK:
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 99
+		Speed: 92
 	RevealsShroud:
 		MinRange: 6c0
 		Range: 7c0
@@ -660,7 +686,10 @@ TTNK:
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
-		DecorationBounds: 30,30
+		DecorationBounds: 1280, 1280
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
 
 FTRK:
 	Inherits: ^Vehicle
@@ -683,7 +712,7 @@ FTRK:
 		Type: Light
 	Mobile:
 		TurnSpeed: 40
-		Speed: 118
+		Speed: 113
 	RevealsShroud:
 		MinRange: 4c0
 		Range: 6c0
@@ -709,7 +738,10 @@ FTRK:
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
-		DecorationBounds: 28,28
+		DecorationBounds: 1194, 1194
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
 
 DTRK:
 	Inherits: ^Vehicle
@@ -725,11 +757,11 @@ DTRK:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Health:
-		HP: 5000
+		HP: 2800
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 85
+		Speed: 67
 	RevealsShroud:
 		Range: 4c0
 	Explodes:
@@ -771,7 +803,7 @@ CTNK:
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 96
+		Speed: 86
 		Locomotor: heavywheeled
 	RevealsShroud:
 		MinRange: 4c0
@@ -788,12 +820,16 @@ CTNK:
 		LocalOffset: -160,276,232
 		LocalYaw: -60
 	AttackFrontal:
+		FacingTolerance: 0
 	PortableChrono:
 		ChargeDelay: 250
 	ProducibleWithLevel:
 		Prerequisites: vehicles.upgraded
 	Selectable:
-		DecorationBounds: 30,30
+		DecorationBounds: 1280, 1280
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: vehicles.upgraded
 
 QTNK:
 	Inherits: ^TrackedVehicle
@@ -816,7 +852,7 @@ QTNK:
 	Mobile:
 		RequiresCondition: !deployed
 		PauseOnCondition: being-captured
-		Speed: 56
+		Speed: 46
 	Chronoshiftable:
 		RequiresCondition: !deployed && !being-captured
 	RevealsShroud:
@@ -833,7 +869,7 @@ QTNK:
 	Targetable:
 		TargetTypes: GroundActor, MADTank, Vehicle
 	Selectable:
-		DecorationBounds: 44,38,0,-4
+		DecorationBounds: 1877, 1621, 0, -170
 
 STNK:
 	Inherits: ^Vehicle
@@ -856,7 +892,7 @@ STNK:
 	Armor:
 		Type: Light
 	Mobile:
-		Speed: 142
+		Speed: 128
 		Locomotor: heavywheeled
 		PauseOnCondition: notmobile || being-captured
 	RevealsShroud:
@@ -886,10 +922,13 @@ STNK:
 		UncloakSound: appear1.aud
 		IsPlayerPalette: true
 		PauseOnCondition: cloak-force-disabled
-		UncloakOn: Attack, Heal, Dock
+		UncloakOn: Attack, Unload, Heal, Dock
 	GrantConditionOnDamageState@UNCLOAK:
 		Condition: cloak-force-disabled
 		ValidDamageStates: Critical
 	-MustBeDestroyed:
 	ProducibleWithLevel:
+		Prerequisites: vehicles.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: vehicles.upgraded

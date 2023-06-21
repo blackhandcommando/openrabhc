@@ -4175,4 +4175,5 @@ Actors:
 	Actor1289: camera.nuker
 		Owner: Nuker
 		Location: 105,71
-Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml
+
+Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml

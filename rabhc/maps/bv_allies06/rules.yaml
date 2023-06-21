@@ -1,6 +1,6 @@
 Player:
 	PlayerResources:
-		DefaultCash: 0
+		DefaultCash: 5000
 	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
 		Enabled: True
 		Locked: True

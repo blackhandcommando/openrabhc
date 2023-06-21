@@ -14,12 +14,12 @@ DOG:
 	UpdatesPlayerStatistics:
 		AddToArmyValue: true
 	Selectable:
-		Bounds: 12,17,-1,-4
-		DecorationBounds: 12,17,-1,-4
+		Bounds: 512, 725, -42, -170
+		DecorationBounds: 512, 725, -42, -170
 	Health:
 		HP: 1800
 	Mobile:
-		Speed: 99
+		Speed: 100
 		Voice: Move
 		PauseOnCondition: attack-cooldown || eating
 	Guard:
@@ -39,7 +39,7 @@ DOG:
 		Voice: Move
 	GrantConditionOnAttack:
 		Condition: eating
-		RevokeDelay: 45
+		RevokeDelay: 20
 	GrantConditionWhileAiming:
 		Condition: run
 	AutoTarget:
@@ -52,10 +52,14 @@ DOG:
 		MoveSequence: walk
 		StandSequences: stand
 		DefaultAttackSequence: eat
-		RequiresCondition: !run
+		RequiresCondition: !run && !parachute
 	WithInfantryBody@RUN:
 		MoveSequence: run
-		RequiresCondition: run
+		RequiresCondition: run && !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	SpeedMultiplier:
 		Modifier: 150
 		RequiresCondition: run
@@ -95,7 +99,12 @@ E1:
 	WithInfantryBody@PARACHUTE:
 		StandSequences: parachute
 		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: barracks.upgraded
 
 E1R1:
@@ -108,6 +117,9 @@ E1R1:
 	UpdatesPlayerStatistics:
 		OverrideActor: e1
 	-Buildable:
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
 
 E2:
 	Inherits: ^Soldier
@@ -127,7 +139,7 @@ E2:
 	Health:
 		HP: 5000
 	Mobile:
-		Speed: 71
+		Speed: 68
 	Armament@PRIMARY:
 		Weapon: Grenade
 		LocalOffset: 0,0,555
@@ -144,11 +156,16 @@ E2:
 	WithInfantryBody@PARACHUTE:
 		StandSequences: parachute
 		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Explodes:
 		Weapon: UnitExplodeSmall
 		EmptyWeapon: UnitExplodeSmall
 		DamageSource: Killer
 	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: barracks.upgraded
 
 E3:
@@ -188,10 +205,15 @@ E3:
 	WithInfantryBody@PARACHUTE:
 		StandSequences: parachute
 		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	ProducibleWithLevel:
 		Prerequisites: barracks.upgraded
 	AutoTarget:
 		ScanRadius: 5
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
 
 E3R1:
 	Inherits: E3
@@ -203,6 +225,9 @@ E3R1:
 	UpdatesPlayerStatistics:
 		OverrideActor: e3
 	-Buildable:
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: techlevel.infonly
 
 E4:
 	Inherits: ^Soldier
@@ -240,7 +265,12 @@ E4:
 	WithInfantryBody@PARACHUTE:
 		StandSequences: parachute
 		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: barracks.upgraded
 
 E6:
@@ -263,6 +293,8 @@ E6:
 	WithInfantryBody@PARACHUTE:
 		StandSequences: parachute
 		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Passenger:
 		CustomPipType: yellow
 	EngineerRepair:
@@ -274,12 +306,12 @@ E6:
 	Captures:
 		RequiresCondition: !global-reusable-engineers
 		CaptureTypes: building
-		PlayerExperience: 25
+		PlayerExperience: 10
 		CaptureDelay: 200
 	Captures@REUSABLE:
 		RequiresCondition: global-reusable-engineers
 		CaptureTypes: building
-		PlayerExperience: 25
+		PlayerExperience: 10
 		CaptureDelay: 375
 		ConsumedByCapture: False
 		EnterCursor: ability
@@ -318,7 +350,8 @@ SPY:
 	Infiltrates:
 		Types: SpyInfiltrate
 		Notification: BuildingInfiltrated
-		PlayerExperience: 50
+		TextNotification: Building infiltrated.
+		PlayerExperience: 10
 	AutoTarget:
 		InitialStance: HoldFire
 		InitialStanceAI: HoldFire
@@ -328,6 +361,11 @@ SPY:
 		DefaultAttackSequence: shoot
 		IdleSequences: idle1,idle2
 		StandSequences: stand,stand2
+		RequiresCondition: !parachute
+	WithDisguisingInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	WithDecoration@disguise:
 		Position: Top
 		Margin: 0, -6
@@ -367,7 +405,7 @@ E7:
 		BuildLimit: 1
 		Description: Elite commando infantry. Armed with\ndual pistols and C4.\nMaximum 1 can be trained.\n  Strong vs Infantry, Buildings\n  Weak vs Vehicles, Aircraft\n  Special Ability: Destroy Building with C4
 	Valued:
-		Cost: 1200
+		Cost: 1500
 	Tooltip:
 		Name: Tanya
 	UpdatesPlayerStatistics:
@@ -375,7 +413,7 @@ E7:
 	Health:
 		HP: 10000
 	Mobile:
-		Speed: 71
+		Speed: 68
 		Voice: Move
 	Guard:
 		Voice: Move
@@ -401,6 +439,11 @@ E7:
 		AttackSequences:
 			primary: shoot-left, shoot-right
 		StandSequences: stand
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	ExternalCondition@PRODUCED:
 		Condition: produced
 	VoiceAnnouncement:
@@ -410,6 +453,9 @@ E7:
 	Voiced:
 		VoiceSet: TanyaVoice
 	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: barracks.upgraded
 
 E8:
@@ -458,6 +504,11 @@ E8:
 		Type: Cybernetic
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	TakeCover:
 		IdleAnimations: idle1
 		CrushSound: crunchy2.aud
@@ -467,6 +518,9 @@ E8:
 		RepairActors: BARR
 	RenderSprites:
 		Image: GNRL
+	WithProductionIconOverlay:
+		Types: Veterancy
+		Prerequisites: barracks.upgraded
 
 MEDI:
 	Inherits: ^Soldier
@@ -485,7 +539,7 @@ MEDI:
 	Health:
 		HP: 6000
 	Mobile:
-		Speed: 50
+		Speed: 49
 	RevealsShroud:
 		Range: 3c0
 	Passenger:
@@ -500,6 +554,11 @@ MEDI:
 		IdleSequences: idle
 		StandSequences: stand
 		DefaultAttackSequence: heal
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Voiced:
 		VoiceSet: MedicVoice
 	AutoTarget:
@@ -523,7 +582,7 @@ MECH:
 	Health:
 		HP: 8000
 	Mobile:
-		Speed: 50
+		Speed: 49
 		Voice: Move
 	RevealsShroud:
 		Range: 3c0
@@ -538,19 +597,25 @@ MECH:
 		ForceTargetRelationships: None
 	AttackFrontal:
 		Voice: Action
+		FacingTolerance: 0
 	CaptureManager:
 	Captures:
 		CaptureTypes: husk
-		PlayerExperience: 25
+		PlayerExperience: 10
 	Infiltrates:
 		Types: Husk
 		ValidRelationships: Ally
 		EnterCursor: goldwrench
-		PlayerExperience: 25
+		PlayerExperience: 10
 	WithInfantryBody:
 		IdleSequences: idle
 		DefaultAttackSequence: repair
 		StandSequences: stand
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Voiced:
 		VoiceSet: MechanicVoice
 	AutoTarget:
@@ -563,7 +628,7 @@ EINSTEIN:
 	Tooltip:
 		Name: Prof. Einstein
 	Mobile:
-		Speed: 71
+		Speed: 68
 	Voiced:
 		VoiceSet: EinsteinVoice
 
@@ -573,7 +638,7 @@ DELPHI:
 	Tooltip:
 		Name: Agent Delphi
 	Mobile:
-		Speed: 71
+		Speed: 68
 
 CHAN:
 	Inherits: ^CivInfantry
@@ -596,6 +661,7 @@ GNRL:
 		Voice: Move
 	AttackFrontal:
 		Voice: Attack
+		FacingTolerance: 0
 	AttackMove:
 		Voice: Move
 	Passenger:
@@ -611,9 +677,15 @@ GNRL:
 		DamageTriggers: TriggerProne
 	WithInfantryBody:
 		IdleSequences: idle1
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 
 THF:
 	Inherits: ^Soldier
+	Inherits@selection: ^SelectableSupportUnit
 	Buildable:
 		Queue: Infantry
 		BuildAtProductionType: Soldier
@@ -635,31 +707,38 @@ THF:
 	CaptureManager:
 	Captures:
 		CaptureTypes: vehicle, aircraft
-		PlayerExperience: 50
+		PlayerExperience: 10
 	Infiltrates:
 		Types: ThiefInfiltrate
 		Notification: BuildingInfiltrated
-		PlayerExperience: 50
+		TextNotification: Building infiltrated.
+		PlayerExperience: 10
 	Voiced:
 		VoiceSet: ThiefVoice
 	-TakeCover:
 	WithInfantryBody:
 		IdleSequences: idle
 		StandSequences: stand
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Crushable:
 		WarnProbability: 95
 	Cloak:
 		InitialDelay: 250
 		CloakDelay: 120
 		UncloakOn: Attack, Unload, Infiltrate, Demolish, Move
-		CloakTypes: Cloak
+		DetectionTypes: Cloak
 		IsPlayerPalette: true
 		PauseOnCondition: cloak-force-disabled
 	GrantConditionOnDamageState@UNCLOAK:
 		Condition: cloak-force-disabled
 		ValidDamageStates: Critical
 	Mobile:
-		Speed: 71
+		Voice: Move
+		Speed: 68
 	-AttackFrontal:
 
 SHOK:
@@ -693,6 +772,7 @@ SHOK:
 		ProneOffset: 227,0,-245
 	AttackFrontal:
 		Voice: Attack
+		FacingTolerance: 0
 	AttackMove:
 		Voice: Move
 	Passenger:
@@ -705,9 +785,14 @@ SHOK:
 	WithInfantryBody@PARACHUTE:
 		StandSequences: parachute
 		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Voiced:
 		VoiceSet: ShokVoice
 	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: barracks.upgraded
 
 SNIPER:
@@ -743,6 +828,11 @@ SNIPER:
 		MuzzleSequence: garrison-muzzle
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Cloak:
 		InitialDelay: 250
 		CloakDelay: 120
@@ -756,6 +846,9 @@ SNIPER:
 		ValidDamageStates: Critical
 	-MustBeDestroyed:
 	ProducibleWithLevel:
+		Prerequisites: barracks.upgraded
+	WithProductionIconOverlay:
+		Types: Veterancy
 		Prerequisites: barracks.upgraded
 
 Zombie:
@@ -776,12 +869,17 @@ Zombie:
 	Health:
 		HP: 25000
 	Mobile:
-		Speed: 42
+		Speed: 39
 	AutoTarget:
 		ScanRadius: 5
 	WithInfantryBody:
 		DefaultAttackSequence: bite
 		IdleSequences: idle1
+		RequiresCondition: !parachute
+	WithInfantryBody@PARACHUTE:
+		RequiresCondition: parachute
+		Palette: player-noshadow
+		IsPlayerPalette: true
 	Armament:
 		Weapon: claw
 	Voiced:
@@ -805,18 +903,19 @@ Ant:
 		Prerequisites: ~barracks, ~bio
 		Description: Irradiated insect that grew oversize.
 	Selectable:
-		Bounds: 24,24,0,-5
-		DecorationBounds: 30,30,0,-2
+		Bounds: 1024, 1024, 0, -213
+		DecorationBounds: 1280, 1280, 0, -85
 	Health:
 		HP: 75000
 	Mobile:
-		Speed: 99
+		Speed: 92
 		TurnSpeed: 48
 		Locomotor: lighttracked
 	-Crushable:
 	AutoTarget:
 		ScanRadius: 5
 	AttackFrontal:
+		FacingTolerance: 0
 	WithInfantryBody:
 		DefaultAttackSequence: bite
 	Armament:
@@ -837,7 +936,7 @@ FireAnt:
 		Name: Fire Ant
 		GenericVisibility: none
 	Mobile:
-		Speed: 80
+		Speed: 68
 	Armament:
 		Weapon: AntFireball
 	Health:
@@ -867,7 +966,7 @@ WarriorAnt:
 		Name: Warrior Ant
 		GenericVisibility: none
 	Mobile:
-		Speed: 65
+		Speed: 56
 	Health:
 		HP: 12500
 	Armor:

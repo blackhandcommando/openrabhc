@@ -4,6 +4,7 @@
 	ActorMap:
 	ScreenMap:
 	Selection:
+	ControlGroups:
 	MusicPlaylist:
 		VictoryMusic: score
 		DefeatMusic: map
@@ -14,68 +15,68 @@
 		Crushes: mine, crate
 		SharesCell: true
 		TerrainSpeeds:
-			Clear: 90
-			Rough: 80
-			Road: 100
-			Bridge: 100
-			Ore: 80
-			Gems: 80
-			Beach: 80
+			Clear: 100
+			Rough: 89
+			Road: 111
+			Bridge: 111
+			Ore: 89
+			Gems: 89
+			Beach: 89
 	Locomotor@WHEELED:
 		Name: wheeled
 		Crushes: mine, crate
 		TerrainSpeeds:
-			Clear: 80
-			Rough: 40
-			Road: 100
-			Bridge: 100
-			Ore: 70
-			Gems: 70
-			Beach: 40
+			Clear: 100
+			Rough: 50
+			Road: 125
+			Bridge: 125
+			Ore: 88
+			Gems: 88
+			Beach: 50
 	Locomotor@HEAVYWHEELED:
 		Name: heavywheeled
 		Crushes: wall, mine, crate, infantry
 		TerrainSpeeds:
-			Clear: 80
-			Rough: 40
-			Road: 100
-			Bridge: 100
-			Ore: 70
-			Gems: 70
-			Beach: 40
+			Clear: 100
+			Rough: 50
+			Road: 125
+			Bridge: 125
+			Ore: 88
+			Gems: 88
+			Beach: 50
 	Locomotor@LIGHTTRACKED:
 		Name: lighttracked
 		Crushes: wall, mine, crate
 		TerrainSpeeds:
-			Clear: 80
-			Rough: 70
-			Road: 100
-			Bridge: 100
-			Ore: 70
-			Gems: 70
-			Beach: 70
+			Clear: 100
+			Rough: 88
+			Road: 125
+			Bridge: 125
+			Ore: 88
+			Gems: 88
+			Beach: 88
 	Locomotor@TRACKED:
 		Name: tracked
 		Crushes: wall, infantry, mine, crate
 		TerrainSpeeds:
-			Clear: 80
-			Rough: 70
-			Road: 100
-			Bridge: 100
-			Ore: 70
-			Gems: 70
-			Beach: 70
+			Clear: 100
+			Rough: 88
+			Road: 125
+			Bridge: 125
+			Ore: 88
+			Gems: 88
+			Beach: 88
 	Locomotor@HEAVYTRACKED:
 		Name: heavytracked
 		Crushes: wall, infantry, mine, crate, heavywall
 		TerrainSpeeds:
-			Clear: 80
-			Rough: 70
-			Road: 100
-			Bridge: 100
-			Ore: 70
-			Gems: 70
-			Beach: 70
+			Clear: 100
+			Rough: 88
+			Road: 125
+			Bridge: 125
+			Ore: 88
+			Gems: 88
+			Beach: 88
 	Locomotor@NAVAL:
 		Name: naval
 		Crushes: crate
@@ -158,36 +159,24 @@
 		RandomFactionMembers: russia, ukraine
 		Side: Random
 		Description: Random Soviet Country\nA random Soviet country will be chosen when the game starts.
-	ResourceType@ore:
-		Type: Ore
-		Name: Valuable Minerals
-		ResourceType: 1
-		TerrainType: Ore
-		Palette: player
-		Sequences: gold01,gold02,gold03,gold04
-		MaxDensity: 12
-		ValuePerUnit: 25
-		AllowedTerrainTypes: Clear,Road
-		AllowUnderActors: true
-	ResourceType@gem:
-		Type: Gems
-		Name: Valuable Minerals
-		ResourceType: 2
-		TerrainType: Gems
-		Palette: player
-		Sequences: gem01,gem02,gem03,gem04
-		MaxDensity: 3
-		ValuePerUnit: 50
-		AllowedTerrainTypes: Clear,Road
-		AllowUnderActors: true
 	ResourceRenderer:
-		RenderTypes: Ore, Gems
+		ResourceTypes:
+			Ore:
+				Sequences: gold01, gold02, gold03, gold04
+				Palette: player
+				Name: Valuable Minerals
+			Gems:
+				Sequences: gem01, gem02, gem03, gem04
+				Palette: player
+				Name: Valuable Minerals
 
 World:
 	Inherits: ^BaseWorld
 	ChatCommands:
 	DevCommands:
 	DebugVisualizationCommands:
+	PathFinderOverlay:
+	HierarchicalPathFinderOverlay:
 	PlayerCommands:
 	HelpCommand:
 	ScreenShaker:
@@ -206,7 +195,6 @@ World:
 		WaterChance: 20
 		InitialSpawnDelay: 1500
 		CheckboxDisplayOrder: 1
-	DomainIndex:
 	SmudgeLayer@SCORCH:
 		Type: Scorch
 		Sequence: scorches
@@ -220,7 +208,24 @@ World:
 		SmokeImage: smoke_m
 		SmokeSequences: idle
 	ResourceLayer:
+		RecalculateResourceDensity: true
+		ResourceTypes:
+			Ore:
+				ResourceIndex: 1
+				TerrainType: Ore
+				AllowedTerrainTypes: Clear, Road
+				MaxDensity: 12
+			Gems:
+				ResourceIndex: 2
+				TerrainType: Gems
+				AllowedTerrainTypes: Clear, Road
+				MaxDensity: 3
 	ResourceClaimLayer:
+	WithResourceAnimation@GEMS:
+		Types: Gems
+		Image: twinkle
+		Sequences: twinkle1, twinkle2, twinkle3
+		Palette: effect
 	WarheadDebugOverlay:
 	SpawnMapActors:
 	MapBuildRadius:
@@ -229,14 +234,14 @@ World:
 	MapOptions:
 		ShortGameCheckboxDisplayOrder: 2
 		TechLevelDropdownDisplayOrder: 2
-		GameSpeedDropdownDisplayOrder: 3
-	CreateMPPlayers:
-	MPStartUnits@mcvonly:
+		GameSpeedDropdownDisplayOrder: 1
+	CreateMapPlayers:
+	StartingUnits@mcvonly:
 		Class: none
 		ClassName: MCV Only
 		Factions: allies, england, france, germany, soviet, russia, ukraine, ssoviet, sallies
 		BaseActor: mcv
-	MPStartUnits@lightallies:
+	StartingUnits@lightallies:
 		Class: light
 		ClassName: Light Support
 		Factions: allies, england, france, germany, sallies
@@ -244,7 +249,7 @@ World:
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartUnits@lightsoviet:
+	StartingUnits@lightsoviet:
 		Class: light
 		ClassName: Light Support
 		Factions: soviet, russia, ukraine, ssoviet
@@ -252,7 +257,7 @@ World:
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartUnits@heavyallies:
+	StartingUnits@heavyallies:
 		Class: heavy
 		ClassName: Heavy Support
 		Factions: allies, england, france, germany, sallies
@@ -260,7 +265,7 @@ World:
 		SupportActors: e1,e1,e1,e3,e3,jeep,1tnk,2tnk,2tnk,2tnk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartUnits@heavysoviet:
+	StartingUnits@heavysoviet:
 		Class: heavy
 		ClassName: Heavy Support
 		Factions: soviet, russia, ukraine, ssoviet
@@ -268,10 +273,9 @@ World:
 		SupportActors: e1,e1,e1,e3,e3,apc,ftrk,3tnk,3tnk
 		InnerSupportRadius: 3
 		OuterSupportRadius: 5
-	MPStartLocations:
+	MapStartingLocations:
 		SeparateTeamSpawnsCheckboxDisplayOrder: 6
-	SpawnMPUnits:
-		DropdownDisplayOrder: 1
+	SpawnStartingUnits:
 	PathFinder:
 	ValidateOrder:
 	DebugPauseState:
@@ -281,7 +285,9 @@ World:
 		PanelName: SKIRMISH_STATS
 	LoadWidgetAtGameStart:
 	ScriptTriggers:
+	CellTriggerOverlay:
 	TimeLimitManager:
+		TimeLimitDisplayOrder: 2
 		TimeLimitWarnings:
 			40: FourtyMinutesRemaining
 			30: ThirtyMinutesRemaining
@@ -292,12 +298,34 @@ World:
 			3: WarningThreeMinutesRemaining
 			2: WarningTwoMinutesRemaining
 			1: WarningOneMinuteRemaining
+	ColorPickerManager:
+		PreviewActor: fact.colorpicker
+		PresetHues: 0, 0.125, 0.22, 0.375, 0.5, 0.56, 0.8, 0.88, 0, 0.15, 0.235, 0.4, 0.47, 0.55, 0.75, 0.85
+		PresetSaturations: 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.4, 0.5, 0.4, 0.5, 0.4, 0.5, 0.4, 0.5
+	OrderEffects:
+		TerrainFlashImage: moveflsh
+		TerrainFlashSequence: idle
+		TerrainFlashPalette: moveflash
 
 EditorWorld:
 	Inherits: ^BaseWorld
 	EditorActorLayer:
 	EditorCursorLayer:
 	EditorResourceLayer:
+		RecalculateResourceDensity: true
+		ResourceTypes:
+			Ore:
+				ResourceIndex: 1
+				TerrainType: Ore
+				AllowedTerrainTypes: Clear, Road
+				MaxDensity: 12
+			Gems:
+				ResourceIndex: 2
+				TerrainType: Gems
+				AllowedTerrainTypes: Clear, Road
+				MaxDensity: 3
 	EditorSelectionLayer:
 	LoadWidgetAtGameStart:
 	EditorActionManager:
+	BuildableTerrainOverlay:
+		AllowedTerrainTypes: Clear, Road

@@ -47,6 +47,7 @@
 ^GainsExperience:
 	GainsExperience:
 		LevelUpNotification: LevelUp
+		LevelUpTextNotification: Unit promoted.
 		Conditions:
 			200: rank-veteran
 			400: rank-veteran
@@ -249,7 +250,7 @@
 		Locomotor: wheeled
 		TurnSpeed: 20
 	Selectable:
-		Bounds: 24, 24
+		Bounds: 1024, 1024
 	Targetable:
 		RequiresCondition: !parachute
 		TargetTypes: GroundActor, Vehicle
@@ -267,6 +268,7 @@
 	AttackMove:
 	HiddenUnderFog:
 	ActorLostNotification:
+		TextNotification: Unit lost.
 	ProximityCaptor:
 		Types: Vehicle
 	GpsDot:
@@ -283,7 +285,9 @@
 		CancelActivity: True
 	CaptureNotification:
 		Notification: UnitStolen
+		TextNotification: Unit stolen.
 		LoseNotification: UnitLost
+		LoseTextNotification: Unit lost.
 	MustBeDestroyed:
 	Voiced:
 		VoiceSet: VehicleVoice
@@ -331,12 +335,12 @@
 	RevealsShroud:
 		Range: 4c0
 	Mobile:
-		Speed: 56
+		Speed: 54
 		AlwaysTurnInPlace: true
 		Locomotor: foot
 	Selectable:
-		Bounds: 18,20,0,-6
-		DecorationBounds: 12,18,0,-8
+		Bounds: 768, 853, 0, -256
+		DecorationBounds: 512, 768, 0, -341
 	Targetable:
 		RequiresCondition: !parachute
 		TargetTypes: GroundActor, Infantry, Disguise
@@ -367,6 +371,7 @@
 		RequiresCondition: disable-experience
 	HiddenUnderFog:
 	ActorLostNotification:
+		TextNotification: Unit lost.
 	GpsDot:
 		String: Infantry
 	Crushable:
@@ -433,7 +438,7 @@
 		Categories: Infantry
 	EdibleByLeap:
 	DetectCloaked:
-		CloakTypes: Cloak
+		DetectionTypes: Cloak
 		Range: 1c0
 
 ^Soldier:
@@ -446,10 +451,12 @@
 		DamageModifiers:
 			Prone50Percent: 50
 		DamageTriggers: TriggerProne
+		Duration: 50
 	WithInfantryBody:
 		IdleSequences: idle1,idle2
 		StandSequences: stand,stand2
 	AttackFrontal:
+		FacingTolerance: 0
 
 ^CyborgInfantry:
 	Inherits: ^Soldier
@@ -485,6 +492,7 @@
 	Armament:
 		Weapon: Pistol
 	AttackFrontal:
+		FacingTolerance: 0
 	WithInfantryBody:
 		DefaultAttackSequence: shoot
 
@@ -503,7 +511,7 @@
 	Mobile:
 		Locomotor: naval
 	Selectable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	Targetable:
 		TargetTypes: WaterActor, Ship
 	Targetable@REPAIR:
@@ -516,6 +524,7 @@
 	AttackMove:
 	ActorLostNotification:
 		Notification: NavalUnitLost
+		TextNotification: Naval unit lost.
 	ProximityCaptor:
 		Types: Ship
 	Chronoshiftable:
@@ -546,7 +555,6 @@
 	Inherits@bounty: ^GlobalBounty
 	Inherits@selection: ^SelectableCombatUnit
 	Inherits@handicaps: ^PlayerHandicaps
-	Huntable:
 	OwnerLostAction:
 		Action: Kill
 	Armor:
@@ -555,7 +563,7 @@
 	AppearsOnRadar:
 		UseLocation: true
 	Selectable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	Aircraft:
 		AirborneCondition: airborne
 	Targetable@GROUND:
@@ -577,6 +585,7 @@
 	Guardable:
 	ActorLostNotification:
 		Notification: AirUnitLost
+		TextNotification: Airborne unit lost.
 	ProximityCaptor:
 		Types: Plane
 	EjectOnDeath:
@@ -611,11 +620,14 @@
 		RequiresCondition: !airborne
 	CaptureNotification:
 		Notification: UnitStolen
+		TextNotification: Unit stolen.
 		LoseNotification: UnitLost
+		LoseTextNotification: Unit lost.
 
 ^Plane:
 	Inherits: ^NeutralPlane
 	Inherits@2: ^GainsExperience
+	Huntable:
 	Repairable:
 		RepairActors: fix
 
@@ -657,7 +669,7 @@
 		BuildSounds: placbldg.aud, build5.aud
 		UndeploySounds: cashturn.aud
 	ActorPreviewPlaceBuildingPreview:
-		OverridePalette: placebuilding
+		PreviewAlpha: 0.65
 	RequiresBuildableArea:
 		AreaTypes: building
 	SoundOnDamageTransition:
@@ -669,6 +681,7 @@
 		Weapon: BuildingExplode
 		EmptyWeapon: BuildingExplode
 	CaptureNotification:
+		TextNotification: Structure captured.
 	ShakeOnDeath:
 	ProximityCaptor:
 		Types: Building
@@ -693,7 +706,7 @@
 		AreaTypes: building, fake
 	RepairableBuilding:
 		RepairStep: 700
-		PlayerExperience: 25
+		PlayerExperience: 5
 		RepairingNotification: Repairing
 	EngineerRepairable:
 	AcceptsDeliveredCash:
@@ -717,6 +730,7 @@
 	Sellable:
 		RequiresCondition: !build-incomplete && !being-captured && !being-demolished
 		SellSounds: cashturn.aud
+		Notification: StructureSold
 	WithBuildingRepairDecoration:
 		Image: allyrepair
 		Sequence: repair
@@ -733,7 +747,7 @@
 	Inherits: ^Building
 	Inherits@selection: ^SelectableCombatBuilding
 	Selectable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	Targetable:
 		TargetTypes: GroundActor, C4, DetonateAttack, Structure, Defense
 	MustBeDestroyed:
@@ -754,7 +768,7 @@
 	Inherits@shape: ^1x1Shape
 	Inherits@handicaps: ^PlayerHandicaps
 	Interactable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	OwnerLostAction:
 		Action: ChangeOwner
 	Building:
@@ -764,7 +778,7 @@
 		TerrainTypes: Clear,Road
 		UndeploySounds: cashturn.aud
 	FootprintPlaceBuildingPreview:
-		LineBuildSegmentPalette: placelinesegment
+		LineBuildFootprintAlpha: 0.65
 	RequiresBuildableArea:
 		AreaTypes: building
 		Adjacent: 7
@@ -797,8 +811,6 @@
 		Terrain: Wall
 	MapEditorData:
 		Categories: Wall
-	UpdatesPlayerStatistics:
-		AddToAssetsValue: false
 
 ^TechBuilding:
 	Inherits: ^BasicBuilding
@@ -865,7 +877,7 @@
 	MapEditorData:
 		Categories: Decoration
 	Interactable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 
 ^CivBuilding:
 	Inherits: ^TechBuilding
@@ -886,6 +898,7 @@
 	-Explodes:
 	-Explodes@CIVPANIC:
 	-Selectable:
+	-ScriptTriggers:
 	Tooltip:
 		Name: Field
 	-Targetable:
@@ -893,6 +906,25 @@
 	MapEditorData:
 		ExcludeTilesets: INTERIOR
 	Interactable:
+
+^CivHaystackOrIgloo:
+	Inherits: ^CivField
+	MapEditorData:
+		ExcludeTilesets: DESERT, INTERIOR
+	-Tooltip:
+	GrantConditionOnTileSet@WINTER:
+		Condition: winter
+		TileSets: SNOW
+	Tooltip@WINTER:
+		Name: Igloo
+		RequiresCondition: winter
+		GenericVisibility: None
+		ShowOwnerRow: false
+	Tooltip@SUMMER:
+		Name: Haystacks
+		RequiresCondition: !winter
+		GenericVisibility: None
+		ShowOwnerRow: false
 
 ^Tree:
 	Inherits@1: ^SpriteActor
@@ -937,7 +969,6 @@
 		MinimumDamageState: Heavy
 		MaximumDamageState: Dead
 	HiddenUnderShroud:
-	ScriptTriggers:
 	MapEditorData:
 		ExcludeTilesets: INTERIOR
 		Categories: Tree
@@ -962,7 +993,6 @@
 		Name: Tree (Burnt)
 		ShowOwnerRow: false
 	HiddenUnderShroud:
-	ScriptTriggers:
 	MapEditorData:
 		Categories: Tree
 	RequiresSpecificOwners:
@@ -1013,12 +1043,12 @@
 		Types: husk
 		ValidRelationships: Enemy, Neutral
 	TransformOnCapture:
-		ForceHealthPercentage: 25
+		ForceHealthPercentage: 15
 	InfiltrateForTransform:
 		Types: Husk
-		ForceHealthPercentage: 25
+		ForceHealthPercentage: 15
 	WithColoredOverlay@IDISABLE:
-		Palette: disabled
+		Color: 000000B4
 	Targetable:
 		TargetTypes: GroundActor, Husk, NoAutoTarget
 		RequiresForceFire: true
@@ -1088,7 +1118,7 @@
 	BodyOrientation:
 		QuantizedFacings: 1
 	Interactable:
-		Bounds: 96,48
+		Bounds: 4096, 2048
 	ShakeOnDeath:
 		Duration: 15
 		Intensity: 6
@@ -1111,7 +1141,6 @@
 	AppearsOnMapPreview:
 		Terrain: Tree
 	HiddenUnderShroud:
-	ScriptTriggers:
 	MapEditorData:
 		RequireTilesets: DESERT
 		Categories: Decoration
@@ -1128,14 +1157,14 @@
 ^Crate:
 	Inherits@1: ^SpriteActor
 	Interactable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	HiddenUnderFog:
 	Tooltip:
 		Name: Crate
 		GenericName: Crate
 		ShowOwnerRow: false
 	Crate:
-		Lifetime: 180
+		Duration: 4500
 		TerrainTypes: Clear, Rough, Road, Ore, Beach, Water
 	RenderSprites:
 		Palette: effect
@@ -1162,7 +1191,7 @@
 ^Mine:
 	Inherits: ^SpriteActor
 	Interactable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	WithSpriteBody:
 	HiddenUnderFog:
 	Mine:
@@ -1171,7 +1200,7 @@
 		AvoidFriendly: false
 		BlockFriendly: false
 	Health:
-		HP: 10000
+		HP: 5000
 		NotifyAppliedDamage: false
 	Armor:
 		Type: Light
@@ -1179,7 +1208,7 @@
 		CloakSound:
 		UncloakSound:
 		Palette:
-		CloakTypes: Mine
+		DetectionTypes: Mine
 		InitialDelay: 0
 	Tooltip:
 		Name: Mine
@@ -1194,7 +1223,7 @@
 ^DisableOnLowPower:
 	WithColoredOverlay@IDISABLE:
 		RequiresCondition: disabled
-		Palette: disabled
+		Color: 000000B4
 	GrantConditionOnPowerState@LOWPOWER:
 		Condition: lowpower
 		ValidPowerStates: Low, Critical
@@ -1232,7 +1261,7 @@
 ^DisabledByPowerOutage:
 	WithColoredOverlay@IDISABLE:
 		RequiresCondition: disabled
-		Palette: disabled
+		Color: 000000B4
 	GrantCondition@IDISABLE:
 		RequiresCondition: power-outage
 		Condition: disabled
@@ -1293,6 +1322,7 @@
 	PrimaryBuilding:
 		PrimaryCondition: primary
 		SelectionNotification: PrimaryBuildingSelected
+		SelectionTextNotification: Primary building selected.
 	WithDecoration@primary:
 		RequiresCondition: primary
 		Position: Top

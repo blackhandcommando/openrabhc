@@ -111,6 +111,42 @@ CRATE:
 		Sound: ironcur9.aud
 		Condition: invulnerability
 		Duration: 600
+	GiveUnitCrateAction@lst:
+		SelectionShares: 6
+		Units: lst
+		ValidFactions: allies, england, france, germany, soviet, russia, ukraine, sallies, ssoviet
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@pt:
+		SelectionShares: 6
+		Units: pt
+		ValidFactions: allies, england, france, germany, sallies
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@ss:
+		SelectionShares: 4
+		Units: ss
+		ValidFactions: soviet, russia, ukraine, ssoviet
+		Prerequisites: techlevel.low
+	GiveUnitCrateAction@dd:
+		SelectionShares: 4
+		Units: dd
+		ValidFactions: allies, england, france, germany, sallies
+		Prerequisites: techlevel.medium, dome
+	GiveUnitCrateAction@ss2:
+		SelectionShares: 4
+		Units: ss
+		ValidFactions: soviet, russia, ukraine, ssoviet
+		Prerequisites: techlevel.medium, dome
+	GiveUnitCrateAction@ca:
+		SelectionShares: 3
+		Units: ca
+		ValidFactions: allies, england, france, germany, sallies
+		Prerequisites: techlevel.high, atek
+	GiveUnitCrateAction@msub:
+		SelectionShares: 3
+		Units: msub
+		ValidFactions: soviet, russia, ukraine, ssoviet
+		Prerequisites: techlevel.high, stek
+
 
 MONEYCRATE:
 	Inherits: ^Crate
@@ -180,7 +216,7 @@ SONAR:
 		Name: (support power proxy camera)
 	-RevealsShroud:
 	DetectCloaked:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		Range: 10c0
 
 FLARE:
@@ -312,12 +348,13 @@ powerproxy.armordrop:
 	AlwaysVisible: 
 	ParatroopersPower: 
 		Icon: paratroopers 
-		Description: ArmorDrop (Single Use) 
-		LongDesc: A Badger drops a load of parachuted bombs on your target. 
+		Name: ArmorDrop (Single Use)
+		Description: A Badger drops a squad of vehicles\nanywhere on the map.
 		DropItems: jeep,1tnk,2tnk,jeep 
 		OneShot: true 
 		AllowMultiple: true 
-		SelectTargetSpeechNotification: SelectTarget 
+		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Select target.
 		AllowImpassableCells: false 
 		QuantizedFacings: 8 
 		CameraActor: camera.paradrop 
@@ -331,12 +368,13 @@ powerproxy.parabombs:
 	AlwaysVisible:
 	AirstrikePower:
 		Icon: parabombs
-		Description: Parabombs (Single Use)
-		LongDesc: A Badger drops a load of parachuted bombs on your target.
+		Name: Parabombs (Single Use)
+		Description: A Badger drops a load of parachuted bombs\nat the selected location.
 		OneShot: true
 		AllowMultiple: true
 		UnitType: badr.bomber
 		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Select target.
 		QuantizedFacings: 8
 		DisplayBeacon: True
 		BeaconPoster: pbmbicon
@@ -350,12 +388,16 @@ powerproxy.sonarpulse:
 	AlwaysVisible:
 	SpawnActorPower:
 		Icon: sonar
-		Description: Sonar Pulse
-		LongDesc: Reveals all submarines in the vicinity for a \nshort time.
+		Name: Sonar Pulse
+		Description: Reveals all submarines in the vicinity for a \nshort time.
 		ChargeInterval: 750
 		EndChargeSpeechNotification: SonarPulseReady
 		SelectTargetSpeechNotification: SelectTarget
+		EndChargeTextNotification: Sonar pulse ready.
+		SelectTargetTextNotification: Select target.
 		Actor: sonar
+		Terrain: Water
+		AllowUnderShroud: false
 		LifeTime: 250
 		DeploySound: sonpulse.aud
 		EffectImage: moveflsh
@@ -367,10 +409,11 @@ powerproxy.paratroopers:
 	AlwaysVisible:
 	ParatroopersPower:
 		Icon: paratroopers
-		Description: Paratroopers
-		LongDesc: A Badger drops a squad of infantry\nanywhere on the map.
+		Name: Paratroopers
+		Description: A Badger drops a squad of infantry\nanywhere on the map.
 		DropItems: E1,E1,E1,E3,E3
 		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Select target.
 		AllowImpassableCells: false
 		QuantizedFacings: 8
 		CameraActor: camera.paradrop
@@ -426,6 +469,7 @@ fact.colorpicker:
 	Inherits: FACT
 	-Buildable:
 	-MapEditorData:
+	-BaseBuilding:
 	RenderSprites:
 		Image: fact
 		Palette: colorpicker

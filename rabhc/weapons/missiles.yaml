@@ -17,7 +17,7 @@
 	Warhead@1Dam: SpreadDamage
 		Spread: 128
 		Damage: 5000
-		ValidTargets: GroundActor, WaterActor, AirborneActor
+		ValidTargets: GroundActor, WaterActor
 		Versus:
 			None: 10
 			Wood: 74
@@ -42,6 +42,8 @@
 ^AntiAirMissile:
 	Inherits: ^AntiGroundMissile
 	ValidTargets: AirborneActor
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: AirborneActor
 	Warhead@3Eff: CreateEffect
 		ImpactActors: false
 
@@ -59,7 +61,6 @@ MaverickAG:
 		CruiseAltitude: 2c0
 		RangeLimit: 14c410
 	Warhead@1Dam: SpreadDamage
-		InvalidTargets: AirborneActor
 		Damage: 7000
 		Versus:
 			None: 30
@@ -82,7 +83,6 @@ MaverickAA:
 		CruiseAltitude: 2c0
 		RangeLimit: 14c410
 	Warhead@1Dam: SpreadDamage
-		InvalidTargets: AirborneActor
 		Damage: 5000
 		Versus:
 			None: 30
@@ -115,20 +115,19 @@ HellfireAG:
 
 HellfireAA:
 	Inherits: ^AntiAirMissile
-	ReloadDelay: 60
+	ReloadDelay: 30
 	MinRange: 1c256
 	Range: 4c0
 	Burst: 2
 	BurstDelays: 10
 	Projectile: Missile
-		Speed: 384
+		Speed: 492
 		Inaccuracy: 128
 		HorizontalRateOfTurn: 100
 		RangeLimit: 7c0
 		CloseEnough: 0c600
 	Warhead@1Dam: SpreadDamage
 		Damage: 4000
-		ValidTargets: AirborneActor
 		Versus:
 			Wood: 75
 			Light: 75
@@ -146,6 +145,7 @@ MammothTusk:
 		HorizontalRateOfTurn: 60
 		RangeLimit: 9c614
 	Warhead@1Dam: SpreadDamage
+		ValidTargets: AirborneActor, Infantry
 		Spread: 256
 		Damage: 5000
 		Versus:
@@ -172,11 +172,10 @@ Nike:
 		Inaccuracy: 0
 		Image: MISSILE
 		HorizontalRateOfTurn: 100
-		RangeLimit: 9c0
+		RangeLimit: 11c0
 		Speed: 341
 	Warhead@1Dam: SpreadDamage
 		Damage: 5000
-		ValidTargets: AirborneActor
 		Versus:
 			Light: 90
 			Cybernetic: 90
@@ -193,7 +192,6 @@ RedEye:
 		Speed: 298
 	Warhead@1Dam: SpreadDamage
 		Damage: 4000
-		ValidTargets: AirborneActor
 		Versus:
 			Light: 60
 
@@ -226,6 +224,8 @@ StingerAA:
 	Projectile: Missile
 		Speed: 255
 		CloseEnough: 298
+	Warhead@1Dam: SpreadDamage
+		ValidTargets: AirborneActor
 	Warhead@3Eff: CreateEffect
 		Explosions: med_explosion_air
 		ImpactSounds: kaboom25.aud
@@ -239,14 +239,6 @@ APTusk:
 		TrailImage: smokey
 		HorizontalRateOfTurn: 40
 		RangeLimit: 7c204
-	Warhead@1Dam: SpreadDamage
-		Damage: 2500
-		Versus:
-			None: 28 
-			Wood: 88 
-			Light: 88 
-			Heavy: 120 
-			Concrete: 60 
 
 APTusk.stnk:
 	Inherits: APTusk
@@ -340,6 +332,7 @@ SubMissileAA:
 	Inherits: ^SubMissileDefault
 	ValidTargets: AirborneActor
 	Warhead@1Dam: SpreadDamage
+		ValidTargets: AirborneActor
 		Damage: 1500
 
 SCUD:

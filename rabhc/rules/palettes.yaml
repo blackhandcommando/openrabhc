@@ -23,6 +23,10 @@
 		Name: player
 		Filename: temperat.pal
 		ShadowIndex: 4
+	PaletteFromFile@player-noshadow:
+		Name: player-noshadow
+		Filename: temperat.pal
+		TransparentIndex: 0, 4
 	PaletteFromFile@chrome:
 		Name: chrome
 		Filename: temperat.pal
@@ -37,10 +41,10 @@
 		Name: effect
 		Filename: temperat.pal
 		ShadowIndex: 4
-	PaletteFromFile@colorpicker:
+	ColorPickerPalette@colorpicker:
 		Name: colorpicker
-		Filename: temperat.pal
-		ShadowIndex: 4
+		BasePalette: player
+		RemapIndex: 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
 		AllowModifiers: false
 	PaletteFromFile@desert:
 		Name: desert
@@ -58,36 +62,12 @@
 		G: 0
 		B: 0
 		A: 140
-	PaletteFromRGBA@highlight:
-		Name: highlight
-		R: 255
-		G: 255
-		B: 255
-		A: 128
 	PaletteFromRGBA@moveflash:
 		Name: moveflash
 		R: 255
 		G: 255
 		B: 255
 		A: 64
-	PaletteFromRGBA@invuln:
-		Name: invuln
-		R: 128
-		G: 0
-		B: 0
-		A: 128
-	PaletteFromRGBA@invuln2:
-		Name: invuln2
-		R: 0
-		G: 0
-		B: 128
-		A: 128
-	PaletteFromRGBA@disabled:
-		Name: disabled
-		R: 0
-		G: 0
-		B: 0
-		A: 180
 	ShroudPalette@shroud:
 		Name: shroud
 	ShroudPalette@fog:
@@ -96,11 +76,14 @@
 	PlayerColorPalette:
 		BasePalette: player
 		RemapIndex: 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
+	PlayerColorPalette@NOSHADOW:
+		BaseName: player-noshadow
+		BasePalette: player-noshadow
+		RemapIndex: 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95
 	PaletteFromPlayerPaletteWithAlpha@cloak:
 		BaseName: cloak
 		BasePalette: player
 		Alpha: 0.55
-	PlayerHighlightPalette:
 	MenuPaletteEffect:
 	RotationPaletteEffect@defaultwater:
 		Palettes: terrain
@@ -119,14 +102,6 @@
 	ChronoshiftPaletteEffect:
 	FlashPaletteEffect@NUKE:
 		Type: Nuke
-	PaletteFromPaletteWithAlpha@placelinesegment:
-		Name: placelinesegment
-		BasePalette: terrain
-		Alpha: 0.65
-	PaletteFromPlayerPaletteWithAlpha@placebuilding:
-		BaseName: placebuilding
-		BasePalette: player
-		Alpha: 0.65
 	IndexedPalette@CIV2:
 		Name: civilian2
 		BasePalette: player

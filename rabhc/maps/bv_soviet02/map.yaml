@@ -1513,4 +1513,5 @@ Actors:
 	Actor453: powr
 		Owner: England
 		Location: 89,22
-Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml
+
+Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml

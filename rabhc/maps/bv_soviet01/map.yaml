@@ -1381,4 +1381,5 @@ Actors:
 	Actor390: waypoint
 		Owner: England
 		Location: 54,47
-Rules: rules.yaml, rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml
+
+Rules: rabhc|rules/campaign-rules.yaml, rabhc|rules/campaign-tooltips.yaml, rules.yaml
