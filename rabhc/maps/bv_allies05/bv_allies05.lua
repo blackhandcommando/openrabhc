@@ -397,7 +397,7 @@ IronCurtainLogic = function(unit)
 	if not unit.IsDead then
 		unit.AttackMove(ironcurtainattack.Location)
 		Trigger.AfterDelay(DateTime.Seconds(65), function()
-			if not unit.IsDead and unit.IsInWorld then
+			if not unit.IsDead and unit.IsInWorld and (Actor71.IsDead or ussr.PowerState ~= "Normal") then
 				Trigger.OnIdle(unit, function()
 					unit.Hunt()
 				end)

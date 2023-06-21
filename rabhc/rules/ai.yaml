@@ -91,6 +91,7 @@ Player:
 		VehiclesFactoryTypes: weap
 		ProductionTypes: barr,tent,weap
 		SiloTypes: silo
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
 		BuildingLimits:
 			proc: 4
 			barr: 1
@@ -131,8 +132,9 @@ Player:
 		BarracksTypes: barr,tent
 		VehiclesFactoryTypes: weap
 		ProductionTypes: barr,tent,weap,afld,hpad
-		NavalProductionTypes: spen,syrd
+		NavalProductionTypes: spen, syrd
 		SiloTypes: silo
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
 		BuildingLimits:
 			proc: 4
 			barr: 1
@@ -182,8 +184,9 @@ Player:
 		BarracksTypes: barr,tent
 		VehiclesFactoryTypes: weap
 		ProductionTypes: barr,tent,weap,afld,hpad
-		NavalProductionTypes: spen,syrd
+		NavalProductionTypes: spen, syrd
 		SiloTypes: silo
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
 		BuildingLimits:
 			proc: 4
 			barr: 1
@@ -234,8 +237,9 @@ Player:
 		BarracksTypes: barr,tent
 		VehiclesFactoryTypes: weap
 		ProductionTypes: barr,tent,weap,afld,hpad
-		NavalProductionTypes: spen,syrd
+		NavalProductionTypes: spen, syrd
 		SiloTypes: silo
+		DefenseTypes: hbox,pbox,gun,ftur,tsla,agun,sam
 		BuildingLimits:
 			proc: 4
 			dome: 1
@@ -274,9 +278,11 @@ Player:
 	SquadManagerBotModule@rush:
 		RequiresCondition: enable-rush-ai
 		SquadSize: 20
-		ExcludeFromSquadsTypes: harv, mcv, dog
-		NavalUnitsTypes: ss,msub,dd,ca,lst,pt
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2
 		ConstructionYardTypes: fact
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
 	McvManagerBotModule:
 		RequiresCondition: enable-rush-ai || enable-normal-ai || enable-turtle-ai || enable-naval-ai
 		McvTypes: mcv
@@ -311,10 +317,12 @@ Player:
 	SquadManagerBotModule@normal:
 		RequiresCondition: enable-normal-ai
 		SquadSize: 40
-		ExcludeFromSquadsTypes: harv, mcv, dog
-		NavalUnitsTypes: ss,msub,dd,ca,lst,pt
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2
 		ConstructionYardTypes: fact
-		NavalProductionTypes: spen,syrd
+		NavalProductionTypes: spen, syrd
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
 	UnitBuilderBotModule@normal:
 		RequiresCondition: enable-normal-ai
 		UnitsToBuild:
@@ -353,10 +361,12 @@ Player:
 	SquadManagerBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
 		SquadSize: 10
-		ExcludeFromSquadsTypes: harv, mcv, dog
-		NavalUnitsTypes: ss,msub,dd,ca,lst,pt
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2
 		ConstructionYardTypes: fact
-		NavalProductionTypes: spen,syrd
+		NavalProductionTypes: spen, syrd
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
 	UnitBuilderBotModule@turtle:
 		RequiresCondition: enable-turtle-ai
 		UnitsToBuild:
@@ -395,10 +405,12 @@ Player:
 	SquadManagerBotModule@naval:
 		RequiresCondition: enable-naval-ai
 		SquadSize: 1
-		ExcludeFromSquadsTypes: harv, mcv, dog
-		NavalUnitsTypes: ss,msub,dd,ca,lst,pt
+		ExcludeFromSquadsTypes: harv, mcv, dog, badr.bomber, u2
+		NavalUnitsTypes: ss, msub, dd, ca, lst, pt
 		ConstructionYardTypes: fact
-		NavalProductionTypes: spen,syrd
+		NavalProductionTypes: spen, syrd
+		AirUnitsTypes: mig, yak, heli, hind, mh60
+		ProtectionTypes: harv, mcv, mslo, gap, spen, syrd, iron, pdox, tsla, agun, dome, pbox, hbox, gun, ftur, sam, atek, weap, fact, proc, silo, hpad, afld, afld.ukraine, powr, apwr, stek, barr, kenn, tent, fix, fpwr, tenf, syrf, spef, weaf, domf, fixf, fapw, atef, pdof, mslf, facf
 	UnitBuilderBotModule@naval:
 		RequiresCondition: enable-naval-ai
 		UnitsToBuild:

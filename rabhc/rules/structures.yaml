@@ -3,7 +3,7 @@ MSLO:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x1Shape
 	Selectable:
-		Bounds: 48,24
+		Bounds: 2048, 1024
 	Valued:
 		Cost: 2500
 	Tooltip:
@@ -38,14 +38,20 @@ MSLO:
 		Cursor: nuke
 		Icon: abomb
 		ChargeInterval: 13500
-		Description: Atom Bomb
-		LongDesc: Launches a devastating atomic bomb\nat a target location.
+		Name: Atom Bomb
+		Description: Launches a devastating atomic bomb\nat a target location.
 		BeginChargeSpeechNotification: AbombPrepping
 		EndChargeSpeechNotification: AbombReady
 		SelectTargetSpeechNotification: SelectTarget
 		InsufficientPowerSpeechNotification: InsufficientPower
 		IncomingSpeechNotification: AbombLaunchDetected
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: A-bomb prepping.
+		EndChargeTextNotification: A-bomb ready.
+		IncomingTextNotification: A-bomb launch detected.
 		MissileWeapon: atomic
+		MissileImage: atomic
 		MissileDelay: 5
 		SpawnOffset: 1c0,427,0
 		DisplayTimerRelationships: Ally, Neutral, Enemy
@@ -82,8 +88,8 @@ GAP:
 		Prerequisites: atek, ~structures.allies, ~techlevel.high
 		Description: Obscures the enemy's view with shroud.\nRequires power to operate.
 	Selectable:
-		Bounds: 24,24
-		DecorationBounds: 24,48,0,-12
+		Bounds: 1024, 1024
+		DecorationBounds: 1024, 2048, 0, -512
 	WithSpriteBody:
 		PauseOnCondition: disabled
 	Health:
@@ -119,7 +125,7 @@ SPEN:
 	Inherits: ^Building
 	Inherits@PRIMARY: ^PrimaryBuilding
 	Selectable:
-		Bounds: 72,48
+		Bounds: 3072, 2048
 	InfiltrateForSupportPower:
 		Proxy: powerproxy.sonarpulse
 		Types: SpyInfiltrate
@@ -206,15 +212,20 @@ SPEN:
 	RepairsUnits:
 		HpPerStep: 1000
 		StartRepairingNotification: Repairing
+		StartRepairingTextNotification: Repairing.
 		FinishRepairingNotification: UnitRepaired
-		PlayerExperience: 15
+		FinishRepairingTextNotification: Unit repaired.
+		PlayerExperience: 5
 	RallyPoint:
+		ForceSetType: Ship
+	CommandBarBlacklist:
+		DisableStop: false
 	ProductionBar:
 		ProductionType: Ship
 	Power:
 		Amount: -30
 	DetectCloaked:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		Range: 10c0
 	RenderDetectionCircle:
 	ProvidesPrerequisite@soviet:
@@ -258,7 +269,7 @@ SYRD:
 	Inherits: ^Building
 	Inherits@PRIMARY: ^PrimaryBuilding
 	Selectable:
-		Bounds: 72,48
+		Bounds: 3072, 2048
 	InfiltrateForSupportPower:
 		Proxy: powerproxy.sonarpulse
 		Types: SpyInfiltrate
@@ -320,15 +331,20 @@ SYRD:
 	RepairsUnits:
 		HpPerStep: 1000
 		StartRepairingNotification: Repairing
+		StartRepairingTextNotification: Repairing.
 		FinishRepairingNotification: UnitRepaired
-		PlayerExperience: 15
+		FinishRepairingTextNotification: Unit repaired.
+		PlayerExperience: 5
 	RallyPoint:
+		ForceSetType: Ship
+	CommandBarBlacklist:
+		DisableStop: false
 	ProductionBar:
 		ProductionType: Ship
 	Power:
 		Amount: -30
 	DetectCloaked:
-		CloakTypes: Underwater
+		DetectionTypes: Underwater
 		Range: 10c0
 	RenderDetectionCircle:
 	ProvidesPrerequisite@allies:
@@ -393,8 +409,8 @@ IRON:
 		Footprint: xx
 		Dimensions: 2,1
 	Selectable:
-		Bounds: 48,28,0,2
-		DecorationBounds: 50,50,0,-12
+		Bounds: 2048, 1194, 0, 85
+		DecorationBounds: 2133, 2133, 0, -512
 	Health:
 		HP: 100000
 	Armor:
@@ -416,13 +432,17 @@ IRON:
 		PauseOnCondition: disabled
 		Icon: invuln
 		ChargeInterval: 3000
-		Description: Invulnerability
-		LongDesc: Makes a group of units invulnerable\nfor 20 seconds.
-		Duration: 500
+		Name: Invulnerability
+		Description: Makes a group of units invulnerable\nfor 20 seconds.
+		Duration: 400
 		SelectTargetSpeechNotification: SelectTarget
 		InsufficientPowerSpeechNotification: InsufficientPower
 		BeginChargeSpeechNotification: IronCurtainCharging
 		EndChargeSpeechNotification: IronCurtainReady
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: Iron curtain charging.
+		EndChargeTextNotification: Iron curtain ready.
 		DisplayRadarPing: True
 		Condition: invulnerability
 		OnFireSound: ironcur9.aud
@@ -444,7 +464,7 @@ PDOX:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x2Shape
 	Selectable:
-		Bounds: 48,48
+		Bounds: 2048, 2048
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 120
@@ -487,12 +507,16 @@ PDOX:
 		Prerequisites: !pdox.germany
 		Icon: chrono
 		ChargeInterval: 3000
-		Description: Chronoshift
-		LongDesc: Teleports a group of units across\nthe map for 20 seconds.
+		Name: Chronoshift
+		Description: Teleports a group of units across\nthe map for 20 seconds.
 		SelectTargetSpeechNotification: SelectTarget
 		InsufficientPowerSpeechNotification: InsufficientPower
 		BeginChargeSpeechNotification: ChronosphereCharging
 		EndChargeSpeechNotification: ChronosphereReady
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: Chronosphere charging.
+		EndChargeTextNotification: Chronosphere ready.
 		Duration: 400
 		KillCargo: true
 		DisplayRadarPing: True
@@ -505,12 +529,16 @@ PDOX:
 		Prerequisites: pdox.germany
 		Icon: chrono
 		ChargeInterval: 3000
-		Description: Advanced Chronoshift
-		LongDesc: Teleports a large group of units across\nthe map for 20 seconds.
+		Name: Advanced Chronoshift
+		Description: Teleports a large group of units across\nthe map for 20 seconds.
 		SelectTargetSpeechNotification: SelectTarget
 		InsufficientPowerSpeechNotification: InsufficientPower
 		BeginChargeSpeechNotification: ChronosphereCharging
 		EndChargeSpeechNotification: ChronosphereReady
+		SelectTargetTextNotification: Select target.
+		InsufficientPowerTextNotification: Insufficient power.
+		BeginChargeTextNotification: Chronosphere charging.
+		EndChargeTextNotification: Chronosphere ready.
 		Duration: 400
 		KillCargo: true
 		DisplayRadarPing: True
@@ -542,8 +570,8 @@ TSLA:
 	Tooltip:
 		Name: Tesla Coil
 	Selectable:
-		Bounds: 24,24
-		DecorationBounds: 24,40,0,-8
+		Bounds: 1024, 1024
+		DecorationBounds: 1024, 1706, 0, -341
 	Health:
 		HP: 40000
 	Armor:
@@ -561,8 +589,7 @@ TSLA:
 		Weapon: TeslaZap
 		LocalOffset: 0,0,896
 	AttackTesla:
-		RequiresCondition: !build-incomplete
-		PauseOnCondition: disabled
+		PauseOnCondition: disabled || build-incomplete
 		ChargeAudio: tslachg2.aud
 		MaxCharges: 3
 		ReloadDelay: 120
@@ -587,8 +614,8 @@ AGUN:
 	Tooltip:
 		Name: AA Gun
 	Selectable:
-		Bounds: 24,24
-		DecorationBounds: 24,32,0,-4
+		Bounds: 1024, 1024
+		DecorationBounds: 1024, 1365, 0, -170
 	Health:
 		HP: 40000
 	Armor:
@@ -614,8 +641,7 @@ AGUN:
 		LocalOffset: 520,100,450, 520,-150,450
 		MuzzleSequence: muzzle
 	AttackTurreted:
-		RequiresCondition: !build-incomplete
-		PauseOnCondition: disabled
+		PauseOnCondition: disabled || build-incomplete
 	WithMuzzleOverlay:
 	RenderRangeCircle:
 		RangeCircleType: aa
@@ -629,7 +655,7 @@ DOME:
 	Inherits@IDISABLE: ^DisableOnLowPowerOrPowerDown
 	Inherits@shape: ^2x2Shape
 	Selectable:
-		Bounds: 48,48
+		Bounds: 2048, 2048
 	HitShape:
 		UseTargetableCellsOffsets: false
 		TargetableOffsets: 0,0,0, 630,-384,0, 630,384,0, -700,-512,0, -700,512,0
@@ -639,7 +665,7 @@ DOME:
 		Prerequisites: proc, ~techlevel.medium
 		Description: Provides an overview\nof the battlefield.\nRequires power to operate.
 	Valued:
-		Cost: 1800
+		Cost: 1500
 	Tooltip:
 		Name: Radar Dome
 	Building:
@@ -718,7 +744,7 @@ PBOX:
 		InitialUnits: e1
 	-SpawnActorsOnSell:
 	AttackGarrisoned:
-		RequiresCondition: !build-incomplete
+		PauseOnCondition: build-incomplete
 		Armaments: garrisoned
 		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
 		PortYaws: 0, 176, 341, 512, 682, 853
@@ -784,7 +810,7 @@ HBOX:
 	RenderRangeCircle:
 		FallbackRange: 6c0
 	AttackGarrisoned:
-		RequiresCondition: !build-incomplete
+		PauseOnCondition: build-incomplete
 		Armaments: garrisoned
 		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
 		PortYaws: 0, 176, 341, 512, 682, 853
@@ -833,7 +859,7 @@ GUN:
 		LocalOffset: 512,0,112
 		MuzzleSequence: muzzle
 	AttackTurreted:
-		RequiresCondition: !build-incomplete
+		PauseOnCondition: build-incomplete
 	WithMuzzleOverlay:
 	Power:
 		Amount: -40
@@ -874,7 +900,7 @@ FTUR:
 		Weapon: FireballLauncher
 		LocalOffset: 512,0,0
 	AttackTurreted:
-		RequiresCondition: !build-incomplete
+		PauseOnCondition: build-incomplete
 	-QuantizeFacingsFromSequence:
 	BodyOrientation:
 		QuantizedFacings: 8
@@ -893,7 +919,7 @@ SAM:
 	Inherits@AUTOTARGET: ^AutoTargetAir
 	Inherits@shape: ^2x1Shape
 	Selectable:
-		Bounds: 48,24
+		Bounds: 2048, 1024
 	HitShape:
 		Type: Rectangle
 			TopLeft: -768,-512
@@ -935,8 +961,7 @@ SAM:
 		LocalOffset: 0,0,320
 		MuzzleSequence: muzzle
 	AttackTurreted:
-		RequiresCondition: !build-incomplete
-		PauseOnCondition: disabled
+		PauseOnCondition: disabled || build-incomplete
 	WithMuzzleOverlay:
 	RenderRangeCircle:
 		RangeCircleType: aa
@@ -950,7 +975,7 @@ ATEK:
 	Inherits@IDISABLE: ^DisableOnLowPower
 	Inherits@shape: ^2x2Shape
 	Selectable:
-		Bounds: 48,48
+		Bounds: 2048, 2048
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 140
@@ -982,10 +1007,11 @@ ATEK:
 		Icon: gps
 		OneShot: true
 		ChargeInterval: 12000
-		Description: GPS Satellite
-		LongDesc: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
+		Name: GPS Satellite
+		Description: Reveals map terrain and provides tactical\ninformation. Requires power and active radar.
 		RevealDelay: 375
 		LaunchSpeechNotification: SatelliteLaunched
+		LaunchTextNotification: Satellite launched.
 		DisplayTimerRelationships: Ally, Neutral, Enemy
 		SupportPowerPaletteOrder: 90
 	SupportPowerChargeBar:
@@ -1002,7 +1028,7 @@ WEAP:
 	Inherits@shape: ^3x2Shape
 	Inherits@PRIMARY: ^PrimaryBuilding
 	Selectable:
-		Bounds: 72,48
+		Bounds: 3072, 2048
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 80
@@ -1031,6 +1057,9 @@ WEAP:
 		RequiresCondition: !build-incomplete
 		Sequence: build-top
 	RallyPoint:
+		ForceSetType: Vehicle
+	CommandBarBlacklist:
+		DisableStop: false
 	Exit@1:
 		RequiresCondition: !being-captured
 		SpawnOffset: 213,-128,0
@@ -1104,12 +1133,12 @@ WEAP:
 	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: place
-		SequencePalette: placebuilding
+		SequenceAlpha: 0.65
 
 FACT:
 	Inherits: ^Building
 	Selectable:
-		Bounds: 72,72
+		Bounds: 3072, 3072
 	Building:
 		Footprint: xxX xxx XxX ===
 		Dimensions: 3,4
@@ -1235,8 +1264,8 @@ PROC:
 		Dimensions: 3,4
 		LocalCenterOffset: 0,-512,0
 	Selectable:
-		Bounds: 72,50,0,4
-		DecorationBounds: 72,70,0,-2
+		Bounds: 3072, 2133, 0, 170
+		DecorationBounds: 3072, 2986, 0, -85
 	Targetable:
 		TargetTypes: GroundActor, Structure, C4, DetonateAttack, ThiefInfiltrate, SpyInfiltrate
 	Health:
@@ -1264,6 +1293,7 @@ PROC:
 		Percentage: 50
 		Types: SpyInfiltrate, ThiefInfiltrate
 		InfiltratedNotification: CreditsStolen
+		InfiltratedTextNotification: Credits stolen.
 	WithBuildingBib:
 	WithIdleOverlay@TOP:
 		RequiresCondition: !build-incomplete
@@ -1291,7 +1321,7 @@ PROC:
 	-ActorPreviewPlaceBuildingPreview:
 	SequencePlaceBuildingPreview:
 		Sequence: idle
-		SequencePalette: placebuilding
+		SequenceAlpha: 0.65
 	WithResourceStoragePipsDecoration:
 		Position: BottomLeft
 		Margin: 4, 3
@@ -1302,7 +1332,7 @@ PROC:
 SILO:
 	Inherits: ^Building
 	Selectable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	Buildable:
 		Queue: Defense
 		BuildPaletteOrder: 35
@@ -1326,6 +1356,7 @@ SILO:
 		Percentage: 50
 		Types: ThiefInfiltrate
 		InfiltratedNotification: CreditsStolen
+		InfiltratedTextNotification: Credits stolen.
 	WithBuildingBib:
 		HasMinibib: true
 	-WithSpriteBody:
@@ -1351,7 +1382,7 @@ HPAD:
 	Inherits@shape: ^2x2Shape
 	Inherits@PRIMARY: ^PrimaryBuilding
 	Selectable:
-		Bounds: 48,48
+		Bounds: 2048, 2048
 	HitShape:
 		UseTargetableCellsOffsets: false
 		TargetableOffsets: 0,0,0, 768,-512,0, 768,512,0, -281,-512,0, -630,512,0
@@ -1387,6 +1418,9 @@ HPAD:
 		ExitCell: 0,0
 		Facing: 896
 	RallyPoint:
+		ForceSetType: Helicopter
+	CommandBarBlacklist:
+		DisableStop: false
 	Production:
 		Produces: Aircraft, Helicopter
 	Reservable:
@@ -1449,7 +1483,7 @@ AFLD:
 		Name: Airfield
 	Selectable:
 		Class: afld
-		Bounds: 72,48
+		Bounds: 3072, 2048
 	Building:
 		Footprint: xxx xxx
 		Dimensions: 3,2
@@ -1468,6 +1502,9 @@ AFLD:
 		ExitCell: 1,1
 		Facing: 768
 	RallyPoint:
+		ForceSetType: Plane
+	CommandBarBlacklist:
+		DisableStop: false
 	Production:
 		Produces: Aircraft, Plane
 	Reservable:
@@ -1500,10 +1537,12 @@ AFLD:
 		Prerequisites: aircraft.soviet
 		Icon: spyplane
 		ChargeInterval: 3750
-		Description: Spy Plane
-		LongDesc: Reveals an area of the map.
+		Name: Spy Plane
+		Description: Reveals an area of the map.
 		SelectTargetSpeechNotification: SelectTarget
 		EndChargeSpeechNotification: SpyPlaneReady
+		SelectTargetTextNotification: Select target.
+		EndChargeTextNotification: Spy plane ready.
 		CameraActor: camera.spyplane
 		CameraRemoveDelay: 150
 		UnitType: u2
@@ -1521,11 +1560,13 @@ AFLD:
 		Prerequisites: aircraft.soviet
 		Icon: paratroopers
 		ChargeInterval: 7500
-		Description: Paratroopers
-		LongDesc: A Badger drops a squad of infantry\nanywhere on the map.
+		Name: Paratroopers
+		Description: A Badger drops a squad of infantry\nat the selected location.
 		DropItems: E1R1,E1R1,E1R1,E3R1,E3R1
 		ReinforcementsArrivedSpeechNotification: ReinforcementsArrived
 		SelectTargetSpeechNotification: SelectTarget
+		ReinforcementsArrivedTextNotification: Reinforcements have arrived.
+		SelectTargetTextNotification: Select target.
 		AllowImpassableCells: false
 		QuantizedFacings: 8
 		CameraActor: camera.paradrop
@@ -1542,9 +1583,10 @@ AFLD:
 		Prerequisites: aircraft.ukraine
 		Icon: parabombs
 		ChargeInterval: 7500
-		Description: Parabombs
-		LongDesc: A squad of Badgers drop parachuted\nbombs on your target.
+		Name: Parabombs
+		Description: A Badger drops a load of parachuted bombs\nat the selected location.
 		SelectTargetSpeechNotification: SelectTarget
+		SelectTargetTextNotification: Select target.
 		CameraActor: camera
 		CameraRemoveDelay: 150
 		UnitType: badr.bomber
@@ -1587,7 +1629,7 @@ POWR:
 	Inherits@POWER_OUTAGE: ^DisabledByPowerOutage
 	Inherits@shape: ^2x2Shape
 	Selectable:
-		Bounds: 48,48
+		Bounds: 2048, 2048
 	HitShape:
 		UseTargetableCellsOffsets: false
 		TargetableOffsets: 0,0,0, 640,-384,0, 640,512,0, -710,-512,0, -710,512,0
@@ -1644,8 +1686,8 @@ APWR:
 		Dimensions: 3,3
 		LocalCenterOffset: 0,-512,0
 	Selectable:
-		Bounds: 72,48
-		DecorationBounds: 72,68,0,-10
+		Bounds: 3072, 2048
+		DecorationBounds: 3072, 2901, 0, -426
 	Health:
 		HP: 70000
 	Armor:
@@ -1666,7 +1708,7 @@ STEK:
 	Inherits: ^ScienceBuilding
 	Inherits@shape: ^3x2Shape
 	Selectable:
-		Bounds: 72,48
+		Bounds: 3072, 2048
 	HitShape:
 		TargetableOffsets: 420,-768,0, 420,768,0, -770,-768,0, -770,768,0
 	Buildable:
@@ -1704,7 +1746,7 @@ BARR:
 	Inherits@shape: ^2x2Shape
 	Inherits@PRIMARY: ^PrimaryBuilding
 	Selectable:
-		Bounds: 48,48
+		Bounds: 2048, 2048
 	HitShape:
 		UseTargetableCellsOffsets: false
 		TargetableOffsets: 0,0,0, 490,-470,0, 355,512,0, -355,-512,0, -630,512,0
@@ -1733,6 +1775,9 @@ BARR:
 		Range: 4c0
 	WithBuildingBib:
 	RallyPoint:
+		ForceSetType: Infantry
+	CommandBarBlacklist:
+		DisableStop: false
 	Exit@1:
 		RequiresCondition: !being-captured
 		SpawnOffset: -170,810,0
@@ -1788,7 +1833,7 @@ KENN:
 	Inherits: ^Building
 	Inherits@PRIMARY: ^PrimaryBuilding
 	Selectable:
-		Bounds: 24,24
+		Bounds: 1024, 1024
 	Buildable:
 		Queue: Building
 		BuildPaletteOrder: 175
@@ -1808,6 +1853,9 @@ KENN:
 	WithBuildingBib:
 		HasMinibib: True
 	RallyPoint:
+		ForceSetType: Dog
+	CommandBarBlacklist:
+		DisableStop: false
 	Exit@0:
 		RequiresCondition: !being-captured
 		SpawnOffset: -280,400,0
@@ -1865,7 +1913,7 @@ TENT:
 	Inherits@shape: ^2x2Shape
 	Inherits@PRIMARY: ^PrimaryBuilding
 	Selectable:
-		Bounds: 48,48
+		Bounds: 2048, 2048
 	HitShape:
 		UseTargetableCellsOffsets: false
 		TargetableOffsets: 0,0,0, 630,-512,0, 355,512,0, -281,-512,0, -630,512,0
@@ -1894,6 +1942,9 @@ TENT:
 		Range: 4c0
 	WithBuildingBib:
 	RallyPoint:
+		ForceSetType: Infantry
+	CommandBarBlacklist:
+		DisableStop: false
 	Exit@1:
 		RequiresCondition: !being-captured
 		SpawnOffset: -42,810,0
@@ -1966,8 +2017,8 @@ FIX:
 		Footprint: _+_ +++ _+_
 		Dimensions: 3,3
 	Selectable:
-		Bounds: 68,34,0,3
-		DecorationBounds: 72,48
+		Bounds: 2901, 1450, 0, 128
+		DecorationBounds: 3072, 2048
 	Health:
 		HP: 80000
 	Armor:
@@ -1980,12 +2031,16 @@ FIX:
 		Range: 4c0
 	Reservable:
 	RallyPoint:
+	CommandBarBlacklist:
+		DisableStop: false
 	RepairsUnits:
 		HpPerStep: 1000
 		Interval: 7
 		StartRepairingNotification: Repairing
+		StartRepairingTextNotification: Repairing.
 		FinishRepairingNotification: UnitRepaired
-		PlayerExperience: 15
+		FinishRepairingTextNotification: Unit repaired.
+		PlayerExperience: 5
 	WithBuildingBib:
 		HasMinibib: true
 	WithResupplyAnimation:
@@ -2120,21 +2175,15 @@ BARRACKS:
 	Interactable:
 	Tooltip:
 		Name: Infantry Production
-	Buildable:
-		Description: Infantry Production
 
 TECHCENTER:
 	AlwaysVisible:
 	Interactable:
 	Tooltip:
 		Name: Tech Center
-	Buildable:
-		Description: Tech Center
 
 ANYPOWER:
 	AlwaysVisible:
 	Interactable:
 	Tooltip:
-		Name: Power Plant
-	Buildable:
-		Description: Power Plant
+		Name: Any Power Generation

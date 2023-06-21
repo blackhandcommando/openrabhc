@@ -112,8 +112,51 @@ YAK:
 	AmmoPool:
 		Ammo: 99999
 
+E1.Slow:
+	Inherits: E1
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
+	RenderSprites:
+		Image: E1
+	Buildable:
+		Prerequisites: ~disabled
+
+E3.Slow:
+	Inherits: E3
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
+	RenderSprites:
+		Image: E3
+	Buildable:
+		Prerequisites: ~disabled
+
+E6.Slow:
+	Inherits: E6
+	RenderSprites:
+		Image: E6
+	Buildable:
+		Prerequisites: ~disabled
+
+MEDI.Slow:
+	Inherits: MEDI
+	RenderSprites:
+		Image: MEDI
+	Buildable:
+		Prerequisites: ~disabled
+
 1TNK.Slow:
 	Inherits: 1TNK
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
 	RenderSprites:
 		Image: 1TNK
 	Buildable:
@@ -123,6 +166,11 @@ YAK:
 
 2TNK.Slow:
 	Inherits: 2TNK
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
 	RenderSprites:
 		Image: 2TNK
 	Buildable:
@@ -132,6 +180,11 @@ YAK:
 
 Arty.Slow:
 	Inherits: ARTY
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
 	RenderSprites:
 		Image: ARTY
 	Buildable:
@@ -150,6 +203,11 @@ TRUK.Slow:
 
 JEEP.Slow:
 	Inherits: JEEP
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
 	RenderSprites:
 		Image: JEEP
 	Buildable:
